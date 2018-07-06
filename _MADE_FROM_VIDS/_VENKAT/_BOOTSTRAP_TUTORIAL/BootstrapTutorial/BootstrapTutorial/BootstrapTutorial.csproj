@@ -185,6 +185,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\NoCode.cshtml" />
     <Content Include="Views\Home\Vid_003_BootstrapGridSystem.cshtml" />
+    <Content Include="Views\Home\EmbeddedBootstrap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
