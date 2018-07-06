@@ -12,5 +12,15 @@ namespace BootstrapTutorial.Controllers
         {
             return View();
         }
+        public ActionResult NoCode()
+        {
+            return View();
+        }
+
+        public ActionResult Vid_003_BootstrapGridSystem()
+        {
+            return View();
+        }
+        
     }
 }
