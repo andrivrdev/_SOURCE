@@ -17,15 +17,6 @@ namespace BootstrapTutorial.Controllers
 
         public ActionResult EmbeddedBootstrap()
         {
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    ViewBag.Bootstrap3DocsLink = "http://" + ip.ToString() + "/Bootstrap3Docs/";
-                }
-            }
-
             return View();
         }
         
