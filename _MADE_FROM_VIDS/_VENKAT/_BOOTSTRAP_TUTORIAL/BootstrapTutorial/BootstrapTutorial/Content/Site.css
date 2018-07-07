@@ -22,3 +22,74 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.glyphs {
+    border-bottom: 1px solid #ccc;
+    padding: 2em 0;
+    text-align: center;
+}
+
+.glyph {
+    display: inline-block;
+    width: 9em;
+    margin: 1em;
+    text-align: center;
+    vertical-align: top;
+    background: #FFF;
+}
+
+    .glyph .glyph-icon {
+        padding: 10px;
+        display: block;
+        font-size: 64px;
+        line-height: 1;
+    }
+
+        .glyph .glyph-icon:before {
+            font-size: 64px;
+            color: #222;
+            margin-left: 0;
+        }
+
+.class-name {
+    font-size: 0.65em;
+    background-color: #222;
+    color: #fff;
+    border-radius: 4px 4px 0 0;
+    padding: 0.1em;
+    color: #FFFF99;
+    height: 40px;
+    font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+}
+
+.author-name {
+    font-size: 0.8em;
+    background-color: #fcfcfd;
+    border: 1px solid #DEDEE4;
+    border-top: 0;
+    border-radius: 0 0 4px 4px;
+    padding: 0.2em;
+}
+
+.class-name:last-child {
+    font-size: 10px;
+    color: #888;
+}
+
+    .class-name:last-child a {
+        font-size: 10px;
+        color: #555;
+    }
+
+        .class-name:last-child a:hover {
+            color: #a9fd00;
+        }
+
+.glyph > input {
+    display: block;
+    width: 100px;
+    margin: 5px auto;
+    text-align: center;
+    font-size: 12px;
+    cursor: text;
+}

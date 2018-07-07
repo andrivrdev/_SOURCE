@@ -192,6 +192,7 @@
     <Content Include="Views\Home\NoCode.cshtml" />
     <Content Include="Views\Home\Vid_003_BootstrapGridSystem.cshtml" />
     <Content Include="Views\Home\EmbeddedBootstrap.cshtml" />
+    <Content Include="Views\Home\GlyphIcons.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

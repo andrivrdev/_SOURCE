@@ -15,6 +15,11 @@ namespace BootstrapTutorial.Controllers
             return View();
         }
 
+        public ActionResult GlyphIcons()
+        {
+            return View();
+        }
+
         public ActionResult EmbeddedBootstrap()
         {
             return View();
