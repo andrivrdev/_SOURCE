@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="page-content">
+    <!--Container for all slides-->
+    <div id="slides-contaner">
+
+        <!--Container for 4 slides-->
+        <!--
+        The data part says when we get to 0, 100, 200, 300 percent,
+        transform the css to set the viewport
+
+        Step 1 was like this:
+         data-0="transform: translate(0%,0%)"
+         data-100p="transform: translate(0%,-50%)"
+         data-200p="transform: translate(-50%,-50%)"
+         data-300p="transform: translate(-50%,0%)">
+
+        Step 2 add pauses (keyframes):
+         data-0="transform: translate(0%,0%)"
+         data-50p=""  Pause for 50
+         data-150p="transform: translate(0%,-50%)"
+         data-200p="" Pause for 50
+         data-300p="transform: translate(-50%,-50%)"
+         data-350p="" Pause for 50
+         data-450p="transform: translate(-50%,0%)">
+
+        Step 3 remove first key frame so user doesnt get confused
+         data-0="transform: translate(0%,0%)"
+         data-150p="transform: translate(0%,-50%)"
+         data-200p="" Pause for 50
+         data-300p="transform: translate(-50%,-50%)"
+         data-350p="" Pause for 50
+         data-450p="transform: translate(-50%,0%)">
+    -->
+
+        <div id="slides"
+             data-0="transform: translate(0%,0%)"
+             data-50p=""
+             data-150p="transform: translate(0%,-50%)"
+             data-200p=""
+             data-300p="transform: translate(-50%,-50%)"
+             data-350p=""
+             data-450p="transform: translate(-50%,0%)">
+
+            <!--Container for slide 1-->
+            <div id="slide-1" class="slide">
+
+                <!--Add caption and description-->
+                <div class="caption">
+                    <h1>Image 1 Title</h1>
+                    <p>Image description goes here</p>
+                </div>
+            </div>
+
+            <!--Container for slide 2-->
+            <div id="slide-2" class="slide">
+
+                <!--Add caption and description-->
+                <div class="caption">
+                    <h1>Image 2 Title</h1>
+                    <p>Image description goes here</p>
+                </div>
+            </div>
+
+            <!--Container for slide 3-->
+            <div id="slide-3" class="slide">
+
+                <!--Add caption and description-->
+                <div class="caption">
+                    <h1>Image 3 Title</h1>
+                    <p>Image description goes here</p>
+                </div>
+            </div>
+
+            <!--Container for slide 4-->
+            <div id="slide-4" class="slide">
+
+                <!--Add caption and description-->
+                <div class="caption">
+                    <h1>Image 4 Title</h1>
+                    <p>Image description goes here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+        This is our magic helper.
+        Since we cant scroll because we are seeing everything we need,
+        we need this to enable us to scroll
+    -->
+    <div id="helper">
+        <div class="marker red"></div>
+        <div class="marker green"></div>
+        <div class="marker blue"></div>
+        <div class="marker yellow"></div>
+    </div>
+
+    <!--Reference to Scrollr-->
+    <script src="~/Scripts/skrollr.js"></script>
+    <script type="text/javascript">
+        var s = skrollr.init();
+    </script>
+
+
+</div>

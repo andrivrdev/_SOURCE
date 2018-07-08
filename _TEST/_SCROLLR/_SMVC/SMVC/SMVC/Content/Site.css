@@ -1,0 +1,196 @@
+﻿/*SCROLLR STUFF*/
+
+/*Resize body and html to full screen*/
+html, body {
+    width:100%;
+    height:100%;
+}
+
+/*Style and position the text on the images*/
+.caption
+{
+    position:absolute;
+    bottom:5%;
+    right:5%;
+    text-align:right;
+    color:#fff;
+}
+
+/*Style p elements*/
+p {
+    margin:0;
+    line-height:1.333em;
+}
+
+/*Style h1 elements*/
+h1 {
+    margin:0;
+    margin-bottom:0.2em;
+}
+
+/*Slightly change the caption style of slide 3. We want this on the left side of the slide*/
+#slide-3 .caption {
+    left:5%;
+    right:auto;
+    color:#47373f;
+    text-align:left;
+}
+
+/*
+    Slightly change the caption style of slide 4. We want this on the left side of the slide
+    but this time at the top
+*/
+#slide-4 .caption {
+    left: 5%;
+    right: auto;
+    top: 5%;
+    bottom: auto;
+    color: #47373f;
+    text-align: left;
+}
+
+
+/*
+    Resize container to take up all the space available
+    If something overflows we dont want to see any scrollbars on the container
+*/
+#slides-container {
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+/*
+    Resize container to take up all the space available
+    Make sure it does not move
+    Position it at 0,0
+*/
+#slides {
+    /*
+        Some magic
+        When this is 100%:
+        width: 100%;
+        height: 100%;
+        each slide takes up 1/4 of the viewport
+
+        When this is 200%:
+        width: 200%;
+        height: 200%;
+        each slide takes up 1/4 of the viewport but is displayed full screen,
+        for each slide in .slide is scled to 50%
+    */
+    width: 200%;
+    height: 200%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/*
+    Position each slide at absolute 0,0
+    Each slide will take up 50% width, and 50% height of its parent,
+    which is #slides (100%, 100%). We are breaking it up into 4 sections
+*/
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+}
+
+/*
+    Set a background for each individual slide
+    Each individual slide will stretch and cover the entire area available
+*/
+#slide-1 {
+    background: url('Images/img1.jpg') no-repeat center center;
+    background-size: cover;
+}
+#slide-2 {
+    background: url('Images/img2.jpg') no-repeat center center;
+    background-size: cover;
+
+    /*Move to bottom left*/
+    -webkit-transform: translate(0,100%);
+    -ms-transform: translate(0,100%);
+    transform: translate(0,100%);
+}
+#slide-3 {
+    background: url('Images/img3.jpg') no-repeat center center;
+    background-size: cover;
+    
+    /*Move to bottom right*/
+    -webkit-transform: translate(100%,100%);
+    -ms-transform: translate(100%,100%);
+    transform: translate(100%,100%);
+}
+#slide-4 {
+    background: url('Images/img4.jpg') no-repeat center center;
+    background-size: cover;
+
+    /*Move to top right*/
+    -webkit-transform: translate(100%,0);
+    -ms-transform: translate(100%,0);
+    transform: translate(100%,0);
+}
+
+/*Magic helper to enable us to scroll*/
+#helper {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    /*CHanged from 20px to 0px to hide the colored scroll bar when we were still designing*/
+    width: 0px;
+    /*Because we have 4 slides
+    height: 400%;
+    */
+
+    /*Canged to 600 after adding the pauses (Key frames)*/
+    height: 600%;
+}
+.marker {
+    width: 100%;
+
+    /*Because we have 4 slides*/
+    height: 25%;
+}
+.red{
+    background-color:red;
+}
+.green {
+    background-color: green;
+}
+.blue {
+    background-color: blue;
+}
+.yellow {
+    background-color: yellow;
+}
+
+
+
+/*SCROLLR STUFF END*/
+
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
