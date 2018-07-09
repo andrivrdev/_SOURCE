@@ -212,8 +212,12 @@ main {
 
 #slide-2 .hsContent {
     margin-left: -450px;
-    bottom: 200px;
     top: auto;
+}
+
+#slide-2 h2 {
+    position: fixed;
+    top: 70%;
 }
 
 /* Slide 3 */
