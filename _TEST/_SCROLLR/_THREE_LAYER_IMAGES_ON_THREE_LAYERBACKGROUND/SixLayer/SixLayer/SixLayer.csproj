@@ -167,6 +167,11 @@
     <Content Include="Content\Images\E.png" />
     <Content Include="Content\Images\F.png" />
     <Content Include="Content\Images\iTXT.png" />
+    <Content Include="Content\Images\L2.png" />
+    <Content Include="Content\Images\L3.png" />
+    <Content Include="Content\Images\L4.png" />
+    <Content Include="Content\Images\L5.png" />
+    <Content Include="Content\Images\L6.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

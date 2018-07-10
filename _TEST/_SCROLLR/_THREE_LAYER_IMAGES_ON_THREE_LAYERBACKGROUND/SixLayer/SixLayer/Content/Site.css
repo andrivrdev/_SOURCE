@@ -146,17 +146,17 @@ h4 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url(images/F.png) repeat 0 0;
+    background: url(images/L6.png) repeat 0 0;
 }
 
 #bg2 {
     z-index: 49;
-    background-image: url(images/E.png);
+    background-image: url(images/L5.png);
 }
 
 #bg3 {
     z-index: 48;
-    background-image: url(images/D.png);
+    background-image: url(images/L4.png);
 }
 
 #img1 {
@@ -332,8 +332,73 @@ h4 {
     z-index: 1;
 }
 
+/*========================================================================*/
 
+.bgL1 {
+    z-index: 7;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: url(Images/L1.png);
+    opacity: 0;
+}
 
+.bgL2 {
+    z-index: 6;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: url(Images/L2.png);
+    opacity: 0.9;
+}
 
+.bgL3 {
+    z-index: 5;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: url(Images/L3.png);
+    opacity: 0.95;
+}
 
+.bgT {
+    z-index: 4;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    opacity:1;
+}
 
+.bgL4 {
+    z-index: 3;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: url(Images/L4.png);
+    opacity: 0.3;
+}
+
+.bgL5 {
+    z-index: 2;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: url(Images/L5.png);
+    opacity: 0.25;
+}
+
+.bgL6 {
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: url(Images/L6.png);
+    opacity: 0.2;
+}
