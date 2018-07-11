@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccountDetails));
             this.btnAccept = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.edtName = new DevExpress.XtraEditors.TextEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.edtIn = new System.Windows.Forms.RadioButton();
             this.edtOut = new System.Windows.Forms.RadioButton();
+            this.edtIn = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.edtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -43,6 +44,7 @@
             // btnAccept
             // 
             this.btnAccept.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnAccept.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAccept.ImageOptions.Image")));
             this.btnAccept.Location = new System.Drawing.Point(90, 161);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(75, 23);
@@ -53,6 +55,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.ImageOptions.Image")));
             this.btnCancel.Location = new System.Drawing.Point(171, 161);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
@@ -86,6 +89,17 @@
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Account Type";
             // 
+            // edtOut
+            // 
+            this.edtOut.AutoSize = true;
+            this.edtOut.Location = new System.Drawing.Point(21, 56);
+            this.edtOut.Name = "edtOut";
+            this.edtOut.Size = new System.Drawing.Size(78, 17);
+            this.edtOut.TabIndex = 1;
+            this.edtOut.TabStop = true;
+            this.edtOut.Text = "Money Out";
+            this.edtOut.UseVisualStyleBackColor = true;
+            // 
             // edtIn
             // 
             this.edtIn.AutoSize = true;
@@ -97,17 +111,6 @@
             this.edtIn.TabStop = true;
             this.edtIn.Text = "Money In";
             this.edtIn.UseVisualStyleBackColor = true;
-            // 
-            // edtOut
-            // 
-            this.edtOut.AutoSize = true;
-            this.edtOut.Location = new System.Drawing.Point(21, 56);
-            this.edtOut.Name = "edtOut";
-            this.edtOut.Size = new System.Drawing.Size(78, 17);
-            this.edtOut.TabIndex = 1;
-            this.edtOut.TabStop = true;
-            this.edtOut.Text = "Money Out";
-            this.edtOut.UseVisualStyleBackColor = true;
             // 
             // frmAccountDetails
             // 
@@ -121,6 +124,9 @@
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.edtName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmAccountDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Account Details";

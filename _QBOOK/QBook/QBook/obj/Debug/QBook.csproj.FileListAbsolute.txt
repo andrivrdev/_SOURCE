@@ -98,3 +98,4 @@ C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.Forms.frmAccountDetails.resources
 C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.Forms.frmProperty.resources
 C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.Forms.frmPropertyDetails.resources
 C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\DevExpress.Images.v17.1.dll
+C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.Forms.frmPropertyAccountDetails.resources

@@ -20,7 +20,7 @@ namespace QBook.Forms
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         }
 
-        private void LoadData()
+        private void LoadAccount()
         {
             tblAccount xtblAccount = new tblAccount();
             grdAccount.DataSource = xtblAccount.dtAccount;
@@ -38,7 +38,7 @@ namespace QBook.Forms
             timLoad.Stop();
 
             //Load data
-            LoadData();
+            LoadAccount();
         }
 
         private void grdAccountView_DoubleClick(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace QBook.Forms
 
                 if (MyForm.ShowDialog() == DialogResult.OK)
                 {
-                    LoadData();
+                    LoadAccount();
                 }
             }
         }
@@ -80,7 +80,7 @@ namespace QBook.Forms
 
             if (MyForm.ShowDialog() == DialogResult.OK)
             {
-                LoadData();
+                LoadAccount();
             }
         }
 
@@ -97,8 +97,16 @@ namespace QBook.Forms
                 {
                     clsHelper.DeleteRecByID("tblAccount", Convert.ToInt32(grdAccountView.GetFocusedRowCellValue("ID").ToString()));
 
-                    LoadData();
+                    LoadAccount();
                 }
+            }
+        }
+
+        private void grdAccountView_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                DoEdit();
             }
         }
     }
