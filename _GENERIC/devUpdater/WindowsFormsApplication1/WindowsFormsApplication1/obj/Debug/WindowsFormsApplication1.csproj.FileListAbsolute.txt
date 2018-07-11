@@ -1,0 +1,9 @@
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb

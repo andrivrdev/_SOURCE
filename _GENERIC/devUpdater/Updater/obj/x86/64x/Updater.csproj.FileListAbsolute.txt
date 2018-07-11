@@ -1,0 +1,8 @@
+C:\Dev\WAGXE\VS2013\0bjectO\Updater\Updater\bin\x86\64x\Updater.exe.config
+C:\Dev\WAGXE\VS2013\0bjectO\Updater\Updater\bin\x86\64x\Updater.exe
+C:\Dev\WAGXE\VS2013\0bjectO\Updater\Updater\bin\x86\64x\Updater.pdb
+C:\Dev\WAGXE\VS2013\0bjectO\Updater\Updater\obj\x86\64x\Updater.Main.resources
+C:\Dev\WAGXE\VS2013\0bjectO\Updater\Updater\obj\x86\64x\Updater.Properties.Resources.resources
+C:\Dev\WAGXE\VS2013\0bjectO\Updater\Updater\obj\x86\64x\Updater.csproj.GenerateResource.Cache
+C:\Dev\WAGXE\VS2013\0bjectO\Updater\Updater\obj\x86\64x\Updater.exe
+C:\Dev\WAGXE\VS2013\0bjectO\Updater\Updater\obj\x86\64x\Updater.pdb

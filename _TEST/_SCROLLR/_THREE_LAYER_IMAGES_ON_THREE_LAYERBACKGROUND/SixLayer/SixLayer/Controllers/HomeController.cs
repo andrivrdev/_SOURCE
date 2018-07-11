@@ -26,5 +26,11 @@ namespace SixLayer.Controllers
 
             return View();
         }
+
+        public ActionResult Try1()
+        {
+            return View();
+        }
+
     }
 }

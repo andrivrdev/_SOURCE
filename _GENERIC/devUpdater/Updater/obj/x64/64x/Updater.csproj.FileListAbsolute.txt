@@ -1,0 +1,7 @@
+C:\Dev\WAGXE\VS2010\0bjectO\Updater\Updater\bin\x64\64x\Updater.exe
+C:\Dev\WAGXE\VS2010\0bjectO\Updater\Updater\obj\x64\64x\ResolveAssemblyReference.cache
+C:\Dev\WAGXE\VS2010\0bjectO\Updater\Updater\obj\x64\64x\Updater.Main.resources
+C:\Dev\WAGXE\VS2010\0bjectO\Updater\Updater\obj\x64\64x\Updater.Properties.Resources.resources
+C:\Dev\WAGXE\VS2010\0bjectO\Updater\Updater\obj\x64\64x\GenerateResource.read.1.tlog
+C:\Dev\WAGXE\VS2010\0bjectO\Updater\Updater\obj\x64\64x\GenerateResource.write.1.tlog
+C:\Dev\WAGXE\VS2010\0bjectO\Updater\Updater\obj\x64\64x\Updater.exe

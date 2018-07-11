@@ -1,0 +1,45 @@
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\Updater\bin\x64\Debug\devUpdater.exe.config
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\Updater\bin\x64\Debug\devUpdater.exe
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\Updater\bin\x64\Debug\devUpdater.pdb
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.Main.resources
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\Updater\obj\x64\Debug\Updater.Properties.Resources.resources
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.csproj.GenerateResource.Cache
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.exe
+E:\#DATA\#DEVELOPMENT\#PROJECTS\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.pdb
+C:\#DATA\#DEV\#DOT NET\#PROJECTS\#GENERIC\devUpdater\Updater\bin\x64\Debug\devUpdater.exe.config
+C:\#DATA\#DEV\#DOT NET\#PROJECTS\#GENERIC\devUpdater\Updater\bin\x64\Debug\devUpdater.exe
+C:\#DATA\#DEV\#DOT NET\#PROJECTS\#GENERIC\devUpdater\Updater\bin\x64\Debug\devUpdater.pdb
+C:\#DATA\#DEV\#DOT NET\#PROJECTS\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.csprojResolveAssemblyReference.cache
+C:\#DATA\#DEV\#DOT NET\#PROJECTS\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.Main.resources
+C:\#DATA\#DEV\#DOT NET\#PROJECTS\#GENERIC\devUpdater\Updater\obj\x64\Debug\Updater.Properties.Resources.resources
+C:\#DATA\#DEV\#DOT NET\#PROJECTS\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.csproj.GenerateResource.Cache
+C:\#DATA\#DEV\#DOT NET\#PROJECTS\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.exe
+C:\#DATA\#DEV\#DOT NET\#PROJECTS\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.pdb
+Z:\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\bin\x64\Debug\devUpdater.exe.config
+Z:\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\bin\x64\Debug\devUpdater.exe
+Z:\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\bin\x64\Debug\devUpdater.pdb
+Z:\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.csprojResolveAssemblyReference.cache
+Z:\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.Main.resources
+Z:\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\Updater.Properties.Resources.resources
+Z:\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.csproj.GenerateResource.Cache
+Z:\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.exe
+Z:\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.pdb
+F:\#DATA\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\bin\x64\Debug\devUpdater.exe.config
+F:\#DATA\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\bin\x64\Debug\devUpdater.exe
+F:\#DATA\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\bin\x64\Debug\devUpdater.pdb
+F:\#DATA\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.csprojResolveAssemblyReference.cache
+F:\#DATA\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.Main.resources
+F:\#DATA\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\Updater.Properties.Resources.resources
+F:\#DATA\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.csproj.GenerateResource.Cache
+F:\#DATA\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.exe
+F:\#DATA\#DEV\#PROJECTS\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.pdb
+C:\#DATA\#DOTNET\#GENERIC\devUpdater\Updater\bin\x64\Debug\devUpdater.exe.config
+C:\#DATA\#DOTNET\#GENERIC\devUpdater\Updater\bin\x64\Debug\devUpdater.exe
+C:\#DATA\#DOTNET\#GENERIC\devUpdater\Updater\bin\x64\Debug\devUpdater.pdb
+C:\#DATA\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.csprojResolveAssemblyReference.cache
+C:\#DATA\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.Main.resources
+C:\#DATA\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\Updater.Properties.Resources.resources
+C:\#DATA\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.csproj.GenerateResource.Cache
+C:\#DATA\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.csproj.CoreCompileInputs.cache
+C:\#DATA\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.exe
+C:\#DATA\#DOTNET\#GENERIC\devUpdater\Updater\obj\x64\Debug\devUpdater.pdb

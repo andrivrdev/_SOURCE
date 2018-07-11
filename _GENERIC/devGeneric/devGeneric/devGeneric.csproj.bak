@@ -1,0 +1,1023 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B283E7A2-BA20-40E2-AE25-70A28E56FB5A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>devGeneric</RootNamespace>
+    <AssemblyName>devGeneric</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v15.2.Core, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v15.2.Core, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v15.2.Core, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v15.2.Win, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraLayout.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.90.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\#VS2013 INSTALL\#SQL Lite\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="devClasses\devDynamic\devINIFile.cs" />
+    <Compile Include="devClasses\devDynamic\devSE.cs" />
+    <Compile Include="devClasses\devStatic\devGlobals.cs" />
+    <Compile Include="devControls\devAvailableApplied.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="devControls\devAvailableApplied.Designer.cs">
+      <DependentUpon>devAvailableApplied.cs</DependentUpon>
+    </Compile>
+    <Compile Include="devControls\devGroupBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="devControls\devGroupBox.Designer.cs">
+      <DependentUpon>devGroupBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="devControls\devGroupBoxTop.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="devControls\devGroupBoxTop.Designer.cs">
+      <DependentUpon>devGroupBoxTop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="devControls\devLoading.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="devControls\devLoading.Designer.cs">
+      <DependentUpon>devLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="devControls\devStatusBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="devControls\devStatusBar.Designer.cs">
+      <DependentUpon>devStatusBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="devData\tblAccessRights.cs" />
+    <Compile Include="devData\tblBulletinBoard.cs" />
+    <Compile Include="devData\tblDatabaseConnections.cs" />
+    <Compile Include="devData\tblUserAccessRights.cs" />
+    <Compile Include="devData\tblUserPCID.cs" />
+    <Compile Include="devData\tblUsers.cs" />
+    <Compile Include="devForms\frmConnectionDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="devForms\frmConnectionDetails.Designer.cs">
+      <DependentUpon>frmConnectionDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="devForms\frmInternalDBPathDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="devForms\frmInternalDBPathDetails.Designer.cs">
+      <DependentUpon>frmInternalDBPathDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="devForms\frmMaintainDatabaseConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="devForms\frmMaintainDatabaseConnection.Designer.cs">
+      <DependentUpon>frmMaintainDatabaseConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="devForms\frmMaintainUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="devForms\frmMaintainUser.Designer.cs">
+      <DependentUpon>frmMaintainUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="devForms\frmMaintainUserAccess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="devForms\frmMaintainUserAccess.Designer.cs">
+      <DependentUpon>frmMaintainUserAccess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="devForms\frmRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="devForms\frmRegister.Designer.cs">
+      <DependentUpon>frmRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="devForms\frmSystemDefaults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="devForms\frmSystemDefaults.Designer.cs">
+      <DependentUpon>frmSystemDefaults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="devForms\frmUserDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="devForms\frmUserDetail.Designer.cs">
+      <DependentUpon>frmUserDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="devMainForms\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="devMainForms\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\lAccept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="devControls\devAvailableApplied.resx">
+      <DependentUpon>devAvailableApplied.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="devControls\devGroupBox.resx">
+      <DependentUpon>devGroupBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="devControls\devGroupBoxTop.resx">
+      <DependentUpon>devGroupBoxTop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="devControls\devLoading.resx">
+      <DependentUpon>devLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="devControls\devStatusBar.resx">
+      <DependentUpon>devStatusBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="devForms\frmConnectionDetails.resx">
+      <DependentUpon>frmConnectionDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="devForms\frmInternalDBPathDetails.resx">
+      <DependentUpon>frmInternalDBPathDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="devForms\frmMaintainDatabaseConnection.resx">
+      <DependentUpon>frmMaintainDatabaseConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="devForms\frmMaintainUser.resx">
+      <DependentUpon>frmMaintainUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="devForms\frmMaintainUserAccess.resx">
+      <DependentUpon>frmMaintainUserAccess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="devForms\frmRegister.resx">
+      <DependentUpon>frmRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="devForms\frmSystemDefaults.resx">
+      <DependentUpon>frmSystemDefaults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="devForms\frmUserDetail.resx">
+      <DependentUpon>frmUserDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="devMainForms\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StatusBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lAccessRights.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lAdjustments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lArchive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lArrow_Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lArrow_Right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lBatches.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lBulletinBoardClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lBusy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lCancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lClear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lClosed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lCollapse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lCompare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lCountSheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lDatabase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lEmail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lEmailAddressbook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lExcel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lExtract.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lFile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lFunctions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lGenerate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lHelp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lHelpMe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lImportFromDB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lInstall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lItems.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lKeyGenerator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lMediaManager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lMulti-Compare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lNuclear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lOpen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lOptions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lPackage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lPDF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lPending.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lPhaseRun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lPrint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lRDP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lRefresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lRefreshFromDB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lRegister.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lRelease.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lResetLayout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lRun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lSecurity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lShowHide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lStatements.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lSystem Defaults.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lUser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lView_Menu_Group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lView_Statement.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lViewAdjustments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lViewCountSheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lViewExtract.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lWagPlugins.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sAccept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sAccessRights.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sAdjustments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sArchive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sArrow_Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sArrow_Right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sBatches.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sBulletinBoardClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sBusy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sCancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sClear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sClosed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sCollapse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sCompare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sCountSheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sDatabase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sEmail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sEmailAddressbook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sExcel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sExtract.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sFile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sFunctions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sGenerate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sHelp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sHelpMe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sImportFromDB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sInstall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sItems.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sKeyGenerator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sLocked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sMediaManager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sMulti-Compare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sNuclear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sOpen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sOptions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sPackage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sPDF.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sPending.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sPhaseRun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sPrint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sRDP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sRefresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sRefreshFromDB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sRegister.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sRelease.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sResetLayout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sRun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sSecurity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sShowHide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sStatements.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sSystem Defaults.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sUser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sView_Menu_Group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sView_Statement.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sViewAdjustments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sViewCountSheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sViewExtract.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sWagPlugins.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tGrayTick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tGreenDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tGreenTick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tRedUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lAccept1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lAccessRights1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lAdd1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lAdjustments1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lArchive1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lArrow_Left1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lArrow_Right1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lBatches1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lBulletinBoardClose1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lBusy1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lCancel1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lClear1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lClose1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lClosed1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lCollapse1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lCompare1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lCountSheet1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lDatabase1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lDelete1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lEdit1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lEmail1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lEmailAddressbook1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lExcel1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lExtract1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lFile1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lFunctions1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lGenerate1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lHelp1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lHelpMe1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lImportFromDB1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lInstall1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lItems1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lKeyGenerator1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lLocked1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lMediaManager1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lMulti-Compare1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lNuclear1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lOpen1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lOptions1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lPackage1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lPDF1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lPending1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lPhaseRun1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lPrint1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lRDP1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lRefresh1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lRefreshFromDB1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lRegister1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lRelease1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lResetLayout1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lRun1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lSecurity1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lShowHide1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lStatements1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lSystem Defaults1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lUser1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lView1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lView_Menu_Group1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lView_Statement1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lViewAdjustments1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lViewCountSheet1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lViewExtract1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lWagPlugins1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sAccept1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sAccessRights1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sAdd1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sAdjustments1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sArchive1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sArrow_Left1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sArrow_Right1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sBatches1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sBulletinBoardClose1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sBusy1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sCancel1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sClear1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sClose1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sClosed1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sCollapse1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sCompare1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sCountSheet1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sDatabase1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sDelete1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sEdit1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sEmail1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sEmailAddressbook1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sExcel1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sExtract1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sFile1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sFunctions1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sGenerate1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sHelp1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sHelpMe1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sImportFromDB1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sInstall1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sItems1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sKeyGenerator1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sLocked1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sMediaManager1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sMulti-Compare1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sNuclear1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sOpen1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sOptions1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sPackage1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sPDF1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sPending1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sPhaseRun1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sPrint1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sRDP1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sRefresh1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sRefreshFromDB1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sRegister1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sRelease1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sResetLayout1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sRun1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sSecurity1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sShowHide1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sStatements1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sSystem Defaults1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sUser1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sView1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sView_Menu_Group1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sView_Statement1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sViewAdjustments1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sViewCountSheet1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sViewExtract1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sWagPlugins1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tGrayTick1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tGreenDown1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tGreenTick1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tRedUp1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\devUpdater\Updater\devUpdater.csproj">
+      <Project>{e8de8ad6-84ba-489d-98e4-4d76a540a8de}</Project>
+      <Name>devUpdater</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
