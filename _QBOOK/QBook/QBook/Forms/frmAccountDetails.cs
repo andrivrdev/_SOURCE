@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace QBook.Forms
 {
-    public partial class frmAccountDetails : Form
+    public partial class frmAccountDetails : DevExpress.XtraEditors.XtraForm
     {
         int zMyMode;
         int zID;
@@ -67,7 +67,28 @@ namespace QBook.Forms
 
                 if (rows.Count() == 1)
                 {
-                    XtraMessageBox.Show("A record already exist.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    XtraMessageBox.Show("This record already exist.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    return false;
+                }
+            }
+            else
+            {
+                //Check if record exist
+                var IO = "I";
+                if (edtIn.Checked)
+                {
+                    IO = "I";
+                }
+                else
+                {
+                    IO = "O";
+                }
+
+                var rows = xtblAccount.dtAccount.AsEnumerable().Where(r => (r.Field<string>("Name") == edtName.Text) && (r.Field<string>("IO") == IO) && (r.Field<int>("ID") != zID));
+
+                if (rows.Count() == 1)
+                {
+                    XtraMessageBox.Show("This record already exist.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     return false;
                 }
             }

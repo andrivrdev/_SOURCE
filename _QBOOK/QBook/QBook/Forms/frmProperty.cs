@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace QBook.Forms
 {
-    public partial class frmProperty : Form
+    public partial class frmProperty : DevExpress.XtraEditors.XtraForm
     {
         public frmProperty()
         {
@@ -93,17 +93,34 @@ namespace QBook.Forms
             }
         }
 
-        private void grdPropertyAccountMoneyInView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            LoadPropertyAccount();
-        }
-
         private void LoadPropertyAccount()
         {
             tblPropertyAccount xtblPropertyAccount = new tblPropertyAccount();
-            grdPropertyAccountMoneyIn.DataSource = xtblPropertyAccount.dtPropertyAccountMoneyIn;
+
+            DataTable xdtPropertyAccountMoneyIn = xtblPropertyAccount.dtPropertyAccountMoneyIn.Clone();
+            DataTable xdtPropertyAccountMoneyOut = xtblPropertyAccount.dtPropertyAccountMoneyOut.Clone();
+
+            foreach(DataRow ARec in xtblPropertyAccount.dtPropertyAccountMoneyIn.Rows)
+            {
+                if (ARec["tblPropertyID"].ToString() == grdPropertyView.GetFocusedRowCellValue("ID").ToString())
+                {
+                    xdtPropertyAccountMoneyIn.ImportRow(ARec);
+                }
+            }
+
+            foreach (DataRow ARec in xtblPropertyAccount.dtPropertyAccountMoneyOut.Rows)
+            {
+                if (ARec["tblPropertyID"].ToString() == grdPropertyView.GetFocusedRowCellValue("ID").ToString())
+                {
+                    xdtPropertyAccountMoneyOut.ImportRow(ARec);
+                }
+            }
+
+            grdPropertyAccountMoneyIn.DataSource = xdtPropertyAccountMoneyIn;
+            grdPropertyAccountMoneyOut.DataSource = xdtPropertyAccountMoneyOut;
 
             grdPropertyAccountMoneyInView.BestFitColumns();
+            grdPropertyAccountMoneyOutView.BestFitColumns();
         }
 
         private void btnAddMoneyInAccount_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
@@ -112,7 +129,7 @@ namespace QBook.Forms
             {
                 frmPropertyAccountDetails MyForm;
 
-                MyForm = new frmPropertyAccountDetails(0, 0);
+                MyForm = new frmPropertyAccountDetails(0, 0, Convert.ToInt32(grdPropertyView.GetFocusedRowCellValue("ID").ToString()));
                 MyForm.edtProperty.Text = grdPropertyView.GetFocusedRowCellValue("Property").ToString();
                 MyForm.edtAccountType.Text = "Money In";
 
@@ -146,7 +163,7 @@ namespace QBook.Forms
             {
                 frmPropertyAccountDetails MyForm;
 
-                MyForm = new frmPropertyAccountDetails(0, 0);
+                MyForm = new frmPropertyAccountDetails(0, 0, Convert.ToInt32(grdPropertyView.GetFocusedRowCellValue("ID").ToString()));
                 MyForm.edtProperty.Text = grdPropertyView.GetFocusedRowCellValue("Property").ToString();
                 MyForm.edtAccountType.Text = "Money Out";
 
@@ -161,6 +178,129 @@ namespace QBook.Forms
 
                 if (MyForm.ShowDialog() == DialogResult.OK)
                 {
+                    LoadPropertyAccount();
+                }
+            }
+        }
+
+        private void btnEditMoneyInAccount_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            DoEditPropertyMoneyInAccount();
+        }
+
+        private void DoEditPropertyMoneyInAccount()
+        {
+            if (grdPropertyAccountMoneyInView.RowCount > 0)
+            {
+                frmPropertyAccountDetails MyForm;
+
+                MyForm = new frmPropertyAccountDetails(1, Convert.ToInt32(grdPropertyAccountMoneyInView.GetFocusedRowCellValue("ID").ToString()), Convert.ToInt32(grdPropertyView.GetFocusedRowCellValue("ID").ToString()));
+                MyForm.edtProperty.Text = grdPropertyView.GetFocusedRowCellValue("Property").ToString();
+                MyForm.edtAccountType.Text = "Money In";
+
+                tblAccount xtblAccount = new tblAccount();
+                foreach (DataRow ARec in xtblAccount.dtAccount.Rows)
+                {
+                    if (ARec["IO"].ToString() == "I")
+                    {
+                        MyForm.edtAccount.Properties.Items.Add(ARec["Name"]);
+                    }
+                }
+
+                MyForm.edtAccount.Text = grdPropertyAccountMoneyInView.GetFocusedRowCellValue("Name").ToString();
+
+                if (MyForm.ShowDialog() == DialogResult.OK)
+                {
+                    LoadPropertyAccount();
+                }
+            }
+        }
+
+        private void grdPropertyAccountMoneyInView_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                DoEditPropertyMoneyInAccount();
+            }
+        }
+
+        private void btnEditMoneyOutAccount_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            DoEditPropertyMoneyOutAccount();
+        }
+
+        private void grdPropertyAccountMoneyInView_DoubleClick(object sender, EventArgs e)
+        {
+            DoEditPropertyMoneyInAccount();
+        }
+
+        private void DoEditPropertyMoneyOutAccount()
+        {
+            if (grdPropertyAccountMoneyOutView.RowCount > 0)
+            {
+                frmPropertyAccountDetails MyForm;
+
+                MyForm = new frmPropertyAccountDetails(1, Convert.ToInt32(grdPropertyAccountMoneyOutView.GetFocusedRowCellValue("ID").ToString()), Convert.ToInt32(grdPropertyView.GetFocusedRowCellValue("ID").ToString()));
+                MyForm.edtProperty.Text = grdPropertyView.GetFocusedRowCellValue("Property").ToString();
+                MyForm.edtAccountType.Text = "Money Out";
+
+                tblAccount xtblAccount = new tblAccount();
+                foreach (DataRow ARec in xtblAccount.dtAccount.Rows)
+                {
+                    if (ARec["IO"].ToString() == "O")
+                    {
+                        MyForm.edtAccount.Properties.Items.Add(ARec["Name"]);
+                    }
+                }
+
+                MyForm.edtAccount.Text = grdPropertyAccountMoneyOutView.GetFocusedRowCellValue("Name").ToString();
+
+                if (MyForm.ShowDialog() == DialogResult.OK)
+                {
+                    LoadPropertyAccount();
+                }
+            }
+        }
+
+        private void grdPropertyAccountMoneyOutView_DoubleClick(object sender, EventArgs e)
+        {
+            DoEditPropertyMoneyOutAccount();
+        }
+
+        private void grdPropertyView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            LoadPropertyAccount();
+        }
+
+        private void grdPropertyAccountMoneyOutView_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                DoEditPropertyMoneyOutAccount();
+            }
+        }
+
+        private void btnRemoveMoneyInAccount_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            if (grdPropertyAccountMoneyInView.RowCount > 0)
+            {
+                if (XtraMessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    clsHelper.DeleteRecByID("tblPropertyAccount", Convert.ToInt32(grdPropertyAccountMoneyInView.GetFocusedRowCellValue("ID").ToString()));
+
+                    LoadPropertyAccount();
+                }
+            }
+        }
+
+        private void btnRemoveMoneyOutAccount_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            if (grdPropertyAccountMoneyOutView.RowCount > 0)
+            {
+                if (XtraMessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    clsHelper.DeleteRecByID("tblPropertyAccount", Convert.ToInt32(grdPropertyAccountMoneyOutView.GetFocusedRowCellValue("ID").ToString()));
+
                     LoadPropertyAccount();
                 }
             }

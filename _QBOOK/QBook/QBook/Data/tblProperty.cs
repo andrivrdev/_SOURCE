@@ -19,10 +19,6 @@ namespace QBook.Data
 
             try
             {
-                SqlConnection MyConn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DB"].ConnectionString);
-
-                MyConn.Open();
-
                 SQL =
                 "SELECT " + Environment.NewLine +
                 "  tblProperty.ID," + Environment.NewLine +
@@ -30,7 +26,7 @@ namespace QBook.Data
                 "FROM" + Environment.NewLine +
                 "  tblProperty";
 
-                SqlCommand MyCommand = new SqlCommand(SQL, MyConn);
+                SqlCommand MyCommand = new SqlCommand(SQL, clsHelper.zConn);
                 SqlDataReader MyReader = MyCommand.ExecuteReader();
 
                 dtProperty = new DataTable();

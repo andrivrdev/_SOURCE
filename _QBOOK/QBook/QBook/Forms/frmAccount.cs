@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace QBook.Forms
 {
-    public partial class frmAccount : Form
+    public partial class frmAccount : DevExpress.XtraEditors.XtraForm
     {
         public frmAccount()
         {

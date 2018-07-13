@@ -21,9 +21,6 @@ namespace QBook.Data
 
             try
             {
-                SqlConnection MyConn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DB"].ConnectionString);
-
-                MyConn.Open();
                 SQL =
                 "SELECT " + Environment.NewLine +
                 "  dbo.tblPropertyAccount.ID," + Environment.NewLine +
@@ -37,7 +34,7 @@ namespace QBook.Data
                 "  LEFT OUTER JOIN dbo.tblProperty ON(dbo.tblPropertyAccount.tblPropertyID = dbo.tblProperty.ID)" + Environment.NewLine +
                 "  LEFT OUTER JOIN dbo.tblAccount ON(dbo.tblPropertyAccount.tblAccountID = dbo.tblAccount.ID)";
 
-                SqlCommand MyCommand = new SqlCommand(SQL, MyConn);
+                SqlCommand MyCommand = new SqlCommand(SQL, clsHelper.zConn);
                 SqlDataReader MyReader = MyCommand.ExecuteReader();
 
                 dtPropertyAccount = new DataTable();
@@ -58,7 +55,7 @@ namespace QBook.Data
                 "WHERE" + Environment.NewLine +
                 "  dbo.tblAccount.IO = 'I'";
 
-                MyCommand = new SqlCommand(SQL, MyConn);
+                MyCommand = new SqlCommand(SQL, clsHelper.zConn);
                 MyReader = MyCommand.ExecuteReader();
 
                 dtPropertyAccountMoneyIn = new DataTable();
@@ -77,9 +74,9 @@ namespace QBook.Data
                 "  LEFT OUTER JOIN dbo.tblProperty ON(dbo.tblPropertyAccount.tblPropertyID = dbo.tblProperty.ID)" + Environment.NewLine +
                 "  LEFT OUTER JOIN dbo.tblAccount ON(dbo.tblPropertyAccount.tblAccountID = dbo.tblAccount.ID)" + Environment.NewLine +
                 "WHERE" + Environment.NewLine +
-                "  dbo.tblAccount.IO = 'I'";
+                "  dbo.tblAccount.IO = 'O'";
 
-                MyCommand = new SqlCommand(SQL, MyConn);
+                MyCommand = new SqlCommand(SQL, clsHelper.zConn);
                 MyReader = MyCommand.ExecuteReader();
 
                 dtPropertyAccountMoneyOut = new DataTable();

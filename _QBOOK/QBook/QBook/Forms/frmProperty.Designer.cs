@@ -40,6 +40,10 @@
             this.btnAddMoneyInAccount = new DevExpress.XtraNavBar.NavBarItem();
             this.btnEditMoneyInAccount = new DevExpress.XtraNavBar.NavBarItem();
             this.btnRemoveMoneyInAccount = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.btnAddMoneyOutAccount = new DevExpress.XtraNavBar.NavBarItem();
+            this.btnEditMoneyOutAccount = new DevExpress.XtraNavBar.NavBarItem();
+            this.btnRemoveMoneyOutAccount = new DevExpress.XtraNavBar.NavBarItem();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.grdProperty = new DevExpress.XtraGrid.GridControl();
@@ -74,10 +78,6 @@
             this.splitContainerControl5 = new DevExpress.XtraEditors.SplitContainerControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.timLoad = new System.Windows.Forms.Timer(this.components);
-            this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.btnAddMoneyOutAccount = new DevExpress.XtraNavBar.NavBarItem();
-            this.btnEditMoneyOutAccount = new DevExpress.XtraNavBar.NavBarItem();
-            this.btnRemoveMoneyOutAccount = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
@@ -201,12 +201,45 @@
             this.btnEditMoneyInAccount.Caption = "Edit";
             this.btnEditMoneyInAccount.Name = "btnEditMoneyInAccount";
             this.btnEditMoneyInAccount.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnEditMoneyInAccount.SmallImage")));
+            this.btnEditMoneyInAccount.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnEditMoneyInAccount_LinkClicked);
             // 
             // btnRemoveMoneyInAccount
             // 
             this.btnRemoveMoneyInAccount.Caption = "Remove";
             this.btnRemoveMoneyInAccount.Name = "btnRemoveMoneyInAccount";
             this.btnRemoveMoneyInAccount.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnRemoveMoneyInAccount.SmallImage")));
+            this.btnRemoveMoneyInAccount.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnRemoveMoneyInAccount_LinkClicked);
+            // 
+            // navBarGroup3
+            // 
+            this.navBarGroup3.Caption = "Money Out Accounts";
+            this.navBarGroup3.Expanded = true;
+            this.navBarGroup3.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnAddMoneyOutAccount),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnEditMoneyOutAccount),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnRemoveMoneyOutAccount)});
+            this.navBarGroup3.Name = "navBarGroup3";
+            // 
+            // btnAddMoneyOutAccount
+            // 
+            this.btnAddMoneyOutAccount.Caption = "Add";
+            this.btnAddMoneyOutAccount.Name = "btnAddMoneyOutAccount";
+            this.btnAddMoneyOutAccount.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnAddMoneyOutAccount.SmallImage")));
+            this.btnAddMoneyOutAccount.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnAddMoneyOutAccount_LinkClicked);
+            // 
+            // btnEditMoneyOutAccount
+            // 
+            this.btnEditMoneyOutAccount.Caption = "Edit";
+            this.btnEditMoneyOutAccount.Name = "btnEditMoneyOutAccount";
+            this.btnEditMoneyOutAccount.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnEditMoneyOutAccount.SmallImage")));
+            this.btnEditMoneyOutAccount.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnEditMoneyOutAccount_LinkClicked);
+            // 
+            // btnRemoveMoneyOutAccount
+            // 
+            this.btnRemoveMoneyOutAccount.Caption = "Remove";
+            this.btnRemoveMoneyOutAccount.Name = "btnRemoveMoneyOutAccount";
+            this.btnRemoveMoneyOutAccount.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnRemoveMoneyOutAccount.SmallImage")));
+            this.btnRemoveMoneyOutAccount.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnRemoveMoneyOutAccount_LinkClicked);
             // 
             // splitContainerControl2
             // 
@@ -271,6 +304,7 @@
             this.grdPropertyView.OptionsView.ShowGroupPanel = false;
             this.grdPropertyView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colProperty, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.grdPropertyView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.grdPropertyView_FocusedRowChanged);
             this.grdPropertyView.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grdPropertyView_KeyPress);
             this.grdPropertyView.DoubleClick += new System.EventHandler(this.grdPropertyView_DoubleClick);
             // 
@@ -362,7 +396,7 @@
             this.splitContainerControl4.Panel2.Controls.Add(this.labelControl5);
             this.splitContainerControl4.Panel2.Text = "Panel2";
             this.splitContainerControl4.Size = new System.Drawing.Size(256, 162);
-            this.splitContainerControl4.SplitterPosition = 121;
+            this.splitContainerControl4.SplitterPosition = 126;
             this.splitContainerControl4.TabIndex = 9;
             this.splitContainerControl4.Text = "splitContainerControl4";
             // 
@@ -377,7 +411,7 @@
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox3,
             this.repositoryItemImageComboBox6});
-            this.grdPropertyAccountMoneyIn.Size = new System.Drawing.Size(121, 145);
+            this.grdPropertyAccountMoneyIn.Size = new System.Drawing.Size(126, 145);
             this.grdPropertyAccountMoneyIn.TabIndex = 10;
             this.grdPropertyAccountMoneyIn.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdPropertyAccountMoneyInView});
@@ -396,7 +430,8 @@
             this.grdPropertyAccountMoneyInView.OptionsView.ShowGroupPanel = false;
             this.grdPropertyAccountMoneyInView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn2, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.grdPropertyAccountMoneyInView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.grdPropertyAccountMoneyInView_FocusedRowChanged);
+            this.grdPropertyAccountMoneyInView.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grdPropertyAccountMoneyInView_KeyPress);
+            this.grdPropertyAccountMoneyInView.DoubleClick += new System.EventHandler(this.grdPropertyAccountMoneyInView_DoubleClick);
             // 
             // gridColumn1
             // 
@@ -470,7 +505,7 @@
             this.labelControl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelControl4.Location = new System.Drawing.Point(0, 0);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(121, 17);
+            this.labelControl4.Size = new System.Drawing.Size(126, 17);
             this.labelControl4.TabIndex = 9;
             this.labelControl4.Text = "MONEY IN";
             // 
@@ -485,7 +520,7 @@
             this.repositoryItemImageComboBox7,
             this.repositoryItemImageComboBox8,
             this.repositoryItemImageComboBox9});
-            this.grdPropertyAccountMoneyOut.Size = new System.Drawing.Size(130, 145);
+            this.grdPropertyAccountMoneyOut.Size = new System.Drawing.Size(125, 145);
             this.grdPropertyAccountMoneyOut.TabIndex = 11;
             this.grdPropertyAccountMoneyOut.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdPropertyAccountMoneyOutView});
@@ -504,6 +539,8 @@
             this.grdPropertyAccountMoneyOutView.OptionsView.ShowGroupPanel = false;
             this.grdPropertyAccountMoneyOutView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn4, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.grdPropertyAccountMoneyOutView.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grdPropertyAccountMoneyOutView_KeyPress);
+            this.grdPropertyAccountMoneyOutView.DoubleClick += new System.EventHandler(this.grdPropertyAccountMoneyOutView_DoubleClick);
             // 
             // gridColumn3
             // 
@@ -577,7 +614,7 @@
             this.labelControl5.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelControl5.Location = new System.Drawing.Point(0, 0);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(130, 17);
+            this.labelControl5.Size = new System.Drawing.Size(125, 17);
             this.labelControl5.TabIndex = 9;
             this.labelControl5.Text = "MONEY OUT";
             // 
@@ -633,35 +670,6 @@
             // 
             this.timLoad.Interval = 10;
             this.timLoad.Tick += new System.EventHandler(this.timLoad_Tick);
-            // 
-            // navBarGroup3
-            // 
-            this.navBarGroup3.Caption = "Money Out Accounts";
-            this.navBarGroup3.Expanded = true;
-            this.navBarGroup3.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnAddMoneyOutAccount),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnEditMoneyOutAccount),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnRemoveMoneyOutAccount)});
-            this.navBarGroup3.Name = "navBarGroup3";
-            // 
-            // btnAddMoneyOutAccount
-            // 
-            this.btnAddMoneyOutAccount.Caption = "Add";
-            this.btnAddMoneyOutAccount.Name = "btnAddMoneyOutAccount";
-            this.btnAddMoneyOutAccount.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnAddMoneyOutAccount.SmallImage")));
-            this.btnAddMoneyOutAccount.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnAddMoneyOutAccount_LinkClicked);
-            // 
-            // btnEditMoneyOutAccount
-            // 
-            this.btnEditMoneyOutAccount.Caption = "Edit";
-            this.btnEditMoneyOutAccount.Name = "btnEditMoneyOutAccount";
-            this.btnEditMoneyOutAccount.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnEditMoneyOutAccount.SmallImage")));
-            // 
-            // btnRemoveMoneyOutAccount
-            // 
-            this.btnRemoveMoneyOutAccount.Caption = "Remove";
-            this.btnRemoveMoneyOutAccount.Name = "btnRemoveMoneyOutAccount";
-            this.btnRemoveMoneyOutAccount.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnRemoveMoneyOutAccount.SmallImage")));
             // 
             // frmProperty
             // 

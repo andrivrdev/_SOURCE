@@ -20,10 +20,6 @@ namespace QBook.Data
 
             try
             {
-                SqlConnection MyConn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["DB"].ConnectionString);
-
-                MyConn.Open();
-
                 SQL =
                 "SELECT " + Environment.NewLine +
                 "  tblAccount.ID," + Environment.NewLine +
@@ -32,7 +28,7 @@ namespace QBook.Data
                 "FROM" + Environment.NewLine +
                 "  tblAccount";
 
-                SqlCommand MyCommand = new SqlCommand(SQL, MyConn);
+                SqlCommand MyCommand = new SqlCommand(SQL, clsHelper.zConn);
                 SqlDataReader MyReader = MyCommand.ExecuteReader();
 
                 dtAccount = new DataTable();

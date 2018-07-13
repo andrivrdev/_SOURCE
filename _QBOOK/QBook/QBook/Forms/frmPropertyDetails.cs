@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace QBook.Forms
 {
-    public partial class frmPropertyDetails : Form
+    public partial class frmPropertyDetails : DevExpress.XtraEditors.XtraForm
     {
         int zMyMode;
         int zID;
@@ -52,12 +52,22 @@ namespace QBook.Forms
             if (zMyMode == 0)
             {
                 //Check if record exist
-
                 var rows = xtblProperty.dtProperty.AsEnumerable().Where(r => r.Field<string>("Property") == edtProperty.Text);
 
                 if (rows.Count() == 1)
                 {
-                    XtraMessageBox.Show("A record already exist.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    XtraMessageBox.Show("This record already exist.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    return false;
+                }
+            }
+            else
+            {
+                //Check if record exist
+                var rows = xtblProperty.dtProperty.AsEnumerable().Where(r => (r.Field<string>("Property") == edtProperty.Text) && (r.Field<int>("ID") != zID));
+
+                if (rows.Count() == 1)
+                {
+                    XtraMessageBox.Show("This record already exist.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     return false;
                 }
             }
