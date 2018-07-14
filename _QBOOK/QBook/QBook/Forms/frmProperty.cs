@@ -14,6 +14,9 @@ namespace QBook.Forms
 {
     public partial class frmProperty : DevExpress.XtraEditors.XtraForm
     {
+        double zpnlLeft = 0;
+        double zpnlRight = 0;
+
         public frmProperty()
         {
             InitializeComponent();
@@ -30,6 +33,19 @@ namespace QBook.Forms
 
         private void frmProperty_Shown(object sender, EventArgs e)
         {
+            pnlLeft.SplitterPosition = Convert.ToInt32(Math.Round(Screen.PrimaryScreen.WorkingArea.Height * (1.0 / 4.0 * 2.5), 0));
+
+            double xHeight = Screen.PrimaryScreen.WorkingArea.Height;
+            double xPosition = pnlLeft.SplitterPosition;
+            double x = xPosition / xHeight;
+            zpnlLeft = x;
+
+            pnlRight.SplitterPosition = Convert.ToInt32(Math.Round(pnlRight.Width / 2.0));
+            double xWidth = pnlRight.Width;
+            xPosition = pnlRight.SplitterPosition;
+            x = xPosition / xWidth;
+            zpnlRight = x;
+
             timLoad.Start();
         }
 
@@ -58,7 +74,15 @@ namespace QBook.Forms
 
                 if (MyForm.ShowDialog() == DialogResult.OK)
                 {
+                    int xID = Convert.ToInt32(grdPropertyView.GetFocusedRowCellValue("ID").ToString());
+
                     LoadProperty();
+
+                    int rowHandle = grdPropertyView.LocateByValue("ID", xID);
+                    if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                    {
+                        grdPropertyView.FocusedRowHandle = rowHandle;
+                    }
                 }
             }
         }
@@ -72,6 +96,14 @@ namespace QBook.Forms
             if (MyForm.ShowDialog() == DialogResult.OK)
             {
                 LoadProperty();
+
+                int rowHandle = grdPropertyView.LocateByValue("ID", clsHelper.GetLastRecID("tblProperty"));
+                if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                {
+                    grdPropertyView.FocusedRowHandle = rowHandle;
+                }
+
+                LoadPropertyAccount();
             }
         }
 
@@ -90,6 +122,8 @@ namespace QBook.Forms
 
                     LoadProperty();
                 }
+
+                LoadPropertyAccount();
             }
         }
 
@@ -145,6 +179,12 @@ namespace QBook.Forms
                 if (MyForm.ShowDialog() == DialogResult.OK)
                 {
                     LoadPropertyAccount();
+
+                    int rowHandle = grdPropertyAccountMoneyInView.LocateByValue("ID", clsHelper.GetLastRecID("tblPropertyAccount"));
+                    if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                    {
+                        grdPropertyAccountMoneyInView.FocusedRowHandle = rowHandle;
+                    }
                 }
             }
         }
@@ -179,6 +219,12 @@ namespace QBook.Forms
                 if (MyForm.ShowDialog() == DialogResult.OK)
                 {
                     LoadPropertyAccount();
+
+                    int rowHandle = grdPropertyAccountMoneyOutView.LocateByValue("ID", clsHelper.GetLastRecID("tblPropertyAccount"));
+                    if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                    {
+                        grdPropertyAccountMoneyOutView.FocusedRowHandle = rowHandle;
+                    }
                 }
             }
         }
@@ -211,7 +257,23 @@ namespace QBook.Forms
 
                 if (MyForm.ShowDialog() == DialogResult.OK)
                 {
+                    int xIDIn = Convert.ToInt32(grdPropertyAccountMoneyInView.GetFocusedRowCellValue("ID").ToString());
+                    int xIDOut = Convert.ToInt32(grdPropertyAccountMoneyOutView.GetFocusedRowCellValue("ID").ToString());
+
                     LoadPropertyAccount();
+
+                    int rowHandleIn = grdPropertyAccountMoneyInView.LocateByValue("ID", xIDIn);
+                    int rowHandleOut = grdPropertyAccountMoneyOutView.LocateByValue("ID", xIDOut);
+
+                    if (rowHandleIn != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                    {
+                        grdPropertyAccountMoneyInView.FocusedRowHandle = rowHandleIn;
+                    }
+
+                    if (rowHandleOut != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                    {
+                        grdPropertyAccountMoneyOutView.FocusedRowHandle = rowHandleOut;
+                    }
                 }
             }
         }
@@ -257,7 +319,23 @@ namespace QBook.Forms
 
                 if (MyForm.ShowDialog() == DialogResult.OK)
                 {
+                    int xIDIn = Convert.ToInt32(grdPropertyAccountMoneyInView.GetFocusedRowCellValue("ID").ToString());
+                    int xIDOut = Convert.ToInt32(grdPropertyAccountMoneyOutView.GetFocusedRowCellValue("ID").ToString());
+
                     LoadPropertyAccount();
+
+                    int rowHandleIn = grdPropertyAccountMoneyInView.LocateByValue("ID", xIDIn);
+                    int rowHandleOut = grdPropertyAccountMoneyOutView.LocateByValue("ID", xIDOut);
+
+                    if (rowHandleIn != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                    {
+                        grdPropertyAccountMoneyInView.FocusedRowHandle = rowHandleIn;
+                    }
+
+                    if (rowHandleOut != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                    {
+                        grdPropertyAccountMoneyOutView.FocusedRowHandle = rowHandleOut;
+                    }
                 }
             }
         }
@@ -304,6 +382,38 @@ namespace QBook.Forms
                     LoadPropertyAccount();
                 }
             }
+        }
+
+        private void AfterSize()
+        {
+            pnlLeft.SplitterPosition = Convert.ToInt32(Math.Round(this.Height * zpnlLeft, 0));
+            pnlRight.SplitterPosition = Convert.ToInt32(Math.Round(pnlRight.Width * zpnlRight, 0));
+        }
+
+        private void frmProperty_SizeChanged(object sender, EventArgs e)
+        {
+            AfterSize();
+        }
+
+        private void pnlLeft_SplitterPositionChanged(object sender, EventArgs e)
+        {
+            double xHeight = this.Height;
+            double xPosition = pnlLeft.SplitterPosition;
+            double x = xPosition / xHeight;
+            zpnlLeft = x;
+        }
+
+        private void pnlRight_SplitterPositionChanged(object sender, EventArgs e)
+        {
+            double xWidth = pnlRight.Width;
+            double xPosition = pnlRight.SplitterPosition;
+            double x = xPosition / xWidth;
+            zpnlRight = x;
+        }
+
+        private void labelControl3_SizeChanged(object sender, EventArgs e)
+        {
+            AfterSize();
         }
     }
 }

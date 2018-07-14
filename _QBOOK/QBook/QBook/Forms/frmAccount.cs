@@ -67,7 +67,15 @@ namespace QBook.Forms
 
                 if (MyForm.ShowDialog() == DialogResult.OK)
                 {
+                    int xID = Convert.ToInt32(grdAccountView.GetFocusedRowCellValue("ID").ToString());
+
                     LoadAccount();
+
+                    int rowHandle = grdAccountView.LocateByValue("ID", xID);
+                    if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                    {
+                        grdAccountView.FocusedRowHandle = rowHandle;
+                    }
                 }
             }
         }
@@ -81,6 +89,12 @@ namespace QBook.Forms
             if (MyForm.ShowDialog() == DialogResult.OK)
             {
                 LoadAccount();
+
+                int rowHandle = grdAccountView.LocateByValue("ID", clsHelper.GetLastRecID("tblAccount"));
+                if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                {
+                    grdAccountView.FocusedRowHandle = rowHandle;
+                }
             }
         }
 

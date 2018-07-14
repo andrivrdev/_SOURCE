@@ -48,6 +48,13 @@ namespace QBook.Forms
 
         private bool ValidationSuccess()
         {
+            //CHeck if all required fields are populated
+            if (edtName.Text == "")
+            {
+                XtraMessageBox.Show("Account Name field is required.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                return false;
+            }
+
             tblAccount xtblAccount = new tblAccount();
 
             if (zMyMode == 0)

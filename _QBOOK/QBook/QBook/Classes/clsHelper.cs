@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -406,6 +407,36 @@ namespace QBook
                 XtraMessageBox.Show("clsHelper: " + Ex.Message);
             }
         }
+
+        public static int GetLastRecID(string xTableName)
+        {
+            string SQL = "";
+
+            try
+            {
+                SQL =
+                "SELECT " + Environment.NewLine +
+                "  MAX(" + xTableName + ".ID) AS LastRecID" + Environment.NewLine +
+                "FROM" + Environment.NewLine +
+                "  " + xTableName + "";
+
+                SqlCommand MyCommand = new SqlCommand(SQL, clsHelper.zConn);
+                SqlDataReader MyReader = MyCommand.ExecuteReader();
+
+                DataTable dtLastRec = new DataTable();
+                dtLastRec.Load(MyReader);
+
+                MyCommand.Dispose();
+                MyReader.Dispose();
+
+                return Convert.ToInt32(dtLastRec.Rows[0]["LastRecID"].ToString());
+            }
+            catch (Exception Ex)
+            {
+                return -1;
+            }
+        }
+
 
     }
 }

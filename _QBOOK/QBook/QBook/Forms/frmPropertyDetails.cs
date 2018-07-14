@@ -47,6 +47,13 @@ namespace QBook.Forms
 
         private bool ValidationSuccess()
         {
+            //CHeck if all required fields are populated
+            if (edtProperty.Text == "")
+            {
+                XtraMessageBox.Show("Property field is required.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                return false;
+            }
+
             tblProperty xtblProperty = new tblProperty();
 
             if (zMyMode == 0)

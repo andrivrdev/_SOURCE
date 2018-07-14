@@ -49,6 +49,7 @@
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.timLoad = new System.Windows.Forms.Timer(this.components);
+            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
@@ -86,7 +87,8 @@
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.btnAdd,
             this.btnEdit,
-            this.btnRemove});
+            this.btnRemove,
+            this.navBarItem1});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 143;
@@ -138,7 +140,7 @@
             this.repositoryItemImageComboBox1,
             this.repositoryItemImageEdit1,
             this.repositoryItemImageComboBox2});
-            this.grdAccount.Size = new System.Drawing.Size(421, 426);
+            this.grdAccount.Size = new System.Drawing.Size(420, 426);
             this.grdAccount.TabIndex = 5;
             this.grdAccount.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdAccountView});
@@ -208,10 +210,10 @@
             // imageCollection1
             // 
             this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
-            this.imageCollection1.InsertGalleryImage("add_16x16.png", "images/actions/add_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/actions/add_16x16.png"), 0);
-            this.imageCollection1.Images.SetKeyName(0, "add_16x16.png");
-            this.imageCollection1.InsertGalleryImage("remove_16x16.png", "images/actions/remove_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/actions/remove_16x16.png"), 1);
-            this.imageCollection1.Images.SetKeyName(1, "remove_16x16.png");
+            this.imageCollection1.InsertGalleryImage("iconsetsigns3_16x16.png", "images/conditional%20formatting/iconsetsigns3_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/conditional%20formatting/iconsetsigns3_16x16.png"), 0);
+            this.imageCollection1.Images.SetKeyName(0, "iconsetsigns3_16x16.png");
+            this.imageCollection1.InsertGalleryImage("iconsetredtoblack4_16x16.png", "images/conditional%20formatting/iconsetredtoblack4_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/conditional%20formatting/iconsetredtoblack4_16x16.png"), 1);
+            this.imageCollection1.Images.SetKeyName(1, "iconsetredtoblack4_16x16.png");
             // 
             // repositoryItemImageEdit3
             // 
@@ -265,6 +267,11 @@
             this.timLoad.Interval = 10;
             this.timLoad.Tick += new System.EventHandler(this.timLoad_Tick);
             // 
+            // navBarItem1
+            // 
+            this.navBarItem1.Caption = "navBarItem1";
+            this.navBarItem1.Name = "navBarItem1";
+            // 
             // frmAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -312,5 +319,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
         private DevExpress.Utils.ImageCollection imageCollection1;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit1;
+        private DevExpress.XtraNavBar.NavBarItem navBarItem1;
     }
 }

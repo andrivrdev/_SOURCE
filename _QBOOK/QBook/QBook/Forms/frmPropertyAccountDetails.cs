@@ -31,7 +31,7 @@ namespace QBook.Forms
             //Add
             if (zMyMode == 0)
             {
-                edtAccount.SelectedIndex = -1;
+                edtAccount.SelectedIndex = 0;
 
                 this.Text = "New Property Account Details";
 
@@ -49,15 +49,21 @@ namespace QBook.Forms
 
         private bool ValidationSuccess()
         {
+            if (edtAccount.Text == "")
+            {
+                XtraMessageBox.Show("Account Name field is required.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                return false;
+            }
+
             tblPropertyAccount xtblAccount = new tblPropertyAccount();
 
             if (zMyMode == 0)
             {
                 //Check if record exist
-                var rows = xtblAccount.dtPropertyAccountMoneyIn.AsEnumerable().Where(r => (r.Field<string>("Property") == edtProperty.Text) && (r.Field<int>("tblAccountID").ToString() == zAccountID.ToString()));
+                var rows = xtblAccount.dtPropertyAccountMoneyIn.AsEnumerable().Where(r => (r.Field<string>("Property") == edtProperty.Text) && (r.Field<string>("Name").ToString() == edtAccount.Text));
                 if (edtAccountType.Text == "Money Out")
                 {
-                    rows = xtblAccount.dtPropertyAccountMoneyOut.AsEnumerable().Where(r => (r.Field<string>("Property") == edtProperty.Text) && (r.Field<int>("tblAccountID").ToString() == zAccountID.ToString()));
+                    rows = xtblAccount.dtPropertyAccountMoneyOut.AsEnumerable().Where(r => (r.Field<string>("Property") == edtProperty.Text) && (r.Field<string>("Name").ToString() == edtAccount.Text));
                 }
 
                 if (rows.Count() == 1)
@@ -69,10 +75,10 @@ namespace QBook.Forms
             else
             {
                 //Check if record exist
-                var rows = xtblAccount.dtPropertyAccountMoneyIn.AsEnumerable().Where(r => (r.Field<string>("Property") == edtProperty.Text) && (r.Field<int>("tblAccountID").ToString() == zAccountID.ToString()) && (r.Field<int>("ID").ToString() == zAccountID.ToString()));
+                var rows = xtblAccount.dtPropertyAccountMoneyIn.AsEnumerable().Where(r => (r.Field<string>("Property") == edtProperty.Text) && (r.Field<string>("Name").ToString() == edtAccount.Text) && (r.Field<int>("ID").ToString() != zAccountID.ToString()));
                 if (edtAccountType.Text == "Money Out")
                 {
-                    rows = xtblAccount.dtPropertyAccountMoneyOut.AsEnumerable().Where(r => (r.Field<string>("Property") == edtProperty.Text) && (r.Field<int>("tblAccountID").ToString() == zAccountID.ToString()) && (r.Field<int>("ID").ToString() == zAccountID.ToString()));
+                    rows = xtblAccount.dtPropertyAccountMoneyOut.AsEnumerable().Where(r => (r.Field<string>("Property") == edtProperty.Text) && (r.Field<string>("Name").ToString() == edtAccount.Text) && (r.Field<int>("ID").ToString() != zAccountID.ToString()));
                 }
 
                 if (rows.Count() == 1)
@@ -83,6 +89,31 @@ namespace QBook.Forms
             }
 
             return true;
+        }
+
+        private int FindAccountID()
+        {
+            //Find Account ID
+            tblAccount xtblAccount = new tblAccount();
+            int xAccountID = -1;
+            if (edtAccountType.Text == "Money In")
+            {
+                var rows = xtblAccount.dtAccount.AsEnumerable().Where(r => (r.Field<string>("Name") == edtAccount.Text) && (r.Field<string>("IO") == "I"));
+                foreach (DataRow ARec in rows)
+                {
+                    xAccountID = Convert.ToInt32(ARec["ID"]);
+                }
+            }
+            else
+            {
+                var rows = xtblAccount.dtAccount.AsEnumerable().Where(r => (r.Field<string>("Name") == edtAccount.Text) && (r.Field<string>("IO") == "O"));
+                foreach (DataRow ARec in rows)
+                {
+                    xAccountID = Convert.ToInt32(ARec["ID"]);
+                }
+            }
+
+            return xAccountID;
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
@@ -99,26 +130,6 @@ namespace QBook.Forms
             }
             else
             {
-                //Find Account ID
-                tblAccount xtblAccount = new tblAccount();
-                int xAccountID = -1;
-                if (edtAccountType.Text == "Money In")
-                {
-                    var rows = xtblAccount.dtAccount.AsEnumerable().Where(r => (r.Field<string>("Name") == edtAccount.Text) && (r.Field<string>("IO") == "I"));
-                    foreach (DataRow ARec in rows)
-                    {
-                        xAccountID = Convert.ToInt32(ARec["ID"]);
-                    }
-                }
-                else
-                {
-                    var rows = xtblAccount.dtAccount.AsEnumerable().Where(r => (r.Field<string>("Name") == edtAccount.Text) && (r.Field<string>("IO") == "O"));
-                    foreach (DataRow ARec in rows)
-                    {
-                        xAccountID = Convert.ToInt32(ARec["ID"]);
-                    }
-                }
-
                 List<string> fFields = new List<string>();
                 List<string> vValues = new List<string>();
 
@@ -126,7 +137,7 @@ namespace QBook.Forms
                 fFields.Add("tblAccountID");
 
                 vValues.Add(zPropertyID.ToString());
-                vValues.Add(xAccountID.ToString());
+                vValues.Add(FindAccountID().ToString());
 
                 if (zMyMode == 0)
                 {

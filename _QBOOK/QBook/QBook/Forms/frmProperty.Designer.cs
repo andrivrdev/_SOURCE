@@ -45,7 +45,7 @@
             this.btnEditMoneyOutAccount = new DevExpress.XtraNavBar.NavBarItem();
             this.btnRemoveMoneyOutAccount = new DevExpress.XtraNavBar.NavBarItem();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.pnlLeft = new DevExpress.XtraEditors.SplitContainerControl();
             this.grdProperty = new DevExpress.XtraGrid.GridControl();
             this.grdPropertyView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -55,7 +55,7 @@
             this.repositoryItemImageComboBox4 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.splitContainerControl4 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.containerAccounts = new DevExpress.XtraEditors.SplitContainerControl();
             this.grdPropertyAccountMoneyIn = new DevExpress.XtraGrid.GridControl();
             this.grdPropertyAccountMoneyInView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -75,24 +75,45 @@
             this.repositoryItemImageComboBox9 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.splitContainerControl5 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.pnlRight = new DevExpress.XtraEditors.SplitContainerControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.timLoad = new System.Windows.Forms.Timer(this.components);
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
+            this.repositoryItemImageComboBox10 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.repositoryItemImageComboBox11 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.repositoryItemImageComboBox12 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
+            this.repositoryItemImageComboBox13 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.repositoryItemImageComboBox14 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.repositoryItemImageComboBox15 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             this.splitContainerControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).BeginInit();
-            this.splitContainerControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlLeft)).BeginInit();
+            this.pnlLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdProperty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPropertyView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
-            this.splitContainerControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.containerAccounts)).BeginInit();
+            this.containerAccounts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdPropertyAccountMoneyIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPropertyAccountMoneyInView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
@@ -105,8 +126,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl5)).BeginInit();
-            this.splitContainerControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlRight)).BeginInit();
+            this.pnlRight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox15)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl1
@@ -246,32 +279,36 @@
             this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl2.Name = "splitContainerControl2";
-            this.splitContainerControl2.Panel1.Controls.Add(this.splitContainerControl3);
+            this.splitContainerControl2.Panel1.Controls.Add(this.pnlLeft);
             this.splitContainerControl2.Panel1.Text = "Panel1";
-            this.splitContainerControl2.Panel2.Controls.Add(this.splitContainerControl5);
+            this.splitContainerControl2.Panel2.Controls.Add(this.labelControl6);
+            this.splitContainerControl2.Panel2.Controls.Add(this.pnlRight);
             this.splitContainerControl2.Panel2.Controls.Add(this.labelControl3);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(723, 477);
+            this.splitContainerControl2.Size = new System.Drawing.Size(722, 477);
             this.splitContainerControl2.SplitterPosition = 256;
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
             // 
-            // splitContainerControl3
+            // pnlLeft
             // 
-            this.splitContainerControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl3.Horizontal = false;
-            this.splitContainerControl3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerControl3.Name = "splitContainerControl3";
-            this.splitContainerControl3.Panel1.Controls.Add(this.grdProperty);
-            this.splitContainerControl3.Panel1.Controls.Add(this.labelControl1);
-            this.splitContainerControl3.Panel1.Text = "Panel1";
-            this.splitContainerControl3.Panel2.Controls.Add(this.splitContainerControl4);
-            this.splitContainerControl3.Panel2.Controls.Add(this.labelControl2);
-            this.splitContainerControl3.Panel2.Text = "Panel2";
-            this.splitContainerControl3.Size = new System.Drawing.Size(256, 477);
-            this.splitContainerControl3.SplitterPosition = 293;
-            this.splitContainerControl3.TabIndex = 3;
-            this.splitContainerControl3.Text = "splitContainerControl3";
+            this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlLeft.Horizontal = false;
+            this.pnlLeft.Location = new System.Drawing.Point(0, 0);
+            this.pnlLeft.Name = "pnlLeft";
+            this.pnlLeft.Panel1.Controls.Add(this.labelControl7);
+            this.pnlLeft.Panel1.Controls.Add(this.grdProperty);
+            this.pnlLeft.Panel1.Controls.Add(this.labelControl1);
+            this.pnlLeft.Panel1.Text = "Panel1";
+            this.pnlLeft.Panel2.Controls.Add(this.labelControl8);
+            this.pnlLeft.Panel2.Controls.Add(this.containerAccounts);
+            this.pnlLeft.Panel2.Controls.Add(this.labelControl2);
+            this.pnlLeft.Panel2.Text = "Panel2";
+            this.pnlLeft.Size = new System.Drawing.Size(256, 477);
+            this.pnlLeft.SplitterPosition = 300;
+            this.pnlLeft.TabIndex = 3;
+            this.pnlLeft.Text = "splitContainerControl3";
+            this.pnlLeft.SplitterPositionChanged += new System.EventHandler(this.pnlLeft_SplitterPositionChanged);
             // 
             // grdProperty
             // 
@@ -284,7 +321,7 @@
             this.repositoryItemImageComboBox5,
             this.repositoryItemImageComboBox4,
             this.repositoryItemImageComboBox1});
-            this.grdProperty.Size = new System.Drawing.Size(256, 276);
+            this.grdProperty.Size = new System.Drawing.Size(256, 283);
             this.grdProperty.TabIndex = 6;
             this.grdProperty.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdPropertyView});
@@ -370,7 +407,7 @@
             // 
             this.labelControl1.Appearance.BackColor = System.Drawing.Color.DimGray;
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.White;
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.labelControl1.Appearance.Options.UseBackColor = true;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
@@ -384,21 +421,21 @@
             this.labelControl1.TabIndex = 7;
             this.labelControl1.Text = "PROPERTIES";
             // 
-            // splitContainerControl4
+            // containerAccounts
             // 
-            this.splitContainerControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl4.Location = new System.Drawing.Point(0, 17);
-            this.splitContainerControl4.Name = "splitContainerControl4";
-            this.splitContainerControl4.Panel1.Controls.Add(this.grdPropertyAccountMoneyIn);
-            this.splitContainerControl4.Panel1.Controls.Add(this.labelControl4);
-            this.splitContainerControl4.Panel1.Text = "Panel1";
-            this.splitContainerControl4.Panel2.Controls.Add(this.grdPropertyAccountMoneyOut);
-            this.splitContainerControl4.Panel2.Controls.Add(this.labelControl5);
-            this.splitContainerControl4.Panel2.Text = "Panel2";
-            this.splitContainerControl4.Size = new System.Drawing.Size(256, 162);
-            this.splitContainerControl4.SplitterPosition = 126;
-            this.splitContainerControl4.TabIndex = 9;
-            this.splitContainerControl4.Text = "splitContainerControl4";
+            this.containerAccounts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.containerAccounts.Location = new System.Drawing.Point(0, 17);
+            this.containerAccounts.Name = "containerAccounts";
+            this.containerAccounts.Panel1.Controls.Add(this.grdPropertyAccountMoneyIn);
+            this.containerAccounts.Panel1.Controls.Add(this.labelControl4);
+            this.containerAccounts.Panel1.Text = "Panel1";
+            this.containerAccounts.Panel2.Controls.Add(this.grdPropertyAccountMoneyOut);
+            this.containerAccounts.Panel2.Controls.Add(this.labelControl5);
+            this.containerAccounts.Panel2.Text = "Panel2";
+            this.containerAccounts.Size = new System.Drawing.Size(256, 154);
+            this.containerAccounts.SplitterPosition = 126;
+            this.containerAccounts.TabIndex = 9;
+            this.containerAccounts.Text = "splitContainerControl4";
             // 
             // grdPropertyAccountMoneyIn
             // 
@@ -411,7 +448,7 @@
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox3,
             this.repositoryItemImageComboBox6});
-            this.grdPropertyAccountMoneyIn.Size = new System.Drawing.Size(126, 145);
+            this.grdPropertyAccountMoneyIn.Size = new System.Drawing.Size(126, 137);
             this.grdPropertyAccountMoneyIn.TabIndex = 10;
             this.grdPropertyAccountMoneyIn.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdPropertyAccountMoneyInView});
@@ -520,7 +557,7 @@
             this.repositoryItemImageComboBox7,
             this.repositoryItemImageComboBox8,
             this.repositoryItemImageComboBox9});
-            this.grdPropertyAccountMoneyOut.Size = new System.Drawing.Size(125, 145);
+            this.grdPropertyAccountMoneyOut.Size = new System.Drawing.Size(124, 137);
             this.grdPropertyAccountMoneyOut.TabIndex = 11;
             this.grdPropertyAccountMoneyOut.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdPropertyAccountMoneyOutView});
@@ -614,7 +651,7 @@
             this.labelControl5.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelControl5.Location = new System.Drawing.Point(0, 0);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(125, 17);
+            this.labelControl5.Size = new System.Drawing.Size(124, 17);
             this.labelControl5.TabIndex = 9;
             this.labelControl5.Text = "MONEY OUT";
             // 
@@ -622,7 +659,7 @@
             // 
             this.labelControl2.Appearance.BackColor = System.Drawing.Color.DimGray;
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.White;
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.labelControl2.Appearance.Options.UseBackColor = true;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
@@ -636,23 +673,28 @@
             this.labelControl2.TabIndex = 8;
             this.labelControl2.Text = "ACCOUNTS";
             // 
-            // splitContainerControl5
+            // pnlRight
             // 
-            this.splitContainerControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl5.Location = new System.Drawing.Point(0, 17);
-            this.splitContainerControl5.Name = "splitContainerControl5";
-            this.splitContainerControl5.Panel1.Text = "Panel1";
-            this.splitContainerControl5.Panel2.Text = "Panel2";
-            this.splitContainerControl5.Size = new System.Drawing.Size(462, 460);
-            this.splitContainerControl5.SplitterPosition = 245;
-            this.splitContainerControl5.TabIndex = 10;
-            this.splitContainerControl5.Text = "splitContainerControl5";
+            this.pnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlRight.Location = new System.Drawing.Point(0, 17);
+            this.pnlRight.Name = "pnlRight";
+            this.pnlRight.Panel1.Controls.Add(this.gridControl1);
+            this.pnlRight.Panel1.Controls.Add(this.labelControl9);
+            this.pnlRight.Panel1.Text = "Panel1";
+            this.pnlRight.Panel2.Controls.Add(this.gridControl2);
+            this.pnlRight.Panel2.Controls.Add(this.labelControl10);
+            this.pnlRight.Panel2.Text = "Panel2";
+            this.pnlRight.Size = new System.Drawing.Size(460, 460);
+            this.pnlRight.SplitterPosition = 245;
+            this.pnlRight.TabIndex = 10;
+            this.pnlRight.Text = "splitContainerControl5";
+            this.pnlRight.SplitterPositionChanged += new System.EventHandler(this.pnlRight_SplitterPositionChanged);
             // 
             // labelControl3
             // 
             this.labelControl3.Appearance.BackColor = System.Drawing.Color.DimGray;
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.White;
+            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.labelControl3.Appearance.Options.UseBackColor = true;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
@@ -662,14 +704,280 @@
             this.labelControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelControl3.Location = new System.Drawing.Point(0, 0);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(462, 17);
+            this.labelControl3.Size = new System.Drawing.Size(460, 17);
             this.labelControl3.TabIndex = 9;
             this.labelControl3.Text = "TRANSACTIONS";
+            this.labelControl3.SizeChanged += new System.EventHandler(this.labelControl3_SizeChanged);
             // 
             // timLoad
             // 
             this.timLoad.Interval = 10;
             this.timLoad.Tick += new System.EventHandler(this.timLoad_Tick);
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.BackColor = System.Drawing.Color.Maroon;
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.White;
+            this.labelControl6.Appearance.Options.UseBackColor = true;
+            this.labelControl6.Appearance.Options.UseFont = true;
+            this.labelControl6.Appearance.Options.UseForeColor = true;
+            this.labelControl6.Appearance.Options.UseTextOptions = true;
+            this.labelControl6.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControl6.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl6.Location = new System.Drawing.Point(0, 17);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(460, 2);
+            this.labelControl6.TabIndex = 11;
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.BackColor = System.Drawing.Color.Navy;
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.White;
+            this.labelControl7.Appearance.Options.UseBackColor = true;
+            this.labelControl7.Appearance.Options.UseFont = true;
+            this.labelControl7.Appearance.Options.UseForeColor = true;
+            this.labelControl7.Appearance.Options.UseTextOptions = true;
+            this.labelControl7.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControl7.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl7.Location = new System.Drawing.Point(0, 17);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(256, 2);
+            this.labelControl7.TabIndex = 12;
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.BackColor = System.Drawing.Color.Green;
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.White;
+            this.labelControl8.Appearance.Options.UseBackColor = true;
+            this.labelControl8.Appearance.Options.UseFont = true;
+            this.labelControl8.Appearance.Options.UseForeColor = true;
+            this.labelControl8.Appearance.Options.UseTextOptions = true;
+            this.labelControl8.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControl8.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl8.Location = new System.Drawing.Point(0, 17);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(256, 2);
+            this.labelControl8.TabIndex = 12;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.BackColor = System.Drawing.Color.DimGray;
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.White;
+            this.labelControl9.Appearance.Options.UseBackColor = true;
+            this.labelControl9.Appearance.Options.UseFont = true;
+            this.labelControl9.Appearance.Options.UseForeColor = true;
+            this.labelControl9.Appearance.Options.UseTextOptions = true;
+            this.labelControl9.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControl9.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl9.Location = new System.Drawing.Point(0, 0);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(245, 17);
+            this.labelControl9.TabIndex = 10;
+            this.labelControl9.Text = "MONEY IN";
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.BackColor = System.Drawing.Color.DimGray;
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.labelControl10.Appearance.ForeColor = System.Drawing.Color.White;
+            this.labelControl10.Appearance.Options.UseBackColor = true;
+            this.labelControl10.Appearance.Options.UseFont = true;
+            this.labelControl10.Appearance.Options.UseForeColor = true;
+            this.labelControl10.Appearance.Options.UseTextOptions = true;
+            this.labelControl10.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControl10.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelControl10.Location = new System.Drawing.Point(0, 0);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(209, 17);
+            this.labelControl10.TabIndex = 10;
+            this.labelControl10.Text = "MONEY OUT";
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(0, 17);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageEdit4,
+            this.repositoryItemImageComboBox10,
+            this.repositoryItemImageComboBox11,
+            this.repositoryItemImageComboBox12});
+            this.gridControl1.Size = new System.Drawing.Size(245, 443);
+            this.gridControl1.TabIndex = 11;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn5,
+            this.gridColumn6});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsMenu.EnableColumnMenu = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn6, DevExpress.Data.ColumnSortOrder.Ascending)});
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "ID";
+            this.gridColumn5.Name = "gridColumn5";
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumn6.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn6.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn6.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn6.Caption = "Account Name";
+            this.gridColumn6.FieldName = "Name";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 0;
+            this.gridColumn6.Width = 327;
+            // 
+            // repositoryItemImageEdit4
+            // 
+            this.repositoryItemImageEdit4.AutoHeight = false;
+            this.repositoryItemImageEdit4.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageEdit4.Name = "repositoryItemImageEdit4";
+            // 
+            // repositoryItemImageComboBox10
+            // 
+            this.repositoryItemImageComboBox10.AutoHeight = false;
+            this.repositoryItemImageComboBox10.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox10.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.repositoryItemImageComboBox10.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("No", false, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Yes", true, 1)});
+            this.repositoryItemImageComboBox10.Name = "repositoryItemImageComboBox10";
+            // 
+            // repositoryItemImageComboBox11
+            // 
+            this.repositoryItemImageComboBox11.AutoHeight = false;
+            this.repositoryItemImageComboBox11.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox11.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
+            this.repositoryItemImageComboBox11.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("No", 0, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Yes", 1, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Admin", 2, 1)});
+            this.repositoryItemImageComboBox11.Name = "repositoryItemImageComboBox11";
+            // 
+            // repositoryItemImageComboBox12
+            // 
+            this.repositoryItemImageComboBox12.AutoHeight = false;
+            this.repositoryItemImageComboBox12.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox12.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Microsoft SQL Server", 0, -1)});
+            this.repositoryItemImageComboBox12.Name = "repositoryItemImageComboBox12";
+            // 
+            // gridControl2
+            // 
+            this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl2.Location = new System.Drawing.Point(0, 17);
+            this.gridControl2.MainView = this.gridView2;
+            this.gridControl2.Name = "gridControl2";
+            this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageEdit5,
+            this.repositoryItemImageComboBox13,
+            this.repositoryItemImageComboBox14,
+            this.repositoryItemImageComboBox15});
+            this.gridControl2.Size = new System.Drawing.Size(209, 443);
+            this.gridControl2.TabIndex = 12;
+            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // gridView2
+            // 
+            this.gridView2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn7,
+            this.gridColumn8});
+            this.gridView2.GridControl = this.gridControl2;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gridView2.OptionsBehavior.Editable = false;
+            this.gridView2.OptionsMenu.EnableColumnMenu = false;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView2.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn8, DevExpress.Data.ColumnSortOrder.Ascending)});
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "ID";
+            this.gridColumn7.Name = "gridColumn7";
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumn8.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn8.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn8.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn8.Caption = "Account Name";
+            this.gridColumn8.FieldName = "Name";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 0;
+            this.gridColumn8.Width = 327;
+            // 
+            // repositoryItemImageEdit5
+            // 
+            this.repositoryItemImageEdit5.AutoHeight = false;
+            this.repositoryItemImageEdit5.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageEdit5.Name = "repositoryItemImageEdit5";
+            // 
+            // repositoryItemImageComboBox13
+            // 
+            this.repositoryItemImageComboBox13.AutoHeight = false;
+            this.repositoryItemImageComboBox13.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox13.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.repositoryItemImageComboBox13.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("No", false, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Yes", true, 1)});
+            this.repositoryItemImageComboBox13.Name = "repositoryItemImageComboBox13";
+            // 
+            // repositoryItemImageComboBox14
+            // 
+            this.repositoryItemImageComboBox14.AutoHeight = false;
+            this.repositoryItemImageComboBox14.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox14.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
+            this.repositoryItemImageComboBox14.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("No", 0, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Yes", 1, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Admin", 2, 1)});
+            this.repositoryItemImageComboBox14.Name = "repositoryItemImageComboBox14";
+            // 
+            // repositoryItemImageComboBox15
+            // 
+            this.repositoryItemImageComboBox15.AutoHeight = false;
+            this.repositoryItemImageComboBox15.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox15.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, -1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Microsoft SQL Server", 0, -1)});
+            this.repositoryItemImageComboBox15.Name = "repositoryItemImageComboBox15";
             // 
             // frmProperty
             // 
@@ -682,21 +990,22 @@
             this.Text = "Properties";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Shown += new System.EventHandler(this.frmProperty_Shown);
+            this.SizeChanged += new System.EventHandler(this.frmProperty_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
             this.splitContainerControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).EndInit();
-            this.splitContainerControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pnlLeft)).EndInit();
+            this.pnlLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdProperty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPropertyView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).EndInit();
-            this.splitContainerControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.containerAccounts)).EndInit();
+            this.containerAccounts.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdPropertyAccountMoneyIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPropertyAccountMoneyInView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).EndInit();
@@ -709,8 +1018,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl5)).EndInit();
-            this.splitContainerControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pnlRight)).EndInit();
+            this.pnlRight.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox15)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -724,7 +1045,7 @@
         private DevExpress.XtraNavBar.NavBarItem btnEditProperty;
         private DevExpress.XtraNavBar.NavBarItem btnRemoveProperty;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl3;
+        private DevExpress.XtraEditors.SplitContainerControl pnlLeft;
         private DevExpress.XtraGrid.GridControl grdProperty;
         private DevExpress.XtraGrid.Views.Grid.GridView grdPropertyView;
         private DevExpress.XtraGrid.Columns.GridColumn colID;
@@ -734,9 +1055,9 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox4;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl4;
+        private DevExpress.XtraEditors.SplitContainerControl containerAccounts;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl5;
+        private DevExpress.XtraEditors.SplitContainerControl pnlRight;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
         private DevExpress.XtraNavBar.NavBarItem btnAddMoneyInAccount;
@@ -765,5 +1086,26 @@
         private DevExpress.XtraNavBar.NavBarItem btnAddMoneyOutAccount;
         private DevExpress.XtraNavBar.NavBarItem btnEditMoneyOutAccount;
         private DevExpress.XtraNavBar.NavBarItem btnRemoveMoneyOutAccount;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit4;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox10;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox11;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox12;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraGrid.GridControl gridControl2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit5;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox13;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox14;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox15;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
     }
 }

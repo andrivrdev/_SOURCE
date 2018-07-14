@@ -1,7 +1,6 @@
 C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\QBook.exe.config
 C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\QBook.exe
 C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\QBook.pdb
-C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.csprojResolveAssemblyReference.cache
 C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.Properties.Resources.resources
 C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.csproj.GenerateResource.Cache
 C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.csproj.CoreCompileInputs.cache
@@ -99,3 +98,4 @@ C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.Forms.frmProperty.resources
 C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.Forms.frmPropertyDetails.resources
 C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\DevExpress.Images.v17.1.dll
 C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.Forms.frmPropertyAccountDetails.resources
+C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.csprojResolveAssemblyReference.cache

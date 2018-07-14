@@ -1,4 +1,5 @@
-﻿using QBook.Forms;
+﻿using DevExpress.XtraEditors;
+using QBook.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,18 +20,7 @@ namespace QBook
 
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             ribbonMain.ApplicationIcon = Icon.ExtractAssociatedIcon(Application.ExecutablePath).ToBitmap();
-        }
-
-        private void accountToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var myForm = new frmAccount();
-            myForm.ShowDialog();
-        }
-
-        private void propertyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var myForm = new frmProperty();
-            myForm.ShowDialog();
+            pictureEdit1.Properties.ContextMenuStrip = new ContextMenuStrip();
         }
 
         private void frmMain_Shown(object sender, EventArgs e)
@@ -43,12 +33,29 @@ namespace QBook
             timer1.Stop();
             if (clsHelper.CheckDB("QBook", false))
             {
-                MessageBox.Show("A new database must be created! This will be done automatically when you continue.");
+                XtraMessageBox.Show("A new database must be created! This will be done automatically when you continue.");
             }
 
             clsHelper.GetLocalDB("QBook", false);
             this.Enabled = true;
 
+        }
+
+        private void btnAccount_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var myForm = new frmAccount();
+            myForm.ShowDialog();
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var myForm = new frmProperty();
+            myForm.ShowDialog();
+        }
+
+        private void btnExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Close();
         }
     }
 }
