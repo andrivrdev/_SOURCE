@@ -36,6 +36,7 @@
             this.btnAdd = new DevExpress.XtraNavBar.NavBarItem();
             this.btnEdit = new DevExpress.XtraNavBar.NavBarItem();
             this.btnRemove = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
             this.grdAccount = new DevExpress.XtraGrid.GridControl();
             this.grdAccountView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -49,7 +50,6 @@
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.timLoad = new System.Windows.Forms.Timer(this.components);
-            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
@@ -126,6 +126,11 @@
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnRemove.SmallImage")));
             this.btnRemove.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnRemove_LinkClicked);
+            // 
+            // navBarItem1
+            // 
+            this.navBarItem1.Caption = "navBarItem1";
+            this.navBarItem1.Name = "navBarItem1";
             // 
             // grdAccount
             // 
@@ -266,11 +271,6 @@
             // 
             this.timLoad.Interval = 10;
             this.timLoad.Tick += new System.EventHandler(this.timLoad_Tick);
-            // 
-            // navBarItem1
-            // 
-            this.navBarItem1.Caption = "navBarItem1";
-            this.navBarItem1.Name = "navBarItem1";
             // 
             // frmAccount
             // 

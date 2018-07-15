@@ -47,7 +47,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(40, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 23;
             this.label1.Text = "Property";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -92,7 +92,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(39, 61);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 26;
             this.label2.Text = "Account";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -106,7 +106,7 @@
             this.edtAccount.Properties.DropDownRows = 15;
             this.edtAccount.Properties.Sorted = true;
             this.edtAccount.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.edtAccount.Size = new System.Drawing.Size(210, 20);
+            this.edtAccount.Size = new System.Drawing.Size(211, 20);
             this.edtAccount.TabIndex = 2;
             // 
             // label3
@@ -114,7 +114,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 35);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
+            this.label3.Size = new System.Drawing.Size(73, 13);
             this.label3.TabIndex = 28;
             this.label3.Text = "Account Type";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

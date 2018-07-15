@@ -44,6 +44,8 @@
     <Reference Include="DevExpress.XtraLayout.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraNavBar.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v17.1, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v17.1.Core, Version=17.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -62,6 +64,7 @@
     <Compile Include="Data\tblAccount.cs" />
     <Compile Include="Data\tblProperty.cs" />
     <Compile Include="Data\tblPropertyAccount.cs" />
+    <Compile Include="Data\tblPropertyAccountTransaction.cs" />
     <Compile Include="Forms\frmAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +95,12 @@
     <Compile Include="Forms\frmPropertyAccountDetails.Designer.cs">
       <DependentUpon>frmPropertyAccountDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmPropertyAccountTransactionDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPropertyAccountTransactionDetails.Designer.cs">
+      <DependentUpon>frmPropertyAccountTransactionDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmPropertyDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPropertyAccountDetails.resx">
       <DependentUpon>frmPropertyAccountDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPropertyAccountTransactionDetails.resx">
+      <DependentUpon>frmPropertyAccountTransactionDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPropertyDetails.resx">
       <DependentUpon>frmPropertyDetails.cs</DependentUpon>
@@ -141,15 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BigLogo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MainLogo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LargeLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LargeLogoTransparent.png" />

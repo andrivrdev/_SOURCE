@@ -91,42 +91,18 @@ namespace QBook.Forms
             return true;
         }
 
-        private int FindAccountID()
-        {
-            //Find Account ID
-            tblAccount xtblAccount = new tblAccount();
-            int xAccountID = -1;
-            if (edtAccountType.Text == "Money In")
-            {
-                var rows = xtblAccount.dtAccount.AsEnumerable().Where(r => (r.Field<string>("Name") == edtAccount.Text) && (r.Field<string>("IO") == "I"));
-                foreach (DataRow ARec in rows)
-                {
-                    xAccountID = Convert.ToInt32(ARec["ID"]);
-                }
-            }
-            else
-            {
-                var rows = xtblAccount.dtAccount.AsEnumerable().Where(r => (r.Field<string>("Name") == edtAccount.Text) && (r.Field<string>("IO") == "O"));
-                foreach (DataRow ARec in rows)
-                {
-                    xAccountID = Convert.ToInt32(ARec["ID"]);
-                }
-            }
-
-            return xAccountID;
-        }
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            edtProperty.Text = edtProperty.Text.Trim();
+            edtAccount.Text = edtAccount.Text.Trim();
 
 
             if (ValidationSuccess() == false)
             {
                 this.DialogResult = DialogResult.None;
 
-                edtProperty.Focus();
-                edtProperty.SelectAll();
+                edtAccount.Focus();
+                edtAccount.SelectAll();
             }
             else
             {
@@ -137,7 +113,14 @@ namespace QBook.Forms
                 fFields.Add("tblAccountID");
 
                 vValues.Add(zPropertyID.ToString());
-                vValues.Add(FindAccountID().ToString());
+                if (edtAccountType.Text == "Money In")
+                {
+                    vValues.Add(clsHelper.FindAccountID("I", edtAccount.Text).ToString());
+                }
+                else
+                {
+                    vValues.Add(clsHelper.FindAccountID("O", edtAccount.Text).ToString());
+                }
 
                 if (zMyMode == 0)
                 {

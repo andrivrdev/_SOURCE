@@ -78,6 +78,11 @@ namespace QBook.Forms
                     }
                 }
             }
+            else
+            {
+                XtraMessageBox.Show("Please select a valid record first.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+
         }
 
         private void btnAdd_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
@@ -113,6 +118,10 @@ namespace QBook.Forms
 
                     LoadAccount();
                 }
+            }
+            else
+            {
+                XtraMessageBox.Show("Please select a valid record first.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 

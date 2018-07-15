@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using QBook.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QBook
 {
@@ -15,7 +17,6 @@ namespace QBook
     {
         public const string DB_DIRECTORY = "Database";
         public static System.Data.SqlClient.SqlConnection zConn;
-
 
         public static bool CheckDB(string dbName, bool deleteIfExists = false)
         {
@@ -135,13 +136,13 @@ namespace QBook
 
                             CREATE TABLE [dbo].[tblPropertyAccountTransaction] (
                               [ID] int IDENTITY(1, 1) NOT NULL,
-                              [tblPropertyAccount] int NOT NULL,
-                              [DT] datetime NOT NULL,
-                              [Reference] varchar(10) COLLATE Latin1_General_CI_AS NOT NULL,
+                              [tblPropertyAccountID] int NOT NULL,
+                              [DT] date NOT NULL,
+                              [Reference] varchar(10) COLLATE Latin1_General_CI_AS NULL,
                               [Description] varchar(200) COLLATE Latin1_General_CI_AS NOT NULL,
                               [Amount] money NOT NULL,
                               CONSTRAINT [PK__tblPrope__3214EC27B39C3160] PRIMARY KEY CLUSTERED ([ID]),
-                              CONSTRAINT [tblPropertyAccountTransaction_fk] FOREIGN KEY ([tblPropertyAccount]) 
+                              CONSTRAINT [tblPropertyAccountTransaction_fk] FOREIGN KEY ([tblPropertyAccountID]) 
                               REFERENCES [dbo].[tblPropertyAccount] ([ID]) 
                               ON UPDATE NO ACTION
                               ON DELETE NO ACTION
@@ -391,7 +392,9 @@ namespace QBook
             }
             catch (Exception Ex)
             {
-                XtraMessageBox.Show("clsHelper: " + Ex.Message);
+                XtraMessageBox.Show("This record has other records linked to it," + Environment.NewLine +
+                                    "and can not be removed until the linked records are" + Environment.NewLine +
+                                    "removed first.", "Validation Failed", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 return false;
             }
         }
@@ -437,6 +440,86 @@ namespace QBook
             }
         }
 
+        public static int FindAccountID(string xIO, string xAccountName)
+        {
+            //Find Account ID
+            tblAccount xtblAccount = new tblAccount();
+            int xAccountID = -1;
+            var rows = xtblAccount.dtAccount.AsEnumerable().Where(r => (r.Field<string>("Name") == xAccountName) && (r.Field<string>("IO") == xIO));
+            foreach (DataRow ARec in rows)
+            {
+                xAccountID = Convert.ToInt32(ARec["ID"]);
+            }
+
+            return xAccountID;
+        }
+
+        public static int FindPropertyID(string xProperty)
+        {
+            //Find Account ID
+            tblProperty xtblProperty = new tblProperty();
+            int xID = -1;
+            var rows = xtblProperty.dtProperty.AsEnumerable().Where(r => (r.Field<string>("Property") == xProperty));
+            foreach (DataRow ARec in rows)
+            {
+                xID = Convert.ToInt32(ARec["ID"]);
+            }
+
+            return xID;
+        }
+
+        public static int FindPropertyAccountID(string xIO, int xPropertyID, string xAccountName)
+        {
+            //Find Account ID
+            int xAccountID = FindAccountID(xIO, xAccountName);
+
+            //Find Property Account ID
+            tblPropertyAccount xtblPropertyAccount = new tblPropertyAccount();
+            int xPropertyAccountID = -1;
+            var rows = xtblPropertyAccount.dtPropertyAccount.AsEnumerable().Where(r => (r.Field<int>("tblPropertyID") == xPropertyID) && (r.Field<int>("tblAccountID") == xAccountID));
+            foreach (DataRow ARec in rows)
+            {
+                xPropertyAccountID = Convert.ToInt32(ARec["ID"]);
+            }
+
+            return xPropertyAccountID;
+        }
+
+        public static DataTable GetReferencesForMoneyOutTransaction(string xPropertyID)
+        {
+            string SQL = "";
+
+            try
+            {
+                SQL =
+                @"
+                SELECT DISTINCT
+                  dbo.tblPropertyAccountTransaction.Reference
+                FROM
+                  dbo.tblPropertyAccountTransaction
+                  LEFT OUTER JOIN dbo.tblPropertyAccount ON (dbo.tblPropertyAccountTransaction.tblPropertyAccountID = dbo.tblPropertyAccount.ID)
+                  LEFT OUTER JOIN dbo.tblAccount ON (dbo.tblPropertyAccount.tblAccountID = dbo.tblAccount.ID)
+                WHERE
+                  dbo.tblPropertyAccount.tblPropertyID = '" + xPropertyID + @"' AND
+                  dbo.tblAccount.IO = 'I'
+                ";
+
+                SqlCommand MyCommand = new SqlCommand(SQL, clsHelper.zConn);
+                SqlDataReader MyReader = MyCommand.ExecuteReader();
+
+                DataTable dt = new DataTable();
+                dt.Load(MyReader);
+
+                MyCommand.Dispose();
+                MyReader.Dispose();
+
+                return dt;
+            }
+            catch (Exception Ex)
+            {
+                return new DataTable();
+            }
+        }
 
     }
 }

@@ -99,3 +99,16 @@ C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.Forms.frmPropertyDetails.resources
 C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\DevExpress.Images.v17.1.dll
 C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.Forms.frmPropertyAccountDetails.resources
 C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.csprojResolveAssemblyReference.cache
+C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.Forms.frmPropertyAccountTransactionDetails.resources
+C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\DevExpress.XtraScheduler.v17.1.Core.dll
+C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\DevExpress.XtraScheduler.v17.1.dll
+C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\DevExpress.XtraScheduler.v17.1.xml
+C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\DevExpress.XtraScheduler.v17.1.Core.xml
+C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\de\DevExpress.XtraScheduler.v17.1.resources.dll
+C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\es\DevExpress.XtraScheduler.v17.1.resources.dll
+C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\ja\DevExpress.XtraScheduler.v17.1.resources.dll
+C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\ru\DevExpress.XtraScheduler.v17.1.resources.dll
+C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\de\DevExpress.XtraScheduler.v17.1.Core.resources.dll
+C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\es\DevExpress.XtraScheduler.v17.1.Core.resources.dll
+C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\ja\DevExpress.XtraScheduler.v17.1.Core.resources.dll
+C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\ru\DevExpress.XtraScheduler.v17.1.Core.resources.dll

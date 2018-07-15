@@ -66,7 +66,7 @@
             // 
             this.edtName.Location = new System.Drawing.Point(90, 9);
             this.edtName.Name = "edtName";
-            this.edtName.Properties.MaxLength = 20;
+            this.edtName.Properties.MaxLength = 50;
             this.edtName.Size = new System.Drawing.Size(239, 20);
             this.edtName.TabIndex = 0;
             // 
@@ -75,7 +75,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.Size = new System.Drawing.Size(76, 13);
             this.label1.TabIndex = 15;
             this.label1.Text = "Account Name";
             // 

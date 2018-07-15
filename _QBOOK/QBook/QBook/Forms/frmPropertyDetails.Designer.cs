@@ -41,7 +41,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(11, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 19;
             this.label1.Text = "Property";
             // 
@@ -70,7 +70,7 @@
             // 
             this.edtProperty.Location = new System.Drawing.Point(63, 12);
             this.edtProperty.Name = "edtProperty";
-            this.edtProperty.Properties.MaxLength = 20;
+            this.edtProperty.Properties.MaxLength = 200;
             this.edtProperty.Size = new System.Drawing.Size(239, 20);
             this.edtProperty.TabIndex = 0;
             // 
