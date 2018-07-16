@@ -112,3 +112,4 @@ C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\de\DevExpress.XtraScheduler.v17.1.Core.r
 C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\es\DevExpress.XtraScheduler.v17.1.Core.resources.dll
 C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\ja\DevExpress.XtraScheduler.v17.1.Core.resources.dll
 C:\_SOURCE\_QBOOK\QBook\QBook\bin\Debug\ru\DevExpress.XtraScheduler.v17.1.Core.resources.dll
+C:\_SOURCE\_QBOOK\QBook\QBook\obj\Debug\QBook.Forms.frmAbout.resources

@@ -669,7 +669,7 @@ namespace QBook.Forms
         private void DoEditTransactionMoneyInAccount()
         {
             
-            if ((grdPATMoneyInView.RowCount > 0) && (!grdPATMoneyInView.IsGroupRow(grdPATMoneyInView.FocusedRowHandle)))
+            if ((grdPATMoneyInView.RowCount > 0) && (grdPATMoneyInView.IsDataRow(grdPATMoneyInView.FocusedRowHandle)))
             {
                 frmPropertyAccountTransactionDetails MyForm;
 
@@ -742,7 +742,7 @@ namespace QBook.Forms
 
         private void DoEditTransactionMoneyOutAccount()
         {
-            if ((grdPATMoneyOutView.RowCount > 0) && (!grdPATMoneyOutView.IsGroupRow(grdPATMoneyOutView.FocusedRowHandle)))
+            if ((grdPATMoneyOutView.RowCount > 0) && (grdPATMoneyOutView.IsDataRow(grdPATMoneyOutView.FocusedRowHandle)))
             {
                 frmPropertyAccountTransactionDetails MyForm;
 
@@ -821,7 +821,7 @@ namespace QBook.Forms
 
         private void btnRemoveTransactionIn_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            if ((grdPATMoneyInView.RowCount > 0) && (!grdPATMoneyInView.IsGroupRow(grdPATMoneyInView.FocusedRowHandle)))
+            if ((grdPATMoneyInView.RowCount > 0) && (grdPATMoneyInView.IsDataRow(grdPATMoneyInView.FocusedRowHandle)))
             {
                 //Check if record has linked Money Out transactions
                 tblPropertyAccountTransaction xtblPropertyAccountTransaction = new tblPropertyAccountTransaction();
@@ -861,7 +861,7 @@ namespace QBook.Forms
 
         private void btnRemoveTransactionOut_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            if ((grdPATMoneyOutView.RowCount > 0) && (!grdPATMoneyOutView.IsGroupRow(grdPATMoneyOutView.FocusedRowHandle)))
+            if ((grdPATMoneyOutView.RowCount > 0) && (grdPATMoneyOutView.IsDataRow(grdPATMoneyOutView.FocusedRowHandle)))
             {
                 if (XtraMessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -918,10 +918,10 @@ namespace QBook.Forms
 
         private void grdPATMoneyOutView_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
         {
-            if ((grdPATMoneyInView.RowCount > 0) && (!grdPATMoneyInView.IsGroupRow(grdPATMoneyInView.FocusedRowHandle)))
+            if ((grdPATMoneyInView.RowCount > 0) && (grdPATMoneyInView.IsDataRow(grdPATMoneyInView.FocusedRowHandle)))
             {
                 ColumnView view = (ColumnView)sender;
-                if ((view.IsValidRowHandle(e.RowHandle)) && (!grdPATMoneyOutView.IsGroupRow(e.RowHandle)))
+                if ((view.IsValidRowHandle(e.RowHandle)) && (grdPATMoneyOutView.IsDataRow(e.RowHandle)))
                 {
                     if (view.GetRowCellValue(e.RowHandle, "Reference").ToString() == grdPATMoneyInView.GetFocusedRowCellValue("Reference").ToString())
                     {

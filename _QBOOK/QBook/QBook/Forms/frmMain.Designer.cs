@@ -113,6 +113,7 @@
             this.btnAbout.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAbout.ImageOptions.Image")));
             this.btnAbout.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAbout.ImageOptions.LargeImage")));
             this.btnAbout.Name = "btnAbout";
+            this.btnAbout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAbout_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -143,10 +144,10 @@
             // 
             // ribbonStatusBar1
             // 
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 444);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 446);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonMain;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(751, 27);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(751, 25);
             // 
             // ribbonPage2
             // 
@@ -168,7 +169,7 @@
             this.pictureEdit1.Properties.ReadOnly = true;
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.pictureEdit1.Size = new System.Drawing.Size(751, 300);
+            this.pictureEdit1.Size = new System.Drawing.Size(751, 302);
             this.pictureEdit1.TabIndex = 4;
             // 
             // frmMain

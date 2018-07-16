@@ -57,5 +57,11 @@ namespace QBook
         {
             Close();
         }
+
+        private void btnAbout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmAbout MyForm = new frmAbout();
+            MyForm.ShowDialog();
+        }
     }
 }
