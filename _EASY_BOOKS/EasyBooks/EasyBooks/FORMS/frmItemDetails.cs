@@ -16,9 +16,9 @@ namespace EasyBooks.FORMS
     public partial class frmItemDetails : DevExpress.XtraEditors.XtraForm
     {
         int zMyMode;
-        int zID;
+        Int64 zID;
 
-        public frmItemDetails(int xMode, int xID)
+        public frmItemDetails(int xMode, Int64 xID)
         {
             InitializeComponent();
 
@@ -71,7 +71,7 @@ namespace EasyBooks.FORMS
             else
             {
                 //Check if record exist
-                var rows = xtblItem.dtItem.AsEnumerable().Where(r => (r.Field<string>("Item") == edtItem.Text) && (r.Field<int>("ID") != zID));
+                var rows = xtblItem.dtItem.AsEnumerable().Where(r => (r.Field<string>("Item") == edtItem.Text) && (r.Field<Int64>("ID") != zID));
 
                 if (rows.Count() == 1)
                 {

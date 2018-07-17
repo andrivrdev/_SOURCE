@@ -31,14 +31,13 @@ namespace EasyBooks.FORMS
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
-            if (clsHelper.CheckDB("QBook", false))
+            if (!clsSQLiteDB.CheckIfDBExist(false))
             {
                 XtraMessageBox.Show("A new database must be created! This will be done automatically when you continue.");
+                clsSQLiteDB.CreateDB();
             }
 
-            clsHelper.GetLocalDB("QBook", false);
             this.Enabled = true;
-
         }
 
         private void btnAccount_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

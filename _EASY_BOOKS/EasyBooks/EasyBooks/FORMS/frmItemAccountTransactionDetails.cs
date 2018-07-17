@@ -15,9 +15,9 @@ namespace EasyBooks.FORMS
     public partial class frmItemAccountTransactionDetails : DevExpress.XtraEditors.XtraForm
     {
         int zMyMode;
-        int zItemAccountTransactionID;
+        Int64 zItemAccountTransactionID;
 
-        public frmItemAccountTransactionDetails(int xMode, int xItemAccountTransactionID)
+        public frmItemAccountTransactionDetails(int xMode, Int64 xItemAccountTransactionID)
         {
             InitializeComponent();
 
@@ -113,6 +113,8 @@ namespace EasyBooks.FORMS
                     xIO = "O";
                 }
 
+                
+
                 List<string> fFields = new List<string>();
                 List<string> vValues = new List<string>();
 
@@ -122,7 +124,7 @@ namespace EasyBooks.FORMS
                 fFields.Add("Amount");
 
                 vValues.Add(clsHelper.FindItemAccountID(xIO, clsHelper.FindItemID(edtItem.Text), edtAccount.Text).ToString());
-                vValues.Add(edtDate.Text);
+                vValues.Add(DateTime.Parse(edtDate.Text).Year + "-" + DateTime.Parse(edtDate.Text).Month.ToString().PadLeft(2,'0') + "-" + DateTime.Parse(edtDate.Text).Day.ToString().PadLeft(2, '0'));
                 vValues.Add(edtDescription.Text);
                 vValues.Add(edtAmount.Text.Replace(",","."));
 

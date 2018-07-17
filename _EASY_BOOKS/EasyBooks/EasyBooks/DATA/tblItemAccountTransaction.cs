@@ -3,7 +3,7 @@ using EasyBooks.CLASSES;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,26 +25,26 @@ namespace EasyBooks.DATA
                 SQL =
                 @"
                 SELECT 
-                  dbo.tblItemAccountTransaction.ID,
-                  dbo.tblItemAccountTransaction.tblItemAccountID,
-                  dbo.tblItemAccountTransaction.DT,
-                  dbo.tblItemAccountTransaction.Reference,
-                  dbo.tblItemAccountTransaction.Description,
-                  dbo.tblItemAccountTransaction.Amount,
-                  dbo.tblItemAccount.tblItemID,
-                  dbo.tblItemAccount.tblAccountID,
-                  dbo.tblItem.Item,
-                  dbo.tblAccount.Name,
-                  dbo.tblAccount.IO
+                  tblItemAccountTransaction.ID,
+                  tblItemAccountTransaction.tblItemAccountID,
+                  tblItemAccountTransaction.DT,
+                  tblItemAccountTransaction.Reference,
+                  tblItemAccountTransaction.Description,
+                  tblItemAccountTransaction.Amount,
+                  tblItemAccount.tblItemID,
+                  tblItemAccount.tblAccountID,
+                  tblItem.Item,
+                  tblAccount.Name,
+                  tblAccount.IO
                 FROM
-                  dbo.tblItemAccountTransaction
-                  LEFT OUTER JOIN dbo.tblItemAccount ON (dbo.tblItemAccountTransaction.tblItemAccountID = dbo.tblItemAccount.ID)
-                  LEFT OUTER JOIN dbo.tblAccount ON (dbo.tblItemAccount.tblAccountID = dbo.tblAccount.ID)
-                  LEFT OUTER JOIN dbo.tblItem ON (dbo.tblItemAccount.tblItemID = dbo.tblItem.ID)
+                  tblItemAccountTransaction
+                  LEFT OUTER JOIN tblItemAccount ON (tblItemAccountTransaction.tblItemAccountID = tblItemAccount.ID)
+                  LEFT OUTER JOIN tblAccount ON (tblItemAccount.tblAccountID = tblAccount.ID)
+                  LEFT OUTER JOIN tblItem ON (tblItemAccount.tblItemID = tblItem.ID)
                 ";
 
-                SqlCommand MyCommand = new SqlCommand(SQL, clsHelper.zConn);
-                SqlDataReader MyReader = MyCommand.ExecuteReader();
+                SQLiteCommand MyCommand = new SQLiteCommand(SQL, clsSQLiteDB.zConn);
+                SQLiteDataReader MyReader = MyCommand.ExecuteReader();
 
                 dtItemAccountTransaction = new DataTable();
                 dtItemAccountTransaction.Load(MyReader);
@@ -52,27 +52,27 @@ namespace EasyBooks.DATA
                 SQL =
                 @"
                 SELECT 
-                  dbo.tblItemAccountTransaction.ID,
-                  dbo.tblItemAccountTransaction.tblItemAccountID,
-                  dbo.tblItemAccountTransaction.DT,
-                  dbo.tblItemAccountTransaction.Reference,
-                  dbo.tblItemAccountTransaction.Description,
-                  dbo.tblItemAccountTransaction.Amount,
-                  dbo.tblItemAccount.tblItemID,
-                  dbo.tblItemAccount.tblAccountID,
-                  dbo.tblItem.Item,
-                  dbo.tblAccount.Name,
-                  dbo.tblAccount.IO
+                  tblItemAccountTransaction.ID,
+                  tblItemAccountTransaction.tblItemAccountID,
+                  tblItemAccountTransaction.DT,
+                  tblItemAccountTransaction.Reference,
+                  tblItemAccountTransaction.Description,
+                  tblItemAccountTransaction.Amount,
+                  tblItemAccount.tblItemID,
+                  tblItemAccount.tblAccountID,
+                  tblItem.Item,
+                  tblAccount.Name,
+                  tblAccount.IO
                 FROM
-                  dbo.tblItemAccountTransaction
-                  LEFT OUTER JOIN dbo.tblItemAccount ON (dbo.tblItemAccountTransaction.tblItemAccountID = dbo.tblItemAccount.ID)
-                  LEFT OUTER JOIN dbo.tblAccount ON (dbo.tblItemAccount.tblAccountID = dbo.tblAccount.ID)
-                  LEFT OUTER JOIN dbo.tblItem ON (dbo.tblItemAccount.tblItemID = dbo.tblItem.ID)
+                  tblItemAccountTransaction
+                  LEFT OUTER JOIN tblItemAccount ON (tblItemAccountTransaction.tblItemAccountID = tblItemAccount.ID)
+                  LEFT OUTER JOIN tblAccount ON (tblItemAccount.tblAccountID = tblAccount.ID)
+                  LEFT OUTER JOIN tblItem ON (tblItemAccount.tblItemID = tblItem.ID)
                 WHERE
-                  dbo.tblAccount.IO = 'I'
+                  tblAccount.IO = 'I'
                 ";
 
-                MyCommand = new SqlCommand(SQL, clsHelper.zConn);
+                MyCommand = new SQLiteCommand(SQL, clsSQLiteDB.zConn);
                 MyReader = MyCommand.ExecuteReader();
 
                 dtItemAccountTransactionMoneyIn = new DataTable();
@@ -81,27 +81,27 @@ namespace EasyBooks.DATA
                 SQL =
                 @"
                 SELECT 
-                  dbo.tblItemAccountTransaction.ID,
-                  dbo.tblItemAccountTransaction.tblItemAccountID,
-                  dbo.tblItemAccountTransaction.DT,
-                  dbo.tblItemAccountTransaction.Reference,
-                  dbo.tblItemAccountTransaction.Description,
-                  dbo.tblItemAccountTransaction.Amount,
-                  dbo.tblItemAccount.tblItemID,
-                  dbo.tblItemAccount.tblAccountID,
-                  dbo.tblItem.Item,
-                  dbo.tblAccount.Name,
-                  dbo.tblAccount.IO
+                  tblItemAccountTransaction.ID,
+                  tblItemAccountTransaction.tblItemAccountID,
+                  tblItemAccountTransaction.DT,
+                  tblItemAccountTransaction.Reference,
+                  tblItemAccountTransaction.Description,
+                  tblItemAccountTransaction.Amount,
+                  tblItemAccount.tblItemID,
+                  tblItemAccount.tblAccountID,
+                  tblItem.Item,
+                  tblAccount.Name,
+                  tblAccount.IO
                 FROM
-                  dbo.tblItemAccountTransaction
-                  LEFT OUTER JOIN dbo.tblItemAccount ON (dbo.tblItemAccountTransaction.tblItemAccountID = dbo.tblItemAccount.ID)
-                  LEFT OUTER JOIN dbo.tblAccount ON (dbo.tblItemAccount.tblAccountID = dbo.tblAccount.ID)
-                  LEFT OUTER JOIN dbo.tblItem ON (dbo.tblItemAccount.tblItemID = dbo.tblItem.ID)
+                  tblItemAccountTransaction
+                  LEFT OUTER JOIN tblItemAccount ON (tblItemAccountTransaction.tblItemAccountID = tblItemAccount.ID)
+                  LEFT OUTER JOIN tblAccount ON (tblItemAccount.tblAccountID = tblAccount.ID)
+                  LEFT OUTER JOIN tblItem ON (tblItemAccount.tblItemID = tblItem.ID)
                 WHERE
-                  dbo.tblAccount.IO = 'O'
+                  tblAccount.IO = 'O'
                 ";
 
-                MyCommand = new SqlCommand(SQL, clsHelper.zConn);
+                MyCommand = new SQLiteCommand(SQL, clsSQLiteDB.zConn);
                 MyReader = MyCommand.ExecuteReader();
 
                 dtItemAccountTransactionMoneyOut = new DataTable();

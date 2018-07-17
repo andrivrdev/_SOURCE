@@ -19,11 +19,11 @@ namespace EasyBooks.FORMS
         double zpnlLeft = 0;
         double zpnlRight = 0;
         double zpnlBottom = 0;
-        int zI = -1;
-        int zAI = -1;
-        int zAO = -1;
-        int zTI = -1;
-        int zTO = -1;
+        Int64 zI = -1;
+        Int64 zAI = -1;
+        Int64 zAO = -1;
+        Int64 zTI = -1;
+        Int64 zTO = -1;
         bool zSkipFocusLoad = false;
 
         public frmItem()
@@ -38,11 +38,11 @@ namespace EasyBooks.FORMS
 
         public void ClearFocusedRows()
         {
-            int zI = -1;
-            int zAI = -1;
-            int zAO = -1;
-            int zTI = -1;
-            int zTO = -1;
+            zI = -1;
+            zAI = -1;
+            zAO = -1;
+            zTI = -1;
+            zTO = -1;
         }
 
         public void SaveFocusedRows()
@@ -50,31 +50,31 @@ namespace EasyBooks.FORMS
             zI = -1;
             if (grdItemView.RowCount > 0)
             {
-                zI = Convert.ToInt32(grdItemView.GetFocusedRowCellValue("ID").ToString());
+                zI = Convert.ToInt64(grdItemView.GetFocusedRowCellValue("ID").ToString());
             }
 
             zAI = -1;
             if (grdItemAccountMoneyInView.RowCount > 0)
             {
-                zAI = Convert.ToInt32(grdItemAccountMoneyInView.GetFocusedRowCellValue("ID").ToString());
+                zAI = Convert.ToInt64(grdItemAccountMoneyInView.GetFocusedRowCellValue("ID").ToString());
             }
 
             zAO = -1;
             if (grdItemAccountMoneyOutView.RowCount > 0)
             {
-                zAO = Convert.ToInt32(grdItemAccountMoneyOutView.GetFocusedRowCellValue("ID").ToString());
+                zAO = Convert.ToInt64(grdItemAccountMoneyOutView.GetFocusedRowCellValue("ID").ToString());
             }
 
             zTI = -1;
             if (grdPATMoneyInView.RowCount > 0)
             {
-                zTI = Convert.ToInt32(grdPATMoneyInView.GetFocusedRowCellValue("ID").ToString());
+                zTI = Convert.ToInt64(grdPATMoneyInView.GetFocusedRowCellValue("ID").ToString());
             }
 
             zTO = -1;
             if (grdPATMoneyOutView.RowCount > 0)
             {
-                zTO = Convert.ToInt32(grdPATMoneyOutView.GetFocusedRowCellValue("ID").ToString());
+                zTO = Convert.ToInt64(grdPATMoneyOutView.GetFocusedRowCellValue("ID").ToString());
             }
         }
 
@@ -259,7 +259,7 @@ namespace EasyBooks.FORMS
             {
                 frmItemDetails MyForm;
 
-                MyForm = new frmItemDetails(1, Convert.ToInt32(grdItemView.GetFocusedRowCellValue("ID").ToString()));
+                MyForm = new frmItemDetails(1, Convert.ToInt64(grdItemView.GetFocusedRowCellValue("ID").ToString()));
 
                 MyForm.edtItem.Text = grdItemView.GetFocusedRowCellValue("Item").ToString();
 
@@ -304,7 +304,7 @@ namespace EasyBooks.FORMS
             {
                 if (XtraMessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    clsHelper.DeleteRecByID("tblItem", Convert.ToInt32(grdItemView.GetFocusedRowCellValue("ID").ToString()));
+                    clsHelper.DeleteRecByID("tblItem", Convert.ToInt64(grdItemView.GetFocusedRowCellValue("ID").ToString()));
 
                     ClearFocusedRows();
                     LoadItem();
@@ -333,7 +333,7 @@ namespace EasyBooks.FORMS
 
                 frmItemAccountDetails MyForm;
 
-                MyForm = new frmItemAccountDetails(0, 0, Convert.ToInt32(grdItemView.GetFocusedRowCellValue("ID").ToString()));
+                MyForm = new frmItemAccountDetails(0, 0, Convert.ToInt64(grdItemView.GetFocusedRowCellValue("ID").ToString()));
                 MyForm.edtItem.Text = grdItemView.GetFocusedRowCellValue("Item").ToString();
                 MyForm.edtAccountType.Text = "Money In";
 
@@ -382,7 +382,7 @@ namespace EasyBooks.FORMS
 
                 frmItemAccountDetails MyForm;
 
-                MyForm = new frmItemAccountDetails(0, 0, Convert.ToInt32(grdItemView.GetFocusedRowCellValue("ID").ToString()));
+                MyForm = new frmItemAccountDetails(0, 0, Convert.ToInt64(grdItemView.GetFocusedRowCellValue("ID").ToString()));
                 MyForm.edtItem.Text = grdItemView.GetFocusedRowCellValue("Item").ToString();
                 MyForm.edtAccountType.Text = "Money Out";
 
@@ -419,7 +419,7 @@ namespace EasyBooks.FORMS
             {
                 frmItemAccountDetails MyForm;
 
-                MyForm = new frmItemAccountDetails(1, Convert.ToInt32(grdItemAccountMoneyInView.GetFocusedRowCellValue("ID").ToString()), Convert.ToInt32(grdItemView.GetFocusedRowCellValue("ID").ToString()));
+                MyForm = new frmItemAccountDetails(1, Convert.ToInt64(grdItemAccountMoneyInView.GetFocusedRowCellValue("ID").ToString()), Convert.ToInt64(grdItemView.GetFocusedRowCellValue("ID").ToString()));
                 MyForm.edtItem.Text = grdItemView.GetFocusedRowCellValue("Item").ToString();
                 MyForm.edtAccountType.Text = "Money In";
 
@@ -471,7 +471,7 @@ namespace EasyBooks.FORMS
             {
                 frmItemAccountDetails MyForm;
 
-                MyForm = new frmItemAccountDetails(1, Convert.ToInt32(grdItemAccountMoneyOutView.GetFocusedRowCellValue("ID").ToString()), Convert.ToInt32(grdItemView.GetFocusedRowCellValue("ID").ToString()));
+                MyForm = new frmItemAccountDetails(1, Convert.ToInt64(grdItemAccountMoneyOutView.GetFocusedRowCellValue("ID").ToString()), Convert.ToInt64(grdItemView.GetFocusedRowCellValue("ID").ToString()));
                 MyForm.edtItem.Text = grdItemView.GetFocusedRowCellValue("Item").ToString();
                 MyForm.edtAccountType.Text = "Money Out";
 
@@ -530,7 +530,7 @@ namespace EasyBooks.FORMS
             {
                 if (XtraMessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    clsHelper.DeleteRecByID("tblItemAccount", Convert.ToInt32(grdItemAccountMoneyInView.GetFocusedRowCellValue("ID").ToString()));
+                    clsHelper.DeleteRecByID("tblItemAccount", Convert.ToInt64(grdItemAccountMoneyInView.GetFocusedRowCellValue("ID").ToString()));
 
                     SaveFocusedRows();
                     zAI = -1;
@@ -550,7 +550,7 @@ namespace EasyBooks.FORMS
             {
                 if (XtraMessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    clsHelper.DeleteRecByID("tblItemAccount", Convert.ToInt32(grdItemAccountMoneyOutView.GetFocusedRowCellValue("ID").ToString()));
+                    clsHelper.DeleteRecByID("tblItemAccount", Convert.ToInt64(grdItemAccountMoneyOutView.GetFocusedRowCellValue("ID").ToString()));
 
                     SaveFocusedRows();
                     zAO = -1;
@@ -689,7 +689,7 @@ namespace EasyBooks.FORMS
             {
                 frmItemAccountTransactionDetails MyForm;
 
-                MyForm = new frmItemAccountTransactionDetails(1, Convert.ToInt32(grdPATMoneyInView.GetFocusedRowCellValue("ID").ToString()));
+                MyForm = new frmItemAccountTransactionDetails(1, Convert.ToInt64(grdPATMoneyInView.GetFocusedRowCellValue("ID").ToString()));
 
                 MyForm.edtItem.Text = grdItemView.GetFocusedRowCellValue("Item").ToString();
                 MyForm.edtAccountType.Text = "Money In";
@@ -747,7 +747,7 @@ namespace EasyBooks.FORMS
             {
                 frmItemAccountTransactionDetails MyForm;
 
-                MyForm = new frmItemAccountTransactionDetails(1, Convert.ToInt32(grdPATMoneyOutView.GetFocusedRowCellValue("ID").ToString()));
+                MyForm = new frmItemAccountTransactionDetails(1, Convert.ToInt64(grdPATMoneyOutView.GetFocusedRowCellValue("ID").ToString()));
 
                 MyForm.edtItem.Text = grdItemView.GetFocusedRowCellValue("Item").ToString();
                 MyForm.edtAccountType.Text = "Money Out";
@@ -833,7 +833,7 @@ namespace EasyBooks.FORMS
                 {
                     if (XtraMessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        clsHelper.DeleteRecByID("tblItemAccountTransaction", Convert.ToInt32(grdPATMoneyInView.GetFocusedRowCellValue("ID").ToString()));
+                        clsHelper.DeleteRecByID("tblItemAccountTransaction", Convert.ToInt64(grdPATMoneyInView.GetFocusedRowCellValue("ID").ToString()));
                         SaveFocusedRows();
                         zTI = -1;
                         LoadItemAccountTransaction();
@@ -852,7 +852,7 @@ namespace EasyBooks.FORMS
             {
                 if (XtraMessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    clsHelper.DeleteRecByID("tblItemAccountTransaction", Convert.ToInt32(grdPATMoneyOutView.GetFocusedRowCellValue("ID").ToString()));
+                    clsHelper.DeleteRecByID("tblItemAccountTransaction", Convert.ToInt64(grdPATMoneyOutView.GetFocusedRowCellValue("ID").ToString()));
                     SaveFocusedRows();
                     zTO = -1;
                     LoadItemAccountTransaction();

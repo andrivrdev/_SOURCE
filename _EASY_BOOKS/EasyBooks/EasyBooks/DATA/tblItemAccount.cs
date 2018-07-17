@@ -3,7 +3,7 @@ using EasyBooks.CLASSES;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,39 +24,39 @@ namespace EasyBooks.DATA
             {
                 SQL =
                 "SELECT " + Environment.NewLine +
-                "  dbo.tblItemAccount.ID," + Environment.NewLine +
-                "  dbo.tblItemAccount.tblItemID," + Environment.NewLine +
-                "  dbo.tblItemAccount.tblAccountID," + Environment.NewLine +
-                "  dbo.tblItem.Item," + Environment.NewLine +
-                "  dbo.tblAccount.Name," + Environment.NewLine +
-                "  dbo.tblAccount.IO" + Environment.NewLine +
+                "  tblItemAccount.ID," + Environment.NewLine +
+                "  tblItemAccount.tblItemID," + Environment.NewLine +
+                "  tblItemAccount.tblAccountID," + Environment.NewLine +
+                "  tblItem.Item," + Environment.NewLine +
+                "  tblAccount.Name," + Environment.NewLine +
+                "  tblAccount.IO" + Environment.NewLine +
                 "FROM" + Environment.NewLine +
-                "  dbo.tblItemAccount" + Environment.NewLine +
-                "  LEFT OUTER JOIN dbo.tblItem ON(dbo.tblItemAccount.tblItemID = dbo.tblItem.ID)" + Environment.NewLine +
-                "  LEFT OUTER JOIN dbo.tblAccount ON(dbo.tblItemAccount.tblAccountID = dbo.tblAccount.ID)";
+                "  tblItemAccount" + Environment.NewLine +
+                "  LEFT OUTER JOIN tblItem ON(tblItemAccount.tblItemID = tblItem.ID)" + Environment.NewLine +
+                "  LEFT OUTER JOIN tblAccount ON(tblItemAccount.tblAccountID = tblAccount.ID)";
 
-                SqlCommand MyCommand = new SqlCommand(SQL, clsHelper.zConn);
-                SqlDataReader MyReader = MyCommand.ExecuteReader();
+                SQLiteCommand MyCommand = new SQLiteCommand(SQL, clsSQLiteDB.zConn);
+                SQLiteDataReader MyReader = MyCommand.ExecuteReader();
 
                 dtItemAccount = new DataTable();
                 dtItemAccount.Load(MyReader);
 
                 SQL =
                 "SELECT " + Environment.NewLine +
-                "  dbo.tblItemAccount.ID," + Environment.NewLine +
-                "  dbo.tblItemAccount.tblItemID," + Environment.NewLine +
-                "  dbo.tblItemAccount.tblAccountID," + Environment.NewLine +
-                "  dbo.tblItem.Item," + Environment.NewLine +
-                "  dbo.tblAccount.Name," + Environment.NewLine +
-                "  dbo.tblAccount.IO" + Environment.NewLine +
+                "  tblItemAccount.ID," + Environment.NewLine +
+                "  tblItemAccount.tblItemID," + Environment.NewLine +
+                "  tblItemAccount.tblAccountID," + Environment.NewLine +
+                "  tblItem.Item," + Environment.NewLine +
+                "  tblAccount.Name," + Environment.NewLine +
+                "  tblAccount.IO" + Environment.NewLine +
                 "FROM" + Environment.NewLine +
-                "  dbo.tblItemAccount" + Environment.NewLine +
-                "  LEFT OUTER JOIN dbo.tblItem ON(dbo.tblItemAccount.tblItemID = dbo.tblItem.ID)" + Environment.NewLine +
-                "  LEFT OUTER JOIN dbo.tblAccount ON(dbo.tblItemAccount.tblAccountID = dbo.tblAccount.ID)" + Environment.NewLine +
+                "  tblItemAccount" + Environment.NewLine +
+                "  LEFT OUTER JOIN tblItem ON(tblItemAccount.tblItemID = tblItem.ID)" + Environment.NewLine +
+                "  LEFT OUTER JOIN tblAccount ON(tblItemAccount.tblAccountID = tblAccount.ID)" + Environment.NewLine +
                 "WHERE" + Environment.NewLine +
-                "  dbo.tblAccount.IO = 'I'";
+                "  tblAccount.IO = 'I'";
 
-                MyCommand = new SqlCommand(SQL, clsHelper.zConn);
+                MyCommand = new SQLiteCommand(SQL, clsSQLiteDB.zConn);
                 MyReader = MyCommand.ExecuteReader();
 
                 dtItemAccountMoneyIn = new DataTable();
@@ -64,20 +64,20 @@ namespace EasyBooks.DATA
 
                 SQL =
                 "SELECT " + Environment.NewLine +
-                "  dbo.tblItemAccount.ID," + Environment.NewLine +
-                "  dbo.tblItemAccount.tblItemID," + Environment.NewLine +
-                "  dbo.tblItemAccount.tblAccountID," + Environment.NewLine +
-                "  dbo.tblItem.Item," + Environment.NewLine +
-                "  dbo.tblAccount.Name," + Environment.NewLine +
-                "  dbo.tblAccount.IO" + Environment.NewLine +
+                "  tblItemAccount.ID," + Environment.NewLine +
+                "  tblItemAccount.tblItemID," + Environment.NewLine +
+                "  tblItemAccount.tblAccountID," + Environment.NewLine +
+                "  tblItem.Item," + Environment.NewLine +
+                "  tblAccount.Name," + Environment.NewLine +
+                "  tblAccount.IO" + Environment.NewLine +
                 "FROM" + Environment.NewLine +
-                "  dbo.tblItemAccount" + Environment.NewLine +
-                "  LEFT OUTER JOIN dbo.tblItem ON(dbo.tblItemAccount.tblItemID = dbo.tblItem.ID)" + Environment.NewLine +
-                "  LEFT OUTER JOIN dbo.tblAccount ON(dbo.tblItemAccount.tblAccountID = dbo.tblAccount.ID)" + Environment.NewLine +
+                "  tblItemAccount" + Environment.NewLine +
+                "  LEFT OUTER JOIN tblItem ON(tblItemAccount.tblItemID = tblItem.ID)" + Environment.NewLine +
+                "  LEFT OUTER JOIN tblAccount ON(tblItemAccount.tblAccountID = tblAccount.ID)" + Environment.NewLine +
                 "WHERE" + Environment.NewLine +
-                "  dbo.tblAccount.IO = 'O'";
+                "  tblAccount.IO = 'O'";
 
-                MyCommand = new SqlCommand(SQL, clsHelper.zConn);
+                MyCommand = new SQLiteCommand(SQL, clsSQLiteDB.zConn);
                 MyReader = MyCommand.ExecuteReader();
 
                 dtItemAccountMoneyOut = new DataTable();

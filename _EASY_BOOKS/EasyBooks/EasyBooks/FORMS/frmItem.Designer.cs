@@ -90,15 +90,33 @@
             this.btnCollapseAll = new DevExpress.XtraEditors.SimpleButton();
             this.btnExpandAll = new DevExpress.XtraEditors.SimpleButton();
             this.pnlRight = new DevExpress.XtraEditors.SplitContainerControl();
+            this.timLoad = new System.Windows.Forms.Timer(this.components);
+            this.repositoryItemImageEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
+            this.repositoryItemImageComboBox15 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.repositoryItemImageComboBox18 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.repositoryItemImageComboBox19 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.repositoryItemImageComboBox14 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.grdPATMoneyOutView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOutAmount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grdPATMoneyOut = new DevExpress.XtraGrid.GridControl();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grdPATMoneyIn = new DevExpress.XtraGrid.GridControl();
             this.grdPATMoneyInView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemImageComboBox10 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox10 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colInAmount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -107,23 +125,6 @@
             this.repositoryItemImageComboBox11 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox12 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox13 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.grdPATMoneyOut = new DevExpress.XtraGrid.GridControl();
-            this.grdPATMoneyOutView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemImageComboBox14 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colOutAmount = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemImageEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
-            this.repositoryItemImageComboBox15 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.repositoryItemImageComboBox18 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.repositoryItemImageComboBox19 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.timLoad = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
@@ -162,6 +163,15 @@
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlRight)).BeginInit();
             this.pnlRight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPATMoneyOutView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPATMoneyOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPATMoneyIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPATMoneyInView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
@@ -171,15 +181,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdPATMoneyOut)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdPATMoneyOutView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox19)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl1
@@ -858,257 +859,69 @@
             this.pnlRight.Text = "splitContainerControl5";
             this.pnlRight.SplitterPositionChanged += new System.EventHandler(this.pnlRight_SplitterPositionChanged);
             // 
-            // grdPATMoneyIn
+            // timLoad
             // 
-            this.grdPATMoneyIn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdPATMoneyIn.Location = new System.Drawing.Point(0, 0);
-            this.grdPATMoneyIn.MainView = this.grdPATMoneyInView;
-            this.grdPATMoneyIn.Name = "grdPATMoneyIn";
-            this.grdPATMoneyIn.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemImageEdit4,
-            this.repositoryItemImageComboBox11,
-            this.repositoryItemImageComboBox12,
-            this.repositoryItemImageComboBox13,
-            this.repositoryItemImageComboBox10,
-            this.repositoryItemDateEdit1});
-            this.grdPATMoneyIn.Size = new System.Drawing.Size(269, 554);
-            this.grdPATMoneyIn.TabIndex = 11;
-            this.grdPATMoneyIn.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.grdPATMoneyInView});
+            this.timLoad.Interval = 10;
+            this.timLoad.Tick += new System.EventHandler(this.timLoad_Tick);
             // 
-            // grdPATMoneyInView
+            // repositoryItemImageEdit5
             // 
-            this.grdPATMoneyInView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.grdPATMoneyInView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn5,
-            this.gridColumn8,
-            this.gridColumn6,
-            this.gridColumn7,
-            this.gridColumn11,
-            this.colInAmount,
-            this.gridColumn13,
-            this.gridColumn14,
-            this.colInVariance});
-            this.grdPATMoneyInView.GridControl = this.grdPATMoneyIn;
-            this.grdPATMoneyInView.Name = "grdPATMoneyInView";
-            this.grdPATMoneyInView.OptionsBehavior.AllowIncrementalSearch = true;
-            this.grdPATMoneyInView.OptionsBehavior.Editable = false;
-            this.grdPATMoneyInView.OptionsFind.AlwaysVisible = true;
-            this.grdPATMoneyInView.OptionsView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
-            this.grdPATMoneyInView.OptionsView.ShowFooter = true;
-            this.grdPATMoneyInView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn8, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.grdPATMoneyInView.EndGrouping += new System.EventHandler(this.grdPATMoneyInView_EndGrouping);
-            this.grdPATMoneyInView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.grdPATMoneyInView_FocusedRowChanged);
-            this.grdPATMoneyInView.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grdPATMoneyInView_KeyPress);
-            this.grdPATMoneyInView.DoubleClick += new System.EventHandler(this.grdPATMoneyInView_DoubleClick);
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn5.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn5.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn5.Caption = "ID";
-            this.gridColumn5.FieldName = "ID";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.OptionsColumn.ShowInCustomizationForm = false;
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn8.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn8.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn8.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn8.Caption = "Date";
-            this.gridColumn8.ColumnEdit = this.repositoryItemDateEdit1;
-            this.gridColumn8.FieldName = "DT";
-            this.gridColumn8.MaxWidth = 64;
-            this.gridColumn8.MinWidth = 64;
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 0;
-            this.gridColumn8.Width = 64;
-            // 
-            // repositoryItemDateEdit1
-            // 
-            this.repositoryItemDateEdit1.AutoHeight = false;
-            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repositoryItemImageEdit5.AutoHeight = false;
+            this.repositoryItemImageEdit5.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repositoryItemImageEdit5.Name = "repositoryItemImageEdit5";
+            // 
+            // repositoryItemImageComboBox15
+            // 
+            this.repositoryItemImageComboBox15.AutoHeight = false;
+            this.repositoryItemImageComboBox15.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn6.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn6.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn6.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn6.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn6.Caption = "AT";
-            this.gridColumn6.ColumnEdit = this.repositoryItemImageComboBox10;
-            this.gridColumn6.FieldName = "IO";
-            this.gridColumn6.MaxWidth = 25;
-            this.gridColumn6.MinWidth = 25;
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 1;
-            this.gridColumn6.Width = 25;
-            // 
-            // repositoryItemImageComboBox10
-            // 
-            this.repositoryItemImageComboBox10.AutoHeight = false;
-            this.repositoryItemImageComboBox10.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox10.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "I", 0)});
-            this.repositoryItemImageComboBox10.Name = "repositoryItemImageComboBox10";
-            this.repositoryItemImageComboBox10.SmallImages = this.imageCollection1;
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn7.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn7.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn7.Caption = "Account Name";
-            this.gridColumn7.FieldName = "Name";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 2;
-            this.gridColumn7.Width = 21;
-            // 
-            // gridColumn11
-            // 
-            this.gridColumn11.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn11.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn11.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn11.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn11.Caption = "Reference";
-            this.gridColumn11.FieldName = "Reference";
-            this.gridColumn11.MaxWidth = 68;
-            this.gridColumn11.MinWidth = 68;
-            this.gridColumn11.Name = "gridColumn11";
-            this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 3;
-            this.gridColumn11.Width = 68;
-            // 
-            // colInAmount
-            // 
-            this.colInAmount.AppearanceCell.Options.UseTextOptions = true;
-            this.colInAmount.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.colInAmount.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colInAmount.AppearanceHeader.Options.UseFont = true;
-            this.colInAmount.AppearanceHeader.Options.UseTextOptions = true;
-            this.colInAmount.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colInAmount.Caption = "Amount";
-            this.colInAmount.DisplayFormat.FormatString = "c";
-            this.colInAmount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colInAmount.FieldName = "Amount";
-            this.colInAmount.Name = "colInAmount";
-            this.colInAmount.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", "{0:c2}")});
-            this.colInAmount.Visible = true;
-            this.colInAmount.VisibleIndex = 4;
-            this.colInAmount.Width = 31;
-            // 
-            // gridColumn13
-            // 
-            this.gridColumn13.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn13.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn13.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn13.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn13.Caption = "Description";
-            this.gridColumn13.FieldName = "Description";
-            this.gridColumn13.Name = "gridColumn13";
-            this.gridColumn13.Width = 23;
-            // 
-            // gridColumn14
-            // 
-            this.gridColumn14.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn14.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn14.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn14.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn14.Caption = "Item";
-            this.gridColumn14.FieldName = "Item";
-            this.gridColumn14.Name = "gridColumn14";
-            this.gridColumn14.Width = 48;
-            // 
-            // colInVariance
-            // 
-            this.colInVariance.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.colInVariance.AppearanceHeader.Options.UseFont = true;
-            this.colInVariance.AppearanceHeader.Options.UseTextOptions = true;
-            this.colInVariance.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colInVariance.Caption = "Variance";
-            this.colInVariance.DisplayFormat.FormatString = "c";
-            this.colInVariance.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colInVariance.FieldName = "Variance";
-            this.colInVariance.Name = "colInVariance";
-            this.colInVariance.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Variance", "{0:c2}")});
-            this.colInVariance.Visible = true;
-            this.colInVariance.VisibleIndex = 5;
-            // 
-            // repositoryItemImageEdit4
-            // 
-            this.repositoryItemImageEdit4.AutoHeight = false;
-            this.repositoryItemImageEdit4.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageEdit4.Name = "repositoryItemImageEdit4";
-            // 
-            // repositoryItemImageComboBox11
-            // 
-            this.repositoryItemImageComboBox11.AutoHeight = false;
-            this.repositoryItemImageComboBox11.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox11.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.repositoryItemImageComboBox11.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            this.repositoryItemImageComboBox15.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.repositoryItemImageComboBox15.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("No", false, 0),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Yes", true, 1)});
-            this.repositoryItemImageComboBox11.Name = "repositoryItemImageComboBox11";
+            this.repositoryItemImageComboBox15.Name = "repositoryItemImageComboBox15";
             // 
-            // repositoryItemImageComboBox12
+            // repositoryItemImageComboBox18
             // 
-            this.repositoryItemImageComboBox12.AutoHeight = false;
-            this.repositoryItemImageComboBox12.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repositoryItemImageComboBox18.AutoHeight = false;
+            this.repositoryItemImageComboBox18.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox12.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
-            this.repositoryItemImageComboBox12.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            this.repositoryItemImageComboBox18.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
+            this.repositoryItemImageComboBox18.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("No", 0, 0),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Yes", 1, 1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Admin", 2, 1)});
-            this.repositoryItemImageComboBox12.Name = "repositoryItemImageComboBox12";
+            this.repositoryItemImageComboBox18.Name = "repositoryItemImageComboBox18";
             // 
-            // repositoryItemImageComboBox13
+            // repositoryItemImageComboBox19
             // 
-            this.repositoryItemImageComboBox13.AutoHeight = false;
-            this.repositoryItemImageComboBox13.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repositoryItemImageComboBox19.AutoHeight = false;
+            this.repositoryItemImageComboBox19.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox13.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            this.repositoryItemImageComboBox19.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Microsoft SQL Server", 0, -1)});
-            this.repositoryItemImageComboBox13.Name = "repositoryItemImageComboBox13";
+            this.repositoryItemImageComboBox19.Name = "repositoryItemImageComboBox19";
             // 
-            // grdPATMoneyOut
+            // repositoryItemImageComboBox14
             // 
-            this.grdPATMoneyOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdPATMoneyOut.Location = new System.Drawing.Point(0, 0);
-            this.grdPATMoneyOut.MainView = this.grdPATMoneyOutView;
-            this.grdPATMoneyOut.Name = "grdPATMoneyOut";
-            this.grdPATMoneyOut.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemImageEdit5,
-            this.repositoryItemImageComboBox15,
-            this.repositoryItemImageComboBox18,
-            this.repositoryItemImageComboBox19,
-            this.repositoryItemImageComboBox14,
-            this.repositoryItemDateEdit2});
-            this.grdPATMoneyOut.Size = new System.Drawing.Size(190, 554);
-            this.grdPATMoneyOut.TabIndex = 12;
-            this.grdPATMoneyOut.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.grdPATMoneyOutView});
+            this.repositoryItemImageComboBox14.AutoHeight = false;
+            this.repositoryItemImageComboBox14.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox14.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "O", 1)});
+            this.repositoryItemImageComboBox14.Name = "repositoryItemImageComboBox14";
+            this.repositoryItemImageComboBox14.SmallImages = this.imageCollection1;
+            // 
+            // repositoryItemDateEdit2
+            // 
+            this.repositoryItemDateEdit2.AutoHeight = false;
+            this.repositoryItemDateEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit2.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit2.Name = "repositoryItemDateEdit2";
             // 
             // grdPATMoneyOutView
             // 
@@ -1165,15 +978,6 @@
             this.gridColumn16.VisibleIndex = 0;
             this.gridColumn16.Width = 64;
             // 
-            // repositoryItemDateEdit2
-            // 
-            this.repositoryItemDateEdit2.AutoHeight = false;
-            this.repositoryItemDateEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDateEdit2.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDateEdit2.Name = "repositoryItemDateEdit2";
-            // 
             // gridColumn17
             // 
             this.gridColumn17.AppearanceCell.Options.UseTextOptions = true;
@@ -1191,16 +995,6 @@
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 1;
             this.gridColumn17.Width = 25;
-            // 
-            // repositoryItemImageComboBox14
-            // 
-            this.repositoryItemImageComboBox14.AutoHeight = false;
-            this.repositoryItemImageComboBox14.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox14.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "O", 1)});
-            this.repositoryItemImageComboBox14.Name = "repositoryItemImageComboBox14";
-            this.repositoryItemImageComboBox14.SmallImages = this.imageCollection1;
             // 
             // gridColumn18
             // 
@@ -1271,50 +1065,269 @@
             this.gridColumn22.Name = "gridColumn22";
             this.gridColumn22.Width = 48;
             // 
-            // repositoryItemImageEdit5
+            // grdPATMoneyOut
             // 
-            this.repositoryItemImageEdit5.AutoHeight = false;
-            this.repositoryItemImageEdit5.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.grdPATMoneyOut.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdPATMoneyOut.Location = new System.Drawing.Point(0, 0);
+            this.grdPATMoneyOut.MainView = this.grdPATMoneyOutView;
+            this.grdPATMoneyOut.Name = "grdPATMoneyOut";
+            this.grdPATMoneyOut.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageEdit5,
+            this.repositoryItemImageComboBox15,
+            this.repositoryItemImageComboBox18,
+            this.repositoryItemImageComboBox19,
+            this.repositoryItemImageComboBox14,
+            this.repositoryItemDateEdit2});
+            this.grdPATMoneyOut.Size = new System.Drawing.Size(190, 554);
+            this.grdPATMoneyOut.TabIndex = 12;
+            this.grdPATMoneyOut.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdPATMoneyOutView});
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn8.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn8.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn8.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn8.Caption = "Date";
+            this.gridColumn8.FieldName = "DT";
+            this.gridColumn8.MaxWidth = 64;
+            this.gridColumn8.MinWidth = 64;
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Width = 64;
+            // 
+            // grdPATMoneyIn
+            // 
+            this.grdPATMoneyIn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdPATMoneyIn.Location = new System.Drawing.Point(0, 0);
+            this.grdPATMoneyIn.MainView = this.grdPATMoneyInView;
+            this.grdPATMoneyIn.Name = "grdPATMoneyIn";
+            this.grdPATMoneyIn.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageEdit4,
+            this.repositoryItemImageComboBox11,
+            this.repositoryItemImageComboBox12,
+            this.repositoryItemImageComboBox13,
+            this.repositoryItemImageComboBox10,
+            this.repositoryItemDateEdit1});
+            this.grdPATMoneyIn.Size = new System.Drawing.Size(269, 554);
+            this.grdPATMoneyIn.TabIndex = 12;
+            this.grdPATMoneyIn.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdPATMoneyInView});
+            // 
+            // grdPATMoneyInView
+            // 
+            this.grdPATMoneyInView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.grdPATMoneyInView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn7,
+            this.gridColumn11,
+            this.gridColumn12,
+            this.colInAmount,
+            this.gridColumn13,
+            this.gridColumn14,
+            this.colInVariance});
+            this.grdPATMoneyInView.GridControl = this.grdPATMoneyIn;
+            this.grdPATMoneyInView.Name = "grdPATMoneyInView";
+            this.grdPATMoneyInView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.grdPATMoneyInView.OptionsBehavior.Editable = false;
+            this.grdPATMoneyInView.OptionsFind.AlwaysVisible = true;
+            this.grdPATMoneyInView.OptionsView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
+            this.grdPATMoneyInView.OptionsView.ShowFooter = true;
+            this.grdPATMoneyInView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn6, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.grdPATMoneyInView.EndGrouping += new System.EventHandler(this.grdPATMoneyInView_EndGrouping);
+            this.grdPATMoneyInView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.grdPATMoneyInView_FocusedRowChanged);
+            this.grdPATMoneyInView.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grdPATMoneyInView_KeyPress);
+            this.grdPATMoneyInView.DoubleClick += new System.EventHandler(this.grdPATMoneyInView_DoubleClick);
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn5.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn5.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn5.Caption = "ID";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.OptionsColumn.ShowInCustomizationForm = false;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn6.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn6.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn6.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn6.Caption = "Date";
+            this.gridColumn6.ColumnEdit = this.repositoryItemDateEdit1;
+            this.gridColumn6.FieldName = "DT";
+            this.gridColumn6.MaxWidth = 64;
+            this.gridColumn6.MinWidth = 64;
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 0;
+            this.gridColumn6.Width = 64;
+            // 
+            // repositoryItemDateEdit1
+            // 
+            this.repositoryItemDateEdit1.AutoHeight = false;
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageEdit5.Name = "repositoryItemImageEdit5";
-            // 
-            // repositoryItemImageComboBox15
-            // 
-            this.repositoryItemImageComboBox15.AutoHeight = false;
-            this.repositoryItemImageComboBox15.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox15.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.repositoryItemImageComboBox15.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn7.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn7.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn7.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn7.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn7.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn7.Caption = "AT";
+            this.gridColumn7.ColumnEdit = this.repositoryItemImageComboBox10;
+            this.gridColumn7.FieldName = "IO";
+            this.gridColumn7.MaxWidth = 25;
+            this.gridColumn7.MinWidth = 25;
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 1;
+            this.gridColumn7.Width = 25;
+            // 
+            // repositoryItemImageComboBox10
+            // 
+            this.repositoryItemImageComboBox10.AutoHeight = false;
+            this.repositoryItemImageComboBox10.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox10.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "I", 0)});
+            this.repositoryItemImageComboBox10.Name = "repositoryItemImageComboBox10";
+            this.repositoryItemImageComboBox10.SmallImages = this.imageCollection1;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn11.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn11.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn11.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn11.Caption = "Account Name";
+            this.gridColumn11.FieldName = "Name";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 2;
+            this.gridColumn11.Width = 21;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn12.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn12.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn12.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn12.Caption = "Reference";
+            this.gridColumn12.FieldName = "Reference";
+            this.gridColumn12.MaxWidth = 68;
+            this.gridColumn12.MinWidth = 68;
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 3;
+            this.gridColumn12.Width = 68;
+            // 
+            // colInAmount
+            // 
+            this.colInAmount.AppearanceCell.Options.UseTextOptions = true;
+            this.colInAmount.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colInAmount.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colInAmount.AppearanceHeader.Options.UseFont = true;
+            this.colInAmount.AppearanceHeader.Options.UseTextOptions = true;
+            this.colInAmount.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colInAmount.Caption = "Amount";
+            this.colInAmount.DisplayFormat.FormatString = "c";
+            this.colInAmount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colInAmount.FieldName = "Amount";
+            this.colInAmount.Name = "colInAmount";
+            this.colInAmount.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", "{0:c2}")});
+            this.colInAmount.Visible = true;
+            this.colInAmount.VisibleIndex = 4;
+            this.colInAmount.Width = 31;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn13.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn13.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn13.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn13.Caption = "Description";
+            this.gridColumn13.FieldName = "Description";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Width = 23;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.AppearanceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn14.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn14.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn14.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn14.Caption = "Property";
+            this.gridColumn14.FieldName = "Property";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Width = 48;
+            // 
+            // colInVariance
+            // 
+            this.colInVariance.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colInVariance.AppearanceHeader.Options.UseFont = true;
+            this.colInVariance.AppearanceHeader.Options.UseTextOptions = true;
+            this.colInVariance.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colInVariance.Caption = "Variance";
+            this.colInVariance.DisplayFormat.FormatString = "c";
+            this.colInVariance.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colInVariance.FieldName = "Variance";
+            this.colInVariance.Name = "colInVariance";
+            this.colInVariance.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Variance", "{0:c2}")});
+            this.colInVariance.Visible = true;
+            this.colInVariance.VisibleIndex = 5;
+            // 
+            // repositoryItemImageEdit4
+            // 
+            this.repositoryItemImageEdit4.AutoHeight = false;
+            this.repositoryItemImageEdit4.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageEdit4.Name = "repositoryItemImageEdit4";
+            // 
+            // repositoryItemImageComboBox11
+            // 
+            this.repositoryItemImageComboBox11.AutoHeight = false;
+            this.repositoryItemImageComboBox11.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox11.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.repositoryItemImageComboBox11.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("No", false, 0),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Yes", true, 1)});
-            this.repositoryItemImageComboBox15.Name = "repositoryItemImageComboBox15";
+            this.repositoryItemImageComboBox11.Name = "repositoryItemImageComboBox11";
             // 
-            // repositoryItemImageComboBox18
+            // repositoryItemImageComboBox12
             // 
-            this.repositoryItemImageComboBox18.AutoHeight = false;
-            this.repositoryItemImageComboBox18.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repositoryItemImageComboBox12.AutoHeight = false;
+            this.repositoryItemImageComboBox12.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox18.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
-            this.repositoryItemImageComboBox18.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            this.repositoryItemImageComboBox12.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
+            this.repositoryItemImageComboBox12.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("No", 0, 0),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Yes", 1, 1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Admin", 2, 1)});
-            this.repositoryItemImageComboBox18.Name = "repositoryItemImageComboBox18";
+            this.repositoryItemImageComboBox12.Name = "repositoryItemImageComboBox12";
             // 
-            // repositoryItemImageComboBox19
+            // repositoryItemImageComboBox13
             // 
-            this.repositoryItemImageComboBox19.AutoHeight = false;
-            this.repositoryItemImageComboBox19.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repositoryItemImageComboBox13.AutoHeight = false;
+            this.repositoryItemImageComboBox13.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox19.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            this.repositoryItemImageComboBox13.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, -1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Microsoft SQL Server", 0, -1)});
-            this.repositoryItemImageComboBox19.Name = "repositoryItemImageComboBox19";
-            // 
-            // timLoad
-            // 
-            this.timLoad.Interval = 10;
-            this.timLoad.Tick += new System.EventHandler(this.timLoad_Tick);
+            this.repositoryItemImageComboBox13.Name = "repositoryItemImageComboBox13";
             // 
             // frmItem
             // 
@@ -1366,6 +1379,15 @@
             this.groupControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlRight)).EndInit();
             this.pnlRight.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPATMoneyOutView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPATMoneyOut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPATMoneyIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdPATMoneyInView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
@@ -1375,15 +1397,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdPATMoneyOut)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdPATMoneyOutView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox19)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1445,22 +1458,12 @@
         private DevExpress.XtraNavBar.NavBarItem btnAddTransactionIn;
         private DevExpress.XtraNavBar.NavBarItem EditTransactionIn;
         private DevExpress.XtraNavBar.NavBarItem btnRemoveTransactionIn;
-        private DevExpress.XtraGrid.GridControl grdPATMoneyIn;
-        private DevExpress.XtraGrid.Views.Grid.GridView grdPATMoneyInView;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
-        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox10;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
-        private DevExpress.XtraGrid.Columns.GridColumn colInAmount;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit4;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox11;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox12;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox13;
+        private DevExpress.XtraNavBar.NavBarGroup navBarGroup5;
+        private DevExpress.XtraNavBar.NavBarItem btnAddTransactionOut;
+        private DevExpress.XtraNavBar.NavBarItem btnEditTransactionOut;
+        private DevExpress.XtraNavBar.NavBarItem btnRemoveTransactionOut;
+        private DevExpress.XtraEditors.SimpleButton btnExpandAll;
+        private DevExpress.XtraEditors.SimpleButton btnCollapseAll;
         private DevExpress.XtraGrid.GridControl grdPATMoneyOut;
         private DevExpress.XtraGrid.Views.Grid.GridView grdPATMoneyOutView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
@@ -1477,12 +1480,23 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox15;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox18;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox19;
-        private DevExpress.XtraNavBar.NavBarGroup navBarGroup5;
-        private DevExpress.XtraNavBar.NavBarItem btnAddTransactionOut;
-        private DevExpress.XtraNavBar.NavBarItem btnEditTransactionOut;
-        private DevExpress.XtraNavBar.NavBarItem btnRemoveTransactionOut;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.GridControl grdPATMoneyIn;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdPATMoneyInView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn colInAmount;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private DevExpress.XtraGrid.Columns.GridColumn colInVariance;
-        private DevExpress.XtraEditors.SimpleButton btnExpandAll;
-        private DevExpress.XtraEditors.SimpleButton btnCollapseAll;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit4;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox11;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox12;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox13;
     }
 }

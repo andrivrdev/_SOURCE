@@ -53,7 +53,7 @@ namespace EasyBooks.FORMS
             {
                 frmAccountDetails MyForm;
 
-                MyForm = new frmAccountDetails(1, Convert.ToInt32(grdAccountView.GetFocusedRowCellValue("ID").ToString()));
+                MyForm = new frmAccountDetails(1, Convert.ToInt64(grdAccountView.GetFocusedRowCellValue("ID").ToString()));
 
                 MyForm.edtName.Text = grdAccountView.GetFocusedRowCellValue("Name").ToString();
 
@@ -68,7 +68,7 @@ namespace EasyBooks.FORMS
 
                 if (MyForm.ShowDialog() == DialogResult.OK)
                 {
-                    int xID = Convert.ToInt32(grdAccountView.GetFocusedRowCellValue("ID").ToString());
+                    Int64 xID = Convert.ToInt64(grdAccountView.GetFocusedRowCellValue("ID").ToString());
 
                     LoadAccount();
 
@@ -115,7 +115,7 @@ namespace EasyBooks.FORMS
             {
                 if (XtraMessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    clsHelper.DeleteRecByID("tblAccount", Convert.ToInt32(grdAccountView.GetFocusedRowCellValue("ID").ToString()));
+                    clsHelper.DeleteRecByID("tblAccount", Convert.ToInt64(grdAccountView.GetFocusedRowCellValue("ID").ToString()));
 
                     LoadAccount();
                 }

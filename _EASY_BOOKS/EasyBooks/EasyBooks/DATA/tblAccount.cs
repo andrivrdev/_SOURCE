@@ -3,7 +3,7 @@ using EasyBooks.CLASSES;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,8 +29,8 @@ namespace EasyBooks.DATA
                 "FROM" + Environment.NewLine +
                 "  tblAccount";
 
-                SqlCommand MyCommand = new SqlCommand(SQL, clsHelper.zConn);
-                SqlDataReader MyReader = MyCommand.ExecuteReader();
+                SQLiteCommand MyCommand = new SQLiteCommand(SQL, clsSQLiteDB.zConn);
+                SQLiteDataReader MyReader = MyCommand.ExecuteReader();
 
                 dtAccount = new DataTable();
                 dtAccount.Load(MyReader);

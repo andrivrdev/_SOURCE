@@ -16,9 +16,9 @@ namespace EasyBooks.FORMS
     public partial class frmAccountDetails : DevExpress.XtraEditors.XtraForm
     {
         int zMyMode;
-        int zID;
+        Int64 zID;
 
-        public frmAccountDetails(int xMode, int xID)
+        public frmAccountDetails(int xMode, Int64 xID)
         {
             InitializeComponent();
 
@@ -92,7 +92,7 @@ namespace EasyBooks.FORMS
                     IO = "O";
                 }
 
-                var rows = xtblAccount.dtAccount.AsEnumerable().Where(r => (r.Field<string>("Name") == edtName.Text) && (r.Field<string>("IO") == IO) && (r.Field<int>("ID") != zID));
+                var rows = xtblAccount.dtAccount.AsEnumerable().Where(r => (r.Field<string>("Name") == edtName.Text) && (r.Field<string>("IO") == IO) && (r.Field<Int64>("ID") != zID));
 
                 if (rows.Count() == 1)
                 {

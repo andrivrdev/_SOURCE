@@ -16,10 +16,10 @@ namespace EasyBooks.FORMS
     public partial class frmItemAccountDetails : DevExpress.XtraEditors.XtraForm
     {
         int zMyMode;
-        int zAccountID;
-        int zItemID;
+        Int64 zAccountID;
+        Int64 zItemID;
 
-        public frmItemAccountDetails(int xMode, int xAccountID, int xItemID)
+        public frmItemAccountDetails(int xMode, Int64 xAccountID, Int64 xItemID)
         {
             InitializeComponent();
 
@@ -76,10 +76,10 @@ namespace EasyBooks.FORMS
             else
             {
                 //Check if record exist
-                var rows = xtblAccount.dtItemAccountMoneyIn.AsEnumerable().Where(r => (r.Field<string>("Item") == edtItem.Text) && (r.Field<string>("Name").ToString() == edtAccount.Text) && (r.Field<int>("ID").ToString() != zAccountID.ToString()));
+                var rows = xtblAccount.dtItemAccountMoneyIn.AsEnumerable().Where(r => (r.Field<string>("Item") == edtItem.Text) && (r.Field<string>("Name").ToString() == edtAccount.Text) && (r.Field<Int64>("ID").ToString() != zAccountID.ToString()));
                 if (edtAccountType.Text == "Money Out")
                 {
-                    rows = xtblAccount.dtItemAccountMoneyOut.AsEnumerable().Where(r => (r.Field<string>("Item") == edtItem.Text) && (r.Field<string>("Name").ToString() == edtAccount.Text) && (r.Field<int>("ID").ToString() != zAccountID.ToString()));
+                    rows = xtblAccount.dtItemAccountMoneyOut.AsEnumerable().Where(r => (r.Field<string>("Item") == edtItem.Text) && (r.Field<string>("Name").ToString() == edtAccount.Text) && (r.Field<Int64>("ID").ToString() != zAccountID.ToString()));
                 }
 
                 if (rows.Count() == 1)
