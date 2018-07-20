@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+}
+
+<style>
+    html, body {
+        overflow-x: hidden;
+    }
+</style>
+
+<!-- TOP -->
+<div id="id-img-top"
+     style="z-index:1; background: url('@Url.Content("~/Images/Home/Top.jpg")') no-repeat center; background-size: cover;"
+     data-paroller-factor="0.5"
+     data-paroller-factor-xs="0.2">
+
+    <div class="text-center">
+
+        <div id="id-scroll-down-arrow" class="bounce" style="position: relative; font-size:80px">
+            <div class="glyph-icon acf-es-glyph-icon acf-es-cloud-computing"></div>
+        </div>
+    </div>
+</div>
+
+<!-- MID -->
+<!-- Transparent Background -->
+<div id="id-img-mid"
+     style="z-index:2; position:absolute;  background: url('@Url.Content("~/Images/Home/Bot.jpg")') no-repeat center; background-size: cover;"
+     data-paroller-factor="0.5"
+     data-paroller-factor-xs="0.2">
+</div>
+
+<!-- Text Over Transparent Background 
+<div id="id-txt-mid" class="text-center"
+     style="z-index:3; position:absolute; min-height:200px; max-height:200px;">
+
+    <div id="id-txt-mid-h1">Welcome</div>
+</div>-->
+
+
+
+<p style="padding-bottom:15000px"></p>
+
+
+<script>
+    setWindowSize();
+
+    window.addEventListener('resize', setWindowSize);
+    window.addEventListener('scroll', DoWork);
+
+    function DoWork() {
+      /*  document.getElementById("id-txt-mid-h1").innerText = window.scrollY.toString();*/
+    }
+
+    function setWindowSize() {
+        /* TOP */
+        document.getElementById("id-scroll-down-arrow").style.top = (Math.round(window.innerHeight / 2) - 50).toString() + "px";
+        document.getElementById("id-img-top").style.minHeight = (window.innerHeight).toString() + "px";
+        document.getElementById("id-img-top").style.maxHeight = (window.innerHeight).toString() + "px";
+
+        /* MID */
+
+        document.getElementById("id-img-mid").style.top = (window.innerHeight).toString() + "px";
+        document.getElementById("id-img-mid").style.minHeight = (window.innerHeight).toString() + "px";
+        document.getElementById("id-img-mid").style.maxHeight = (window.innerHeight).toString() + "px";
+
+/*        document.getElementById("id-img-mid").style.minHeight = (Math.round(window.innerHeight / 2)).toString() + "px";
+        document.getElementById("id-img-mid").style.maxHeight = (Math.round(window.innerHeight / 2)).toString() + "px";*/
+
+        document.getElementById("id-img-mid").style.minWidth = (window.innerWidth).toString() + "px";
+        document.getElementById("id-img-mid").style.maxWidth = (window.innerWidth).toString() + "px";
+
+        /*
+        document.getElementById("id-txt-mid").style.top = (window.innerHeight).toString() + "px";
+        document.getElementById("id-txt-mid").style.minWidth = (window.innerWidth).toString() + "px";
+        document.getElementById("id-txt-mid").style.maxWidth = (window.innerWidth).toString() + "px";
+        */
+    }
+
+    $('#id-img-top').paroller();
+    $('#id-img-mid').paroller();
+</script>

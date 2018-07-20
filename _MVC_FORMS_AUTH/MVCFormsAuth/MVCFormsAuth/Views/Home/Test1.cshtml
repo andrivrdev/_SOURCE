@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+}
+
+<style>
+    html, body {
+        overflow-x: hidden;
+    }
+</style>
+<!-- TOP -->
+<div id="id-img-top"
+     style="z-index:-10; background: url('@Url.Content("~/Images/Home/Top.jpg")') no-repeat center; background-size: cover;"
+     data-paroller-factor="0.5">
+
+    <div class="text-center">
+
+        <div id="id-scroll-down-arrow" class="bounce" style="position: relative; font-size:80px">
+            <div class="glyph-icon acf-es-glyph-icon acf-es-cloud-computing"></div>
+        </div>
+    </div>
+</div>
+
+<!-- MID -->
+<div id-"bbb" class="jumbotron border-0" style="margin-bottom:0">
+    <h1 id="aaa" class="text-center">WELCOME</h1>
+</div>
+
+<!-- BOT -->
+<div id="id-img-bot"
+     style="z-index:-10; background: url('@Url.Content("~/Images/Home/Bot.jpg")') no-repeat center; background-size: cover;"
+     data-paroller-factor="0.5">
+
+    <div class="text-center">
+    </div>
+</div>
+
+
+
+<script>
+    function DoNothing() {
+    };
+
+    function InitOnce() {
+        InitOnce = DoNothing;
+
+        window.addEventListener('resize', setWindowSize);
+        setWindowSize();
+        $('#id-img-top').paroller();
+        $('#id-img-bot').paroller();
+    }
+
+
+    window.addEventListener('scroll', DoWork);
+
+    function DoWork() {
+        document.getElementById("aaa").innerText = (window.scrollY.toString()) + " | " +
+            document.getElementById("id-img-top").style.maxHeight.toString() + " | " +
+            document.getElementById("id-img-bot").style.maxHeight.toString() + " | "
+            ;
+
+        if (window.scrollY <= 800) {
+            document.getElementById("id-img-bot").style.filter = "";
+        }
+        else {
+            if ((window.scrollY > 1200) && (window.scrollY <= 1100)) {
+                document.getElementById("id-img-bot").style.filter = "blur(1px)";
+            }
+            else {
+                if ((window.scrollY > 1400) && (window.scrollY <= 1400)) {
+                    document.getElementById("id-img-bot").style.filter = "blur(2px)";
+                }
+                else {
+                    if ((window.scrollY > 1400) && (window.scrollY <= 1700)) {
+                        document.getElementById("id-img-bot").style.filter = "blur(3px)";
+                    }
+                    else {
+                        document.getElementById("id-img-bot").style.filter = "blur(4px)";
+                    }
+
+                }
+            }
+        }
+
+    }
+
+    function setWindowSize() {
+
+        var xHeight = window.innerHeight;
+        var xHeightCenter = Math.round(xHeight / 2);
+        var xVSection = Math.round(xHeight / 5);
+        var xVSectionCenter = Math.round(xVSection / 2);
+        var xHeightPlusSection = xHeight + xVSection;
+        var xVCenter = Math.round(xHeightPlusSection / 2);
+
+        var xWidth = window.innerWidth;
+        var xHCenter = Math.round(xWidth / 2);
+
+        /* TOP */
+        document.getElementById("id-scroll-down-arrow").style.top = (xHeightCenter - 90).toString() + "px";
+        document.getElementById("id-img-top").style.minHeight = xHeightPlusSection.toString() + "px";
+        document.getElementById("id-img-top").style.maxHeight = xHeightPlusSection.toString() + "px";
+
+        /* MID */
+        /*document.getElementById("id-txt-mid").style.minHeight = xVSection.toString() + "px";
+        document.getElementById("id-txt-mid").style.maxHeight = xVSection.toString() + "px";
+        document.getElementById("id-txt-mid").style.minWidth = xWidth.toString() + "px";
+        document.getElementById("id-txt-mid").style.maxWidth = xWidth.toString() + "px";
+        /*
+            document.getElementById("id-txt-mid-text").style.minHeight = xVSection.toString() + "px";
+            document.getElementById("id-txt-mid-text").style.maxHeight = xVSection.toString() + "px";
+            document.getElementById("id-txt-mid-text").style.minWidth = xWidth.toString() + "px";
+            document.getElementById("id-txt-mid-text").style.maxWidth = xWidth.toString() + "px";
+            document.getElementById("id-txt-mid-text").style.marginTop = Math.round(xVSection / 2 + 10).toString() + "px";*/
+
+
+
+        /* BOT */
+        document.getElementById("id-img-bot").style.minHeight = Math.round(xHeightPlusSection * 2).toString() + "px";
+        document.getElementById("id-img-bot").style.maxHeight = Math.round(xHeightPlusSection * 2).toString() + "px";
+
+        $(window).scrollTop($(window).scrollTop() + 1);
+
+
+    }
+
+    InitOnce();
+</script>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>@ViewBag.Title</title>
+
+    @Html.DevExpress().GetStyleSheets(
+                            new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+                            new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+                            new StyleSheet { ExtensionSuite = ExtensionSuite.GridView }
+                        )
+    @Html.DevExpress().GetScripts(
+                            new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+                            new Script { ExtensionSuite = ExtensionSuite.Editors },
+                            new Script { ExtensionSuite = ExtensionSuite.GridView }
+                        )
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/Layout/AllCustomFonts.css" rel="stylesheet" />
+    <link href="~/Content/Layout/Bounce.css" rel="stylesheet" />
+    <script src="~/Scripts/Layout/jquery.paroller.min.js"></script>
+
+    <script src="~/Scripts/umd/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+
+<body class="loading">
+    @RenderBody()
+
+</body>
+</html>
