@@ -1,0 +1,10 @@
+C:\_SOURCE\_ASPX_WEB_SERVICE\WebServicesDemo\ConsumingApp\obj\Debug\ConsumingApp.csprojResolveAssemblyReference.cache
+C:\_SOURCE\_ASPX_WEB_SERVICE\WebServicesDemo\ConsumingApp\obj\Debug\ConsumingApp.Form1.resources
+C:\_SOURCE\_ASPX_WEB_SERVICE\WebServicesDemo\ConsumingApp\obj\Debug\ConsumingApp.Properties.Resources.resources
+C:\_SOURCE\_ASPX_WEB_SERVICE\WebServicesDemo\ConsumingApp\obj\Debug\ConsumingApp.csproj.GenerateResource.Cache
+C:\_SOURCE\_ASPX_WEB_SERVICE\WebServicesDemo\ConsumingApp\obj\Debug\ConsumingApp.csproj.CoreCompileInputs.cache
+C:\_SOURCE\_ASPX_WEB_SERVICE\WebServicesDemo\ConsumingApp\bin\Debug\ConsumingApp.exe.config
+C:\_SOURCE\_ASPX_WEB_SERVICE\WebServicesDemo\ConsumingApp\bin\Debug\ConsumingApp.exe
+C:\_SOURCE\_ASPX_WEB_SERVICE\WebServicesDemo\ConsumingApp\bin\Debug\ConsumingApp.pdb
+C:\_SOURCE\_ASPX_WEB_SERVICE\WebServicesDemo\ConsumingApp\obj\Debug\ConsumingApp.exe
+C:\_SOURCE\_ASPX_WEB_SERVICE\WebServicesDemo\ConsumingApp\obj\Debug\ConsumingApp.pdb
