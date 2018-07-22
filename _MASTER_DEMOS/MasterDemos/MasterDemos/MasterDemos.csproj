@@ -142,6 +142,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\GreensockController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ScrollMagicController.cs" />
+    <Compile Include="Controllers\TestingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -157,6 +159,12 @@
     <Content Include="Custom\bootstrap-submenu.css" />
     <Content Include="Custom\bootstrap-submenu.js" />
     <Content Include="Custom\bootstrap-sidemenu.css" />
+    <Content Include="TrainingResourcesBySteps\ScrollMagic_101_001\css\main.css" />
+    <Content Include="TrainingResourcesBySteps\ScrollMagic_101_001\img\img_project01-icon.svg" />
+    <Content Include="TrainingResourcesBySteps\ScrollMagic_101_001\img\img_project02-icon.svg" />
+    <Content Include="TrainingResourcesBySteps\ScrollMagic_101_001\img\img_project03-icon.svg" />
+    <Content Include="TrainingResourcesBySteps\ScrollMagic_101_001\img\img_scrollmagic-logo.png" />
+    <Content Include="TrainingResourcesBySteps\ScrollMagic_101_001\main.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -185,6 +193,8 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Vendor\debug.addIndicators.min.js" />
+    <Content Include="Vendor\ScrollMagic.min.js" />
     <Content Include="Websites\Greensock\Getting_Started_Quickly_Main\01_basic_tween.html" />
     <Content Include="Websites\Greensock\Getting_Started_Quickly_Main\02_easing.html" />
     <Content Include="Websites\Greensock\Getting_Started_Quickly_Main\03_delay.html" />
@@ -345,10 +355,13 @@
     <Content Include="Websites\Greensock\Official_Documentation\js\build\bundle.css.map" />
     <Content Include="Websites\Greensock\Official_Documentation\js\build\fee66e712a8a08eef5805a46892932ad.woff" />
     <Content Include="Views\Greensock\Getting_Started_Quickly_Official_Documentation.cshtml" />
+    <Content Include="Views\Testing\ScrollMagic_101_001_Controller_Scene_and_triggerElement.cshtml" />
+    <Content Include="Views\ScrollMagic\TrainingBySteps_ScrollMagic_101_001.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Testing\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
