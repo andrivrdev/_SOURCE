@@ -1,0 +1,420 @@
+﻿@{
+    ViewBag.Title = "Getting Started Quickly Main";
+}
+<div class="container-fluid" style="padding:0px">
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header text-center">
+                <h3 style="margin-top:10px">Greensock</h3>
+            </div>
+            <hr style="margin:0px" />
+            <ul class="list-unstyled components" style="padding:0px">
+                <div class="text-center">
+                    <h5 style="margin:10px"><small>Getting Started Quickly</small></h5>
+                </div>
+                <hr style="margin:0px; margin-bottom:20px" />
+
+                <!--Hidden - It is for later use-->
+                <div class="invisible" style="max-height:0px">
+                    <li class="active">
+
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle-sidebar dropdown-toggle">Home</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu" style="padding:0px">
+                            <li>
+                                <a href="#">Home 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+                <div style="font-size:smaller">
+                    <li>
+                        <a href=@Url.Action("Getting_Started_Quickly_Main","Greensock")>Main</a>
+                        <a href=@Url.Action("Getting_Started_Quickly_Official_Documentation","Greensock")>Official Documentation</a>
+                    </li>
+                </div>
+                <hr style="margin:0px; margin-top:20px" />
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <div class="jumbotron" style="padding-bottom:20px;padding-left:0px;padding-right:0px;padding-top:0px">
+                <button type="button" id="sidebarCollapse" class="navbar-btn" style="background: #e9ecef;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" style="background-color:#e9ecef; border-color:#e9ecef" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+
+                <div class="text-center">
+
+                    <div class="text-center">
+                        <h1 class="text-center">Getting Started Quickly Main</h1>
+                    </div>
+                    <p class="lead">Taken from the Greensock website for learning</p>
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- VIDEO -->
+
+                <div class="row">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-8">
+                        <div align="center" class="embed-responsive embed-responsive-16by9">
+                            <video controls class="embed-responsive-item">
+                                <source src="~/Videos/Get%20Started%20Quickly%20with%20GSAP.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <br />
+
+                <!-- DEMOS -->
+
+                <div id="get-my-width" class="row">
+                </div>
+
+                <!--01-->
+                <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+
+                <div class="text-center">
+                    <p style="padding:0px; font-size:10px">01 - GreenSock: Basic Tween</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A01()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A01">
+                            <embed id="set-my-width1" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/01_basic_tween.html")" />
+                        </div>
+                    </div>
+                    <br />
+
+                    <!--02-->
+                    <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+                    <div class="text-center"></div>
+                    <p style="padding:0px; font-size:10px">02 - GreenSock: Easing</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A02()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A02">
+                            <embed id="set-my-width2" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/02_easing.html")" />
+                        </div>
+                    </div>
+
+                    <!--03-->
+                    <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+                    <div class="text-center"></div>
+                    <p style="padding:0px; font-size:10px">03 - GreenSock: Delay</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A03()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A03">
+                            <embed id="set-my-width3" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/03_delay.html")" />
+                        </div>
+                    </div>
+
+                    <!--04-->
+                    <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+                    <div class="text-center"></div>
+                    <p style="padding:0px; font-size:10px">04 - GreenSock: Animate Multiple Properties</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A04()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A04">
+                            <embed id="set-my-width4" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/04_animate_multiple_properties.html")" />
+                        </div>
+                    </div>
+
+                    <!--05-->
+                    <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+                    <div class="text-center"></div>
+                    <p style="padding:0px; font-size:10px">05 - GreenSock: From Tween</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A05()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A05">
+                            <embed id="set-my-width5" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/05_from_tween.html")" />
+                        </div>
+                    </div>
+
+                    <!--06-->
+                    <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+                    <div class="text-center"></div>
+                    <p style="padding:0px; font-size:10px">06 - GreenSock: Relative Tween</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A06()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A06">
+                            <embed id="set-my-width6" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/06_relative_tween.html")" />
+                        </div>
+                    </div>
+
+                    <!--07-->
+                    <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+                    <div class="text-center"></div>
+                    <p style="padding:0px; font-size:10px">07 - GreenSock: Animate Multiple Targets</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A07()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A07">
+                            <embed id="set-my-width7" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/07_animate_multiple_targets.html")" />
+                        </div>
+                    </div>
+
+                    <!--08-->
+                    <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+                    <div class="text-center"></div>
+                    <p style="padding:0px; font-size:10px">08- GreenSock: jQuery with GSAP JS</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A08()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A08">
+                            <embed id="set-my-width8" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/08_jQuery_with_GSAP_JS.html")" />
+                        </div>
+                    </div>
+
+                    <!--09-->
+                    <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+                    <div class="text-center"></div>
+                    <p style="padding:0px; font-size:10px">09 - GreenSock: Event Callbacks</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A09()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A09">
+                            <embed id="set-my-width9" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/09_event_callbacks.html")" />
+                        </div>
+                    </div>
+
+                    <!--10-->
+                    <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+                    <div class="text-center"></div>
+                    <p style="padding:0px; font-size:10px">10 - GreenSock: Tween Reference</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A10()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A10">
+                            <embed id="set-my-width10" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/10_tween_reference.html")" />
+                        </div>
+                    </div>
+
+                    <!--11-->
+                    <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+                    <div class="text-center"></div>
+                    <p style="padding:0px; font-size:10px">11 - GreenSock: Control Playback</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A11()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A11">
+                            <embed id="set-my-width11" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/11_control_playback.html")" />
+                        </div>
+                    </div>
+
+                    <!--12-->
+                    <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+                    <div class="text-center"></div>
+                    <p style="padding:0px; font-size:10px">12 - GreenSock: Repeat</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A12()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A12">
+                            <embed id="set-my-width12" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/12_repeat.html")" />
+                        </div>
+                    </div>
+
+                    <!--13-->
+                    <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+                    <div class="text-center"></div>
+                    <p style="padding:0px; font-size:10px">13 - GreenSock: Stagger</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A13()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A13">
+                            <embed id="set-my-width13" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/13_stagger.html")" />
+                        </div>
+                    </div>
+
+                    <!--14-->
+                    <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+                    <div class="text-center"></div>
+                    <p style="padding:0px; font-size:10px">14 - GreenSock: TimelineLite Syntax</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A14()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A14">
+                            <embed id="set-my-width14" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/14_timelinelite_syntax.html")" />
+                        </div>
+                    </div>
+
+                    <!--15-->
+                    <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+                    <div class="text-center"></div>
+                    <p style="padding:0px; font-size:10px">15 - GreenSock: TimelineLite Control</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A15()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A15">
+                            <embed id="set-my-width15" style="height:200px" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/15_timelinelite_control.html")" />
+                        </div>
+                    </div>
+
+                    <!--16-->
+                    <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+                    <div class="text-center"></div>
+                    <p style="padding:0px; font-size:10px">16 - GreenSock: TimelineLite Labels</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A16()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A16">
+                            <embed id="set-my-width16" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/16_timelinelite_labels.html")" />
+                        </div>
+                    </div>
+
+                    <!--17-->
+                    <hr style="border-top: 1px dashed #373737; width:100%; margin-bottom:4px" />
+                    <div class="text-center"></div>
+                    <p style="padding:0px; font-size:10px">17 - GreenSock: TimelineMax In Action</p>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick=A17()>Reload</button>
+                    <div class="row">
+                        <div id="clear-A17">
+                            <embed id="set-my-width17" style="height:240px" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/17_timelinemax_in_action.html")" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $(this).toggleClass('active');
+        });
+
+        FixWidth();
+    });
+
+    $(window).resize(function () {
+        FixWidth();
+    });
+
+    function FixWidth() {
+        document.getElementById("set-my-width1").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+        document.getElementById("set-my-width2").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+        document.getElementById("set-my-width3").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+        document.getElementById("set-my-width4").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+        document.getElementById("set-my-width5").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+        document.getElementById("set-my-width6").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+        document.getElementById("set-my-width7").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+        document.getElementById("set-my-width8").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+        document.getElementById("set-my-width9").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+        document.getElementById("set-my-width10").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+        document.getElementById("set-my-width11").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+        document.getElementById("set-my-width12").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+        document.getElementById("set-my-width13").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+        document.getElementById("set-my-width14").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+        document.getElementById("set-my-width15").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+        document.getElementById("set-my-width16").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+        document.getElementById("set-my-width17").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+    };
+
+    function A01() {
+        document.getElementById("clear-A01").innerHTML = "";
+        document.getElementById("clear-A01").innerHTML = '<embed id="set-my-width1" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/01_basic_tween.html")" />';
+        FixWidth();
+    };
+
+    function A02() {
+        document.getElementById("clear-A02").innerHTML = "";
+        document.getElementById("clear-A02").innerHTML = '<embed id="set-my-width2" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/02_easing.html")" />';
+        FixWidth();
+    };
+
+    function A03() {
+        document.getElementById("clear-A03").innerHTML = "";
+        document.getElementById("clear-A03").innerHTML = '<embed id="set-my-width3" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/03_delay.html")" />';
+        FixWidth();
+    };
+
+    function A04() {
+        document.getElementById("clear-A04").innerHTML = "";
+        document.getElementById("clear-A04").innerHTML = '<embed id="set-my-width4" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/04_animate_multiple_properties.html")" />';
+        FixWidth();
+    };
+
+    function A05() {
+        document.getElementById("clear-A05").innerHTML = "";
+        document.getElementById("clear-A05").innerHTML = '<embed id="set-my-width5" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/05_from_tween.html")" />';
+        FixWidth();
+    };
+
+    function A06() {
+        document.getElementById("clear-A06").innerHTML = "";
+        document.getElementById("clear-A06").innerHTML = '<embed id="set-my-width6" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/06_relative_tween.html")" />';
+        FixWidth();
+    };
+
+    function A07() {
+        document.getElementById("clear-A07").innerHTML = "";
+        document.getElementById("clear-A07").innerHTML = '<embed id="set-my-width7" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/07_animate_multiple_targets.html")" />';
+        FixWidth();
+    };
+
+    function A08() {
+        document.getElementById("clear-A08").innerHTML = "";
+        document.getElementById("clear-A08").innerHTML = '<embed id="set-my-width8" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/08_jQuery_with_GSAP_JS.html")" />';
+        FixWidth();
+    };
+
+    function A09() {
+        document.getElementById("clear-A09").innerHTML = "";
+        document.getElementById("clear-A09").innerHTML = '<embed id="set-my-width9" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/09_event_callbacks.html")" />';
+        FixWidth();
+    };
+
+    function A10() {
+        document.getElementById("clear-A10").innerHTML = "";
+        document.getElementById("clear-A10").innerHTML = '<embed id="set-my-width10" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/10_tween_reference.html")" />';
+        FixWidth();
+    };
+
+    function A11() {
+        document.getElementById("clear-A11").innerHTML = "";
+        document.getElementById("clear-A11").innerHTML = '<embed id="set-my-width11" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/11_control_playback.html")" />';
+        FixWidth();
+    };
+
+    function A12() {
+        document.getElementById("clear-A12").innerHTML = "";
+        document.getElementById("clear-A12").innerHTML = '<embed id="set-my-width12" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/12_repeat.html")" />';
+        FixWidth();
+    };
+
+    function A13() {
+        document.getElementById("clear-A13").innerHTML = "";
+        document.getElementById("clear-A13").innerHTML = '<embed id="set-my-width13" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/13_stagger.html")" />';
+        FixWidth();
+    };
+
+    function A14() {
+        document.getElementById("clear-A14").innerHTML = "";
+        document.getElementById("clear-A14").innerHTML = '<embed id="set-my-width14" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/14_timelinelite_syntax.html")" />';
+        FixWidth();
+    };
+
+    function A15() {
+        document.getElementById("clear-A15").innerHTML = "";
+        document.getElementById("clear-A15").innerHTML = '<embed id="set-my-width15" style="height:200px src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/15_timelinelite_control.html")" />';
+        FixWidth();
+    };
+
+    function A16() {
+        document.getElementById("clear-A16").innerHTML = "";
+        document.getElementById("clear-A16").innerHTML = '<embed id="set-my-width16" src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/16_timelinelite_labels.html")" />';
+        FixWidth();
+    };
+
+    function A17() {
+        document.getElementById("clear-A17").innerHTML = "";
+        document.getElementById("clear-A17").innerHTML = '<embed id="set-my-width17" style="height:240px src="@Url.Content("~/Websites/Greensock/Getting_Started_Quickly_Main/17_timelinemax_in_action.html")" />';
+        FixWidth();
+    };
+    </script>
+</div>

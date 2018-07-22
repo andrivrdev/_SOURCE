@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Getting Started Quickly Official Documentation";
+}
+
+<div class="container-fluid" style="padding:0px">
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header text-center">
+                <h3 style="margin-top:10px">Greensock</h3>
+            </div>
+            <hr style="margin:0px" />
+            <ul class="list-unstyled components" style="padding:0px">
+                <div class="text-center">
+                    <h5 style="margin:10px"><small>Getting Started Quickly</small></h5>
+                </div>
+                <hr style="margin:0px; margin-bottom:20px" />
+
+                <!--Hidden - It is for later use-->
+                <div class="invisible" style="max-height:0px">
+                    <li class="active">
+
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle-sidebar dropdown-toggle">Home</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu" style="padding:0px">
+                            <li>
+                                <a href="#">Home 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+                <div style="font-size:smaller">
+                    <li>
+                        <a href=@Url.Action("Getting_Started_Quickly_Main","Greensock")>Main</a>
+                        <a href=@Url.Action("Getting_Started_Quickly_Official_Documentation","Greensock")>Official Documentation</a>
+                    </li>
+                </div>
+                <hr style="margin:0px; margin-top:20px" />
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <div class="jumbotron" style="padding-bottom:20px;padding-left:0px;padding-right:0px;padding-top:0px">
+                <button type="button" id="sidebarCollapse" class="navbar-btn" style="background: #e9ecef;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" style="background-color:#e9ecef; border-color:#e9ecef" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+
+                <div class="text-center">
+
+                    <div class="text-center">
+                        <h1 class="text-center">Getting Started Quickly Official Documentation</h1>
+                    </div>
+                    <p class="lead">Taken from the Greensock website for learning</p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div id="get-my-width" class="row">
+                </div>
+
+                <embed id="set-my-width1" style="height:1000px" src="@Url.Content("~/Websites/Greensock/Official_Documentation/index.html")" />
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $(this).toggleClass('active');
+        });
+
+        FixWidth();
+    });
+
+    $(window).resize(function () {
+        FixWidth();
+    });
+
+    function FixWidth() {
+        document.getElementById("set-my-width1").style.width = document.getElementById("get-my-width").offsetWidth.toString() + "px";
+    };
+
+    </script>
+</div>
