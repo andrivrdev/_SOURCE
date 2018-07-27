@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntelligenAPICaller", "IntelligenAPICaller\IntelligenAPICaller.csproj", "{B69A122F-3A93-4CC1-880B-79DD727B2EE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APICallerTester", "APICallerTester\APICallerTester.csproj", "{5DAFA9CF-CF33-45FB-9A0D-9D5C8AC28FFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B69A122F-3A93-4CC1-880B-79DD727B2EE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B69A122F-3A93-4CC1-880B-79DD727B2EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B69A122F-3A93-4CC1-880B-79DD727B2EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B69A122F-3A93-4CC1-880B-79DD727B2EE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DAFA9CF-CF33-45FB-9A0D-9D5C8AC28FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DAFA9CF-CF33-45FB-9A0D-9D5C8AC28FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DAFA9CF-CF33-45FB-9A0D-9D5C8AC28FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DAFA9CF-CF33-45FB-9A0D-9D5C8AC28FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2DA6CC59-E73E-48B2-B923-57C41F9A2C22}
+	EndGlobalSection
+EndGlobal
