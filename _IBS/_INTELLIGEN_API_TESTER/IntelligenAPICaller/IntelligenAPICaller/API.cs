@@ -82,7 +82,15 @@ namespace IntelligenAPICaller
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + xToken);
 
                 // Get from the Server and parse the response.
-                HttpResponseMessage response = await client.GetAsync("api/GetUnitStates");
+                HttpResponseMessage response = null;
+                if (xUnitIDs == "")
+                {
+                    response = await client.GetAsync("api/GetUnitStates");
+                }
+                else
+                {
+                    response = await client.GetAsync("api/GetUnitStates?unitIDs=" + xUnitIDs);
+                }
 
                 //Populate class
                 if (response.IsSuccessStatusCode)

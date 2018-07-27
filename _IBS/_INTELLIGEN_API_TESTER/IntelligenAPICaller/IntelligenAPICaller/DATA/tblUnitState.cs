@@ -8,9 +8,9 @@ namespace IntelligenAPICaller.DATA
 {
     public class tblUnitState
     {
-        public string GPSDateTime { get; private set; }
+        public string GPSDateTime { get; set; }
 
-        public string ReceivedDateTime { get; private set; }
+        public string ReceivedDateTime { get; set; }
 
         public int? UnitID { get; set; }
 
@@ -74,7 +74,7 @@ namespace IntelligenAPICaller.DATA
 
         public string LabelBackColor { get; set; }
 
-        public IList<int?> GroupIDs { get; private set; }
+        public IList<int?> GroupIDs { get; set; }
 
         public bool? Panic { get; set; }
 

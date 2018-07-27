@@ -41,13 +41,13 @@
             this.edtGetTokenUsername = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.grdGetUnitList = new DevExpress.XtraGrid.GridControl();
+            this.grdGetUnitListView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.edtGetUnitListToken = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.grdGetUnitList = new DevExpress.XtraGrid.GridControl();
-            this.grdGetUnitListView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.grdGetUnitStates = new DevExpress.XtraGrid.GridControl();
@@ -57,15 +57,17 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.edtGetUnitStatesToken = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.edtGetUnitStatesUnitIDs = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdGetUnitList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdGetUnitListView)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdGetUnitStates)).BeginInit();
@@ -211,6 +213,22 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Output";
             // 
+            // grdGetUnitList
+            // 
+            this.grdGetUnitList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdGetUnitList.Location = new System.Drawing.Point(3, 16);
+            this.grdGetUnitList.MainView = this.grdGetUnitListView;
+            this.grdGetUnitList.Name = "grdGetUnitList";
+            this.grdGetUnitList.Size = new System.Drawing.Size(500, 269);
+            this.grdGetUnitList.TabIndex = 0;
+            this.grdGetUnitList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdGetUnitListView});
+            // 
+            // grdGetUnitListView
+            // 
+            this.grdGetUnitListView.GridControl = this.grdGetUnitList;
+            this.grdGetUnitListView.Name = "grdGetUnitListView";
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.button2);
@@ -224,6 +242,17 @@
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Input";
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(480, 23);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(18, 20);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Paste";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -253,33 +282,6 @@
             this.edtGetUnitListToken.Size = new System.Drawing.Size(426, 20);
             this.edtGetUnitListToken.TabIndex = 4;
             // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(480, 23);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(18, 20);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Paste";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // grdGetUnitList
-            // 
-            this.grdGetUnitList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdGetUnitList.Location = new System.Drawing.Point(3, 16);
-            this.grdGetUnitList.MainView = this.grdGetUnitListView;
-            this.grdGetUnitList.Name = "grdGetUnitList";
-            this.grdGetUnitList.Size = new System.Drawing.Size(500, 269);
-            this.grdGetUnitList.TabIndex = 0;
-            this.grdGetUnitList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.grdGetUnitListView});
-            // 
-            // grdGetUnitListView
-            // 
-            this.grdGetUnitListView.GridControl = this.grdGetUnitList;
-            this.grdGetUnitListView.Name = "grdGetUnitListView";
-            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.groupBox5);
@@ -296,9 +298,9 @@
             // 
             this.groupBox5.Controls.Add(this.grdGetUnitStates);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(3, 89);
+            this.groupBox5.Location = new System.Drawing.Point(3, 115);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(506, 288);
+            this.groupBox5.Size = new System.Drawing.Size(506, 262);
             this.groupBox5.TabIndex = 11;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Output";
@@ -309,7 +311,7 @@
             this.grdGetUnitStates.Location = new System.Drawing.Point(3, 16);
             this.grdGetUnitStates.MainView = this.grdGetUnitStatesView;
             this.grdGetUnitStates.Name = "grdGetUnitStates";
-            this.grdGetUnitStates.Size = new System.Drawing.Size(500, 269);
+            this.grdGetUnitStates.Size = new System.Drawing.Size(500, 243);
             this.grdGetUnitStates.TabIndex = 0;
             this.grdGetUnitStates.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdGetUnitStatesView});
@@ -321,6 +323,8 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.label5);
+            this.groupBox6.Controls.Add(this.edtGetUnitStatesUnitIDs);
             this.groupBox6.Controls.Add(this.button3);
             this.groupBox6.Controls.Add(this.button4);
             this.groupBox6.Controls.Add(this.label3);
@@ -328,7 +332,7 @@
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox6.Location = new System.Drawing.Point(3, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(506, 86);
+            this.groupBox6.Size = new System.Drawing.Size(506, 112);
             this.groupBox6.TabIndex = 10;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Input";
@@ -346,7 +350,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(50, 49);
+            this.button4.Location = new System.Drawing.Point(59, 75);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 8;
@@ -357,7 +361,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 26);
+            this.label3.Location = new System.Drawing.Point(15, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 6;
@@ -367,10 +371,28 @@
             // 
             this.edtGetUnitStatesToken.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.edtGetUnitStatesToken.Location = new System.Drawing.Point(50, 23);
+            this.edtGetUnitStatesToken.Location = new System.Drawing.Point(59, 23);
             this.edtGetUnitStatesToken.Name = "edtGetUnitStatesToken";
-            this.edtGetUnitStatesToken.Size = new System.Drawing.Size(426, 20);
+            this.edtGetUnitStatesToken.Size = new System.Drawing.Size(417, 20);
             this.edtGetUnitStatesToken.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 52);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Unit ID\'s";
+            // 
+            // edtGetUnitStatesUnitIDs
+            // 
+            this.edtGetUnitStatesUnitIDs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.edtGetUnitStatesUnitIDs.Location = new System.Drawing.Point(59, 49);
+            this.edtGetUnitStatesUnitIDs.Name = "edtGetUnitStatesUnitIDs";
+            this.edtGetUnitStatesUnitIDs.Size = new System.Drawing.Size(417, 20);
+            this.edtGetUnitStatesUnitIDs.TabIndex = 10;
             // 
             // Form1
             // 
@@ -389,10 +411,10 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdGetUnitList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdGetUnitListView)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdGetUnitStates)).EndInit();
@@ -434,6 +456,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox edtGetUnitStatesToken;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox edtGetUnitStatesUnitIDs;
     }
 }
 

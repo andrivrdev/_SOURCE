@@ -79,7 +79,7 @@ namespace APICallerTester
 
 
                 // Get data
-                xtblUnitState = await API.GetUnitStates(zBaseURI, edtGetUnitStatesToken.Text, "");
+                xtblUnitState = await API.GetUnitStates(zBaseURI, edtGetUnitStatesToken.Text, edtGetUnitStatesUnitIDs.Text);
                 grdGetUnitStates.DataSource = xtblUnitState;
             }
             catch
