@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://avrcomms/server/api" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://avrcomms/server/api" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://avrcomms/server/api">
+      <s:element name="GetWork">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWorkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWorkResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetWorkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWork" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWorkResponse" />
+  </wsdl:message>
+  <wsdl:portType name="wsServerSoap">
+    <wsdl:operation name="GetWork">
+      <wsdl:input message="tns:GetWorkSoapIn" />
+      <wsdl:output message="tns:GetWorkSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsServerSoap" type="tns:wsServerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetWork">
+      <soap:operation soapAction="http://avrcomms/server/api/GetWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsServerSoap12" type="tns:wsServerSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetWork">
+      <soap12:operation soapAction="http://avrcomms/server/api/GetWork" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsServer">
+    <wsdl:port name="wsServerSoap" binding="tns:wsServerSoap">
+      <soap:address location="http://localhost/Server/wsServer.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsServerSoap12" binding="tns:wsServerSoap12">
+      <soap12:address location="http://localhost/Server/wsServer.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
