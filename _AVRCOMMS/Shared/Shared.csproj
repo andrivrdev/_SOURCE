@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CLASSES\clsDoThreaded.cs" />
     <Compile Include="CLASSES\clsSE.cs" />
     <Compile Include="CLASSES\clsSQLiteDB.cs" />
     <Compile Include="CLASSES\clsGlobal.cs" />

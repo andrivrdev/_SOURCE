@@ -135,7 +135,7 @@
             this.btnStop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnStop.ImageOptions.Image")));
             this.btnStop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnStop.ImageOptions.LargeImage")));
             this.btnStop.Name = "btnStop";
-            this.btnStop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStop_ItemClick);
+            this.btnStop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStart_ItemClick);
             // 
             // pageControl
             // 

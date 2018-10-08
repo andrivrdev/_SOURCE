@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6D57797-C997-4D17-A553-5C36CD52318A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SharedObjects</RootNamespace>
+    <AssemblyName>SharedObjects</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CLASSES\clsHelpers.cs" />
+    <Compile Include="DALRef.cs" />
+    <Compile Include="DATA\tblClient.cs" />
+    <Compile Include="DATA\tblClientContact.cs" />
+    <Compile Include="DATA\tblContactType.cs" />
+    <Compile Include="DATA\tblExport.cs" />
+    <Compile Include="FORMS\frmClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmClient.Designer.cs">
+      <DependentUpon>frmClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmClientDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmClientDetails.Designer.cs">
+      <DependentUpon>frmClientDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmContactDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmContactDetails.Designer.cs">
+      <DependentUpon>frmContactDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmContactTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmContactTypes.Designer.cs">
+      <DependentUpon>frmContactTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmContactTypesDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmContactTypesDetail.Designer.cs">
+      <DependentUpon>frmContactTypesDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FORMS\frmClient.resx">
+      <DependentUpon>frmClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmClientDetails.resx">
+      <DependentUpon>frmClientDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmContactDetails.resx">
+      <DependentUpon>frmContactDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmContactTypes.resx">
+      <DependentUpon>frmContactTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmContactTypesDetail.resx">
+      <DependentUpon>frmContactTypesDetail.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

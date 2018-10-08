@@ -162,24 +162,32 @@ namespace WinFormsClient.FORMS
         {
             try
             {
+                lock (thisLock)
+                {
+                    worker_status = true;
+                }
+
+                int xCount = 0;
+
                 while (worker_threadMustRun)
                 {
-                    lock (thisLock)
+                    if (xCount == 10000)
                     {
-                        worker_status = true;
-                    }
+                        xCount = 0;
 
-                    lock (thisLock)
-                    {
+
                         clsSE.WriteLog(3, "Sending heartbeat", "frmMain", "StartWorkerThread");
 
                         tblClientDetail xtblClientDetail = new tblClientDetail();
-                        string result = clsSE.Decrypt(clsSE.Send(clsSE.Pack("Client_Heartbeat", xtblClientDetail.dtClientDetail)));
 
-                        clsSE.WriteLog(3, "Receiving command: " + result, "frmMain", "StartWorkerThread");
+                        clsDoThreaded xclsDoThreaded = new clsDoThreaded();
+
+                        string result = clsSE.Decrypt(xclsDoThreaded.Send(clsSE.Pack("Client_Heartbeat", xtblClientDetail.dtClientDetail)));
                     }
+                    // clsSE.WriteLog(3, "Receiving command: " + result, "frmMain", "StartWorkerThread");
 
-                    Thread.Sleep(10000);
+                    xCount = xCount + 1;
+                    Thread.Sleep(100);
                 }
 
                 lock (thisLock)
@@ -195,11 +203,6 @@ namespace WinFormsClient.FORMS
                     worker_status = false;
                 }
             }
-        }
-
-        private void btnStop_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
         }
     }
 }

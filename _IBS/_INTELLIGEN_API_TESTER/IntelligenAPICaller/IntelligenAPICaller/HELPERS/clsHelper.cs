@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -14,7 +15,18 @@ namespace IntelligenAPICaller.HELPERS
             List<KeyValuePair<string, string>> xResult = new List<KeyValuePair<string, string>>();
             foreach (PropertyInfo xProperty in xObj.GetType().GetProperties())
             {
-                xResult.Add(new KeyValuePair<string, string>(xProperty.Name, xProperty.GetValue(xObj).ToString()));
+                try
+                {
+                    xResult.Add(new KeyValuePair<string, string>(xProperty.Name, xProperty.GetValue(xObj).ToString()));
+                }
+                catch
+                {
+                    xResult.Add(new KeyValuePair<string, string>(xProperty.Name, ""));
+                }
+                    
+
+
+                
             }
 
             return xResult;

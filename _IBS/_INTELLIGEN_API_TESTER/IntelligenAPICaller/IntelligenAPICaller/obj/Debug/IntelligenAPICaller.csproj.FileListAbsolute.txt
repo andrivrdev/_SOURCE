@@ -1,4 +1,3 @@
-C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\IntelligenAPICaller\obj\Debug\IntelligenAPICaller.csprojResolveAssemblyReference.cache
 C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\IntelligenAPICaller\obj\Debug\IntelligenAPICaller.csproj.CoreCompileInputs.cache
 C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\IntelligenAPICaller\bin\Debug\IntelligenAPICaller.dll
 C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\IntelligenAPICaller\bin\Debug\IntelligenAPICaller.pdb
@@ -10,3 +9,4 @@ C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\IntelligenAPICaller\b
 C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\IntelligenAPICaller\bin\Debug\Microsoft.Rest.ClientRuntime.dll
 C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\IntelligenAPICaller\bin\Debug\System.Net.Http.Formatting.dll
 C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\IntelligenAPICaller\bin\Debug\System.Net.Http.Formatting.xml
+C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\IntelligenAPICaller\obj\Debug\IntelligenAPICaller.csprojResolveAssemblyReference.cache

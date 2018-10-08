@@ -102,6 +102,40 @@ namespace IntelligenAPICaller
             }
         }
 
+        public static async Task<string> PostDispatch(string xBaseURI, string xToken, object xObj)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(xBaseURI);
+
+                // We want the response to be JSON.
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                // Auth with token
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + xToken);
+
+                // Build up the data to POST.
+                List<KeyValuePair<string, string>> postData = new List<KeyValuePair<string, string>>();
+                clsHelper xclsHelper = new clsHelper();
+                postData = xclsHelper.ToKeyValuePair(xObj);
+
+                FormUrlEncodedContent content = new FormUrlEncodedContent(postData);
+
+                // Post to the Server and parse the response.
+
+                string test = "";
+
+                HttpResponseMessage response = await client.PostAsJsonAsync("api/PostDispatch", xObj);
+                string jsonString = await response.Content.ReadAsStringAsync();
+                object responseData = JsonConvert.DeserializeObject(jsonString);
+
+                // return the Access Token.
+                return ((dynamic)responseData).ToString();
+            }
+        }
+
+
 
     }
 }

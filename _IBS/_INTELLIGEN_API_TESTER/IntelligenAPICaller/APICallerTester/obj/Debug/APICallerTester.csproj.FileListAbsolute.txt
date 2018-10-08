@@ -15,7 +15,6 @@ C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\APICallerTester\obj\D
 C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\APICallerTester\bin\Debug\Microsoft.Rest.ClientRuntime.dll
 C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\APICallerTester\bin\Debug\IntelligenAPICaller.dll.config
 C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\APICallerTester\bin\Debug\System.Net.Http.Formatting.dll
-C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\APICallerTester\bin\Debug\System.Net.Http.Formatting.xml
 C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\APICallerTester\obj\Debug\APICallerTester.exe.licenses
 C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\APICallerTester\bin\Debug\DevExpress.Data.v17.1.dll
 C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\APICallerTester\bin\Debug\DevExpress.Printing.v17.1.Core.dll
@@ -95,3 +94,5 @@ C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\APICallerTester\bin\D
 C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\APICallerTester\bin\Debug\es\DevExpress.Office.v17.1.Core.resources.dll
 C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\APICallerTester\bin\Debug\ja\DevExpress.Office.v17.1.Core.resources.dll
 C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\APICallerTester\bin\Debug\ru\DevExpress.Office.v17.1.Core.resources.dll
+C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\APICallerTester\bin\Debug\System.Net.Http.dll
+C:\_SOURCE\_IBS\_INTELLIGEN_API_TESTER\IntelligenAPICaller\APICallerTester\bin\Debug\System.Net.Http.Formatting.xml
