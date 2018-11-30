@@ -13,8 +13,8 @@ namespace Shared.CLASSES
             try
             {
 
-                //var remoteAddress = new System.ServiceModel.EndpointAddress("http://localhost/Server/wsServer.asmx");
-                var remoteAddress = new System.ServiceModel.EndpointAddress("http://41.180.72.26/wsServer/wsServer.asmx");
+                var remoteAddress = new System.ServiceModel.EndpointAddress("http://localhost/Server/wsServer.asmx");
+                //var remoteAddress = new System.ServiceModel.EndpointAddress("http://41.180.72.26/wsServer/wsServer.asmx");
 
                 using (var xwsServerSoapClient = new wsServer.wsServerSoapClient(new System.ServiceModel.BasicHttpBinding(), remoteAddress))
                 {

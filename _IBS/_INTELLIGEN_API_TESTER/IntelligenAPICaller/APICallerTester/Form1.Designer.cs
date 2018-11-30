@@ -61,8 +61,8 @@
             this.edtGetUnitStatesToken = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.lblPostDispatchOutput = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.edtFileName = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.edtPostDispatchDispatchTypeID = new System.Windows.Forms.TextBox();
@@ -92,7 +92,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.edtPostDispatchToken = new System.Windows.Forms.TextBox();
-            this.edtFileName = new System.Windows.Forms.TextBox();
+            this.lblPostDispatchOutput = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -135,7 +135,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(512, 475);
+            this.tabPage1.Size = new System.Drawing.Size(512, 583);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Get Token";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -147,7 +147,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 108);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(506, 364);
+            this.groupBox2.Size = new System.Drawing.Size(506, 472);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Output";
@@ -169,7 +169,7 @@
             this.edtGetTokenToken.Location = new System.Drawing.Point(89, 23);
             this.edtGetTokenToken.Multiline = true;
             this.edtGetTokenToken.Name = "edtGetTokenToken";
-            this.edtGetTokenToken.Size = new System.Drawing.Size(411, 335);
+            this.edtGetTokenToken.Size = new System.Drawing.Size(411, 443);
             this.edtGetTokenToken.TabIndex = 4;
             // 
             // groupBox1
@@ -238,7 +238,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(512, 475);
+            this.tabPage2.Size = new System.Drawing.Size(512, 583);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Get Unit List";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -249,7 +249,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 89);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(506, 383);
+            this.groupBox3.Size = new System.Drawing.Size(506, 491);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Output";
@@ -260,7 +260,7 @@
             this.grdGetUnitList.Location = new System.Drawing.Point(3, 16);
             this.grdGetUnitList.MainView = this.grdGetUnitListView;
             this.grdGetUnitList.Name = "grdGetUnitList";
-            this.grdGetUnitList.Size = new System.Drawing.Size(500, 364);
+            this.grdGetUnitList.Size = new System.Drawing.Size(500, 472);
             this.grdGetUnitList.TabIndex = 0;
             this.grdGetUnitList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdGetUnitListView});
@@ -330,7 +330,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(512, 475);
+            this.tabPage3.Size = new System.Drawing.Size(512, 583);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Get Unit States";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -341,7 +341,7 @@
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(3, 115);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(506, 357);
+            this.groupBox5.Size = new System.Drawing.Size(506, 465);
             this.groupBox5.TabIndex = 11;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Output";
@@ -352,7 +352,7 @@
             this.grdGetUnitStates.Location = new System.Drawing.Point(3, 16);
             this.grdGetUnitStates.MainView = this.grdGetUnitStatesView;
             this.grdGetUnitStates.Name = "grdGetUnitStates";
-            this.grdGetUnitStates.Size = new System.Drawing.Size(500, 338);
+            this.grdGetUnitStates.Size = new System.Drawing.Size(500, 446);
             this.grdGetUnitStates.TabIndex = 0;
             this.grdGetUnitStates.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdGetUnitStatesView});
@@ -458,15 +458,6 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Output";
             // 
-            // lblPostDispatchOutput
-            // 
-            this.lblPostDispatchOutput.AutoSize = true;
-            this.lblPostDispatchOutput.Location = new System.Drawing.Point(18, 28);
-            this.lblPostDispatchOutput.Name = "lblPostDispatchOutput";
-            this.lblPostDispatchOutput.Size = new System.Drawing.Size(22, 13);
-            this.lblPostDispatchOutput.TabIndex = 22;
-            this.lblPostDispatchOutput.Text = "xxx";
-            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.edtFileName);
@@ -498,6 +489,15 @@
             this.groupBox8.TabIndex = 12;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Input";
+            // 
+            // edtFileName
+            // 
+            this.edtFileName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.edtFileName.Location = new System.Drawing.Point(89, 408);
+            this.edtFileName.Name = "edtFileName";
+            this.edtFileName.Size = new System.Drawing.Size(384, 20);
+            this.edtFileName.TabIndex = 27;
             // 
             // button8
             // 
@@ -795,14 +795,15 @@
             this.edtPostDispatchToken.Size = new System.Drawing.Size(384, 20);
             this.edtPostDispatchToken.TabIndex = 4;
             // 
-            // edtFileName
+            // lblPostDispatchOutput
             // 
-            this.edtFileName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblPostDispatchOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.edtFileName.Location = new System.Drawing.Point(89, 408);
-            this.edtFileName.Name = "edtFileName";
-            this.edtFileName.Size = new System.Drawing.Size(384, 20);
-            this.edtFileName.TabIndex = 27;
+            this.lblPostDispatchOutput.Location = new System.Drawing.Point(9, 19);
+            this.lblPostDispatchOutput.Multiline = true;
+            this.lblPostDispatchOutput.Name = "lblPostDispatchOutput";
+            this.lblPostDispatchOutput.Size = new System.Drawing.Size(489, 115);
+            this.lblPostDispatchOutput.TabIndex = 28;
             // 
             // Form1
             // 
@@ -901,7 +902,6 @@
         private System.Windows.Forms.GroupBox groupBox9;
         private DevExpress.XtraGrid.GridControl grdDestination;
         private DevExpress.XtraGrid.Views.Grid.GridView grdDestinationView;
-        private System.Windows.Forms.Label lblPostDispatchOutput;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
@@ -910,6 +910,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.TextBox edtFileName;
+        private System.Windows.Forms.TextBox lblPostDispatchOutput;
     }
 }
 

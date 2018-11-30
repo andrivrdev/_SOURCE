@@ -175,7 +175,6 @@ namespace WinFormsClient.FORMS
                     {
                         xCount = 0;
 
-
                         clsSE.WriteLog(3, "Sending heartbeat", "frmMain", "StartWorkerThread");
 
                         tblClientDetail xtblClientDetail = new tblClientDetail();

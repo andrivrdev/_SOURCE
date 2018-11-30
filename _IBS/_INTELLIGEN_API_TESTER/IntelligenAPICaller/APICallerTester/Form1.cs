@@ -242,103 +242,109 @@ namespace APICallerTester
                 {
                     if (!xSkipHeader)
                     {
-                        string[] xFields = ALine.Split('|');
+                        try
+                        {
+                            string[] xFields = ALine.Split('|');
 
-                        tblDispatch xtblDispatch = new tblDispatch();
+                            tblDispatch xtblDispatch = new tblDispatch();
 
-                        xtblDispatch.Unit = new tblDispatchUnit();
-                        xtblDispatch.Destinations = new List<tblDestination>();
-                        xtblDispatch.CustomFields = new List<tblCustomField>();
-
-
-                        xtblDispatch.DispatchID = 0;
-                        xtblDispatch.CreatedDateTimeUTC = DateTime.Parse(DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString() + " " + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString());
-                        xtblDispatch.StartDateTimeUTC = DateTime.Parse(xFields[5]);
-                        xtblDispatch.DurationInMinutes = 0;
-                        xtblDispatch.LoginID = 0;
-                        xtblDispatch.AccountID = 0;
-
-                        xtblDispatch.OrderNr = xFields[0];
-                        xtblDispatch.Description = xFields[1];
-                        xtblDispatch.Client = xFields[2];
-                        xtblDispatch.ClientCellNr = xFields[3];
-                        xtblDispatch.ClientEmail = xFields[4];
-
-                        xtblDispatch.DispatchStatus = 0;
-                        xtblDispatch.DispatchStatusText = "";
-
-                        xtblDispatch.UnitID = Convert.ToInt32(edtPostDispatchUnitID.Text);
-
-                        xtblDispatch.Alias = "";
-                        xtblDispatch.DispatchETAUTC = DateTime.Parse(DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString() + " " + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString());
-
-                        tblDispatchUnit xtblDispatchUnit = new tblDispatchUnit();
-                        xtblDispatchUnit.UnitID = 0;
-                        xtblDispatchUnit.DispatchETAUTC = DateTime.Parse(DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString() + " " + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString());
-                        xtblDispatchUnit.Alias = "";
-
-                        xtblDispatch.Unit = xtblDispatchUnit;
-
-                        xtblDispatch.LastUnitID = 0;
-                        xtblDispatch.SignalRConnection = "";
-
-                        tblDestination xtblDestination = new tblDestination();
-                        xtblDestination.Waypoints = new List<tblWaypoint>();
-
-                        xtblDestination.DispatchID = 0;
-                        xtblDestination.DestinationType = 3;
-                        xtblDestination.Destination = xFields[6];
-                        xtblDestination.AreaID = null;
-                        xtblDestination.AreaDataWKT = "";
-                        xtblDestination.Longitude = Convert.ToDouble(xFields[7]);
-                        xtblDestination.Latitude = Convert.ToDouble(xFields[8]);
-                        xtblDestination.Tolerance = 0;
-                        xtblDestination.Mapcode = "";
-
-                        tblWaypoint xtblWaypoint = new tblWaypoint();
-                        xtblWaypoint.DispatchID = 0;
-                        xtblWaypoint.WaypointID = 0;
-                        xtblWaypoint.AreaID = 0;
-                        xtblWaypoint.Waypoint = "";
-                        xtblWaypoint.Latitude = 0;
-                        xtblWaypoint.Longitude = 0;
-                        xtblWaypoint.Sequence = 0;
-
-                        xtblDestination.Waypoints.Add(xtblWaypoint);
-
-                        xtblDispatch.Destinations.Add(xtblDestination);
+                            xtblDispatch.Unit = new tblDispatchUnit();
+                            xtblDispatch.Destinations = new List<tblDestination>();
+                            xtblDispatch.CustomFields = new List<tblCustomField>();
 
 
-                        /*  xtblDispatch.Destinations = new IList<tblDestination>();
-                          foreach (tblDestination ARec in (BindingList<tblDestination>)grdDestination.DataSource)
-                          {
-                              xtblDispatch.Destinations.Add(ARec);
-                          }*/
+                            xtblDispatch.DispatchID = 0;
+                            xtblDispatch.CreatedDateTimeUTC = DateTime.Parse(DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString() + " " + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString());
+                            xtblDispatch.StartDateTimeUTC = DateTime.Parse(xFields[5]);
+                            xtblDispatch.DurationInMinutes = 0;
+                            xtblDispatch.LoginID = 0;
+                            xtblDispatch.AccountID = 0;
 
-                        tblCustomField xtblCustomField = new tblCustomField();
-                        xtblCustomField.DispatchID = 0;
-                        xtblCustomField.CustomFieldID = 0;
-                        xtblCustomField.CustomField = "";
-                        xtblCustomField.Label = "";
-                        xtblCustomField.TypeID = 0;
-                        xtblCustomField.Type = "";
-                        xtblCustomField.Value = "";
-                        xtblCustomField.Identifier = "";
-                        xtblCustomField.Required = false;
-                        xtblCustomField.DropDownListValues = "";
+                            xtblDispatch.OrderNr = xFields[0].Trim();
+                            xtblDispatch.Description = xFields[1].Trim();
+                            xtblDispatch.Client = xFields[2].Trim();
+                            xtblDispatch.ClientCellNr = xFields[3].Trim();
+                            xtblDispatch.ClientEmail = xFields[4].Trim();
 
-                        //xtblDispatch.CustomFields.Add(xtblCustomField);
-                        xtblDispatch.GUID = "";
+                            xtblDispatch.DispatchStatus = 0;
+                            xtblDispatch.DispatchStatusText = "";
 
-                        xtblDispatch.DispatchTypeID = Convert.ToInt32(edtPostDispatchDispatchTypeID.Text);
+                            xtblDispatch.UnitID = Convert.ToInt32(edtPostDispatchUnitID.Text);
 
-                        xtblDispatch.DispatchType = "";
-                        xtblDispatch.RoutingOrder = 0;
-                        xtblDispatch.SendStatusUpdatesToPlaza = true;
+                            xtblDispatch.Alias = "";
+                            xtblDispatch.DispatchETAUTC = DateTime.Parse(DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString() + " " + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString());
 
-                        // Post data
-                        var xResponse = await API.PostDispatch(zBaseURI, edtPostDispatchToken.Text, xtblDispatch);
-                        lblPostDispatchOutput.Text = lblPostDispatchOutput.Text + xResponse + Environment.NewLine;
+                            tblDispatchUnit xtblDispatchUnit = new tblDispatchUnit();
+                            xtblDispatchUnit.UnitID = 0;
+                            xtblDispatchUnit.DispatchETAUTC = DateTime.Parse(DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString() + " " + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString());
+                            xtblDispatchUnit.Alias = "";
+
+                            xtblDispatch.Unit = xtblDispatchUnit;
+
+                            xtblDispatch.LastUnitID = 0;
+                            xtblDispatch.SignalRConnection = "";
+
+                            tblDestination xtblDestination = new tblDestination();
+                            xtblDestination.Waypoints = new List<tblWaypoint>();
+
+                            xtblDestination.DispatchID = 0;
+                            xtblDestination.DestinationType = 3;
+                            xtblDestination.Destination = xFields[6].Trim();
+                            xtblDestination.AreaID = null;
+                            xtblDestination.AreaDataWKT = "";
+                            xtblDestination.Longitude = Convert.ToDouble(xFields[7].Replace('.', ','));
+                            xtblDestination.Latitude = Convert.ToDouble(xFields[8].Replace('.', ','));
+                            xtblDestination.Tolerance = 0;
+                            xtblDestination.Mapcode = "";
+
+                            tblWaypoint xtblWaypoint = new tblWaypoint();
+                            xtblWaypoint.DispatchID = 0;
+                            xtblWaypoint.WaypointID = 0;
+                            xtblWaypoint.AreaID = 0;
+                            xtblWaypoint.Waypoint = "";
+                            xtblWaypoint.Latitude = 0;
+                            xtblWaypoint.Longitude = 0;
+                            xtblWaypoint.Sequence = 0;
+
+                            xtblDestination.Waypoints.Add(xtblWaypoint);
+                            xtblDispatch.Destinations.Add(xtblDestination);
+
+
+                            /*  xtblDispatch.Destinations = new IList<tblDestination>();
+                              foreach (tblDestination ARec in (BindingList<tblDestination>)grdDestination.DataSource)
+                              {
+                                  xtblDispatch.Destinations.Add(ARec);
+                              }*/
+
+                            tblCustomField xtblCustomField = new tblCustomField();
+                            xtblCustomField.DispatchID = 0;
+                            xtblCustomField.CustomFieldID = 0;
+                            xtblCustomField.CustomField = "";
+                            xtblCustomField.Label = "";
+                            xtblCustomField.TypeID = 0;
+                            xtblCustomField.Type = "";
+                            xtblCustomField.Value = "";
+                            xtblCustomField.Identifier = "";
+                            xtblCustomField.Required = false;
+                            xtblCustomField.DropDownListValues = "";
+
+                            //xtblDispatch.CustomFields.Add(xtblCustomField);
+                            xtblDispatch.GUID = "";
+
+                            xtblDispatch.DispatchTypeID = Convert.ToInt32(edtPostDispatchDispatchTypeID.Text);
+
+                            xtblDispatch.DispatchType = "";
+                            xtblDispatch.RoutingOrder = 0;
+                            xtblDispatch.SendStatusUpdatesToPlaza = true;
+
+                            // Post data
+                            var xResponse = await API.PostDispatch(zBaseURI, edtPostDispatchToken.Text, xtblDispatch);
+                            lblPostDispatchOutput.Text = lblPostDispatchOutput.Text + xResponse + Environment.NewLine;
+                        }
+                        catch (Exception ex)
+                        {
+                            lblPostDispatchOutput.Text = lblPostDispatchOutput.Text + ex.Message + Environment.NewLine;
+                        }
                     }
 
                     xSkipHeader = false;
