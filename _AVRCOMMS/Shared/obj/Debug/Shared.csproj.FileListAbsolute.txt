@@ -50,4 +50,4 @@ C:\_SOURCE\_AVRCOMMS\Shared\bin\Debug\ru\DevExpress.Pdf.v17.1.Core.resources.dll
 C:\_SOURCE\_AVRCOMMS\Shared\obj\Debug\Shared.csproj.CoreCompileInputs.cache
 C:\_SOURCE\_AVRCOMMS\Shared\obj\Debug\Shared.dll
 C:\_SOURCE\_AVRCOMMS\Shared\obj\Debug\Shared.pdb
-C:\_SOURCE\_AVRCOMMS\Shared\obj\Debug\Shared.csprojResolveAssemblyReference.cache
+C:\_SOURCE\_AVRCOMMS\Shared\obj\Debug\Shared.csproj.CopyComplete

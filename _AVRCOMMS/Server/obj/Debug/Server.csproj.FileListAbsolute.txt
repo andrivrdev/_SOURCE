@@ -19,4 +19,5 @@ C:\_SOURCE\_AVRCOMMS\Server\bin\System.Data.SQLite.dll.config
 C:\_SOURCE\_AVRCOMMS\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
 C:\_SOURCE\_AVRCOMMS\Server\obj\Debug\Server.dll
 C:\_SOURCE\_AVRCOMMS\Server\obj\Debug\Server.pdb
-C:\_SOURCE\_AVRCOMMS\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\_SOURCE\_AVRCOMMS\Server\obj\Debug\Server.csprojAssemblyReference.cache
+C:\_SOURCE\_AVRCOMMS\Server\obj\Debug\Server.csproj.CopyComplete

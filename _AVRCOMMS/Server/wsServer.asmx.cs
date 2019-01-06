@@ -35,7 +35,7 @@ namespace Server
             clsSE.WriteLog(3, "Sending response", "wsServer", "GetWork");
 
 
-            //Decide what to respond
+            //Decide what to respond, do somethin with result
 
 
             tblServerDetail xtblServerDetail = new tblServerDetail();
