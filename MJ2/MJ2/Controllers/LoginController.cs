@@ -41,11 +41,18 @@ namespace MJ2.Controllers
                         FormsAuthentication.SetAuthCookie(u.Name.ToUpper(), false);
                         if (!string.IsNullOrEmpty(returnUrl))
                         {
-                            return Redirect(returnUrl);
+                            if (!(returnUrl == "/MJ2/"))
+                            {
+                                return Redirect(returnUrl);
+                            }
+                            else
+                            {
+                                return RedirectToAction("Index", "Group");
+                            }
                         }
                         else
                         {
-                            return RedirectToAction("Home", "Index");
+                            return RedirectToAction("Index", "Group");
                         }
                     }
                     else
