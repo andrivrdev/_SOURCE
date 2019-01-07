@@ -24,12 +24,12 @@ namespace MJ.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult Login(tblCompany u, string returnUrl)
+        public ActionResult Login(string Name, string Password, string returnUrl)
         {
             if (ModelState.IsValid)
             {
-                string xUsername = Convert.ToString(u.Name).ToUpper().Trim();
-                string xPassword = Convert.ToString(u.Password);
+                string xUsername = Convert.ToString(Name).ToUpper().Trim();
+                string xPassword = Convert.ToString(Password);
 
                 //Verify credentials against database
                 tblCompany xtblCompany = new tblCompany();
@@ -39,7 +39,7 @@ namespace MJ.Controllers
                 {
                     if (xPassword == dr["Password"].ToString())
                     {
-                        FormsAuthentication.SetAuthCookie(u.Name.ToUpper(), false);
+                        FormsAuthentication.SetAuthCookie(Name.ToUpper(), false);
                         if (!string.IsNullOrEmpty(returnUrl))
                         {
                             return Redirect(returnUrl);
@@ -59,7 +59,7 @@ namespace MJ.Controllers
                     ViewData["Error"] = "Invalid username or password.";
                 }
             }
-            return View(u);
+            return View();
         }
 
         [AllowAnonymous]
