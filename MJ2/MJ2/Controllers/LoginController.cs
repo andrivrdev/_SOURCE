@@ -13,6 +13,13 @@ namespace MJ2.Controllers
     {
         // GET: Login
         [AllowAnonymous]
+        public ActionResult Test()
+        {
+            return View();
+        }
+
+
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
