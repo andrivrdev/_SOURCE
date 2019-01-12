@@ -6,19 +6,22 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MJ.Models;
+
 
 namespace MJ.Controllers
 {
     public class GroupController : Controller
     {
-        private MJEntities3 db = new MJEntities3();
+        
 
         // GET: Group
         public ActionResult Index()
         {
-            var tblGroup = db.tblGroup.Include(t => t.tblCompany);
-            return View(tblGroup.ToList());
+
+            SHARED.DATA.tblGroup tblGroup = new SHARED.DATA.tblGroup();
+            //tblGroup.ieGroup.In . Include(t => t.tblCompany);
+            tblGroup.LoadData();
+            return View(tblGroup.ieGroup);
         }
 
         // GET: Group/Details/5

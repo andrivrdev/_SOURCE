@@ -22,7 +22,7 @@ namespace MJ2.Controllers
         }
 
           [HttpPost]
-        public ActionResult Index(string GroupID)
+        public ActionResult Index(string GroupID, string validationCustom01)
         {
             tblGroup xtblGroup = new tblGroup();
             xtblGroup.LoadData();

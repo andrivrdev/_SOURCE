@@ -75,10 +75,24 @@ namespace SHARED.DATA
                     xtblGroup.Description = dr["Description"].ToString();
                     xtblGroup.CreatedDateTime = Convert.ToDateTime(dr["CreatedDateTime"]);
 
-                    DateTime? val1 = dr["FirstEntryDateTime"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["FirstEntryDateTime"]);
-                    DateTime? val2 = dr["LastEntryDateTime"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["LastEntryDateTime"]);
-                    Int32? val3 = dr["Age"] == DBNull.Value ? (Int32?)null : Convert.ToInt32(dr["Age"]);
+                    if (dr["FirstEntryDateTime"] != DBNull.Value)
+                    {
+                        xtblGroup.FirstEntryDateTime = Convert.ToDateTime(dr["FirstEntryDateTime"]);
 
+                    }
+
+                    if (dr["LastEntryDateTime"] != DBNull.Value)
+                    {
+                        xtblGroup.LastEntryDateTime = Convert.ToDateTime(dr["LastEntryDateTime"]);
+
+                    }
+
+                    if (dr["Age"] != DBNull.Value)
+                    {
+                        xtblGroup.Age = Convert.ToInt32(dr["Age"]);
+
+                    }
+                    
                     xtblGroup.PlantCount = Convert.ToInt32(dr["PlantCount"]);
 
                     xGroup.Add(xtblGroup);

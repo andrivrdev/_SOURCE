@@ -6,18 +6,20 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MJ.Models;
+using SHARED.DATA;
 
 namespace MJ.Controllers
 {
     public class CompanyController : Controller
     {
-        private MJEntities3 db = new MJEntities3();
+
 
         // GET: Company
         public ActionResult Index()
         {
-            return View(db.tblCompany.ToList());
+
+
+            return View(tblCompany.);
         }
 
         // GET: Company/Details/5

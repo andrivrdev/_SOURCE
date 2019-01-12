@@ -151,45 +151,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\MJDataModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MJDataModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MJDataModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MJDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MJDataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MJDataModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblCompany.cs">
-      <DependentUpon>MJDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblEvent.cs">
-      <DependentUpon>MJDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblEventCategory.cs">
-      <DependentUpon>MJDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblGroup.cs">
-      <DependentUpon>MJDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblPlant.cs">
-      <DependentUpon>MJDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblPlantHistory.cs">
-      <DependentUpon>MJDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblPlantLocation.cs">
-      <DependentUpon>MJDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblPlantPhase.cs">
-      <DependentUpon>MJDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -203,23 +164,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\MJDataModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MJDataModel.edmx</DependentUpon>
-      <LastGenOutput>MJDataModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\MJDataModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MJDataModel.edmx</DependentUpon>
-      <LastGenOutput>MJDataModel.cs</LastGenOutput>
-    </Content>
-    <EntityDeploy Include="Models\MJDataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MJDataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\MJDataModel.edmx.diagram">
-      <DependentUpon>MJDataModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -309,6 +253,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
