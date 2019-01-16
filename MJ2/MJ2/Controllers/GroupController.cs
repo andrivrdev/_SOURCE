@@ -21,10 +21,31 @@ namespace MJ2.Controllers
             return View(xFiltered);
         }
 
-          [HttpPost]
-        public ActionResult Index(string GroupID, string validationCustom01)
+        [HttpPost]
+        public ActionResult Index(string GroupID, string validation_Command, string validation_groupName, string validation_groupDescription, DateTime? validation_groupCreatedDateTime)
         {
-            tblGroup xtblGroup = new tblGroup();
+            tblGroup xtblGroup;
+            if (validation_Command == "CreateGroup")
+            {
+                xtblGroup = new tblGroup();
+                xtblGroup.AddRec(Convert.ToInt32(Session["gtblCompany_ID"].ToString()), validation_groupName, validation_groupDescription, validation_groupCreatedDateTime);
+            }
+
+            if (validation_Command == "EditGroup")
+            {
+                xtblGroup = new tblGroup();
+                xtblGroup.UpdateRec(Convert.ToInt32(GroupID), Convert.ToInt32(Session["gtblCompany_ID"].ToString()), validation_groupName, validation_groupDescription, validation_groupCreatedDateTime);
+            }
+
+            if (validation_Command == "GotoPlants")
+            {
+                Session["GroupID"] = GroupID;
+                return RedirectToAction("Index", "Plant");
+
+            }
+
+
+            xtblGroup = new tblGroup();
             xtblGroup.LoadData();
 
             var xFiltered = xtblGroup.ieGroup.Where(r => r.CompanyID.ToString() == Session["gtblCompany_ID"].ToString());

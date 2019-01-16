@@ -101,5 +101,63 @@ namespace SHARED.DATA
                 ieGroup = xGroup;
             }
         }
+
+        public void AddRec(int xCompanyID, string xCode, string xDescription, DateTime? xCreatedDateTime)
+        {
+            List<string> fFields = new List<string>();
+            List<string> vValues = new List<string>();
+            
+            fFields.Add("CompanyID");
+            fFields.Add("Code");
+            fFields.Add("Description");
+
+            if (xCreatedDateTime == null)
+            {
+                vValues.Add(xCompanyID.ToString());
+                vValues.Add(xCode.ToString());
+                vValues.Add(xDescription.ToString());
+            }
+            else
+            {
+                fFields.Add("CreatedDateTime");
+
+                vValues.Add(xCompanyID.ToString());
+                vValues.Add(xCode.ToString());
+                vValues.Add(xDescription.ToString());
+                vValues.Add(xCreatedDateTime.ToString());
+            }
+
+            clsSE xclsSE = new clsSE();
+            xclsSE.sqlInsertRec("tblGroup", fFields, vValues);
+        }
+
+        public void UpdateRec(int xID, int xCompanyID, string xCode, string xDescription, DateTime? xCreatedDateTime)
+        {
+            List<string> fFields = new List<string>();
+            List<string> vValues = new List<string>();
+
+            fFields.Add("CompanyID");
+            fFields.Add("Code");
+            fFields.Add("Description");
+
+            if (xCreatedDateTime == null)
+            {
+                vValues.Add(xCompanyID.ToString());
+                vValues.Add(xCode.ToString());
+                vValues.Add(xDescription.ToString());
+            }
+            else
+            {
+                fFields.Add("CreatedDateTime");
+
+                vValues.Add(xCompanyID.ToString());
+                vValues.Add(xCode.ToString());
+                vValues.Add(xDescription.ToString());
+                vValues.Add(xCreatedDateTime.ToString());
+            }
+
+            clsSE xclsSE = new clsSE();
+            xclsSE.sqlUpdateRec("tblGroup", fFields, vValues, "[ID] = '" + xID + "'");
+        }
     }
 }

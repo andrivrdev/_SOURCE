@@ -131,6 +131,7 @@
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PlantController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -144,6 +145,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\AllCustomFonts.css" />
+    <Content Include="Content\Group\flowers-svgrepo-com.svg" />
     <Content Include="Content\Login\Index.css" />
     <Content Include="Content\Pics\Stock\IMG_20181216_085841.jpg" />
     <Content Include="Content\Pics\Stock\IMG_20181216_085936.jpg" />
@@ -256,6 +258,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Plant\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
