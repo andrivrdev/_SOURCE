@@ -17,12 +17,16 @@ namespace MJ2.Controllers
             xtblGroup.LoadData();
             
             var xFiltered = xtblGroup.ieGroup.Where(r => r.CompanyID.ToString() == Session["gtblCompany_ID"].ToString());
+            var xOrdered = xFiltered.OrderBy(x => x.Code);
 
-            return View(xFiltered);
+            ViewData["orderby"] = "Name";
+            ViewData["ascendingdescending"] = "Ascending";
+
+            return View(xOrdered);
         }
 
         [HttpPost]
-        public ActionResult Index(string GroupID, string validation_Command, string validation_groupName, string validation_groupDescription, DateTime? validation_groupCreatedDateTime)
+        public ActionResult Index(string GroupID, string validation_Command, string validation_groupName, string validation_groupDescription, DateTime? validation_groupCreatedDateTime, string orderby, string ascendingdescending)
         {
             tblGroup xtblGroup;
             if (validation_Command == "CreateGroup")
@@ -44,14 +48,111 @@ namespace MJ2.Controllers
 
             }
 
-
             xtblGroup = new tblGroup();
             xtblGroup.LoadData();
 
             var xFiltered = xtblGroup.ieGroup.Where(r => r.CompanyID.ToString() == Session["gtblCompany_ID"].ToString());
+            var xOrdered = xFiltered.OrderBy(x => x.Code);
+
+            if (ascendingdescending == "Ascending")
+            {
+                xOrdered = xFiltered.OrderBy(x => x.Code);
+            }
+            else
+            {
+                xOrdered = xFiltered.OrderByDescending(x => x.Code);
+            }
+
+            if (orderby == "Created Date")
+            {
+                if (ascendingdescending == "Ascending")
+                {
+                    xOrdered = xFiltered.OrderBy(x => x.CreatedDateTime);
+                }
+                else
+                {
+                    xOrdered = xFiltered.OrderByDescending(x => x.CreatedDateTime);
+                }
+            }
+
+            if (orderby == "First Entry Date")
+            {
+                if (ascendingdescending == "Ascending")
+                {
+                    xOrdered = xFiltered.OrderBy(x => x.FirstEntryDateTime);
+                }
+                else
+                {
+                    xOrdered = xFiltered.OrderByDescending(x => x.FirstEntryDateTime);
+                }
+            }
+
+            if (orderby == "Last Entry Date")
+            {
+                if (ascendingdescending == "Ascending")
+                {
+                    xOrdered = xFiltered.OrderBy(x => x.LastEntryDateTime);
+                }
+                else
+                {
+                    xOrdered = xFiltered.OrderByDescending(x => x.LastEntryDateTime);
+                }
+            }
+
+            if (orderby == "Age")
+            {
+                if (ascendingdescending == "Ascending")
+                {
+                    xOrdered = xFiltered.OrderBy(x => x.Age);
+                }
+                else
+                {
+                    xOrdered = xFiltered.OrderByDescending(x => x.Age);
+                }
+            }
+
+            if (orderby == "Amount of Plants")
+            {
+                if (ascendingdescending == "Ascending")
+                {
+                    xOrdered = xFiltered.OrderBy(x => x.PlantCount);
+                }
+                else
+                {
+                    xOrdered = xFiltered.OrderByDescending(x => x.PlantCount);
+                }
+            }
+
+
+
+
+
+
+
+
+
 
             ViewData["GroupID"] = GroupID;
-            return View(xFiltered);
+
+            if (orderby == null)
+            {
+                ViewData["orderby"] = "Name'";
+            }
+            else
+            {
+                ViewData["orderby"] = orderby;
+            }
+
+            if (ascendingdescending == null)
+            {
+                ViewData["ascendingdescending"] = "Ascending'";
+            }
+            else
+            {
+                ViewData["ascendingdescending"] = ascendingdescending;
+            }
+
+            return View(xOrdered);
         }
     }
 }

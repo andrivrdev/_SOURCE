@@ -179,6 +179,39 @@
     <Content Include="Content\Pics\Stock\IMG_20190109_104334.jpg" />
     <Content Include="Content\Pics\Stock\IMG_20190109_104342.jpg" />
     <Content Include="Content\Pics\Stock\IMG_20190109_104421.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20181216_085841.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20181216_085936.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20181218_101648.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20181218_101738.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20181218_101756.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20181230_055524.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20181231_132801.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190102_094715.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190102_094935.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190102_095000.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190102_095009.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190106_094038.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190106_094044.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190106_094051.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190106_094056.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190106_094111.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190106_094116.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190106_094124.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190106_094131.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190106_100337.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190106_100349.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190109_103139.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190109_103143.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190109_103147.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190109_103151.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190109_103155.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190109_103200.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190109_103203.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190109_104322.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190109_104334.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190109_104342.jpg" />
+    <Content Include="Content\Pics\Stock\Originals\IMG_20190109_104421.jpg" />
+    <Content Include="Content\w3.css" />
     <Content Include="favicon.ico" />
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -259,6 +292,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Plant\Index.cshtml" />
+    <Content Include="Views\Login\Test2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

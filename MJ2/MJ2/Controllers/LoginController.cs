@@ -11,9 +11,16 @@ namespace MJ2.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
+        
         [AllowAnonymous]
         public ActionResult Test()
+        {
+            return View();
+        }
+
+        
+        [AllowAnonymous]
+        public ActionResult Test2()
         {
             return View();
         }

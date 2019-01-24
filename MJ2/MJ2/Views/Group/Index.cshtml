@@ -12,19 +12,77 @@
 
 <p class="lead">Use this screen to manage your gardens. Each garden will contain a batch of plants.</p>
 
-<div class="container">
+<div class="container small">
     <div class="row" style="background-color:whitesmoke;">
-        <div class="col-sm" >
-            <button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary glyphicon acf-ec-glyph-icon acf-ec-add-1 float-left" data-addedit="add">&nbsp; Create a New Garden</button>
+        <div class="col-sm-3" >
+            <button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-sm glyphicon acf-ec-glyph-icon acf-ec-add-1 float-left" data-addedit="add">&nbsp; Create a New Garden</button>
         </div>
-        <div class="col-sm" >
-            <form class="form-inline my-2 my-lg-0" style="float:right">
-                <input style="float:right" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            </form>
-        </div>
-        <div class="col-sm" style="float:right; " >
-            <form class="form-inline my-2 my-lg-0" style="float:right">
-                <input style="float:right" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <div class="col-sm-9" style="float:right; " >
+            <form id="Form1" class="form-inline my-2 my-lg-0" style="float:right" method="post">
+                <label>Order By: &nbsp;</label>
+                <select class="form-control form-control-sm" id="orderby" name="orderby" onchange="document.getElementById('Form1').submit();">
+                    @if (ViewData["orderby"].ToString() == "Name")
+                    {
+                        <option selected>Name</option>
+                    }
+                    else
+                    {
+                        <option>Name</option>}
+
+                    @if (ViewData["orderby"].ToString() == "Created Date")
+                    {
+                        <option selected>Created Date</option>
+                    }
+                    else
+                    {
+                        <option>Created Date</option>}
+
+                    @if (ViewData["orderby"].ToString() == "First Entry Date")
+                    {
+                        <option selected>First Entry Date</option>
+                    }
+                    else
+                    {
+                        <option>First Entry Date</option>}
+
+                    @if (ViewData["orderby"].ToString() == "Last Entry Date")
+                    {
+                        <option selected>Last Entry Date</option>
+                    }
+                    else
+                    {
+                        <option>Last Entry Date</option>}
+
+                    @if (ViewData["orderby"].ToString() == "Age")
+                    {
+                        <option selected>Age</option>
+                    }
+                    else
+                    {
+                        <option>Age</option>}
+
+                    @if (ViewData["orderby"].ToString() == "Amount of Plants")
+                    {
+                        <option selected>Amount of Plants</option>
+                    }
+                    else
+                    {
+                        <option>Amount of Plants</option>}
+
+                </select>
+                <select class="form-control form-control-sm" id="ascendingdescending" name="ascendingdescending" onchange="document.getElementById('Form1').submit();">
+                    @if (ViewData["ascendingdescending"].ToString() == "Ascending")
+                    {
+                        <option selected>Ascending</option>
+                        <option>Descending</option>
+                    }
+                    else
+                    {
+                        <option>Ascending</option>
+                        <option selected>Descending</option>
+                    }
+                </select>
+                <input style="float:right" class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="inputSearch" onkeyup="DoWork('inputSearch')">
             </form>
         </div>
     </div>
@@ -32,132 +90,134 @@
 
 
 <div class="container-fluid">
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-sm-4 py-2">
-                <div class="card h-100 bg-transparent border-info">
-                    <div class="card-header h5">
-                        @item.Code
+    <div class="row" id="searchhere">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-4 py-2" id="search_@(item.Code + item.Description + item.CreatedDateTime.ToShortDateString() + item.FirstEntryDateTime.ToShortDateString() + item.LastEntryDateTime.ToShortDateString())">
+                    <div class="card h-100 bg-transparent border-info">
+                        <div class="card-header h5">
+                            @item.Code
+                        </div>
+                        <img style="height:230px;" class="img-fluid" src="~/Content/Pics/Stock/IMG_20181216_085841.jpg" alt="Card image cap">
+
+                        <div style="position: absolute;top: 60px;right: 16px;">
+                            <table style="opacity:0.85;">
+                                <tr style="padding: 0 !important;">
+                                    <td style="padding: 0 !important;font-size:smaller">
+                                        <span class="badge badge-secondary">Created</span>
+                                    </td>
+                                    <td></td>
+
+                                    <td style="padding: 0 !important;font-size:smaller">
+
+                                        @if (item.CreatedDateTime.ToShortDateString() == "0001/01/01")
+                                        {
+                                            <span class="badge badge-pill badge-danger">Not Available</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-pill badge-success">@item.CreatedDateTime.ToShortDateString()</span>
+                                        }
+
+                                    </td>
+
+                                </tr>
+                                <tr style="padding: 0 !important;">
+                                    <td style="padding: 0 !important;font-size:smaller">
+                                        <span class="badge badge-secondary">First Entry</span>
+                                    </td>
+                                    <td></td>
+
+                                    <td style="padding: 0 !important;font-size:smaller">
+
+                                        @if (item.FirstEntryDateTime.ToShortDateString() == "0001/01/01")
+                                        {
+                                            <span class="badge badge-pill badge-danger">Not Available</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-pill badge-success">@item.FirstEntryDateTime.ToShortDateString()</span>
+                                        }
+
+                                    </td>
+
+                                </tr>
+                                <tr style="padding: 0 !important;">
+                                    <td style="padding: 0 !important;font-size:smaller">
+                                        <span class="badge badge-secondary">Last Entry</span>
+                                    </td>
+                                    <td></td>
+
+                                    <td style="padding: 0 !important;font-size:smaller">
+
+                                        @if (item.LastEntryDateTime.ToShortDateString() == "0001/01/01")
+                                        {
+                                            <span class="badge badge-pill badge-danger">Not Available</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-pill badge-success">@item.LastEntryDateTime.ToShortDateString()</span>
+                                        }
+
+                                    </td>
+
+                                </tr>
+
+                                <tr style="padding: 0 !important;">
+                                    <td style="padding: 0 !important;font-size:smaller">
+                                        <span class="badge badge-secondary">Age</span>
+
+                                    </td>
+                                    <td></td>
+                                    <td style="padding: 0 !important;font-size:smaller">
+                                        <span class="badge badge-pill badge-info">@item.Age</span>
+                                    </td>
+                                </tr>
+                                <tr style="padding: 0 !important;">
+                                    <td style="padding: 0 !important;font-size:smaller">
+                                        <span class="badge badge-secondary">Plants</span>
+                                    </td>
+                                    <td></td>
+                                    <td style="padding: 0 !important;font-size:smaller">
+                                        <span class="badge badge-pill badge-success">@item.PlantCount</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+
+
+                        <div class="card-body d-flex flex-column">
+                            <p class="card-text">@item.Description</p>
+
+
+                        </div>
+
+                        <div class="card-footer bg-transparent">
+                            <table style="opacity:0.85;">
+                                <tr style="padding: 0 !important;">
+                                    <td style="padding: 0 !important;font-size:smaller">
+                                        <form id="your-form2" method="post">
+                                            <input type="hidden" class="form-control" name="validation_Command" id="validation_Command" value="GotoPlants">
+
+                                            <button name="GroupID" value="@item.ID" type="submit" class="btn btn-outline-success btn-sm glyphicon acf-et-glyph-icon acf-et-tree-leaf">&nbsp; Plants</button>
+                                        </form>
+                                    </td>
+                                    <td style="padding: 0 !important;font-size:smaller">
+                                        <button type="button" class="btn btn-outline-warning btn-sm glyphicon acf-ec-glyph-icon acf-ec-edit" data-toggle="modal" data-target="#exampleModalCenter" data-addedit="edit" data-xid="@item.ID" data-code="@item.Code" data-description="@item.Description" data-createddatetime="@item.CreatedDateTime">&nbsp; Edit</button>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+
                     </div>
-                    <img style="height:230px;" class="img-fluid" src="~/Content/Pics/Stock/IMG_20181216_085841.jpg" alt="Card image cap">
-
-                    <div style="position: absolute;top: 60px;right: 16px;">
-                        <table style="opacity:0.85;">
-                            <tr style="padding: 0 !important;">
-                                <td style="padding: 0 !important;font-size:smaller">
-                                    <span class="badge badge-secondary">Created</span>
-                                </td>
-                                <td></td>
-
-                                <td style="padding: 0 !important;font-size:smaller">
-
-                                    @if (item.CreatedDateTime.ToShortDateString() == "0001/01/01")
-                                    {
-                                        <span class="badge badge-pill badge-danger">Not Available</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge badge-pill badge-success">@item.CreatedDateTime.ToShortDateString()</span>
-                                    }
-
-                                </td>
-
-                            </tr>
-                            <tr style="padding: 0 !important;">
-                                <td style="padding: 0 !important;font-size:smaller">
-                                    <span class="badge badge-secondary">First Entry</span>
-                                </td>
-                                <td></td>
-
-                                <td style="padding: 0 !important;font-size:smaller">
-
-                                    @if (item.FirstEntryDateTime.ToShortDateString() == "0001/01/01")
-                                    {
-                                        <span class="badge badge-pill badge-danger">Not Available</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge badge-pill badge-success">@item.FirstEntryDateTime.ToShortDateString()</span>
-                                    }
-
-                                </td>
-
-                            </tr>
-                            <tr style="padding: 0 !important;">
-                                <td style="padding: 0 !important;font-size:smaller">
-                                    <span class="badge badge-secondary">Last Entry</span>
-                                </td>
-                                <td></td>
-
-                                <td style="padding: 0 !important;font-size:smaller">
-
-                                    @if (item.LastEntryDateTime.ToShortDateString() == "0001/01/01")
-                                    {
-                                        <span class="badge badge-pill badge-danger">Not Available</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge badge-pill badge-success">@item.LastEntryDateTime.ToShortDateString()</span>
-                                    }
-
-                                </td>
-
-                            </tr>
-
-                            <tr style="padding: 0 !important;">
-                                <td style="padding: 0 !important;font-size:smaller">
-                                    <span class="badge badge-secondary">Age</span>
-
-                                </td>
-                                <td></td>
-                                <td style="padding: 0 !important;font-size:smaller">
-                                    <span class="badge badge-pill badge-info">@item.Age</span>
-                                </td>
-                            </tr>
-                            <tr style="padding: 0 !important;">
-                                <td style="padding: 0 !important;font-size:smaller">
-                                    <span class="badge badge-secondary">Plants</span>
-                                </td>
-                                <td></td>
-                                <td style="padding: 0 !important;font-size:smaller">
-                                    <span class="badge badge-pill badge-success">@item.PlantCount</span>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-
-
-                    <div class="card-body d-flex flex-column">
-                        <p class="card-text">@item.Description</p>
-
-                        
-                    </div>
-
-                    <div class="card-footer bg-transparent">
-                        <table style="opacity:0.85;">
-                            <tr style="padding: 0 !important;">
-                                <td style="padding: 0 !important;font-size:smaller">
-                                    <form id="your-form2" method="post">
-                                        <input type="hidden" class="form-control" name="validation_Command" id="validation_Command" value="GotoPlants">
-
-                                        <button name="GroupID" value="@item.ID" type="submit" class="btn btn-outline-success btn-sm glyphicon acf-et-glyph-icon acf-et-tree-leaf">&nbsp; Plants</button>
-                                    </form>
-                                </td>
-                                <td style="padding: 0 !important;font-size:smaller">
-                                    <button  type="button" class="btn btn-outline-warning btn-sm glyphicon acf-ec-glyph-icon acf-ec-edit" data-toggle="modal" data-target="#exampleModalCenter" data-addedit="edit" data-xid="@item.ID" data-code="@item.Code" data-description="@item.Description" data-createddatetime="@item.CreatedDateTime">&nbsp; Edit</button>
-                                </td>
-                            </tr>
-                            
-                        </table>
-
-                    </div>
-
-
                 </div>
-            </div>
-        }
+            }
+            
+        </div>
     </div>
 </div>
 
@@ -177,6 +237,9 @@
                 <form id="your-form" class="needs-validation" method="post" novalidate>
                     <input type="hidden" class="form-control" name="validation_Command" id="validation_Command" value="CreateGroup">
                     <input type="hidden" class="form-control" name="GroupID" id="xid">
+
+                    <input type="hidden" class="form-control" name="orderby" id="orderby" value="@ViewData["orderby"].ToString()">
+                    <input type="hidden" class="form-control" name="ascendingdescending" id="ascendingdescending" value="@ViewData["ascendingdescending"].ToString()">
 
                     <div class="form-row">
                         <div class="col-md-12">
@@ -222,70 +285,90 @@
 @section scripts {
 
     <script>
-    //Edit group
-    $('#exampleModalCenter').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) // Button that triggered the modal
+        //Edit group
+        $('#exampleModalCenter').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
 
-    var addedit = button.data('addedit')
-    var xid = button.data('xid')
-    var code = button.data('code') // Extract info from data-* attributes
-    var description = button.data('description')
-    var createddatetime = button.data('createddatetime')
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this)
-    //modal.find('.modal-title').text('New message to ' + recipient)
+        var addedit = button.data('addedit')
+        var xid = button.data('xid')
+        var code = button.data('code') // Extract info from data-* attributes
+        var description = button.data('description')
+        var createddatetime = button.data('createddatetime')
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        //modal.find('.modal-title').text('New message to ' + recipient)
 
-    if (addedit == "add") {
-        modal.find('#exampleModalLongTitle').text("Create a New Garden");
-        modal.find('#validation_Command').val("CreateGroup")
-        modal.find('#validation_groupCreatedDateTime').val('@DateTime.Now.ToString()')
+        if (addedit == "add") {
+            modal.find('#exampleModalLongTitle').text("Create a New Garden");
+            modal.find('#validation_Command').val("CreateGroup")
+            modal.find('#validation_groupCreatedDateTime').val('@DateTime.Now.ToString()')
 
-        var dt = new Date();
-        var tempName = "G-".concat(dt.getFullYear().toString(), pad((dt.getMonth() + 1).toString(), 2), pad((dt.getDate()).toString(), 2), pad((dt.getHours()).toString(), 2), pad((dt.getMinutes()).toString(), 2), pad((dt.getSeconds()).toString(), 2));
-        modal.find('#validation_groupName').val(tempName)
-
-
-    } else {
-        modal.find('#exampleModalLongTitle').text("Edit this Garden");
-        modal.find('#validation_Command').val("EditGroup")
-        modal.find('#validation_groupCreatedDateTime').val(createddatetime)
-        modal.find('#validation_groupName').val(code)
-    }
+            var dt = new Date();
+            var tempName = "G-".concat(dt.getFullYear().toString(), pad((dt.getMonth() + 1).toString(), 2), pad((dt.getDate()).toString(), 2), pad((dt.getHours()).toString(), 2), pad((dt.getMinutes()).toString(), 2), pad((dt.getSeconds()).toString(), 2));
+            modal.find('#validation_groupName').val(tempName)
 
 
-    modal.find('#xid').val(xid)
-    modal.find('#validation_groupDescription').val(description)
-    });
-
-    function pad(num, size) {
-        var s = num + "";
-        while (s.length < size) s = "0" + s;
-        return s;
-    }
+        } else {
+            modal.find('#exampleModalLongTitle').text("Edit this Garden");
+            modal.find('#validation_Command').val("EditGroup")
+            modal.find('#validation_groupCreatedDateTime').val(createddatetime)
+            modal.find('#validation_groupName').val(code)
+        }
 
 
+        modal.find('#xid').val(xid)
+        modal.find('#validation_groupDescription').val(description)
+        });
 
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict';
-        window.addEventListener('load', function () {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
+        function pad(num, size) {
+            var s = num + "";
+            while (s.length < size) s = "0" + s;
+            return s;
+        }
+
+
+
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+
+        //Search
+        function DoWork(controlId) {
+            //Get search value
+            var searchedFor = document.getElementById(controlId).value;
+
+            //Get all glyph elements
+            var glyphsFound = document.getElementById("searchhere").querySelectorAll("div");
+
+            //Loop and check the id's and compare them to the searched term
+            var i;
+            for (i = 0; i < glyphsFound.length; i++) {
+                if (glyphsFound[i].id.indexOf("search") >= 0) {
+                    if (glyphsFound[i].id.indexOf(searchedFor) == -1) {
+                        glyphsFound[i].style.display = "none";
                     }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
-
-
+                    else {
+                        glyphsFound[i].style.display = "inline-block";
+                    }
+                }
+            }
+        }
     </script>
 
 }
