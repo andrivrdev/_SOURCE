@@ -25,6 +25,14 @@ namespace MJ2.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult Test2(string validation_Command, string takepic_0001)
+        {
+            return View();
+        }
+
+
 
         [AllowAnonymous]
         public ActionResult Index()

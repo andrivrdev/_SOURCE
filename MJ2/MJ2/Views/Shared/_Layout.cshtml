@@ -16,6 +16,8 @@
 
         @Html.ActionLink(Session["gtblCompany_Name"].ToString(), "Index", "Group", new { area = "" }, new { @class = "navbar-brand" })
 
+
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -52,9 +54,12 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+
+
+
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-    
+
 </body>
 </html>
