@@ -47,6 +47,7 @@
     <Compile Include="CLASSES\clsSE.cs" />
     <Compile Include="DATA\tblCompany.cs" />
     <Compile Include="DATA\tblGroup.cs" />
+    <Compile Include="DATA\tblPlant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
