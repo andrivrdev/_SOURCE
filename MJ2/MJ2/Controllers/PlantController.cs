@@ -33,13 +33,17 @@ namespace MJ2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string xplantid, HttpPostedFileBase xpic)
+        public ActionResult Index(string xplantid, string xcompressedpic, HttpPostedFileBase xpic)
         {
-            if (xpic != null)
+            if (xcompressedpic != null)
             {
-                //byte[] xImage = Encoding.UTF8.GetBytes(xpic);
+                string xx = xcompressedpic.Replace(@"data:image/png;base64,", "");
 
-                byte[] xImage = new byte[xpic.ContentLength];
+                byte[] xImage = Convert.FromBase64String(xx);
+                //byte[] xImage = Encoding.UTF8.GetBytes(xpic);
+                //byte[] xImage = new byte[xpic.ContentLength];
+
+                /*
                 byte[] ximg = null;
                 xpic.InputStream.Read(xImage, 0, xpic.ContentLength);
                 
@@ -51,6 +55,7 @@ namespace MJ2.Controllers
                         ximg = ImageToByteArray(resizedImage);
                     }
                 }
+                */
 
                 string SQL = "";
 
@@ -66,7 +71,7 @@ namespace MJ2.Controllers
                     {
                         SqlCommand MyCommand = new SqlCommand(SQL, con);
 
-                        SqlParameter sqlParam = MyCommand.Parameters.AddWithValue("@Data", ximg);
+                        SqlParameter sqlParam = MyCommand.Parameters.AddWithValue("@Data", xImage);
                         sqlParam.DbType = DbType.Binary;
 
                         con.Open();
