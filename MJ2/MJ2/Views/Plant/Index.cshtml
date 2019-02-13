@@ -8,7 +8,7 @@
 <div class="container small">
     <div class="row" style="background-color:whitesmoke;">
         <div class="col-sm-3">
-            <button type="button" data-toggle="modal" data-target="#addplant" class="btn btn-primary btn-sm glyphicon acf-ec-glyph-icon acf-ec-add-1 float-left" data-addedit="add">&nbsp; Add a Plant</button>
+            <button type="button" class="btn btn-primary btn-sm glyphicon acf-ec-glyph-icon acf-ec-add-1 float-left" onclick="showModal('idmodal_0001', 'Add');">&nbsp; Add a Plant</button>
         </div>
         <div class="col-sm-9" style="float:right; ">
             <form id="frmorderby" class="form-inline my-2 my-lg-0" style="float:right" method="post">
@@ -81,12 +81,40 @@
     </div>
 </div>
 
+<!--MODAL-->
+<div id="idmodal_0001" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:350px">
+
+        <div class="w3-center">
+            <br>
+            <span onclick="hideModal('idmodal_0001');" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close">&times;</span>
+        </div>
+
+        <form id="idmodal_0001_frm_0001" class="w3-container" method="post">
+            <div class="w3-section">
+                <label id="xcreateddatetimelabel" style="margin-bottom:0px;"><b>Created Date</b></label>
+                <input type="datetime" class="form-control" name="xcreateddatetime" id="xcreateddatetime" placeholder="Choose a date" required style="width:100%">
+                <label style="margin-bottom:0px;margin-top:5px;"><b>Name</b></label>
+                <input type="text" class="form-control" name="xname" id="xname" placeholder="Name your plant" required autofocus>
+
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('idmodal_0001').style.display='none'" type="button" class="btn btn-danger">Cancel</button>
+            <button onclick="document.getElementById('idmodal_0001_frm_0001').submit()" class="btn btn-success w3-right">Save</button>
+        </div>
+
+    </div>
+</div>
+
+
 
 <div class="">
     <div class="row" style="margin-left:5px; margin-right:5px;">
 
 
-        
+
 
         @foreach (var item in Model)
         {
@@ -104,14 +132,14 @@
 
                         <!--BACKGROUND IMAGE-->
                         <!--
-    <img class="img-fluid w3-opacity-max" src="~/Content/Pics/Stock/Originals/IMG_20190109_103139.jpg" />
-    -->
+                        <img class="img-fluid w3-opacity-max" src="~/Content/Pics/Stock/Originals/IMG_20190109_103139.jpg" />
+                        -->
                         <!--TOP IMAGE-->
                         @{
                             if (item.LastPicture != null)
                             {
 
-                                var base64 = Convert.ToBase64String(item.LastPicture);
+                                var base64 = Convert.ToBase64String(item.LastPictureThumbnail);
                                 var imgsrc = string.Format("data:image/jpeg;base64,{0}", base64);
 
                                 <img style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); position:absolute; left:0px; top:15px; width:100%;height:200px;" src='@imgsrc' />
@@ -144,13 +172,8 @@
                                     </form>
                                 </td>
                                 <td width="15px">
-                                    <form>
-
-                                        <button type="submit" class="btn w3-hover-text-white w3-text-light-gray" style="padding:0px;">
-                                            <span style="font-size:large;" class="glyphicon acf-ec-glyph-icon acf-ec-notebook-1"></span>
-                                        </button>
-
-                                    </form>
+                                    <span class="btn w3-hover-text-white w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-notebook-1" style="padding:0px;font-size:large;" onclick="showModal('idmodal_0001', 'Edit', '@item.Name');"></span>
+                                    
                                 </td>
 
                                 <td width="15px"></td>
@@ -517,12 +540,52 @@
             </div>
         }
 
-        </div>
+    </div>
 </div>
 
 
 @section scripts {
     <script>
+        function hideModal(controlId) {
+            document.getElementById(controlId).style.display = 'none';
+        }
+
+        function showModal(controlId, addedit, xname) {
+            alert('A');
+            if (addedit == 'Add') {
+
+                alert('Add');
+
+                @{ 
+                    int xCount = Model.Count();
+                    xCount = xCount + 1;
+
+                    string sCount = xCount.ToString().PadLeft(5, '0');
+                    sCount = "Plant " + sCount;
+                }
+                
+
+                document.getElementById('xname').value = '@sCount';
+                document.getElementById('xcreateddatetimelabel').style.display = 'none';
+                document.getElementById('xcreateddatetime').style.display = 'none';
+
+                alert('display');
+                document.getElementById(controlId).style.display = 'block';
+
+            };
+
+            if (addedit == 'Edit') {
+                alert('Edit');
+                document.getElementById('xname').value = xname;
+                document.getElementById('xcreateddatetimelabel').style.display = 'block';
+                document.getElementById('xcreateddatetime').style.display = 'block';
+
+                document.getElementById(controlId).style.display = 'block';
+
+            };
+        }
+
+
         var zformToSubmit;
 
         window.uploadPhotos = function (inputToUpdate, formToSubmit) {
@@ -531,7 +594,7 @@
             // Read in file
             var file = event.target.files[0];
 
-            
+
 
             // Ensure it's an image
             if (file.type.match(/image.*/)) {
@@ -545,7 +608,7 @@
 
                         // Resize the image
                         var canvas = document.createElement('canvas'),
-                            max_size = 544,// TODO : pull max size from a site config
+                            max_size = 1000,// TODO : pull max size from a site config
                             width = image.width,
                             height = image.height;
                         if (width > height) {
@@ -567,7 +630,7 @@
                         var resizedImage = dataURLToBlob(dataUrl);
                         alert('Setting value to - ' + inputToUpdate + ' - Size:' + resizedImage.size.toString());
 
-                        
+
                         document.getElementById(inputToUpdate).value = dataUrl;
 
                         alert('Submitting form - ' + formToSubmit);
@@ -583,7 +646,7 @@
                     image.src = readerEvent.target.result;
                 }
                 reader.readAsDataURL(file);
-                
+
 
 
             }
@@ -626,48 +689,11 @@
                 alert('Trigger post')
 
                 document.getElementById(zformToSubmit).submit();
-                
 
-                $.ajax({
-                    url: event.url,
-                    data: data,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    type: 'POST',
-                    success: function (data) {
-                        //handle errors...
-                    }
-                });
+
+
             }
         });
-
-        function resizeImage(imageControlId, canvasControlId) {
-            var canvas = document.getElementById(canvasControlId);
-            var ctx = canvas.getContext("2d");
-            var img = new Image();
-
-            img.onload = function () {
-
-                // set size proportional to image
-                canvas.height = canvas.width * (img.height / img.width);
-
-                // step 1 - resize to 50%
-                var oc = document.createElement('canvas'),
-                    octx = oc.getContext('2d');
-
-                oc.width = img.width * 0.5;
-                oc.height = img.height * 0.5;
-                octx.drawImage(img, 0, 0, oc.width, oc.height);
-
-                // step 2
-                octx.drawImage(oc, 0, 0, oc.width * 0.5, oc.height * 0.5);
-
-                // step 3, resize to final size
-                ctx.drawImage(oc, 0, 0, oc.width * 0.5, oc.height * 0.5,
-                    0, 0, canvas.width, canvas.height);
-            }
-        }
 
         function showhideSubMenu(controlId) {
             var x = document.getElementById('menu_0001');

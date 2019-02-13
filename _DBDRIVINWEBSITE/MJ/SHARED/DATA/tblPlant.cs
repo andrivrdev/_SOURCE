@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,7 @@ namespace SHARED.DATA
         public DateTime LastProblemDateTime { get; set; }
         public byte[] LastPicture { get; set; }
         public DateTime LastPictureDateTime { get; set; }
+        public byte[] LastPictureThumbnail { get; set; }
         public string LastEnvironment { get; set; }
         public string LastEnvironmentValue { get; set; }
         public DateTime LastEnvironmentDateTime { get; set; }
@@ -580,6 +582,24 @@ namespace SHARED.DATA
                     {
                         xtblPlant.LastPictureDateTime = Convert.ToDateTime(dr["LastPictureDateTime"]);
                     }
+
+                    //THUMBNAIL
+                    if (dr["LastPicture"] != DBNull.Value)
+                    {
+                        byte[] xLastPicture = (byte[])(dr["LastPicture"]);
+
+                        //Resize
+                        clsSE xSE = new clsSE();
+                        using (Image image = xSE.byteArrayToImage(xLastPicture))
+                        {
+                            using (Bitmap resizedImage = xSE.ResizeImage(image, 0.3m))
+                            {
+                                xtblPlant.LastPictureThumbnail = xSE.ImageToByteArray(resizedImage);
+                            }
+                        }
+                    }
+
+
 
                     if (dr["LastEnvironment"] != DBNull.Value)
                     {
