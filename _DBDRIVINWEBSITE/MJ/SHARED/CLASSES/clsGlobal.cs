@@ -10,6 +10,6 @@ namespace SHARED.CLASSES
     public static class clsGlobal
     {
         public static string gConnectionString = ConfigurationManager.ConnectionStrings["MJ"].ConnectionString;
-        public static Int64 gCompanyID = 1;
+        public static Int64 gCompanyID = 0;
     }
 }

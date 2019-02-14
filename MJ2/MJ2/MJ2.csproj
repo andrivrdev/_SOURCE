@@ -211,6 +211,7 @@
     <Content Include="Content\Pics\Stock\Originals\IMG_20190109_104334.jpg" />
     <Content Include="Content\Pics\Stock\Originals\IMG_20190109_104342.jpg" />
     <Content Include="Content\Pics\Stock\Originals\IMG_20190109_104421.jpg" />
+    <Content Include="Content\Plant\no_image.svg" />
     <Content Include="Content\w3.css" />
     <Content Include="favicon.ico" />
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />

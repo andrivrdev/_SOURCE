@@ -13,6 +13,11 @@ namespace MJ2.Controllers
         // GET: Group
         public ActionResult Index()
         {
+            if (Session["gtblCompany_ID"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             tblGroup xtblGroup = new tblGroup();
             xtblGroup.LoadData();
             
@@ -28,6 +33,11 @@ namespace MJ2.Controllers
         [HttpPost]
         public ActionResult Index(string GroupID, string validation_Command, string validation_groupName, string validation_groupDescription, DateTime? validation_groupCreatedDateTime, string orderby, string ascendingdescending)
         {
+            if (Session["gtblCompany_ID"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             tblGroup xtblGroup;
             if (validation_Command == "CreateGroup")
             {

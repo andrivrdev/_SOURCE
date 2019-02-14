@@ -151,8 +151,8 @@
 
                         <!--BACKGROUND IMAGE-->
                         <!--
-                        <img class="img-fluid w3-opacity-max" src="~/Content/Pics/Stock/Originals/IMG_20190109_103139.jpg" />
-                        -->
+    <img class="img-fluid w3-opacity-max" src="~/Content/Pics/Stock/Originals/IMG_20190109_103139.jpg" />
+    -->
                         <!--TOP IMAGE-->
                         @{
                             if (item.LastPicture != null)
@@ -162,6 +162,18 @@
                                 var imgsrc = string.Format("data:image/jpeg;base64,{0}", base64);
 
                                 <img style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); position:absolute; left:0px; top:15px; width:100%;height:200px;" src='@imgsrc' />
+                            }
+                            else
+                            {
+                                <table style="position:absolute; left:0px; top:65px; width:100%">
+                                    <tr>
+                                        <td style="width:20%;"></td>
+                                        <td class="w3-center">
+                                            <img class="w3-text-light-green" style="height:100px;" src='~/Content/Plant/no_image.svg' />
+                                        </td>
+                                        <td style="width:20%;"></td>
+                                    </tr>
+                                </table>
                             }
                         }
 
@@ -173,11 +185,16 @@
                                 <td></td>
                             </tr>
                         </table>
+                        <table class="w3-opacity-min" style="background-image:linear-gradient(to top, black,  transparent); position:absolute; left:0px; top:180px; width:100%; height:35px;">
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </table>
 
 
 
 
-                        <!--BUTTONS-->
+                        <!--TOP BUTTONS-->
                         <table style="position:absolute; left:3px; top:15px; width:100%; opacity:0.8;">
                             <tr>
                                 <td width="15px">
@@ -188,20 +205,28 @@
                                         <input type="hidden" class="form-control" name="xplantid" id="xplantid" value="@item.ID">
                                         <input id="@takepicresized" name="xcompressedpic" type="hidden" style="display:none" onchange="">
 
-                                        <span class="btn w3-hover-text-white w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-photo-camera" style="padding:0px;font-size:large;" onclick="document.getElementById('@takepic').click()"></span>
+                                        <span class="btn w3-hover-text-deep-purple w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-photo-camera" style="padding:0px;font-size:large;" onclick="document.getElementById('@takepic').click()"></span>
                                     </form>
                                 </td>
+
+                                <td></td>
+
                                 <td width="15px">
-                                    <span class="btn w3-hover-text-white w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-notebook-1" style="padding:0px;font-size:large;" onclick="showModal('idmodal_0001', 'Edit', '@item.Name', '@item.CreatedDateTime.Date.ToString("yyyy-MM-dd")',  '@item.ID');"></span>
-                                    
+                                    <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-two-dots-button" style="outline:none; padding:0px; font-size:large;" onclick="showhideSubMenu('menu_0001');"></span>
                                 </td>
 
-                                <td width="15px"></td>
+                                <td width="5px;"></td>
 
+                            </tr>
+                        </table>
+
+                        <!--BOTTOM BUTTONS-->
+                        <table style="position:absolute; left:3px; top:185px; width:100%; opacity:0.8;">
+                            <tr>
                                 <td width="15px">
                                     <form>
 
-                                        <button type="submit" class="btn w3-hover-text-white w3-text-light-gray" style="padding:0px;">
+                                        <button type="submit" class="btn w3-hover-text-pink w3-text-light-gray" style="padding:0px;">
                                             <span style="font-size:large;" class="glyphicon acf-ec-glyph-icon acf-ec-view"></span>
                                         </button>
 
@@ -211,30 +236,17 @@
                                 <td width="15px">
                                     <form>
 
-                                        <button type="submit" class="btn w3-hover-text-white w3-text-light-gray" style="padding:0px;">
+                                        <button type="submit" class="btn w3-hover-text-blue w3-text-light-gray" style="padding:0px;">
                                             <span style="font-size:large;" class="glyphicon acf-et-glyph-icon acf-et-droplet-of-water"></span>
                                         </button>
 
                                     </form>
                                 </td>
 
-                                <td width="15px"></td>
-
-                                <td width="15px">
-                                    <form>
-
-                                        <button type="submit" class="btn w3-hover-text-white w3-text-light-gray" style="padding:0px;">
-                                            <span style="font-size:large;" class="glyphicon acf-ec-glyph-icon acf-ec-edit"></span>
-                                        </button>
-
-                                    </form>
-                                </td>
-
-
                                 <td></td>
 
                                 <td width="15px">
-                                    <span class="btn w3-hover-text-white w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-two-dots-button" style="outline:none; padding:0px; font-size:large;" onclick="showhideSubMenu('menu_0001');"></span>
+                                    <span class="btn w3-hover-text-orange w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-edit" style="padding:0px;font-size:large;" onclick="showModal('idmodal_0001', 'Edit', '@item.Name', '@item.CreatedDateTime.Date.ToString("yyyy-MM-dd")',  '@item.ID');"></span>
                                 </td>
 
                                 <td width="5px;"></td>
@@ -492,12 +504,26 @@
                                 </td>
                                 <td>
                                     <!--AGE-->
-                                    <table>
-                                        <tr>
-                                            <td>@item.Age</td>
-                                            <td>days</td>
-                                        </tr>
-                                    </table>
+                                    @{
+                                        if (item.Age == 0)
+                                        {
+                                            <table>
+                                                <tr>
+                                                    <td>Today</td>
+                                                </tr>
+                                            </table>
+                                        }
+                                        else
+                                        {
+                                            <table>
+                                                <tr>
+                                                    <td>@item.Age</td>
+                                                    <td>days</td>
+                                                </tr>
+                                            </table>
+
+                                        }
+                                    }
                                 </td>
 
                             </tr>
@@ -518,7 +544,7 @@
                                     {
                                         @item.Phase
                                     }
-                                    </td>
+                                </td>
 
                             </tr>
 
