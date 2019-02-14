@@ -63,7 +63,7 @@ namespace MJ2.Controllers
                         FormsAuthentication.SetAuthCookie(u.Name.ToUpper(), false);
                         if (!string.IsNullOrEmpty(returnUrl))
                         {
-                            if (!(returnUrl == "/MJ2/"))
+                            if (!(returnUrl == "/MJ2/") && !(returnUrl == "/MJ2/Plant/Index"))
                             {
                                 return Redirect(returnUrl);
                             }

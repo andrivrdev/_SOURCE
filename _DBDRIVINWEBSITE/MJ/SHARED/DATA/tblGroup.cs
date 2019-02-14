@@ -45,9 +45,7 @@ namespace SHARED.DATA
                     (SELECT p.ID FROM tblPlant p WHERE p.GroupID = g.ID)
                   ) AS LastEntryDateTime,
  
-                (SELECT DATEDIFF(DAY, MIN(ph.EventDateTime), MAX(ph.EventDateTime)) FROM tblPlantHistory ph WHERE ph.PlantID IN 
-                    (SELECT p.ID FROM tblPlant p WHERE p.GroupID = g.ID)
-                  ) AS Age,
+                  (SELECT DATEDIFF(DAY, g.CreatedDateTime , GETDATE())) AS Age,
   
                   (SELECT COUNT(*) FROM tblPlant p WHERE p.GroupID = g.ID) AS PlantCount
                 FROM

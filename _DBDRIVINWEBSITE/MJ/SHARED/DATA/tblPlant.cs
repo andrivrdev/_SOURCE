@@ -68,8 +68,7 @@ namespace SHARED.DATA
                   (SELECT MIN(ph.EventDateTime) FROM tblPlantHistory ph WHERE ph.PlantID = p.ID
                   ) AS LastEntryDateTime,
   
-                  (SELECT DATEDIFF(DAY, MIN(ph.EventDateTime), MAX(ph.EventDateTime)) FROM tblPlantHistory ph WHERE ph.PlantID = p.ID
-                  ) AS Age,
+                  (SELECT DATEDIFF(DAY, p.CreatedDateTime , GETDATE())) AS Age,
   
                   (SELECT COUNT(*) FROM tblPlantHistory ph WHERE ph.PlantID = p.ID) AS EventCount,
   
@@ -158,8 +157,7 @@ namespace SHARED.DATA
   
     
                     --Daily
-                    
-    
+        
                   (SELECT COUNT(*)
                   FROM
                     dbo.tblPlantHistory ph
@@ -468,8 +466,7 @@ namespace SHARED.DATA
                   ORDER BY
                     ph.EventDateTime DESC) AS LastNoteDateTime
                 FROM
-                  dbo.tblPlant p                ";
-
+                  dbo.tblPlant p";
             List<tblPlant> xPlant = new List<tblPlant>();
 
             using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionString))
@@ -664,66 +661,57 @@ namespace SHARED.DATA
             }
         }
 
-        public void AddRec(int xCompanyID, string xCode, string xDescription, DateTime? xCreatedDateTime)
+        public void AddRec(int xGroupID, string xName, DateTime? xCreatedDateTime)
         {
-            /*
             List<string> fFields = new List<string>();
             List<string> vValues = new List<string>();
 
-            fFields.Add("CompanyID");
-            fFields.Add("Code");
-            fFields.Add("Description");
+            fFields.Add("GroupID");
+            fFields.Add("Name");
 
             if (xCreatedDateTime == null)
             {
-                vValues.Add(xCompanyID.ToString());
-                vValues.Add(xCode.ToString());
-                vValues.Add(xDescription.ToString());
+                vValues.Add(xGroupID.ToString());
+                vValues.Add(xName.ToString());
             }
             else
             {
                 fFields.Add("CreatedDateTime");
 
-                vValues.Add(xCompanyID.ToString());
-                vValues.Add(xCode.ToString());
-                vValues.Add(xDescription.ToString());
+                vValues.Add(xGroupID.ToString());
+                vValues.Add(xName.ToString());
                 vValues.Add(xCreatedDateTime.ToString());
             }
 
             clsSE xclsSE = new clsSE();
-            xclsSE.sqlInsertRec("tblGroup", fFields, vValues);
-            */
+            xclsSE.sqlInsertRec("tblPlant", fFields, vValues);
         }
 
-        public void UpdateRec(int xID, int xCompanyID, string xCode, string xDescription, DateTime? xCreatedDateTime)
+        public void UpdateRec(int xID, int xGroupID, string xName, DateTime? xCreatedDateTime)
         {
-            /*
             List<string> fFields = new List<string>();
             List<string> vValues = new List<string>();
 
-            fFields.Add("CompanyID");
-            fFields.Add("Code");
-            fFields.Add("Description");
+            fFields.Add("GroupID");
+            fFields.Add("Name");
 
             if (xCreatedDateTime == null)
             {
-                vValues.Add(xCompanyID.ToString());
-                vValues.Add(xCode.ToString());
-                vValues.Add(xDescription.ToString());
+                vValues.Add(xGroupID.ToString());
+                vValues.Add(xName.ToString());
             }
             else
             {
                 fFields.Add("CreatedDateTime");
 
-                vValues.Add(xCompanyID.ToString());
-                vValues.Add(xCode.ToString());
-                vValues.Add(xDescription.ToString());
+                vValues.Add(xGroupID.ToString());
+                vValues.Add(xName.ToString());
                 vValues.Add(xCreatedDateTime.ToString());
             }
 
             clsSE xclsSE = new clsSE();
-            xclsSE.sqlUpdateRec("tblGroup", fFields, vValues, "[ID] = '" + xID + "'");
-            */
+            xclsSE.sqlUpdateRec("tblPlant", fFields, vValues, "[ID] = '" + xID + "'");
+            
         }
     }
 }

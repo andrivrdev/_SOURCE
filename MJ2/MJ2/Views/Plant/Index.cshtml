@@ -85,17 +85,30 @@
 <div id="idmodal_0001" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:350px">
 
-        <div class="w3-center">
-            <br>
-            <span onclick="hideModal('idmodal_0001');" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close">&times;</span>
-        </div>
+        
+            <table style="width:100%" class="w3-xlarge w3-dark-gray">
+                <tr>
+                    <td width="16px"></td>
+                    <td width="5px;" style="white-space: nowrap;">
+                        <span id="idmodal_0001_title">Add a Plant</span>
+                    </td>
+                    <td></td>
+                    <td width="5px;">
+                        <span onclick="hideModal('idmodal_0001');" class="w3-button w3-hover-red " title="Close">&times;</span>
+                    </td>
+                </tr>
+            </table>
+        
 
         <form id="idmodal_0001_frm_0001" class="w3-container" method="post">
             <div class="w3-section">
+                <input type="hidden" class="form-control" name="xcommand" id="idmodal_0001_frm_0001_xcommand" value="Add">
+                <input type="hidden" class="form-control" name="xplantid" id="idmodal_0001_frm_0001_xplantid" value="0">
+
                 <label id="xcreateddatetimelabel" style="margin-bottom:0px;"><b>Created Date</b></label>
-                <input type="datetime" class="form-control" name="xcreateddatetime" id="xcreateddatetime" placeholder="Choose a date" required style="width:100%">
+                <input type="date" class="form-control" name="xcreateddatetime" id="xcreateddatetime" placeholder="Choose a date" required style="width:100%">
                 <label style="margin-bottom:0px;margin-top:5px;"><b>Name</b></label>
-                <input type="text" class="form-control" name="xname" id="xname" placeholder="Name your plant" required autofocus>
+                <input type="text" class="form-control" name="xname" id="xname" placeholder="Name your plant" required>
 
             </div>
         </form>
@@ -113,11 +126,17 @@
 <div class="">
     <div class="row" style="margin-left:5px; margin-right:5px;">
 
-
+        @{ 
+            int xCount = 0;
+            string xsCount;
+        }
 
 
         @foreach (var item in Model)
         {
+            xCount = xCount + 1;
+            xsCount = xCount.ToString().PadLeft(2, '0');
+
             string frm_takepic = "frm_takepic_" + item.ID.ToString();
             string takepic = "takepic_" + item.ID.ToString();
             string takepicresized = "takepic_" + item.ID.ToString() + item.ID.ToString();
@@ -164,15 +183,16 @@
                                 <td width="15px">
                                     <input id="@takepic" name="xpicorig" type="file" accept="image/*;capture=camera" style="display:none" onchange="uploadPhotos('@takepicresized', '@frm_takepic');">
                                     <form id="@frm_takepic" method="post" enctype='multipart/form-data'>
+                                        <input type="hidden" class="form-control" name="xcommand" id="xcommand" value="AddImage">
+
                                         <input type="hidden" class="form-control" name="xplantid" id="xplantid" value="@item.ID">
                                         <input id="@takepicresized" name="xcompressedpic" type="hidden" style="display:none" onchange="">
-                                        <!--  <input id="@takepic" name="xpic" type="file" accept="image/*;capture=camera" style="display:none" onchange="document.getElementById('@frm_takepic').submit();">-->
 
                                         <span class="btn w3-hover-text-white w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-photo-camera" style="padding:0px;font-size:large;" onclick="document.getElementById('@takepic').click()"></span>
                                     </form>
                                 </td>
                                 <td width="15px">
-                                    <span class="btn w3-hover-text-white w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-notebook-1" style="padding:0px;font-size:large;" onclick="showModal('idmodal_0001', 'Edit', '@item.Name');"></span>
+                                    <span class="btn w3-hover-text-white w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-notebook-1" style="padding:0px;font-size:large;" onclick="showModal('idmodal_0001', 'Edit', '@item.Name', '@item.CreatedDateTime.Date.ToString("yyyy-MM-dd")',  '@item.ID');"></span>
                                     
                                 </td>
 
@@ -438,7 +458,13 @@
                                 <td width="5px;"></td>
 
                                 <td colspan="2" class="h6">
-                                    01 - Plant Name
+                                    <table>
+                                        <tr>
+                                            <td>@xsCount</td>
+                                            <td>-</td>
+                                            <td>@item.Name</td>
+                                        </tr>
+                                    </table>
                                 </td>
 
                             </tr>
@@ -453,7 +479,7 @@
                                     <div class="glyphicon acf-et-glyph-icon acf-et-calendar"></div>
                                 </td>
                                 <td>
-                                    2019/07/15
+                                    @item.CreatedDateTime.Date.ToString("yyyy-MM-dd")
                                 </td>
 
                             </tr>
@@ -466,7 +492,12 @@
                                 </td>
                                 <td>
                                     <!--AGE-->
-                                    15 days
+                                    <table>
+                                        <tr>
+                                            <td>@item.Age</td>
+                                            <td>days</td>
+                                        </tr>
+                                    </table>
                                 </td>
 
                             </tr>
@@ -479,8 +510,15 @@
                                 </td>
                                 <td>
                                     <!--PHASE-->
-                                    Vegetative
-                                </td>
+                                    @if (item.Phase == null)
+                                    {
+                                        <span class="badge badge-pill badge-danger">Not Available</span>
+                                    }
+                                    else
+                                    {
+                                        @item.Phase
+                                    }
+                                    </td>
 
                             </tr>
 
@@ -550,38 +588,58 @@
             document.getElementById(controlId).style.display = 'none';
         }
 
-        function showModal(controlId, addedit, xname) {
-            alert('A');
+        function showModal(controlId, addedit, xname, xcreateddatetime, xplantid) {
+            //alert('A');
             if (addedit == 'Add') {
 
-                alert('Add');
+                //alert('Add');
 
                 @{ 
-                    int xCount = Model.Count();
-                    xCount = xCount + 1;
+                    int xRecCount = Model.Count();
+                    xRecCount = xRecCount + 1;
 
-                    string sCount = xCount.ToString().PadLeft(5, '0');
-                    sCount = "Plant " + sCount;
+                    string sRecCount = xRecCount.ToString().PadLeft(5, '0');
+                    sRecCount = "Plant " + sRecCount;
+
+                    IEnumerable<SHARED.DATA.tblPlant> query = Model.Where(x => x.Name == sRecCount);
+                    while (query.Count() > 0)
+                    {
+
+                        xRecCount = xRecCount + 1;
+                        sRecCount = xRecCount.ToString().PadLeft(5, '0');
+                        sRecCount = "Plant " + sRecCount;
+                        query = Model.Where(x => x.Name == sRecCount);
+                    }
+
                 }
-                
 
-                document.getElementById('xname').value = '@sCount';
+                document.getElementById('idmodal_0001_frm_0001_xcommand').value = 'Add';
+                document.getElementById('idmodal_0001_title').innerText = 'Add a Plant';
+                document.getElementById('xname').value = '@sRecCount';
                 document.getElementById('xcreateddatetimelabel').style.display = 'none';
                 document.getElementById('xcreateddatetime').style.display = 'none';
 
-                alert('display');
+                
+                //alert('display');
                 document.getElementById(controlId).style.display = 'block';
-
+                document.getElementById('xname').focus();
             };
 
             if (addedit == 'Edit') {
-                alert('Edit');
+                //alert('Edit');
+                document.getElementById('idmodal_0001_frm_0001_xcommand').value = 'Edit';
+                document.getElementById('idmodal_0001_title').innerText = 'Edit a Plant';
+
+                
+                document.getElementById('idmodal_0001_frm_0001_xplantid').value = xplantid;
                 document.getElementById('xname').value = xname;
+                document.getElementById('xcreateddatetime').value = xcreateddatetime;
+
                 document.getElementById('xcreateddatetimelabel').style.display = 'block';
                 document.getElementById('xcreateddatetime').style.display = 'block';
 
                 document.getElementById(controlId).style.display = 'block';
-
+                document.getElementById('xcreateddatetime').focus();
             };
         }
 
@@ -590,7 +648,7 @@
 
         window.uploadPhotos = function (inputToUpdate, formToSubmit) {
 
-            alert('Resizing');
+            //alert('Resizing');
             // Read in file
             var file = event.target.files[0];
 
@@ -628,12 +686,12 @@
                         var dataUrl = canvas.toDataURL('jpeg');
                         //dataUrl = dataUrl.replace("data:image/jpeg;base64,/", "");
                         var resizedImage = dataURLToBlob(dataUrl);
-                        alert('Setting value to - ' + inputToUpdate + ' - Size:' + resizedImage.size.toString());
+                        //alert('Setting value to - ' + inputToUpdate + ' - Size:' + resizedImage.size.toString());
 
 
                         document.getElementById(inputToUpdate).value = dataUrl;
 
-                        alert('Submitting form - ' + formToSubmit);
+                        //alert('Submitting form - ' + formToSubmit);
 
                         zformToSubmit = formToSubmit;
 
@@ -680,13 +738,13 @@
         /* Handle image resized events */
         /* Handle image resized events */
         $(document).on("imageResized", function (event) {
-            alert('Trigger')
+            //alert('Trigger')
             var data = new FormData($("form[id*='uploadImageForm']")[0]);
             if (event.blob && event.url) {
                 data.append('image_data', event.blob);
 
 
-                alert('Trigger post')
+                //alert('Trigger post')
 
                 document.getElementById(zformToSubmit).submit();
 

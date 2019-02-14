@@ -20,6 +20,11 @@ namespace MJ2.Controllers
         // GET: Plant
         public ActionResult Index()
         {
+            if (Session["GroupID"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             tblPlant xtblPlant = new tblPlant();
             xtblPlant.LoadData();
 
@@ -33,42 +38,63 @@ namespace MJ2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string xplantid, string xcompressedpic)
+        public ActionResult Index(string xcommand, string xplantid, string xname, DateTime? xcreateddatetime, string orderby, string ascendingdescending, string xcompressedpic)
         {
-            if (xcompressedpic != null)
+            if (Session["GroupID"] == null)
             {
-                string xx = xcompressedpic.Replace(@"data:image/png;base64,", "");
+                return RedirectToAction("Index", "Login");
+            }
 
-                byte[] xImage = Convert.FromBase64String(xx);
+            tblPlant xtblPlant;
+            if (xcommand == "Add")
+            {
+                xtblPlant = new tblPlant();
+                xtblPlant.AddRec(Convert.ToInt32(Session["GroupID"].ToString()), xname, null);
+            }
 
-                string SQL = "";
+            if (xcommand == "Edit")
+            {
+                xtblPlant = new tblPlant();
+                xtblPlant.UpdateRec(Convert.ToInt32(xplantid), Convert.ToInt32(Session["GroupID"].ToString()), xname, xcreateddatetime);
+            }
 
-                try
+            if (xcommand == "AddImage")
+            {
+                if (xcompressedpic != null)
                 {
-                    //Build SQL
-                    SQL =
-                        @"INSERT INTO tblPlantHistory values('" + xplantid + "', '15', @Data," +
-                        "GETDATE(), GETDATE())";
+                    string xx = xcompressedpic.Replace(@"data:image/png;base64,", "");
 
+                    byte[] xImage = Convert.FromBase64String(xx);
 
-                    using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionString))
+                    string SQL = "";
+
+                    try
                     {
-                        SqlCommand MyCommand = new SqlCommand(SQL, con);
+                        //Build SQL
+                        SQL =
+                            @"INSERT INTO tblPlantHistory values('" + xplantid + "', '15', @Data," +
+                            "GETDATE(), GETDATE())";
 
-                        SqlParameter sqlParam = MyCommand.Parameters.AddWithValue("@Data", xImage);
-                        sqlParam.DbType = DbType.Binary;
 
-                        con.Open();
+                        using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionString))
+                        {
+                            SqlCommand MyCommand = new SqlCommand(SQL, con);
 
-                        MyCommand.ExecuteNonQuery();
+                            SqlParameter sqlParam = MyCommand.Parameters.AddWithValue("@Data", xImage);
+                            sqlParam.DbType = DbType.Binary;
+
+                            con.Open();
+
+                            MyCommand.ExecuteNonQuery();
+                        }
                     }
-                }
-                catch (Exception Ex)
-                {
-                    var x = 1;
+                    catch (Exception Ex)
+                    {
+                        var x = 1;
+
+                    }
 
                 }
-
             }
 
 
@@ -81,7 +107,8 @@ namespace MJ2.Controllers
 
 
 
-            tblPlant xtblPlant = new tblPlant();
+
+            xtblPlant = new tblPlant();
             xtblPlant.LoadData();
 
             var xFiltered = xtblPlant.iePlant.Where(r => r.GroupID.ToString() == Session["GroupID"].ToString());
