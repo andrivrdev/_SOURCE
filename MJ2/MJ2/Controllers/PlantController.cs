@@ -46,6 +46,8 @@ namespace MJ2.Controllers
             }
 
             tblPlant xtblPlant;
+            tblPlantHistory xtblPlantHistory;
+
             if (xcommand == "Add")
             {
                 xtblPlant = new tblPlant();
@@ -62,42 +64,24 @@ namespace MJ2.Controllers
             {
                 if (xcompressedpic != null)
                 {
-                    string xx = xcompressedpic.Replace(@"data:image/png;base64,", "");
+                    string scompressedpic = xcompressedpic.Replace(@"data:image/png;base64,", "");
 
-                    byte[] xImage = Convert.FromBase64String(xx);
-
-                    string SQL = "";
-
-                    try
-                    {
-                        //Build SQL
-                        SQL =
-                            @"INSERT INTO tblPlantHistory values('" + xplantid + "', '15', @Data," +
-                            "GETDATE(), GETDATE())";
-
-
-                        using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionString))
-                        {
-                            SqlCommand MyCommand = new SqlCommand(SQL, con);
-
-                            SqlParameter sqlParam = MyCommand.Parameters.AddWithValue("@Data", xImage);
-                            sqlParam.DbType = DbType.Binary;
-
-                            con.Open();
-
-                            MyCommand.ExecuteNonQuery();
-                        }
-                    }
-                    catch (Exception Ex)
-                    {
-                        var x = 1;
-
-                    }
-
+                    xtblPlantHistory = new tblPlantHistory();
+                    xtblPlantHistory.AddRec(Convert.ToInt32(xplantid), "15", scompressedpic, xcreateddatetime);
                 }
             }
 
+            if (xcommand == "AddInspected")
+            {
+                xtblPlantHistory = new tblPlantHistory();
+                xtblPlantHistory.AddRec(Convert.ToInt32(xplantid), "9", null, xcreateddatetime);
+            }
 
+            if (xcommand == "AddWatered")
+            {
+                xtblPlantHistory = new tblPlantHistory();
+                xtblPlantHistory.AddRec(Convert.ToInt32(xplantid), "10", null, xcreateddatetime);
+            }
 
 
 

@@ -15,7 +15,6 @@ namespace SHARED.DATA
         public Int64 PlantID { get; set; }
         public Int64 EventID { get; set; }
         public byte[] Data { get; set; }
-        public DateTime EventDateTime { get; set; }
         public DateTime CreatedDateTime { get; set; }
 
         public DataTable dtPlantHistory { get; set; }
@@ -32,12 +31,11 @@ namespace SHARED.DATA
                   dbo.tblPlantHistory.PlantID,
                   dbo.tblPlantHistory.EventID,
                   dbo.tblPlantHistory.Data,
-                  dbo.tblPlantHistory.EventDateTime,
                   dbo.tblPlantHistory.CreatedDateTime
                 FROM
                   dbo.tblPlantHistory                ";
 
-            List<tblGroup> xGroup = new List<tblGroup>();
+            List<tblPlantHistory> xPlantHistory = new List<tblPlantHistory>();
 
             using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionString))
             {
@@ -46,101 +44,144 @@ namespace SHARED.DATA
                 con.Open();
                 SqlDataReader MyReader = MyCommand.ExecuteReader();
 
-                dtGroup = new DataTable();
-                dtGroup.Load(MyReader);
+                dtPlantHistory = new DataTable();
+                dtPlantHistory.Load(MyReader);
 
-                foreach (DataRow dr in dtGroup.Rows)
+                foreach (DataRow dr in dtPlantHistory.Rows)
                 {
-                    tblGroup xtblGroup = new tblGroup();
-                    xtblGroup.ID = Convert.ToInt64(dr["ID"]);
-                    xtblGroup.CompanyID = Convert.ToInt64(dr["CompanyID"]);
-                    xtblGroup.Code = dr["Code"].ToString();
-                    xtblGroup.Description = dr["Description"].ToString();
-                    xtblGroup.CreatedDateTime = Convert.ToDateTime(dr["CreatedDateTime"]);
+                    tblPlantHistory xtblPlantHistory = new tblPlantHistory();
+                    xtblPlantHistory.ID = Convert.ToInt64(dr["ID"]);
+                    xtblPlantHistory.PlantID = Convert.ToInt64(dr["PlantID"]);
+                    xtblPlantHistory.EventID = Convert.ToInt64(dr["EventID"]);
 
-                    if (dr["FirstEntryDateTime"] != DBNull.Value)
+                    if (dr["Data"] != DBNull.Value)
                     {
-                        xtblGroup.FirstEntryDateTime = Convert.ToDateTime(dr["FirstEntryDateTime"]);
+                        xtblPlantHistory.Data = (byte[])(dr["Data"]);
 
                     }
 
-                    if (dr["LastEntryDateTime"] != DBNull.Value)
-                    {
-                        xtblGroup.LastEntryDateTime = Convert.ToDateTime(dr["LastEntryDateTime"]);
+                    xtblPlantHistory.CreatedDateTime = Convert.ToDateTime(dr["CreatedDateTime"]);
 
-                    }
-
-                    if (dr["Age"] != DBNull.Value)
-                    {
-                        xtblGroup.Age = Convert.ToInt32(dr["Age"]);
-
-                    }
-
-                    xtblGroup.PlantCount = Convert.ToInt32(dr["PlantCount"]);
-
-                    xGroup.Add(xtblGroup);
+                    xPlantHistory.Add(xtblPlantHistory);
                 }
 
-                ieGroup = xGroup;
+                iePlantHistory = xPlantHistory;
             }
         }
 
-        public void AddRec(int xCompanyID, string xCode, string xDescription, DateTime? xCreatedDateTime)
+        public void AddRec(int xPlantID, string xEventID, string xData, DateTime? xCreatedDateTime)
         {
-            List<string> fFields = new List<string>();
-            List<string> vValues = new List<string>();
+            string SQL = "";
 
-            fFields.Add("CompanyID");
-            fFields.Add("Code");
-            fFields.Add("Description");
-
-            if (xCreatedDateTime == null)
+            try
             {
-                vValues.Add(xCompanyID.ToString());
-                vValues.Add(xCode.ToString());
-                vValues.Add(xDescription.ToString());
+                //Build SQL
+                if (xCreatedDateTime == null)
+                {
+                    if (xData != null)
+                    {
+
+                        SQL =
+                        @"INSERT INTO tblPlantHistory ([PlantID], [EventID], [Data]) values('" +
+                        xPlantID + "', '" + xEventID + "', @Data)";
+                    }
+                    else
+                    {
+                        SQL =
+                        @"INSERT INTO tblPlantHistory ([PlantID], [EventID]) values('" +
+                        xPlantID + "', '" + xEventID + "')";
+                    }
+                }
+                else
+                {
+                    if (xData != null)
+                    {
+                        SQL =
+                        @"INSERT INTO tblPlantHistory ([PlantID], [EventID], [Data], [CreatedDateTime]) values('" +
+                        xPlantID + "', '" + xEventID + "', @Data,'" + xCreatedDateTime.ToString() + "')";
+                    }
+                    else
+                    {
+                        SQL =
+                        @"INSERT INTO tblPlantHistory ([PlantID], [EventID], [CreatedDateTime]) values('" +
+                        xPlantID + "', '" + xEventID + "', '" + xCreatedDateTime.ToString() + "')";
+                    }
+                }
+
+                using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionString))
+                {
+                    SqlCommand MyCommand = new SqlCommand(SQL, con);
+
+                    if (xData != null)
+                    {
+                        byte[] sqlData = Convert.FromBase64String(xData);
+
+                        SqlParameter sqlParam = MyCommand.Parameters.AddWithValue("@Data", sqlData);
+                        sqlParam.DbType = DbType.Binary;
+                    }
+
+                    con.Open();
+
+                    MyCommand.ExecuteNonQuery();
+                }
             }
-            else
+            catch (Exception Ex)
             {
-                fFields.Add("CreatedDateTime");
-
-                vValues.Add(xCompanyID.ToString());
-                vValues.Add(xCode.ToString());
-                vValues.Add(xDescription.ToString());
-                vValues.Add(xCreatedDateTime.ToString());
+                var x = 1;
             }
-
-            clsSE xclsSE = new clsSE();
-            xclsSE.sqlInsertRec("tblGroup", fFields, vValues);
         }
 
-        public void UpdateRec(int xID, int xCompanyID, string xCode, string xDescription, DateTime? xCreatedDateTime)
+        public void UpdateRec(int xID, int xPlantID, string xEventID, string xData, DateTime xEventDateTime, DateTime? xCreatedDateTime)
         {
-            List<string> fFields = new List<string>();
-            List<string> vValues = new List<string>();
+            string SQL = "";
 
-            fFields.Add("CompanyID");
-            fFields.Add("Code");
-            fFields.Add("Description");
-
-            if (xCreatedDateTime == null)
+            try
             {
-                vValues.Add(xCompanyID.ToString());
-                vValues.Add(xCode.ToString());
-                vValues.Add(xDescription.ToString());
+                //Build SQL
+                if (xCreatedDateTime == null)
+                {
+                    SQL =
+                    @"UPDATE" +
+                     "  tblPlantHistory" +
+                     "SET" +
+                     "  [PlantID] = '" + xPlantID + "'," +
+                     "  [EventID] = '" + xEventID + "'," +
+                     "  [Data] = @Data" +
+                     "WHERE" +
+                     "  [ID] = '" + xID + "'";
+                }
+                else
+                {
+                    SQL =
+                    @"UPDATE" +
+                     "  tblPlantHistory" +
+                     "SET" +
+                     "  [PlantID] = '" + xPlantID + "'," +
+                     "  [EventID] = '" + xEventID + "'," +
+                     "  [Data] = @Data," +
+                     "  [CreatedDateTime] = '" + xCreatedDateTime.ToString() + "'," +
+                     "WHERE" +
+                     "  [ID] = '" + xID + "'";
+                }
+
+                using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionString))
+                {
+                    SqlCommand MyCommand = new SqlCommand(SQL, con);
+
+                    byte[] sqlData = Convert.FromBase64String(xData);
+
+                    SqlParameter sqlParam = MyCommand.Parameters.AddWithValue("@Data", sqlData);
+                    sqlParam.DbType = DbType.Binary;
+
+                    con.Open();
+
+                    MyCommand.ExecuteNonQuery();
+                }
             }
-            else
+            catch (Exception Ex)
             {
-                fFields.Add("CreatedDateTime");
-
-                vValues.Add(xCompanyID.ToString());
-                vValues.Add(xCode.ToString());
-                vValues.Add(xDescription.ToString());
-                vValues.Add(xCreatedDateTime.ToString());
+                var x = 1;
             }
-
-            clsSE xclsSE = new clsSE();
-            xclsSE.sqlUpdateRec("tblGroup", fFields, vValues, "[ID] = '" + xID + "'");
         }
     }
 }

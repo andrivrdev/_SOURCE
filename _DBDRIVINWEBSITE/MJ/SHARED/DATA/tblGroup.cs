@@ -37,11 +37,11 @@ namespace SHARED.DATA
                   g.CreatedDateTime,
   
                   --Get Age
-                  (SELECT MIN(ph.EventDateTime) FROM tblPlantHistory ph WHERE ph.PlantID IN 
+                  (SELECT MIN(ph.CreatedDateTime) FROM tblPlantHistory ph WHERE ph.PlantID IN 
                     (SELECT p.ID FROM tblPlant p WHERE p.GroupID = g.ID)
                   ) AS FirstEntryDateTime,
   
-                  (SELECT MAX(ph.EventDateTime) FROM tblPlantHistory ph WHERE ph.PlantID IN 
+                  (SELECT MAX(ph.CreatedDateTime) FROM tblPlantHistory ph WHERE ph.PlantID IN 
                     (SELECT p.ID FROM tblPlant p WHERE p.GroupID = g.ID)
                   ) AS LastEntryDateTime,
  
@@ -49,8 +49,7 @@ namespace SHARED.DATA
   
                   (SELECT COUNT(*) FROM tblPlant p WHERE p.GroupID = g.ID) AS PlantCount
                 FROM
-                  dbo.tblGroup g
-                ";
+                  dbo.tblGroup g                ";
 
             List<tblGroup> xGroup = new List<tblGroup>();
 

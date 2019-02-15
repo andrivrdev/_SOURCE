@@ -138,8 +138,12 @@
             xsCount = xCount.ToString().PadLeft(2, '0');
 
             string frm_takepic = "frm_takepic_" + item.ID.ToString();
+            string frm_addinspected = "frm_addinspected_" + item.ID.ToString();
+            string frm_addwatered = "frm_addwatered_" + item.ID.ToString();
+
+            
             string takepic = "takepic_" + item.ID.ToString();
-            string takepicresized = "takepic_" + item.ID.ToString() + item.ID.ToString();
+            string takepicresized = "takepic_" + item.ID.ToString() + "_" + item.ID.ToString();
 
 
             <!--ITEM-->
@@ -165,11 +169,17 @@
                             }
                             else
                             {
-                                <table style="position:absolute; left:0px; top:65px; width:100%">
+                                <table style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); position:absolute; left:0px; top:15px; width:100%;">
+                                    <tr style="height:200px;">
+                                        <td></td>
+                                    </tr>
+                                </table>
+
+                                <table style="position:absolute; left:0px; top:80px; width:100%">
                                     <tr>
                                         <td style="width:20%;"></td>
                                         <td class="w3-center">
-                                            <img class="w3-text-light-green" style="height:100px;" src='~/Content/Plant/no_image.svg' />
+                                            <div class="w3-xxxlarge glyphicon acf-et-glyph-icon acf-et-tree-leaf" style="color:#e0e0e0"></div>
                                         </td>
                                         <td style="width:20%;"></td>
                                     </tr>
@@ -205,7 +215,7 @@
                                         <input type="hidden" class="form-control" name="xplantid" id="xplantid" value="@item.ID">
                                         <input id="@takepicresized" name="xcompressedpic" type="hidden" style="display:none" onchange="">
 
-                                        <span class="btn w3-hover-text-deep-purple w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-photo-camera" style="padding:0px;font-size:large;" onclick="document.getElementById('@takepic').click()"></span>
+                                        <span class="w3-hover-text-deep-purple w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-photo-camera" style="padding:0px;font-size:large;" onclick="document.getElementById('@takepic').click()"></span>
                                     </form>
                                 </td>
 
@@ -224,22 +234,18 @@
                         <table style="position:absolute; left:3px; top:185px; width:100%; opacity:0.8;">
                             <tr>
                                 <td width="15px">
-                                    <form>
-
-                                        <button type="submit" class="btn w3-hover-text-pink w3-text-light-gray" style="padding:0px;">
-                                            <span style="font-size:large;" class="glyphicon acf-ec-glyph-icon acf-ec-view"></span>
-                                        </button>
-
+                                    <form id="@frm_addinspected" method="post">
+                                        <input type="hidden" class="form-control" name="xcommand" id="xcommand" value="AddInspected">
+                                        <input type="hidden" class="form-control" name="xplantid" id="xplantid" value="@item.ID">
+                                        <span class="btn w3-hover-text-green w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-view" style="padding:0px;font-size:large;" onclick="document.getElementById('@frm_addinspected').submit()"></span>
                                     </form>
                                 </td>
 
                                 <td width="15px">
-                                    <form>
-
-                                        <button type="submit" class="btn w3-hover-text-blue w3-text-light-gray" style="padding:0px;">
-                                            <span style="font-size:large;" class="glyphicon acf-et-glyph-icon acf-et-droplet-of-water"></span>
-                                        </button>
-
+                                    <form id="@frm_addwatered" method="post">
+                                        <input type="hidden" class="form-control" name="xcommand" id="xcommand" value="AddWatered">
+                                        <input type="hidden" class="form-control" name="xplantid" id="xplantid" value="@item.ID">
+                                        <span class="btn w3-hover-text-blue w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-droplet-of-water" style="padding:0px;font-size:large;" onclick="document.getElementById('@frm_addwatered').submit()"></span>
                                     </form>
                                 </td>
 
@@ -509,7 +515,7 @@
                                         {
                                             <table>
                                                 <tr>
-                                                    <td>Today</td>
+                                                    <td>Created Today</td>
                                                 </tr>
                                             </table>
                                         }
@@ -518,7 +524,14 @@
                                             <table>
                                                 <tr>
                                                     <td>@item.Age</td>
-                                                    <td>days</td>
+                                                    @if (item.Age == 1)
+                                                    {
+                                                        <td>day</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>days</td>
+                                                    }
                                                 </tr>
                                             </table>
 
@@ -559,21 +572,48 @@
                                             <th>EVENT</th>
                                             <th>DETAILS</th>
                                         </tr>
-                                        <tr>
-                                            <td>2019/10/24</td>
-                                            <td><div class="glyphicon acf-ec-glyph-icon acf-ec-notebook-1" style="font-size:medium"></div></td>
-                                            <td>1234567890123456789</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2019/10/25</td>
-                                            <td><div class="glyphicon acf-et-glyph-icon acf-et-up-arrow" style="font-size:medium"></div></td>
-                                            <td>Vegetative</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2019/10/25</td>
-                                            <td><div class="glyphicon acf-ec-glyph-icon acf-ec-view" style="font-size:medium"></div></td>
-                                            <td>Inspected</td>
-                                        </tr>
+
+                                        @{
+                                            int xitemPlantHistoryCount = 0;
+
+                                            foreach (var itemPlantHistory in item.iePlantHistory)
+                                            {
+                                                xitemPlantHistoryCount = xitemPlantHistoryCount + 1;
+                                                if (xitemPlantHistoryCount > 3)
+                                                {
+                                                    break;
+                                                }
+
+                                                <tr>
+                                                    <td>@itemPlantHistory.CreatedDateTime.ToString("yyyy/MM/dd")</td>
+
+                                                    @{
+                                                        //Picture
+                                                        if (itemPlantHistory.EventID == 15)
+                                                        {
+                                                            <td><div class="w3-text-deep-purple glyphicon acf-et-glyph-icon acf-et-photo-camera" style="font-size:medium"></div></td>
+                                                            <td>Added a Picture</td>
+                                                        }
+
+                                                        //Inspected
+                                                        if (itemPlantHistory.EventID == 9)
+                                                        {
+                                                            <td><div class="w3-text-green glyphicon acf-ec-glyph-icon acf-ec-view" style="font-size:medium"></div></td>
+                                                            <td>Inspected</td>
+                                                        }
+
+                                                        //Watered
+                                                        if (itemPlantHistory.EventID == 10)
+                                                        {
+                                                            <td><div class="w3-text-blue glyphicon acf-et-glyph-icon acf-et-droplet-of-water" style="font-size:medium"></div></td>
+                                                            <td>Watered</td>
+                                                        }
+                                                    }
+                                                </tr>
+                                            }
+
+                                        }
+
 
                                     </table>
 
@@ -600,7 +640,7 @@
 
 
                     </div>
-                </div>
+                            </div>
             </div>
         }
 
@@ -843,6 +883,7 @@
                 x.style.display = "none";
             }
         }
+
 
 
     </script>
