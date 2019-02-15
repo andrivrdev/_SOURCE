@@ -215,7 +215,7 @@
                                         <input type="hidden" class="form-control" name="xplantid" id="xplantid" value="@item.ID">
                                         <input id="@takepicresized" name="xcompressedpic" type="hidden" style="display:none" onchange="">
 
-                                        <span class="w3-hover-text-deep-purple w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-photo-camera" style="padding:0px;font-size:large;" onclick="document.getElementById('@takepic').click()"></span>
+                                        <span class="btn w3-hover-text-deep-purple w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-photo-camera" style="padding:0px;font-size:large;" onclick="document.getElementById('@takepic').click()"></span>
                                     </form>
                                 </td>
 
@@ -259,6 +259,29 @@
 
                             </tr>
                         </table>
+
+                        <!--SIDE BUTTONS-->
+                        @{
+                            if (item.LastPicture != null)
+                            {
+                                <table style="position:absolute; left:3px; top:100px; opacity:0.8; width:100%;">
+                                    <tr>
+                                        <td width="15px">
+                                            <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-scroll-arrow-to-left" style="padding:0px;font-size:large;" onclick="showModal('idmodal_0001', 'Edit', '@item.Name', '@item.CreatedDateTime.Date.ToString("yyyy-MM-dd")',  '@item.ID');"></span>
+                                        </td>
+
+                                        <td></td>
+
+                                        <td width="15px">
+                                            <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-scroll-arrow-to-right" style="padding:0px;font-size:large;" onclick="showModal('idmodal_0001', 'Edit', '@item.Name', '@item.CreatedDateTime.Date.ToString("yyyy-MM-dd")',  '@item.ID');"></span>
+                                        </td>
+
+                                        <td width="5px;"></td>
+
+                                    </tr>
+                                </table>
+                            }
+                        }
 
                         <!--SUBMENU-->
                         <!--ROW1-->
