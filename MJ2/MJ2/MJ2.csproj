@@ -211,6 +211,7 @@
     <Content Include="Content\Pics\Stock\Originals\IMG_20190109_104334.jpg" />
     <Content Include="Content\Pics\Stock\Originals\IMG_20190109_104342.jpg" />
     <Content Include="Content\Pics\Stock\Originals\IMG_20190109_104421.jpg" />
+    <Content Include="Content\Plant\loading.svg" />
     <Content Include="Content\Plant\no_image.svg" />
     <Content Include="Content\w3.css" />
     <Content Include="favicon.ico" />
@@ -253,6 +254,8 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -294,6 +297,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Plant\Index.cshtml" />
     <Content Include="Views\Login\Test2.cshtml" />
+    <Content Include="Views\Shared\_PlantImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

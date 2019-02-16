@@ -11,5 +11,6 @@ namespace SHARED.CLASSES
     {
         public static string gConnectionString = ConfigurationManager.ConnectionStrings["MJ"].ConnectionString;
         public static Int64 gCompanyID = 0;
+        public static decimal gThumbnailSize = 0.3m;
     }
 }

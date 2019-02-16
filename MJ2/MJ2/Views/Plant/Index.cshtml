@@ -141,10 +141,17 @@
             string frm_addinspected = "frm_addinspected_" + item.ID.ToString();
             string frm_addwatered = "frm_addwatered_" + item.ID.ToString();
 
-            
+            string span_previouspic = "span_previouspic_" + item.ID.ToString();
+            string span_nextpic = "span_nextpic_" + item.ID.ToString();
+
             string takepic = "takepic_" + item.ID.ToString();
             string takepicresized = "takepic_" + item.ID.ToString() + "_" + item.ID.ToString();
 
+            string divpic = "divpic_" + item.ID.ToString();
+            string divloadinganimation = "divloadinganimation_" + item.ID.ToString();
+
+            string previousactionid = "previousactionid_" + item.ID.ToString();
+            string nextactionid = "nextactionid_" + item.ID.ToString();
 
             <!--ITEM-->
             <div class="col-sm-6 col-md-4 col-lg-3">
@@ -158,6 +165,7 @@
     <img class="img-fluid w3-opacity-max" src="~/Content/Pics/Stock/Originals/IMG_20190109_103139.jpg" />
     -->
                         <!--TOP IMAGE-->
+
                         @{
                             if (item.LastPicture != null)
                             {
@@ -187,6 +195,68 @@
                             }
                         }
 
+                        <!--AJAX UPDATED-->
+                                <div id="@divpic" style="position:absolute; left:0px; top:15px; width:100%; height:200px;">
+                                    <div style="display:none">
+                                        @Ajax.ActionLink("Ajax", "PreviousImage", new { xplantid = item.ID, xplanthistoryid = item.LastPictureID.ToString() }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = divpic, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = previousactionid })
+                                        @Ajax.ActionLink("Ajax", "NextImage", new { xplantid = item.ID, xplanthistoryid = item.LastPictureID.ToString() }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = divpic, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = nextactionid })
+                                    </div>
+
+                                    <!--SIDE BUTTONS-->
+                                    @{
+                                        if (item.LastPicture != null)
+                                        {
+                                            <table style="position:absolute; left:3px; top:90px; opacity:0.8; width:100%;">
+                                                <tr>
+                                                    @{
+                                                        var xImageList = item.iePlantHistory.Where(r => (r.EventID.ToString() == "15"));
+                                                        var xOrdered = xImageList.OrderBy(x => x.ID);
+
+                                                        var xFirstRec = xOrdered.FirstOrDefault();
+
+                                                        if (xFirstRec.ID != item.LastPictureID)
+                                                        {
+                                                            <td width="15px">
+                                                                <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-scroll-arrow-to-left" style="padding:0px;font-size:large;" onclick="document.getElementById('@previousactionid').click();"></span>
+                                                            </td>
+                                                        }
+                                                    }
+
+                                                    <td></td>
+
+                                                    @{
+                                                        xImageList = item.iePlantHistory.Where(r => (r.EventID.ToString() == "15"));
+                                                        xOrdered = xImageList.OrderByDescending(x => x.ID);
+
+                                                        var xLastRec = xOrdered.FirstOrDefault();
+
+                                                        if (xLastRec.ID != item.LastPictureID)
+                                                        {
+                                                            <td width="15px">
+                                                                <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-scroll-arrow-to-right" style="padding:0px;font-size:large;" onclick="document.getElementById('@nextactionid').click();"></span>
+                                                            </td>
+                                                        }
+                                                    }
+
+                                                    <td width="5px;"></td>
+
+                                                </tr>
+                                            </table>
+                                        }
+                                    }
+
+                                </div>
+
+                        <!--LOADING ANIMATION-->
+                        <div id="@divloadinganimation" style="display:none">
+                            <table style="position:absolute; left:0px; top:15px; width:100%;">
+                                <tr style="height:200px;">
+                                    <td align="center">
+                                        <img src="~/Content/Plant/loading.svg" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
 
 
                         <!--MENU BACKGROUND-->
@@ -260,28 +330,6 @@
                             </tr>
                         </table>
 
-                        <!--SIDE BUTTONS-->
-                        @{
-                            if (item.LastPicture != null)
-                            {
-                                <table style="position:absolute; left:3px; top:100px; opacity:0.8; width:100%;">
-                                    <tr>
-                                        <td width="15px">
-                                            <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-scroll-arrow-to-left" style="padding:0px;font-size:large;" onclick="showModal('idmodal_0001', 'Edit', '@item.Name', '@item.CreatedDateTime.Date.ToString("yyyy-MM-dd")',  '@item.ID');"></span>
-                                        </td>
-
-                                        <td></td>
-
-                                        <td width="15px">
-                                            <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-scroll-arrow-to-right" style="padding:0px;font-size:large;" onclick="showModal('idmodal_0001', 'Edit', '@item.Name', '@item.CreatedDateTime.Date.ToString("yyyy-MM-dd")',  '@item.ID');"></span>
-                                        </td>
-
-                                        <td width="5px;"></td>
-
-                                    </tr>
-                                </table>
-                            }
-                        }
 
                         <!--SUBMENU-->
                         <!--ROW1-->
@@ -907,7 +955,31 @@
             }
         }
 
+        function getPreviousImage(xplantid, controlId) {
 
+        $.ajax({
+          async: true,
+          type: "GET",
+          url: "@Url.Action("PreviousImage", "Plant")",
+          data: {
+              xplantid: xplantid,
+              xplanthistoryid: document.getElementById(controlId).value
+            },
+
+          
+          //data: "StrContactDetails=" + Details + "&IsPrimary=" + true,
+          //data: "{StrContactDetails:'" + Details + "',IsPrimary:"+ true + "}",
+          //contentType: "application/json; charset=utf-8",
+            success: function () {
+
+
+
+          },
+          error: function() {
+          }
+        });
+        }
+        
 
     </script>
 }
