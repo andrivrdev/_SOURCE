@@ -17,7 +17,9 @@ namespace MJ2.Controllers
 {
     public class PlantController : Controller
     {
+        tblPlant ztblPlant = new tblPlant();
         tblPlantHistory ztblPlantHistory = new tblPlantHistory();
+
 
 
 
@@ -30,7 +32,7 @@ namespace MJ2.Controllers
             }
 
             tblPlant xtblPlant = new tblPlant();
-            xtblPlant.LoadData();
+            xtblPlant.LoadData(Convert.ToInt32(Session["GroupID"]), 1);
 
             var xFiltered = xtblPlant.iePlant.Where(r => r.GroupID.ToString() == Session["GroupID"].ToString());
             var xOrdered = xFiltered.OrderBy(x => x.Name);
@@ -57,43 +59,8 @@ namespace MJ2.Controllers
                 xtblPlant.AddRec(Convert.ToInt32(Session["GroupID"].ToString()), xname, null);
             }
 
-            if (xcommand == "Edit")
-            {
-                xtblPlant = new tblPlant();
-                xtblPlant.UpdateRec(Convert.ToInt32(xplantid), Convert.ToInt32(Session["GroupID"].ToString()), xname, xcreateddatetime);
-            }
-
-            if (xcommand == "AddImage")
-            {
-                if (xcompressedpic != null)
-                {
-                    string scompressedpic = xcompressedpic.Replace(@"data:image/png;base64,", "");
-
-                    ztblPlantHistory.AddRec(Convert.ToInt32(xplantid), "15", scompressedpic, xcreateddatetime);
-                }
-            }
-
-            if (xcommand == "AddInspected")
-            {
-                ztblPlantHistory.AddRec(Convert.ToInt32(xplantid), "9", null, xcreateddatetime);
-            }
-
-            if (xcommand == "AddWatered")
-            {
-                ztblPlantHistory.AddRec(Convert.ToInt32(xplantid), "10", null, xcreateddatetime);
-            }
-
-
-
-
-
-
-
-
-
-
             xtblPlant = new tblPlant();
-            xtblPlant.LoadData();
+            xtblPlant.LoadData(Convert.ToInt32(Session["GroupID"]), 1);
 
             var xFiltered = xtblPlant.iePlant.Where(r => r.GroupID.ToString() == Session["GroupID"].ToString());
             var xOrdered = xFiltered.OrderBy(x => x.Name);
@@ -160,5 +127,79 @@ namespace MJ2.Controllers
             return PartialView("_PlantImage", xNextRec);
         }
 
+        [HttpPost]
+
+        public PartialViewResult AddImage(string xplantid, string xcompressedimage, string xx)
+        {
+            if (xcompressedimage != null)
+            {
+                string scompressedpic = xcompressedimage.Replace(@"data:image/png;base64,", "");
+
+                ztblPlantHistory.AddRec(Convert.ToInt32(xplantid), "15", scompressedpic, null);
+            }
+
+
+            //Get recs for images for this plant
+            ztblPlantHistory.LoadData(Convert.ToInt32(xplantid));
+
+            var xImageList = ztblPlantHistory.iePlantHistory.Where(r => (r.EventID.ToString() == "15") && (r.PlantID.ToString() == xplantid));
+            var xOrdered = xImageList.OrderByDescending(x => x.ID);
+
+            //Find previous record
+            var xPreviousRec = new tblPlantHistory();
+            foreach (var ARec in xOrdered)
+            {
+                if (ARec.ID < int.MaxValue)
+                {
+                    xPreviousRec = ARec;
+                    break;
+                }
+            }
+
+            if (xPreviousRec.Data == null)
+            {
+                xOrdered = xImageList.OrderBy(x => x.ID);
+                xPreviousRec = xOrdered.FirstOrDefault();
+            }
+
+            return PartialView("_PlantImage", xPreviousRec);
+        }
+
+        public PartialViewResult RefreshData(string xplantid, string xcount)
+        {
+
+            ztblPlant.LoadData(Convert.ToInt32(xplantid), 0);
+            ViewData["xCount"] = xcount;
+            return PartialView("_PlantData", ztblPlant);
+        }
+
+        [HttpPost]
+        public PartialViewResult AddInspected(string xplantid, string xcount)
+        {
+            
+            ztblPlantHistory.AddRec(Convert.ToInt32(xplantid), "9", null, null);
+            ztblPlant.LoadData(Convert.ToInt32(xplantid), 0);
+            ViewData["xCount"] = xcount;
+            return PartialView("_PlantData", ztblPlant);
+        }
+
+        [HttpPost]
+        public PartialViewResult AddWatered(string xplantid, string xcount)
+        {
+
+            ztblPlantHistory.AddRec(Convert.ToInt32(xplantid), "10", null, null);
+            ztblPlant.LoadData(Convert.ToInt32(xplantid), 0);
+            ViewData["xCount"] = xcount;
+            return PartialView("_PlantData", ztblPlant);
+        }
+
+        [HttpPost]
+        public PartialViewResult Edit(string xplantid, string xcount, string xname, DateTime? xcreateddatetime)
+        {
+            ztblPlant.UpdateRec(Convert.ToInt32(xplantid), Convert.ToInt32(Session["GroupID"].ToString()), xname, xcreateddatetime);
+            ztblPlant.LoadData(Convert.ToInt32(xplantid), 0);
+            ViewData["xCount"] = xcount;
+            return PartialView("_PlantData", ztblPlant);
+        }
     }
 }

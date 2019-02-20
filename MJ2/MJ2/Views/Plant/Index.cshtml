@@ -4,6 +4,14 @@
     ViewBag.Title = "Index";
 }
 
+<!--VARS-->
+<div style="display:none`">
+    <input type="hidden" id="zajaxedit">
+    <input type="hidden" id="zcount">
+</div>
+
+
+
 <!--SEARCHING AND ORDERING-->
 <div class="container small">
     <div class="row" style="background-color:whitesmoke;">
@@ -100,8 +108,7 @@
             </table>
         
 
-        <form id="idmodal_0001_frm_0001" class="w3-container" method="post">
-            <div class="w3-section">
+            <div class="w3-container w3-padding-16">
                 <input type="hidden" class="form-control" name="xcommand" id="idmodal_0001_frm_0001_xcommand" value="Add">
                 <input type="hidden" class="form-control" name="xplantid" id="idmodal_0001_frm_0001_xplantid" value="0">
 
@@ -111,11 +118,12 @@
                 <input type="text" class="form-control" name="xname" id="xname" placeholder="Name your plant" required>
 
             </div>
-        </form>
 
         <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
             <button onclick="document.getElementById('idmodal_0001').style.display='none'" type="button" class="btn btn-danger">Cancel</button>
-            <button onclick="document.getElementById('idmodal_0001_frm_0001').submit()" class="btn btn-success w3-right">Save</button>
+
+            <div class="btn btn-success w3-right" onclick="saveModal('idmodal_0001');">Save</div>
+            
         </div>
 
     </div>
@@ -149,9 +157,19 @@
 
             string divpic = "divpic_" + item.ID.ToString();
             string divloadinganimation = "divloadinganimation_" + item.ID.ToString();
+            string divdata = "divdata_" + item.ID.ToString();
 
             string previousactionid = "previousactionid_" + item.ID.ToString();
             string nextactionid = "nextactionid_" + item.ID.ToString();
+
+            string ajaxaddimage = "ajaxaddimage_" + item.ID.ToString();
+            string ajaxrefreshdata = "ajaxrefreshdata_" + item.ID.ToString();
+            string ajaxaddinspected = "ajaxaddinspected_" + item.ID.ToString();
+            string ajaxaddwatered = "ajaxaddwatered_" + item.ID.ToString();
+            string ajaxedit = "ajaxedit_" + item.ID.ToString();
+
+            string editname = "editname_" + item.ID.ToString();
+            string editcreateddatetime = "editcreateddatetime_" + item.ID.ToString();
 
             <!--ITEM-->
             <div class="col-sm-6 col-md-4 col-lg-3">
@@ -170,10 +188,10 @@
                             if (item.LastPicture != null)
                             {
 
-                                var base64 = Convert.ToBase64String(item.LastPictureThumbnail);
-                                var imgsrc = string.Format("data:image/jpeg;base64,{0}", base64);
+                                // var base64 = Convert.ToBase64String(item.LastPictureThumbnail);
+                                // var imgsrc = string.Format("data:image/jpeg;base64,{0}", base64);
 
-                                <img style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); position:absolute; left:0px; top:15px; width:100%;height:200px;" src='@imgsrc' />
+                                // <img style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); position:absolute; left:0px; top:15px; width:100%;height:200px;" src='@imgsrc' />
                             }
                             else
                             {
@@ -198,15 +216,17 @@
                         <!--AJAX UPDATED-->
                                 <div id="@divpic" style="position:absolute; left:0px; top:15px; width:100%; height:200px;">
                                     <div style="display:none">
-                                        @Ajax.ActionLink("Ajax", "PreviousImage", new { xplantid = item.ID, xplanthistoryid = item.LastPictureID.ToString() }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = divpic, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = previousactionid })
-                                        @Ajax.ActionLink("Ajax", "NextImage", new { xplantid = item.ID, xplanthistoryid = item.LastPictureID.ToString() }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = divpic, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = nextactionid })
+
+
+                                        @Ajax.ActionLink("Ajax", "PreviousImage", new { xplantid = item.ID, xplanthistoryid = int.MaxValue.ToString() }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = divpic, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = previousactionid })
+
                                     </div>
 
                                     <!--SIDE BUTTONS-->
                                     @{
                                         if (item.LastPicture != null)
                                         {
-                                            <table style="position:absolute; left:3px; top:90px; opacity:0.8; width:100%;">
+                                            <table style="position:absolute; left:3px; top:90px; opacity:@SHARED.CLASSES.clsGlobal.gOpacity; width:100%;">
                                                 <tr>
                                                     @{
                                                         var xImageList = item.iePlantHistory.Where(r => (r.EventID.ToString() == "15"));
@@ -249,7 +269,7 @@
 
                         <!--LOADING ANIMATION-->
                         <div id="@divloadinganimation" style="display:none">
-                            <table style="position:absolute; left:0px; top:15px; width:100%;">
+                            <table style="position:absolute; left:0px; top:15px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity">
                                 <tr style="height:200px;">
                                     <td align="center">
                                         <img src="~/Content/Plant/loading.svg" />
@@ -275,18 +295,16 @@
 
 
                         <!--TOP BUTTONS-->
-                        <table style="position:absolute; left:3px; top:15px; width:100%; opacity:0.8;">
+                        <table style="position:absolute; left:3px; top:15px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td width="15px">
-                                    <input id="@takepic" name="xpicorig" type="file" accept="image/*;capture=camera" style="display:none" onchange="uploadPhotos('@takepicresized', '@frm_takepic');">
-                                    <form id="@frm_takepic" method="post" enctype='multipart/form-data'>
+                                    <input id="@takepic" name="xpicorig" type="file" accept="image/*;capture=camera" style="display:none" onchange="uploadPhotos('@item.ID','@divpic','@divloadinganimation','@previousactionid','@ajaxrefreshdata');">
                                         <input type="hidden" class="form-control" name="xcommand" id="xcommand" value="AddImage">
 
                                         <input type="hidden" class="form-control" name="xplantid" id="xplantid" value="@item.ID">
                                         <input id="@takepicresized" name="xcompressedpic" type="hidden" style="display:none" onchange="">
 
                                         <span class="btn w3-hover-text-deep-purple w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-photo-camera" style="padding:0px;font-size:large;" onclick="document.getElementById('@takepic').click()"></span>
-                                    </form>
                                 </td>
 
                                 <td></td>
@@ -301,28 +319,32 @@
                         </table>
 
                         <!--BOTTOM BUTTONS-->
-                        <table style="position:absolute; left:3px; top:185px; width:100%; opacity:0.8;">
+                        <table style="position:absolute; left:3px; top:185px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td width="15px">
-                                    <form id="@frm_addinspected" method="post">
-                                        <input type="hidden" class="form-control" name="xcommand" id="xcommand" value="AddInspected">
-                                        <input type="hidden" class="form-control" name="xplantid" id="xplantid" value="@item.ID">
-                                        <span class="btn w3-hover-text-green w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-view" style="padding:0px;font-size:large;" onclick="document.getElementById('@frm_addinspected').submit()"></span>
-                                    </form>
+                                    <div style="display:none">
+                                        @Ajax.ActionLink("Ajax", "RefreshData", new { xplantid = item.ID, xcount = xsCount }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = divdata, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = ajaxrefreshdata })
+                                    </div>
+                                    <div style="display:none">
+                                        @Ajax.ActionLink("Ajax", "AddInspected", new { xplantid = item.ID, xcount = xsCount }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = divdata, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = ajaxaddinspected })
+                                    </div>
+                                    <span class="btn w3-hover-text-green w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-view" style="padding:0px;font-size:large;" onclick="document.getElementById('@ajaxaddinspected').click()"></span>
                                 </td>
 
                                 <td width="15px">
-                                    <form id="@frm_addwatered" method="post">
-                                        <input type="hidden" class="form-control" name="xcommand" id="xcommand" value="AddWatered">
-                                        <input type="hidden" class="form-control" name="xplantid" id="xplantid" value="@item.ID">
-                                        <span class="btn w3-hover-text-blue w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-droplet-of-water" style="padding:0px;font-size:large;" onclick="document.getElementById('@frm_addwatered').submit()"></span>
-                                    </form>
+                                    <div style="display:none">
+                                        @Ajax.ActionLink("Ajax", "AddWatered", new { xplantid = item.ID, xcount = xsCount }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = divdata, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = ajaxaddwatered })
+                                    </div>
+                                     <span class="btn w3-hover-text-blue w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-droplet-of-water" style="padding:0px;font-size:large;" onclick="document.getElementById('@ajaxaddwatered').click()"></span>
                                 </td>
 
                                 <td></td>
 
                                 <td width="15px">
-                                    <span class="btn w3-hover-text-orange w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-edit" style="padding:0px;font-size:large;" onclick="showModal('idmodal_0001', 'Edit', '@item.Name', '@item.CreatedDateTime.Date.ToString("yyyy-MM-dd")',  '@item.ID');"></span>
+                                    <div style="display:none">
+                                        @Ajax.ActionLink("Ajax", "Edit", new { xplantid = item.ID, xcount = xsCount, xname = item.Name, xcreateddatetime = item.CreatedDateTime}, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = divdata, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = ajaxedit })
+                                    </div>
+                                    <span class="btn w3-hover-text-orange w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-edit" style="padding:0px;font-size:large;" onclick="showModal('idmodal_0001', 'Edit', '@editname', '@editcreateddatetime',  '@item.ID', '@ajaxedit', '@xsCount' );"></span>
                                 </td>
 
                                 <td width="5px;"></td>
@@ -334,7 +356,7 @@
                         <!--SUBMENU-->
                         <!--ROW1-->
                         <!--NUTRIENT-->
-                        <table id="menu_0001" style="display:none; position:absolute; left:3px; top:40px; width:100%; opacity:0.8;">
+                        <table id="menu_0001" style="display:none; position:absolute; left:3px; top:40px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td></td>
 
@@ -358,7 +380,7 @@
                         </table>
 
                         <!--CHEMICALS-->
-                        <table id="menu_0002" style="display:none; position:absolute; left:3px; top:40px; width:50%; opacity:0.8;">
+                        <table id="menu_0002" style="display:none; position:absolute; left:3px; top:40px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td width="5px;">
                                     <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
@@ -380,7 +402,7 @@
 
                         <!--ROW2-->
                         <!--PHASE CHANGE-->
-                        <table id="menu_0003" style="display:none; position:absolute; left:3px; top:60px; width:100%; opacity:0.8;">
+                        <table id="menu_0003" style="display:none; position:absolute; left:3px; top:60px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td></td>
 
@@ -404,7 +426,7 @@
                         </table>
 
                         <!--MEDIUM CHANGE-->
-                        <table id="menu_0004" style="display:none; position:absolute; left:3px; top:60px; width:50%; opacity:0.8;">
+                        <table id="menu_0004" style="display:none; position:absolute; left:3px; top:60px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td width="5px;">
                                     <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
@@ -426,7 +448,7 @@
 
                         <!--ROW3-->
                         <!--LOCATION CHANGE-->
-                        <table id="menu_0005" style="display:none; position:absolute; left:3px; top:80px; width:100%; opacity:0.8;">
+                        <table id="menu_0005" style="display:none; position:absolute; left:3px; top:80px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td></td>
 
@@ -450,7 +472,7 @@
                         </table>
 
                         <!--PROBLEMS-->
-                        <table id="menu_0006" style="display:none; position:absolute; left:3px; top:80px; width:50%; opacity:0.8;">
+                        <table id="menu_0006" style="display:none; position:absolute; left:3px; top:80px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td width="5px;">
                                     <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
@@ -472,7 +494,7 @@
 
                         <!--ROW4-->
                         <!--ENVIRONMENT-->
-                        <table id="menu_0007" style="display:none; position:absolute; left:3px; top:100px; width:100%; opacity:0.8;">
+                        <table id="menu_0007" style="display:none; position:absolute; left:3px; top:100px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td></td>
 
@@ -496,7 +518,7 @@
                         </table>
 
                         <!--ORIGIN-->
-                        <table id="menu_0008" style="display:none; position:absolute; left:3px; top:100px; width:50%; opacity:0.8;">
+                        <table id="menu_0008" style="display:none; position:absolute; left:3px; top:100px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td width="5px;">
                                     <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
@@ -518,7 +540,7 @@
 
                         <!--ROW5-->
                         <!--VARIETY-->
-                        <table id="menu_0009" style="display:none; position:absolute; left:3px; top:120px; width:100%; opacity:0.8;">
+                        <table id="menu_0009" style="display:none; position:absolute; left:3px; top:120px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td width="5px;">
                                     <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
@@ -539,7 +561,8 @@
                         </table>
 
                         <!--DATA-->
-                        <table class="w3-small  " style="position:absolute; left:0px; top:218px; width:100%; opacity:1;">
+                        <div id="@divdata">
+                        <table class="w3-small  " style="position:absolute; left:0px; top:218px; width:100%;">
 
 
 
@@ -551,7 +574,7 @@
                                         <tr>
                                             <td>@xsCount</td>
                                             <td>-</td>
-                                            <td>@item.Name</td>
+                                            <td id="@editname">@item.Name</td>
                                         </tr>
                                     </table>
                                 </td>
@@ -567,7 +590,7 @@
                                 <td width="20px;">
                                     <div class="glyphicon acf-et-glyph-icon acf-et-calendar"></div>
                                 </td>
-                                <td>
+                                <td id="@editcreateddatetime">
                                     @item.CreatedDateTime.Date.ToString("yyyy-MM-dd")
                                 </td>
 
@@ -707,6 +730,7 @@
 
 
                         </table>
+                        </div>
 
 
 
@@ -720,18 +744,29 @@
 
 
 @section scripts {
-    <script>
+<script>
         function hideModal(controlId) {
             document.getElementById(controlId).style.display = 'none';
         }
 
-        function showModal(controlId, addedit, xname, xcreateddatetime, xplantid) {
+    function saveModal(controlId) {
+        //console.log()
+        var a = document.getElementById(document.getElementById('zajaxedit').value); //or grab it by tagname etc
+        a.href = "/MJ2/Plant/Edit?xplantid=" + document.getElementById('idmodal_0001_frm_0001_xplantid').value +
+            "&xcount=" + document.getElementById('zcount').value + "&xname=" + document.getElementById('xname').value +
+            "&xcreateddatetime=" + document.getElementById('xcreateddatetime').value;
+
+        document.getElementById(controlId).style.display = 'none';
+        a.click();
+    }
+
+        function showModal(controlId, addedit, xeditname, xeditcreateddatetime, xplantid, xajaxedit, xcount) {
             //alert('A');
             if (addedit == 'Add') {
 
                 //alert('Add');
 
-                @{ 
+                @{
                     int xRecCount = Model.Count();
                     xRecCount = xRecCount + 1;
 
@@ -756,21 +791,26 @@
                 document.getElementById('xcreateddatetimelabel').style.display = 'none';
                 document.getElementById('xcreateddatetime').style.display = 'none';
 
-                
+
                 //alert('display');
                 document.getElementById(controlId).style.display = 'block';
                 document.getElementById('xname').focus();
             };
 
             if (addedit == 'Edit') {
+                //alert(xajaxedit);
+                document.getElementById('zajaxedit').value = xajaxedit;
+                document.getElementById('zcount').value = xcount;
+                //alert(document.getElementById('zajaxedit').value);
+
                 //alert('Edit');
                 document.getElementById('idmodal_0001_frm_0001_xcommand').value = 'Edit';
                 document.getElementById('idmodal_0001_title').innerText = 'Edit a Plant';
 
-                
+
                 document.getElementById('idmodal_0001_frm_0001_xplantid').value = xplantid;
-                document.getElementById('xname').value = xname;
-                document.getElementById('xcreateddatetime').value = xcreateddatetime;
+                document.getElementById('xname').value = document.getElementById(xeditname).innerText;
+                document.getElementById('xcreateddatetime').value = document.getElementById(xeditcreateddatetime).innerText.replace(' ','');
 
                 document.getElementById('xcreateddatetimelabel').style.display = 'block';
                 document.getElementById('xcreateddatetime').style.display = 'block';
@@ -780,16 +820,11 @@
             };
         }
 
-
-        var zformToSubmit;
-
-        window.uploadPhotos = function (inputToUpdate, formToSubmit) {
+        window.uploadPhotos = function (xplantid, xupdatetargetid, xloadingelementid, xajaxreload, xajaxrefreshdata ) {
 
             //alert('Resizing');
             // Read in file
             var file = event.target.files[0];
-
-
 
             // Ensure it's an image
             if (file.type.match(/image.*/)) {
@@ -803,7 +838,7 @@
 
                         // Resize the image
                         var canvas = document.createElement('canvas'),
-                            max_size = 1000,// TODO : pull max size from a site config
+                            max_size = @SHARED.CLASSES.clsGlobal.gImageSize,
                             width = image.width,
                             height = image.height;
                         if (width > height) {
@@ -821,21 +856,35 @@
                         canvas.height = height;
                         canvas.getContext('2d').drawImage(image, 0, 0, width, height);
                         var dataUrl = canvas.toDataURL('jpeg');
-                        //dataUrl = dataUrl.replace("data:image/jpeg;base64,/", "");
-                        var resizedImage = dataURLToBlob(dataUrl);
-                        //alert('Setting value to - ' + inputToUpdate + ' - Size:' + resizedImage.size.toString());
 
+                        var formData = {
+                            'xplantid': xplantid,
+                            'xcompressedimage': dataUrl
+                        };
 
-                        document.getElementById(inputToUpdate).value = dataUrl;
+                        $.ajax({
+                            'type': 'POST',
+                            url: "/MJ2/Plant/AddImage",
+                            data: formData,
 
-                        //alert('Submitting form - ' + formToSubmit);
+                            dataType: "text",
+                            beforeSend: function () {
+                               // alert('before');
+                                document.getElementById(xloadingelementid).style.display = 'block';
+                            },
 
-                        zformToSubmit = formToSubmit;
+                            success: function () {
+                              //  alert('after');
+                                document.getElementById(xloadingelementid).style.display = 'none';
 
-                        $.event.trigger({
-                            type: "imageResized",
-                            blob: resizedImage,
-                            url: dataUrl
+                                //Load last image
+                                var a = document.getElementById(xajaxreload); //or grab it by tagname etc
+                                a.href = "/MJ2/Plant/PreviousImage?xplantid=" + xplantid + "&xplanthistoryid=2147483647"
+                                document.getElementById(xajaxreload).click();
+                                document.getElementById(xajaxrefreshdata).click();
+                            },
+                            error: function () {
+                            }
                         });
                     }
                     image.src = readerEvent.target.result;
@@ -847,48 +896,6 @@
             }
         };
 
-        /* Utility function to convert a canvas to a BLOB */
-        var dataURLToBlob = function (dataURL) {
-            var BASE64_MARKER = ';base64,';
-            if (dataURL.indexOf(BASE64_MARKER) == -1) {
-                var parts = dataURL.split(',');
-                var contentType = parts[0].split(':')[1];
-                var raw = parts[1];
-
-                return new Blob([raw], { type: contentType });
-            }
-
-            var parts = dataURL.split(BASE64_MARKER);
-            var contentType = parts[0].split(':')[1];
-            var raw = window.atob(parts[1]);
-            var rawLength = raw.length;
-
-            var uInt8Array = new Uint8Array(rawLength);
-
-            for (var i = 0; i < rawLength; ++i) {
-                uInt8Array[i] = raw.charCodeAt(i);
-            }
-
-            return new Blob([uInt8Array], { type: contentType });
-        }
-
-        /* Handle image resized events */
-        /* Handle image resized events */
-        $(document).on("imageResized", function (event) {
-            //alert('Trigger')
-            var data = new FormData($("form[id*='uploadImageForm']")[0]);
-            if (event.blob && event.url) {
-                data.append('image_data', event.blob);
-
-
-                //alert('Trigger post')
-
-                document.getElementById(zformToSubmit).submit();
-
-
-
-            }
-        });
 
         function showhideSubMenu(controlId) {
             var x = document.getElementById('menu_0001');
@@ -955,31 +962,27 @@
             }
         }
 
-        function getPreviousImage(xplantid, controlId) {
+        function LoadImages() {
+        @{
+            foreach (var item in Model)
+            {
+                if (item.LastPicture != null)
+                {
+                    string previousactionid = "previousactionid_" + item.ID.ToString();
 
-        $.ajax({
-          async: true,
-          type: "GET",
-          url: "@Url.Action("PreviousImage", "Plant")",
-          data: {
-              xplantid: xplantid,
-              xplanthistoryid: document.getElementById(controlId).value
-            },
-
-          
-          //data: "StrContactDetails=" + Details + "&IsPrimary=" + true,
-          //data: "{StrContactDetails:'" + Details + "',IsPrimary:"+ true + "}",
-          //contentType: "application/json; charset=utf-8",
-            success: function () {
+                    <text>document.getElementById('@previousactionid').click();</text>
+                }
+            }
 
 
-
-          },
-          error: function() {
-          }
-        });
         }
-        
+        }
 
-    </script>
+        
+        //Run these when the page loads
+        LoadImages();
+
+
+
+</script>
 }

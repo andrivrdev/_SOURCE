@@ -7,6 +7,9 @@
     string nextactionid = "nextactionid_" + Model.PlantID.ToString();
     string divloadinganimation = "divloadinganimation_" + Model.PlantID.ToString();
 
+    string ajaxaddimage = "ajaxaddimage_" + Model.ID.ToString();
+
+
 }
 
 <div style="display:none">
@@ -22,48 +25,46 @@
         var base64 = Convert.ToBase64String(Model.PictureThumbnail);
         var imgsrc = string.Format("data:image/jpeg;base64,{0}", base64);
 
-        <img style="width:100%;height:200px;" src='@imgsrc' />
+        <img style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width:100%; height:200px;" src='@imgsrc' />
 
         <!--SIDE BUTTONS-->
         var item = new SHARED.DATA.tblPlant();
-        item.LoadData(Convert.ToInt32(Model.PlantID));
+        item.LoadData(Convert.ToInt32(Model.PlantID), 0);
 
 
 
 
-        if (item.LastPicture == null)
-//            if (item.LastPicture != null)
+        if (item.iePlant.FirstOrDefault().LastPicture != null)
             {
-                <table style="position:absolute; left:3px; top:90px; opacity:0.8; width:100%;">
+                <table style="position:absolute; left:3px; top:90px; opacity:@SHARED.CLASSES.clsGlobal.gOpacity; width:100%;">
                     <tr>
-                                    @{
-                               // var xImageList = item.iePlantHistory.Where(r => (r.EventID.ToString() == "15"));
-                               // var xOrdered = xImageList.OrderBy(x => x.ID);
+                        @{
+                            var xImageList = item.iePlant.FirstOrDefault().iePlantHistory.Where(r => (r.EventID.ToString() == "15"));
+                            var xOrdered = xImageList.OrderBy(x => x.ID);
 
-                               // var xFirstRec = xOrdered.FirstOrDefault();
+                            var xFirstRec = xOrdered.FirstOrDefault();
 
-                                //if (xFirstRec.ID != Model.ID)
-                                //{
+                            if (xFirstRec.ID != Model.ID)
+                            {
                                 <td width="15px">
                                     <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-scroll-arrow-to-left" style="padding:0px;font-size:large;" onclick="document.getElementById('@previousactionid').click();"></span>
                                 </td>
-                           // }
-            }
+                            }
 
-                        <td></td>
+                            <td></td>
 
-                        @{
-                           // xImageList = item.iePlantHistory.Where(r => (r.EventID.ToString() == "15"));
-                           // xOrdered = xImageList.OrderByDescending(x => x.ID);
+                            xOrdered = xImageList.OrderByDescending(x => x.ID);
 
-                          //  var xLastRec = xOrdered.FirstOrDefault();
+                            var xLastRec = xOrdered.FirstOrDefault();
 
-                            //if (xLastRec.ID != Model.ID)
-                            //{
+                            if (xLastRec.ID != Model.ID)
+                            {
                                 <td width="15px">
                                     <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-scroll-arrow-to-right" style="padding:0px;font-size:large;" onclick="document.getElementById('@nextactionid').click();"></span>
                                 </td>
-                            //}
+                            }
+
+
                         }
 
                         <td width="5px;"></td>

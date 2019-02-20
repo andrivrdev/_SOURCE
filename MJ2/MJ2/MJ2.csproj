@@ -298,6 +298,7 @@
     <Content Include="Views\Plant\Index.cshtml" />
     <Content Include="Views\Login\Test2.cshtml" />
     <Content Include="Views\Shared\_PlantImage.cshtml" />
+    <Content Include="Views\Shared\_PlantData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
