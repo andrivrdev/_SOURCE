@@ -1,10 +1,67 @@
 ﻿@model SHARED.DATA.tblPlant
 
 
-@{ 
+@{
+    string divloadinganimation = "divloadinganimation_" + Model.iePlant.FirstOrDefault().ID.ToString();
+    string divdata = "divdata_" + Model.iePlant.FirstOrDefault().ID.ToString();
+
     string editname = "editname_" + Model.iePlant.FirstOrDefault().ID.ToString();
     string editcreateddatetime = "editcreateddatetime_" + Model.iePlant.FirstOrDefault().ID.ToString();
+
+    string ajaxrefreshdata = "ajaxrefreshdata_" + Model.iePlant.FirstOrDefault().ID.ToString();
+    string ajaxaddinspected = "ajaxaddinspected_" + Model.iePlant.FirstOrDefault().ID.ToString();
+    string ajaxaddwatered = "ajaxaddwatered_" + Model.iePlant.FirstOrDefault().ID.ToString();
+    string ajaxedit = "ajaxedit_" + Model.iePlant.FirstOrDefault().ID.ToString();
+
+
 }
+
+<!--BOTTOM BUTTONS-->
+<table style="position:absolute; left:3px; top:185px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+    <tr>
+        <td width="1px">
+            <div style="display:none">
+                @Ajax.ActionLink("Ajax", "RefreshData", new { xplantid = Model.iePlant.FirstOrDefault().ID, xcount = ViewData["xCount"] }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = divdata, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = ajaxrefreshdata })
+            </div>
+            <div style="display:none">
+                @Ajax.ActionLink("Ajax", "AddInspected", new { xplantid = Model.iePlant.FirstOrDefault().ID, xcount = ViewData["xCount"] }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = divdata, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = ajaxaddinspected })
+            </div>
+            @{
+                if (Model.iePlant.FirstOrDefault().DailyInspected != 1)
+                {
+                    <span class="btn w3-hover-text-green w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-view" style="padding:0px;font-size:large;" onclick="document.getElementById('@ajaxaddinspected').click()"></span>
+                }
+            }
+
+        </td>
+
+        <td width="1px">
+            <div style="display:none">
+                @Ajax.ActionLink("Ajax", "AddWatered", new { xplantid = Model.iePlant.FirstOrDefault().ID, xcount = ViewData["xCount"] }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = divdata, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = ajaxaddwatered })
+            </div>
+            @{
+                if (Model.iePlant.FirstOrDefault().DailyWatered != 1)
+                {
+                    <span class="btn w3-hover-text-blue w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-droplet-of-water" style="padding:0px;font-size:large;" onclick="document.getElementById('@ajaxaddwatered').click()"></span>
+                }
+            }
+        </td>
+
+        <td></td>
+
+        <td width="1px">
+            <div style="display:none">
+                @Ajax.ActionLink("Ajax", "Edit", new { xplantid = Model.iePlant.FirstOrDefault().ID, xcount = ViewData["xCount"], xname = Model.iePlant.FirstOrDefault().Name, xcreateddatetime = Model.iePlant.FirstOrDefault().CreatedDateTime }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = divdata, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = ajaxedit })
+            </div>
+            <span class="btn w3-hover-text-orange w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-edit" style="padding:0px;font-size:large;" onclick="showModal('idmodal_0001', 'Edit', '@editname', '@editcreateddatetime',  '@Model.iePlant.FirstOrDefault().ID', '@ajaxedit', '@ViewData["xCount"]' );"></span>
+        </td>
+
+        <td width="5px;"></td>
+
+    </tr>
+</table>
+
+
 
 
 <table class="w3-small  " style="position:absolute; left:0px; top:218px; width:100%;">

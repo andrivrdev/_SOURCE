@@ -761,12 +761,26 @@ namespace SHARED.DATA
 
                     if (dr["DailyInspected"] != DBNull.Value)
                     {
-                        xtblPlant.DailyInspected = Convert.ToInt32(dr["DailyInspected"]);
+                        if (Convert.ToInt32(dr["DailyInspected"]) > 0)
+                        {
+                            xtblPlant.DailyInspected = 1;
+                        }
+                        else
+                        {
+                            xtblPlant.DailyInspected = 0;
+                        }
                     }
 
                     if (dr["DailyWatered"] != DBNull.Value)
                     {
-                        xtblPlant.DailyWatered = Convert.ToInt32(dr["DailyWatered"]);
+                        if (Convert.ToInt32(dr["DailyWatered"]) > 0)
+                        {
+                            xtblPlant.DailyWatered = 1;
+                        }
+                        else
+                        {
+                            xtblPlant.DailyWatered = 0;
+                        }
                     }
 
                     if (dr["LastNutrient"] != DBNull.Value)
