@@ -604,12 +604,14 @@ namespace SHARED.DATA
                     }
 
                     //THUMBNAIL
+                    clsSE xSE = new clsSE();
+                    xSE.WriteLog("Resizing...");
+
                     if (dr["LastPicture"] != DBNull.Value)
                     {
                         byte[] xLastPicture = (byte[])(dr["LastPicture"]);
 
                         //Resize
-                        clsSE xSE = new clsSE();
                         using (Image image = xSE.byteArrayToImage(xLastPicture))
                         {
                             using (Bitmap resizedImage = xSE.ResizeImage(image, clsGlobal.gThumbnailSize))
@@ -618,6 +620,7 @@ namespace SHARED.DATA
                             }
                         }
                     }
+                    xSE.WriteLog("Resizing done");
 
 
 
@@ -835,12 +838,14 @@ namespace SHARED.DATA
                     }
 
                     //THUMBNAIL
+                    clsSE xSE = new clsSE();
+                    xSE.WriteLog("Resizing...");
+
                     if (dr["LastPicture"] != DBNull.Value)
                     {
                         byte[] xLastPicture = (byte[])(dr["LastPicture"]);
 
                         //Resize
-                        clsSE xSE = new clsSE();
                         using (Image image = xSE.byteArrayToImage(xLastPicture))
                         {
                             using (Bitmap resizedImage = xSE.ResizeImage(image, clsGlobal.gThumbnailSize))
@@ -849,6 +854,7 @@ namespace SHARED.DATA
                             }
                         }
                     }
+                    xSE.WriteLog("Resizing done.");
 
 
 

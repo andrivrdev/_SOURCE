@@ -64,15 +64,17 @@ namespace SHARED.DATA
                     }
 
                     xtblPlantHistory.CreatedDateTime = Convert.ToDateTime(dr["CreatedDateTime"]);
-                    
+
 
                     //THUMBNAIL
+                    clsSE xSE = new clsSE();
+                    xSE.WriteLog("Resizing...");
+
                     if (dr["Data"] != DBNull.Value && Convert.ToInt64(dr["EventID"]) == 15)
                     {
                         byte[] xData = (byte[])(dr["Data"]);
 
                         //Resize
-                        clsSE xSE = new clsSE();
                         using (Image image = xSE.byteArrayToImage(xData))
                         {
                             using (Bitmap resizedImage = xSE.ResizeImage(image, clsGlobal.gThumbnailSize))
@@ -81,6 +83,8 @@ namespace SHARED.DATA
                             }
                         }
                     }
+                    xSE.WriteLog("Resizing done");
+
 
 
                     xPlantHistory.Add(xtblPlantHistory);
@@ -134,12 +138,14 @@ namespace SHARED.DATA
 
 
                     //THUMBNAIL
+                    clsSE xSE = new clsSE();
+                    xSE.WriteLog("Resizing...");
+
                     if (dr["Data"] != DBNull.Value && Convert.ToInt64(dr["EventID"]) == 15)
                     {
                         byte[] xData = (byte[])(dr["Data"]);
 
                         //Resize
-                        clsSE xSE = new clsSE();
                         using (Image image = xSE.byteArrayToImage(xData))
                         {
                             using (Bitmap resizedImage = xSE.ResizeImage(image, clsGlobal.gThumbnailSize))
@@ -148,6 +154,9 @@ namespace SHARED.DATA
                             }
                         }
                     }
+
+                    xSE.WriteLog("Resizing done");
+
 
 
                     xPlantHistory.Add(xtblPlantHistory);
