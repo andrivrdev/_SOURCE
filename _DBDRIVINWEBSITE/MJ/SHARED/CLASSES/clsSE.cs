@@ -246,9 +246,12 @@ namespace SHARED.CLASSES
 
         public void  WriteLog(string xMessage)
         {
-            xMessage = "[" + DateTime.Now.ToString() + "] [" + xMessage + "]";
+            if (clsGlobal.gWriteLog)
+            {
+                xMessage = "[" + DateTime.Now.ToString() + "] [" + xMessage + "]";
 
-            File.AppendAllText(@"C:\Logs\MJ2Log.txt", xMessage + Environment.NewLine);
+                File.AppendAllText(@"C:\Logs\MJ2Log.txt", xMessage + Environment.NewLine);
+            }
 
 
         }

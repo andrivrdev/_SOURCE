@@ -53,6 +53,8 @@ namespace MJ2.Controllers
 
             if (validation_Command == "GotoPlants")
             {
+                SHARED.CLASSES.clsSE xSE = new SHARED.CLASSES.clsSE();
+                xSE.WriteLog("Start loading plants...");
                 Session["GroupID"] = GroupID;
                 return RedirectToAction("Index", "Plant");
 

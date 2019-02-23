@@ -604,23 +604,36 @@ namespace SHARED.DATA
                     }
 
                     //THUMBNAIL
-                    clsSE xSE = new clsSE();
-                    xSE.WriteLog("Resizing...");
-
-                    if (dr["LastPicture"] != DBNull.Value)
+                    if (clsGlobal.gOnTheFlyImageResize)
                     {
-                        byte[] xLastPicture = (byte[])(dr["LastPicture"]);
+                        clsSE xSE = new clsSE();
+                        xSE.WriteLog("Resizing...");
 
-                        //Resize
-                        using (Image image = xSE.byteArrayToImage(xLastPicture))
+                        if (dr["LastPicture"] != DBNull.Value)
                         {
-                            using (Bitmap resizedImage = xSE.ResizeImage(image, clsGlobal.gThumbnailSize))
+                            byte[] xLastPicture = (byte[])(dr["LastPicture"]);
+
+                            //Resize
+                            using (Image image = xSE.byteArrayToImage(xLastPicture))
                             {
-                                xtblPlant.LastPictureThumbnail = xSE.ImageToByteArray(resizedImage);
+                                using (Bitmap resizedImage = xSE.ResizeImage(image, clsGlobal.gThumbnailSize))
+                                {
+                                    xtblPlant.LastPictureThumbnail = xSE.ImageToByteArray(resizedImage);
+                                }
                             }
                         }
+                        xSE.WriteLog("Resizing done");
                     }
-                    xSE.WriteLog("Resizing done");
+                    else
+                    {
+                        if (dr["LastPicture"] != DBNull.Value)
+                        {
+                            xtblPlant.LastPictureThumbnail = xtblPlant.LastPicture;
+                        }
+                    }
+                    /*
+
+                    */
 
 
 
@@ -838,23 +851,36 @@ namespace SHARED.DATA
                     }
 
                     //THUMBNAIL
-                    clsSE xSE = new clsSE();
-                    xSE.WriteLog("Resizing...");
-
-                    if (dr["LastPicture"] != DBNull.Value)
+                    if (clsGlobal.gOnTheFlyImageResize)
                     {
-                        byte[] xLastPicture = (byte[])(dr["LastPicture"]);
+                        clsSE xSE = new clsSE();
+                        xSE.WriteLog("Resizing...");
 
-                        //Resize
-                        using (Image image = xSE.byteArrayToImage(xLastPicture))
+                        if (dr["LastPicture"] != DBNull.Value)
                         {
-                            using (Bitmap resizedImage = xSE.ResizeImage(image, clsGlobal.gThumbnailSize))
+                            byte[] xLastPicture = (byte[])(dr["LastPicture"]);
+
+                            //Resize
+                            using (Image image = xSE.byteArrayToImage(xLastPicture))
                             {
-                                xtblPlant.LastPictureThumbnail = xSE.ImageToByteArray(resizedImage);
+                                using (Bitmap resizedImage = xSE.ResizeImage(image, clsGlobal.gThumbnailSize))
+                                {
+                                    xtblPlant.LastPictureThumbnail = xSE.ImageToByteArray(resizedImage);
+                                }
                             }
                         }
+                        xSE.WriteLog("Resizing done.");
                     }
-                    xSE.WriteLog("Resizing done.");
+                    else
+                    {
+                        if (dr["LastPicture"] != DBNull.Value)
+                        {
+                            xtblPlant.LastPictureThumbnail = xtblPlant.LastPicture;
+                        }
+                    }
+
+                    /*
+                    */
 
 
 

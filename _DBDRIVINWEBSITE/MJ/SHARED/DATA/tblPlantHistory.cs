@@ -67,23 +67,36 @@ namespace SHARED.DATA
 
 
                     //THUMBNAIL
-                    clsSE xSE = new clsSE();
-                    xSE.WriteLog("Resizing...");
-
-                    if (dr["Data"] != DBNull.Value && Convert.ToInt64(dr["EventID"]) == 15)
+                    if (clsGlobal.gOnTheFlyImageResize)
                     {
-                        byte[] xData = (byte[])(dr["Data"]);
+                        clsSE xSE = new clsSE();
+                        xSE.WriteLog("Resizing...");
 
-                        //Resize
-                        using (Image image = xSE.byteArrayToImage(xData))
+                        if (dr["Data"] != DBNull.Value && Convert.ToInt64(dr["EventID"]) == 15)
                         {
-                            using (Bitmap resizedImage = xSE.ResizeImage(image, clsGlobal.gThumbnailSize))
+                            byte[] xData = (byte[])(dr["Data"]);
+
+                            //Resize
+                            using (Image image = xSE.byteArrayToImage(xData))
                             {
-                                xtblPlantHistory.PictureThumbnail = xSE.ImageToByteArray(resizedImage);
+                                using (Bitmap resizedImage = xSE.ResizeImage(image, clsGlobal.gThumbnailSize))
+                                {
+                                    xtblPlantHistory.PictureThumbnail = xSE.ImageToByteArray(resizedImage);
+                                }
                             }
                         }
+                        xSE.WriteLog("Resizing done");
                     }
-                    xSE.WriteLog("Resizing done");
+                    else
+                    {
+
+
+                        if (dr["Data"] != DBNull.Value && Convert.ToInt64(dr["EventID"]) == 15)
+                        {
+                            xtblPlantHistory.PictureThumbnail = xtblPlantHistory.Data;
+                        }
+                    }
+
 
 
 
@@ -138,24 +151,36 @@ namespace SHARED.DATA
 
 
                     //THUMBNAIL
-                    clsSE xSE = new clsSE();
-                    xSE.WriteLog("Resizing...");
-
-                    if (dr["Data"] != DBNull.Value && Convert.ToInt64(dr["EventID"]) == 15)
+                    if (clsGlobal.gOnTheFlyImageResize)
                     {
-                        byte[] xData = (byte[])(dr["Data"]);
+                        clsSE xSE = new clsSE();
+                        xSE.WriteLog("Resizing...");
 
-                        //Resize
-                        using (Image image = xSE.byteArrayToImage(xData))
+                        if (dr["Data"] != DBNull.Value && Convert.ToInt64(dr["EventID"]) == 15)
                         {
-                            using (Bitmap resizedImage = xSE.ResizeImage(image, clsGlobal.gThumbnailSize))
+                            byte[] xData = (byte[])(dr["Data"]);
+
+                            //Resize
+                            using (Image image = xSE.byteArrayToImage(xData))
                             {
-                                xtblPlantHistory.PictureThumbnail = xSE.ImageToByteArray(resizedImage);
+                                using (Bitmap resizedImage = xSE.ResizeImage(image, clsGlobal.gThumbnailSize))
+                                {
+                                    xtblPlantHistory.PictureThumbnail = xSE.ImageToByteArray(resizedImage);
+                                }
                             }
+                        }
+
+                        xSE.WriteLog("Resizing done");
+                    }
+                    else
+                    {
+                        if (dr["Data"] != DBNull.Value && Convert.ToInt64(dr["EventID"]) == 15)
+                        {
+                            xtblPlantHistory.PictureThumbnail = xtblPlantHistory.Data;
                         }
                     }
 
-                    xSE.WriteLog("Resizing done");
+
 
 
 
