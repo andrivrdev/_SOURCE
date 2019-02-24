@@ -23,8 +23,10 @@ namespace Notes
 
         async void OnNoteAddedClicked(object sender, EventArgs e)
         {
+            
             await Navigation.PushAsync(new NoteEntryPage
             {
+                
                 BindingContext = new Note()
             });
         }

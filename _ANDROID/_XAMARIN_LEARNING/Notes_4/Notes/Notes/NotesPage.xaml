@@ -22,7 +22,9 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell Text="{Binding Text}"
-                          Detail="{Binding Date}" />
+                          Detail="{Binding Date}" 
+                          x:Name="xTextCell"
+                          />
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
