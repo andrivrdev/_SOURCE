@@ -147,6 +147,8 @@
             xCount = xCount + 1;
             xsCount = xCount.ToString().PadLeft(2, '0');
 
+            string top_background = "top_background_" + item.ID.ToString();
+
             string frm_takepic = "frm_takepic_" + item.ID.ToString();
             string frm_addinspected = "frm_addinspected_" + item.ID.ToString();
             string frm_addwatered = "frm_addwatered_" + item.ID.ToString();
@@ -172,6 +174,28 @@
 
             string editname = "editname_" + item.ID.ToString();
             string editcreateddatetime = "editcreateddatetime_" + item.ID.ToString();
+
+
+
+
+            string menu_0001 = "menu_0001_" + item.ID.ToString();
+            string menu_0002 = "menu_0002_" + item.ID.ToString();
+            string menu_0003 = "menu_0003_" + item.ID.ToString();
+            string menu_0004 = "menu_0004_" + item.ID.ToString();
+            string menu_0005 = "menu_0005_" + item.ID.ToString();
+            string menu_0006 = "menu_0006_" + item.ID.ToString();
+            string menu_0007 = "menu_0007_" + item.ID.ToString();
+            string menu_0008 = "menu_0008_" + item.ID.ToString();
+            string menu_0009 = "menu_0009_" + item.ID.ToString();
+
+            string menu_edit = "menu_edit_" + item.ID.ToString();
+            string menu_delete = "menu_delete_" + item.ID.ToString();
+
+            string frm_0002 = "frm_0002_" + item.ID.ToString();
+            string frm_0002_xcommand = "frm_0002_xcommand_" + item.ID.ToString();
+            string frm_0002_xplantid = "frm_0002_xplantid_" + item.ID.ToString();
+
+
 
             <!--ITEM-->
             <div class="col-sm-6 col-md-4 col-lg-3">
@@ -216,58 +240,58 @@
                         }
 
                         <!--AJAX UPDATED-->
-                                <div id="@divpic" style="position:absolute; left:0px; top:15px; width:100%; height:200px;">
-                                    <div style="display:none">
+                        <div id="@divpic" style="position:absolute; left:0px; top:15px; width:100%; height:200px;">
+                            <div style="display:none">
 
 
-                                        @Ajax.ActionLink("Ajax", "PreviousImage", new { xplantid = item.ID, xplanthistoryid = int.MaxValue.ToString() }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = divpic, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = previousactionid })
+                                @Ajax.ActionLink("Ajax", "PreviousImage", new { xplantid = item.ID, xplanthistoryid = int.MaxValue.ToString() }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = divpic, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = previousactionid })
 
-                                    </div>
+                            </div>
 
-                                    <!--SIDE BUTTONS-->
-                                    @{
-                                        if (item.LastPicture != null)
-                                        {
-                                            <table style="position:absolute; left:3px; top:90px; opacity:@SHARED.CLASSES.clsGlobal.gOpacity; width:100%;">
-                                                <tr>
-                                                    @{
-                                                        var xImageList = item.iePlantHistory.Where(r => (r.EventID.ToString() == "15"));
-                                                        var xOrdered = xImageList.OrderBy(x => x.ID);
+                            <!--SIDE BUTTONS-->
+                            @{
+                                if (item.LastPicture != null)
+                                {
+                                    <table style="position:absolute; left:3px; top:90px; opacity:@SHARED.CLASSES.clsGlobal.gOpacity; width:100%;">
+                                        <tr>
+                                            @{
+                                                var xImageList = item.iePlantHistory.Where(r => (r.EventID.ToString() == "15"));
+                                                var xOrdered = xImageList.OrderBy(x => x.ID);
 
-                                                        var xFirstRec = xOrdered.FirstOrDefault();
+                                                var xFirstRec = xOrdered.FirstOrDefault();
 
-                                                        if (xFirstRec.ID != item.LastPictureID)
-                                                        {
-                                                            <td width="15px">
-                                                                <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-scroll-arrow-to-left" style="padding:0px;font-size:large;" onclick="document.getElementById('@previousactionid').click();"></span>
-                                                            </td>
-                                                        }
-                                                    }
+                                                if (xFirstRec.ID != item.LastPictureID)
+                                                {
+                                                    <td width="15px">
+                                                        <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-scroll-arrow-to-left" style="padding:0px;font-size:large;" onclick="document.getElementById('@previousactionid').click();"></span>
+                                                    </td>
+                                                }
+                                            }
 
-                                                    <td></td>
+                                            <td></td>
 
-                                                    @{
-                                                        xImageList = item.iePlantHistory.Where(r => (r.EventID.ToString() == "15"));
-                                                        xOrdered = xImageList.OrderByDescending(x => x.ID);
+                                            @{
+                                                xImageList = item.iePlantHistory.Where(r => (r.EventID.ToString() == "15"));
+                                                xOrdered = xImageList.OrderByDescending(x => x.ID);
 
-                                                        var xLastRec = xOrdered.FirstOrDefault();
+                                                var xLastRec = xOrdered.FirstOrDefault();
 
-                                                        if (xLastRec.ID != item.LastPictureID)
-                                                        {
-                                                            <td width="15px">
-                                                                <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-scroll-arrow-to-right" style="padding:0px;font-size:large;" onclick="document.getElementById('@nextactionid').click();"></span>
-                                                            </td>
-                                                        }
-                                                    }
+                                                if (xLastRec.ID != item.LastPictureID)
+                                                {
+                                                    <td width="15px">
+                                                        <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-scroll-arrow-to-right" style="padding:0px;font-size:large;" onclick="document.getElementById('@nextactionid').click();"></span>
+                                                    </td>
+                                                }
+                                            }
 
-                                                    <td width="5px;"></td>
+                                            <td width="5px;"></td>
 
-                                                </tr>
-                                            </table>
-                                                        }
-                                    }
+                                        </tr>
+                                    </table>
+                                }
+                            }
 
-                                </div>
+                        </div>
 
                         <!--LOADING ANIMATION-->
                         <div id="@divloadinganimation" style="display:none">
@@ -282,11 +306,20 @@
 
 
                         <!--MENU BACKGROUND-->
-                        <table class="w3-opacity-min" style="background-image:linear-gradient(to bottom, black,  transparent); position:absolute; left:0px; top:15px; width:100%; height:35px;">
+                        <table id="@top_background" class="w3-opacity-min" style="background-image:linear-gradient(to bottom, black,  transparent); position:absolute; left:0px; top:15px; width:100%; height:35px;">
                             <tr>
                                 <td></td>
                             </tr>
                         </table>
+
+                        <!--
+    <table class="w3-opacity-min" style="background-image:linear-gradient(to bottom, black,  gray); position:absolute; left:0px; top:45px; width:100%; height:130px;">
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+    -->
+
                         <table class="w3-opacity-min" style="background-image:linear-gradient(to top, black,  transparent); position:absolute; left:0px; top:180px; width:100%; height:35px;">
                             <tr>
                                 <td></td>
@@ -301,18 +334,18 @@
                             <tr>
                                 <td width="15px">
                                     <input id="@takepic" name="xpicorig" type="file" accept="image/*;capture=camera" style="display:none" onchange="uploadPhotos('@item.ID','@divpic','@divloadinganimation','@previousactionid','@ajaxrefreshdata');">
-                                        <input type="hidden" class="form-control" name="xcommand" id="xcommand" value="AddImage">
+                                    <input type="hidden" class="form-control" name="xcommand" id="xcommand" value="AddImage">
 
-                                        <input type="hidden" class="form-control" name="xplantid" id="xplantid" value="@item.ID">
-                                        <input id="@takepicresized" name="xcompressedpic" type="hidden" style="display:none" onchange="">
+                                    <input type="hidden" class="form-control" name="xplantid" id="xplantid" value="@item.ID">
+                                    <input id="@takepicresized" name="xcompressedpic" type="hidden" style="display:none" onchange="">
 
-                                        <span class="btn w3-hover-text-deep-purple w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-photo-camera" style="padding:0px;font-size:large;" onclick="document.getElementById('@takepic').click()"></span>
+                                    <span class="btn w3-hover-text-deep-purple w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-photo-camera" style="padding:0px;font-size:large;" onclick="document.getElementById('@takepic').click()"></span>
                                 </td>
 
                                 <td></td>
 
                                 <td width="15px">
-                                    <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-two-dots-button" style="outline:none; padding:0px; font-size:large;" onclick="showhideSubMenu('menu_0001');"></span>
+                                    <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-two-dots-button" style="outline:none; padding:0px; font-size:large;" onclick="showhideSubMenu('@menu_0001','@menu_0002','@menu_0003','@menu_0004','@menu_0005','@menu_0006','@menu_0007','@menu_0008','@menu_0009','@menu_edit','@menu_delete', '@top_background');"></span>
                                 </td>
 
                                 <td width="5px;"></td>
@@ -320,12 +353,12 @@
                             </tr>
                         </table>
 
-                        
+
 
                         <!--SUBMENU-->
                         <!--ROW1-->
                         <!--NUTRIENT-->
-                        <table id="menu_0001" style="display:none; position:absolute; left:3px; top:40px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+                        <table id="@menu_0001" style="display:none; position:absolute; left:3px; top:40px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td></td>
 
@@ -349,7 +382,7 @@
                         </table>
 
                         <!--CHEMICALS-->
-                        <table id="menu_0002" style="display:none; position:absolute; left:3px; top:40px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+                        <table id="@menu_0002" style="display:none; position:absolute; left:3px; top:40px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td width="5px;">
                                     <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
@@ -371,7 +404,7 @@
 
                         <!--ROW2-->
                         <!--PHASE CHANGE-->
-                        <table id="menu_0003" style="display:none; position:absolute; left:3px; top:60px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+                        <table id="@menu_0003" style="display:none; position:absolute; left:3px; top:60px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td></td>
 
@@ -395,7 +428,7 @@
                         </table>
 
                         <!--MEDIUM CHANGE-->
-                        <table id="menu_0004" style="display:none; position:absolute; left:3px; top:60px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+                        <table id="@menu_0004" style="display:none; position:absolute; left:3px; top:60px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td width="5px;">
                                     <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
@@ -417,7 +450,7 @@
 
                         <!--ROW3-->
                         <!--LOCATION CHANGE-->
-                        <table id="menu_0005" style="display:none; position:absolute; left:3px; top:80px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+                        <table id="@menu_0005" style="display:none; position:absolute; left:3px; top:80px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td></td>
 
@@ -441,7 +474,7 @@
                         </table>
 
                         <!--PROBLEMS-->
-                        <table id="menu_0006" style="display:none; position:absolute; left:3px; top:80px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+                        <table id="@menu_0006" style="display:none; position:absolute; left:3px; top:80px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td width="5px;">
                                     <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
@@ -463,7 +496,7 @@
 
                         <!--ROW4-->
                         <!--ENVIRONMENT-->
-                        <table id="menu_0007" style="display:none; position:absolute; left:3px; top:100px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+                        <table id="@menu_0007" style="display:none; position:absolute; left:3px; top:100px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td></td>
 
@@ -487,7 +520,7 @@
                         </table>
 
                         <!--ORIGIN-->
-                        <table id="menu_0008" style="display:none; position:absolute; left:3px; top:100px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+                        <table id="@menu_0008" style="display:none; position:absolute; left:3px; top:100px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td width="5px;">
                                     <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
@@ -509,7 +542,7 @@
 
                         <!--ROW5-->
                         <!--VARIETY-->
-                        <table id="menu_0009" style="display:none; position:absolute; left:3px; top:120px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+                        <table id="@menu_0009" style="display:none; position:absolute; left:3px; top:120px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td width="5px;">
                                     <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
@@ -528,6 +561,64 @@
                                 </td>
                             </tr>
                         </table>
+
+
+                        <!--LAST ROW-->
+                        <!--EDIT-->
+                        <div style="display:none">
+                            @Ajax.ActionLink("Ajax", "Edit", new { xplantid = item.ID, xcount = xsCount, xname = item.Name, xcreateddatetime = item.CreatedDateTime }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = divdata, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = ajaxedit })
+                        </div>
+                        <table id="@menu_edit" style="display:none; position:absolute; left:3px; top:150px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+                            <tr>
+                                <td></td>
+
+                                <td width="5px;">
+                                    <table class="btn w3-hover-text-orange w3-text-light-gray w3-tiny" style="outline:none; padding:0px;" onclick="showModal('idmodal_0001', 'Edit', '@editname', '@editcreateddatetime',  '@item.ID', '@ajaxedit', '@xsCount' );">
+                                        <tr>
+                                            <td width="5px;" style="white-space: nowrap;">
+                                                <span>Edit</span>
+                                            </td>
+
+                                            <td width="5px;"></td>
+
+                                            <td width="15px">
+                                                <span class="glyphicon acf-ec-glyph-icon acf-ec-edit" style="outline:none; padding:0px; font-size:large;"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="5px;"></td>
+                            </tr>
+                        </table>
+
+                        <!--DELETE-->
+                        <form id="@frm_0002" method="post">
+                            <input type="hidden" class="form-control" name="xcommand" id="@frm_0002_xcommand" value="Delete">
+                            <input type="hidden" class="form-control" name="xplantid" id="@frm_0002_xplantid" value="@item.ID">
+                        </form>
+
+                        <table id="@menu_delete" style="display:none; position:absolute; left:3px; top:150px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+                            <tr>
+                                <td width="5px;">
+                                    <table class="btn w3-hover-text-red w3-text-light-gray w3-tiny" style="outline:none; padding:0px;" onclick="document.getElementById('@frm_0002').submit();">
+                                        <tr>
+                                            <td width="15px">
+                                                <span class="glyphicon acf-ec-glyph-icon acf-ec-minus" style="outline:none; padding:0px; font-size:large;"></span>
+                                            </td>
+
+                                            <td width="5px;"></td>
+
+                                            <td width="5px;" style="white-space: nowrap;">
+                                                <span>Delete</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+
+
 
                         <div id="@divdata">
 
@@ -554,22 +645,15 @@
                                         <div style="display:none">
                                             @Ajax.ActionLink("Ajax", "AddWatered", new { xplantid = item.ID, xcount = xsCount }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = divdata, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = ajaxaddwatered })
                                         </div>
-                                        @{ 
+                                        @{
                                             if (item.DailyWatered != 1)
                                             {
                                                 <span class="btn w3-hover-text-blue w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-droplet-of-water" style="padding:0px;font-size:large;" onclick="document.getElementById('@ajaxaddwatered').click()"></span>
                                             }
-                                         }
+                                        }
                                     </td>
 
                                     <td></td>
-
-                                    <td width="1px">
-                                        <div style="display:none">
-                                            @Ajax.ActionLink("Ajax", "Edit", new { xplantid = item.ID, xcount = xsCount, xname = item.Name, xcreateddatetime = item.CreatedDateTime }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = divdata, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = ajaxedit })
-                                        </div>
-                                        <span class="btn w3-hover-text-orange w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-edit" style="padding:0px;font-size:large;" onclick="showModal('idmodal_0001', 'Edit', '@editname', '@editcreateddatetime',  '@item.ID', '@ajaxedit', '@xsCount' );"></span>
-                                    </td>
 
                                     <td width="5px;"></td>
 
@@ -924,64 +1008,86 @@
         };
 
 
-        function showhideSubMenu(controlId) {
-            var x = document.getElementById('menu_0001');
+    function showhideSubMenu(xmenu_0001, xmenu_0002, xmenu_0003, xmenu_0004, xmenu_0005, xmenu_0006, xmenu_0007, xmenu_0008, xmenu_0009, xmenu_edit, xmenu_delete, xtop_background) {
+        var x = document.getElementById(xtop_background);
+        if (x.style.height === "35px") {
+            x.style.height = "200px";
+        } else {
+            x.style.height = "35px";
+        }
+
+
+            var x = document.getElementById(xmenu_0001);
             if (x.style.display === "none") {
                 x.style.display = "table";
             } else {
                 x.style.display = "none";
             }
 
-            x = document.getElementById('menu_0002');
+            x = document.getElementById(xmenu_0002);
             if (x.style.display === "none") {
                 x.style.display = "table";
             } else {
                 x.style.display = "none";
             }
 
-            x = document.getElementById('menu_0003');
+            x = document.getElementById(xmenu_0003);
             if (x.style.display === "none") {
                 x.style.display = "table";
             } else {
                 x.style.display = "none";
             }
 
-            x = document.getElementById('menu_0004');
+            x = document.getElementById(xmenu_0004);
             if (x.style.display === "none") {
                 x.style.display = "table";
             } else {
                 x.style.display = "none";
             }
 
-            x = document.getElementById('menu_0005');
+            x = document.getElementById(xmenu_0005);
             if (x.style.display === "none") {
                 x.style.display = "table";
             } else {
                 x.style.display = "none";
             }
 
-            x = document.getElementById('menu_0006');
+            x = document.getElementById(xmenu_0006);
             if (x.style.display === "none") {
                 x.style.display = "table";
             } else {
                 x.style.display = "none";
             }
 
-            x = document.getElementById('menu_0007');
+            x = document.getElementById(xmenu_0007);
             if (x.style.display === "none") {
                 x.style.display = "table";
             } else {
                 x.style.display = "none";
             }
 
-            x = document.getElementById('menu_0008');
+            x = document.getElementById(xmenu_0008);
             if (x.style.display === "none") {
                 x.style.display = "table";
             } else {
                 x.style.display = "none";
             }
 
-            x = document.getElementById('menu_0009');
+            x = document.getElementById(xmenu_0009);
+            if (x.style.display === "none") {
+                x.style.display = "table";
+            } else {
+                x.style.display = "none";
+            }
+
+            x = document.getElementById(xmenu_edit);
+            if (x.style.display === "none") {
+                x.style.display = "table";
+            } else {
+                x.style.display = "none";
+            }
+
+            x = document.getElementById(xmenu_delete);
             if (x.style.display === "none") {
                 x.style.display = "table";
             } else {

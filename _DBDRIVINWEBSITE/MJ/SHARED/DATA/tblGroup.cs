@@ -47,7 +47,7 @@ namespace SHARED.DATA
  
                   (SELECT DATEDIFF(DAY, g.CreatedDateTime , GETDATE())) AS Age,
   
-                  (SELECT COUNT(*) FROM tblPlant p WHERE p.GroupID = g.ID) AS PlantCount
+                  (SELECT COUNT(*) FROM tblPlant p WHERE (p.GroupID = g.ID) AND (p.Deleted = 0)) AS PlantCount
                 FROM
                   dbo.tblGroup g                ";
 

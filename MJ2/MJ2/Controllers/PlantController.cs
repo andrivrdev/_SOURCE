@@ -32,7 +32,7 @@ namespace MJ2.Controllers
             }
 
             tblPlant xtblPlant = new tblPlant();
-            xtblPlant.LoadData(Convert.ToInt32(Session["GroupID"]), 1);
+            xtblPlant.LoadData(Convert.ToInt32(Session["GroupID"]), 1, false);
 
             var xFiltered = xtblPlant.iePlant.Where(r => r.GroupID.ToString() == Session["GroupID"].ToString());
             var xOrdered = xFiltered.OrderBy(x => x.Name);
@@ -59,8 +59,15 @@ namespace MJ2.Controllers
                 xtblPlant.AddRec(Convert.ToInt32(Session["GroupID"].ToString()), xname, null);
             }
 
+            if (xcommand == "Delete")
+            {
+                xtblPlant = new tblPlant();
+                xtblPlant.DeleteRec(Convert.ToInt32(xplantid));
+            }
+
+
             xtblPlant = new tblPlant();
-            xtblPlant.LoadData(Convert.ToInt32(Session["GroupID"]), 1);
+            xtblPlant.LoadData(Convert.ToInt32(Session["GroupID"]), 1, false);
 
             var xFiltered = xtblPlant.iePlant.Where(r => r.GroupID.ToString() == Session["GroupID"].ToString());
             var xOrdered = xFiltered.OrderBy(x => x.Name);
@@ -168,7 +175,7 @@ namespace MJ2.Controllers
         public PartialViewResult RefreshData(string xplantid, string xcount)
         {
 
-            ztblPlant.LoadData(Convert.ToInt32(xplantid), 0);
+            ztblPlant.LoadData(Convert.ToInt32(xplantid), 0, false);
             ViewData["xCount"] = xcount;
             return PartialView("_PlantData", ztblPlant);
         }
@@ -178,7 +185,7 @@ namespace MJ2.Controllers
         {
             
             ztblPlantHistory.AddRec(Convert.ToInt32(xplantid), "9", null, null);
-            ztblPlant.LoadData(Convert.ToInt32(xplantid), 0);
+            ztblPlant.LoadData(Convert.ToInt32(xplantid), 0, false);
             ViewData["xCount"] = xcount;
             return PartialView("_PlantData", ztblPlant);
         }
@@ -188,7 +195,7 @@ namespace MJ2.Controllers
         {
 
             ztblPlantHistory.AddRec(Convert.ToInt32(xplantid), "10", null, null);
-            ztblPlant.LoadData(Convert.ToInt32(xplantid), 0);
+            ztblPlant.LoadData(Convert.ToInt32(xplantid), 0, false);
             ViewData["xCount"] = xcount;
             return PartialView("_PlantData", ztblPlant);
         }
@@ -197,7 +204,7 @@ namespace MJ2.Controllers
         public PartialViewResult Edit(string xplantid, string xcount, string xname, DateTime? xcreateddatetime)
         {
             ztblPlant.UpdateRec(Convert.ToInt32(xplantid), Convert.ToInt32(Session["GroupID"].ToString()), xname, xcreateddatetime);
-            ztblPlant.LoadData(Convert.ToInt32(xplantid), 0);
+            ztblPlant.LoadData(Convert.ToInt32(xplantid), 0, false);
             ViewData["xCount"] = xcount;
             return PartialView("_PlantData", ztblPlant);
         }

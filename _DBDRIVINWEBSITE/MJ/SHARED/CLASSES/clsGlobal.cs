@@ -15,7 +15,7 @@ namespace SHARED.CLASSES
         public static decimal gThumbnailSize = 0.25m;
         public static string gOpacity = "0.5";
         public static bool gOnTheFlyImageResize = true;
-        public static bool gWriteLog = true;
+        public static bool gWriteLog = false;
 
 
     }

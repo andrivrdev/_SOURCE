@@ -49,13 +49,6 @@
 
         <td></td>
 
-        <td width="1px">
-            <div style="display:none">
-                @Ajax.ActionLink("Ajax", "Edit", new { xplantid = Model.iePlant.FirstOrDefault().ID, xcount = ViewData["xCount"], xname = Model.iePlant.FirstOrDefault().Name, xcreateddatetime = Model.iePlant.FirstOrDefault().CreatedDateTime }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = divdata, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = ajaxedit })
-            </div>
-            <span class="btn w3-hover-text-orange w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-edit" style="padding:0px;font-size:large;" onclick="showModal('idmodal_0001', 'Edit', '@editname', '@editcreateddatetime',  '@Model.iePlant.FirstOrDefault().ID', '@ajaxedit', '@ViewData["xCount"]' );"></span>
-        </td>
-
         <td width="5px;"></td>
 
     </tr>

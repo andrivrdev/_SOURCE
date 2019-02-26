@@ -16,6 +16,7 @@ namespace SHARED.DATA
         public Int64 GroupID { get; set; }
         public string Name { get; set; }
         public DateTime CreatedDateTime { get; set; }
+        public int Deleted { get; set; }
         public DateTime FirstEntryDateTime { get; set; }
         public DateTime LastEntryDateTime { get; set; }
         public int Age { get; set; }
@@ -61,6 +62,7 @@ namespace SHARED.DATA
                     p.GroupID,
                     p.Name,
                     p.CreatedDateTime,
+                    p.Deleted,
   
                     (SELECT MIN(ph.CreatedDateTime) FROM tblPlantHistory ph WHERE ph.PlantID = p.ID
                     ) AS FirstEntryDateTime,
@@ -481,9 +483,18 @@ namespace SHARED.DATA
 
 
 
-        public void LoadData()
+        public void LoadData(bool xIncludeDeleted)
         {
             string SQL = zSQL;
+
+            if (xIncludeDeleted)
+            {
+               // SQL = SQL + " WHERE p.[Deleted] = '0'";
+            }
+            else
+            {
+                SQL = SQL + " WHERE p.[Deleted] = '0'";
+            }
 
             List<tblPlant> xPlant = new List<tblPlant>();
 
@@ -505,6 +516,8 @@ namespace SHARED.DATA
                     xtblPlant.GroupID = Convert.ToInt64(dr["GroupID"]);
                     xtblPlant.Name = dr["Name"].ToString();
                     xtblPlant.CreatedDateTime = Convert.ToDateTime(dr["CreatedDateTime"]);
+                    xtblPlant.Deleted = Convert.ToInt32(dr["Deleted"]);
+
                     if (dr["FirstEntryDateTime"] != DBNull.Value)
                     {
                         xtblPlant.FirstEntryDateTime = Convert.ToDateTime(dr["FirstEntryDateTime"]);
@@ -705,17 +718,26 @@ namespace SHARED.DATA
             }
         }
 
-        public void LoadData(int xID, int xPlantOrGroup)
+        public void LoadData(int xID, int xPlantOrGroup, bool xIncludeDeleted)
         {
             string SQL = zSQL;
 
             if (xPlantOrGroup == 0)
             {
-                SQL = SQL + " WHERE p.ID = '" + xID.ToString() + "'";
+                SQL = SQL + " WHERE (p.ID = '" + xID.ToString() + "')";
             }
             else
             {
-                SQL = SQL + " WHERE p.GroupID = '" + xID.ToString() + "'";
+                SQL = SQL + " WHERE (p.GroupID = '" + xID.ToString() + "')";
+            }
+
+            if (xIncludeDeleted)
+            {
+                //SQL = SQL + " AND (p.[Deleted] = '1')";
+            } 
+            else
+            {
+                SQL = SQL + " AND (p.[Deleted] = '0')";
             }
 
             List<tblPlant> xPlant = new List<tblPlant>();
@@ -738,6 +760,8 @@ namespace SHARED.DATA
                     xtblPlant.GroupID = Convert.ToInt64(dr["GroupID"]);
                     xtblPlant.Name = dr["Name"].ToString();
                     xtblPlant.CreatedDateTime = Convert.ToDateTime(dr["CreatedDateTime"]);
+                    xtblPlant.Deleted = Convert.ToInt32(dr["Deleted"]);
+
                     if (dr["FirstEntryDateTime"] != DBNull.Value)
                     {
                         xtblPlant.FirstEntryDateTime = Convert.ToDateTime(dr["FirstEntryDateTime"]);
@@ -1004,5 +1028,19 @@ namespace SHARED.DATA
             xclsSE.sqlUpdateRec("tblPlant", fFields, vValues, "[ID] = '" + xID + "'");
             
         }
+
+        public void DeleteRec(int xID)
+        {
+            List<string> fFields = new List<string>();
+            List<string> vValues = new List<string>();
+
+            fFields.Add("Deleted");
+
+            vValues.Add("1");
+
+            clsSE xclsSE = new clsSE();
+            xclsSE.sqlUpdateRec("tblPlant", fFields, vValues, "[ID] = '" + xID + "'");
+        }
+
     }
 }
