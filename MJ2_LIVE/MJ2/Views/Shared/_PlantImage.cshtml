@@ -2,20 +2,27 @@
 
 
 @{
+    string divdata = "divdata_" + Model.PlantID.ToString();
     string divpic = "divpic_" + Model.PlantID.ToString();
     string previousactionid = "previousactionid_" + Model.PlantID.ToString();
     string nextactionid = "nextactionid_" + Model.PlantID.ToString();
     string divloadinganimation = "divloadinganimation_" + Model.PlantID.ToString();
 
     string ajaxaddimage = "ajaxaddimage_" + Model.ID.ToString();
+    string ajaxdeleteimage = "ajaxdeleteimage_" + Model.PlantID.ToString();
 
+    string currentplantimage = "currentplantimage_" + Model.PlantID.ToString();
+    string ajaxrefreshdata = "ajaxrefreshdata_" + Model.PlantID.ToString();
+    
 
 }
 
-<div style="display:none">
-    @Ajax.ActionLink("Ajax", "PreviousImage", new { xplantid = Model.PlantID, xplanthistoryid = Model.ID.ToString() }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = divpic, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = previousactionid })
-    @Ajax.ActionLink("Ajax", "NextImage", new { xplantid = Model.PlantID, xplanthistoryid = Model.ID.ToString() }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = divpic, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = nextactionid })
-</div>
+@{
+    <div style="display:none">
+        @Ajax.ActionLink("Ajax", "PreviousImage", new { xplantid = Model.PlantID, xplanthistoryid = Model.ID.ToString() }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = divpic, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = previousactionid })
+        @Ajax.ActionLink("Ajax", "NextImage", new { xplantid = Model.PlantID, xplanthistoryid = Model.ID.ToString() }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = divpic, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = nextactionid })
+    </div>
+}
 
 
 @{
@@ -35,48 +42,86 @@
 
 
         if (item.iePlant.FirstOrDefault().LastPicture != null)
-            {
-                <table style="position:absolute; left:3px; top:90px; opacity:@SHARED.CLASSES.clsGlobal.gOpacity; width:100%;">
-                    <tr>
-                        @{
-                            var xImageList = item.iePlant.FirstOrDefault().iePlantHistory.Where(r => (r.EventID.ToString() == "15"));
-                            var xOrdered = xImageList.OrderBy(x => x.ID);
+        {
+            <table style="position:absolute; left:3px; top:90px; opacity:@SHARED.CLASSES.clsGlobal.gOpacity; width:100%;">
+                <tr>
+                    @{
+                        var xImageList = item.iePlant.FirstOrDefault().iePlantHistory.Where(r => (r.EventID.ToString() == "15"));
+                        var xOrdered = xImageList.OrderBy(x => x.ID);
 
-                            var xFirstRec = xOrdered.FirstOrDefault();
+                        var xFirstRec = xOrdered.FirstOrDefault();
 
-                            if (xFirstRec.ID != Model.ID)
-                            {
-                                <td width="15px">
-                                    <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-scroll-arrow-to-left" style="padding:0px;font-size:large;" onclick="document.getElementById('@previousactionid').click();"></span>
-                                </td>
-                            }
-
-                            <td></td>
-
-                            xOrdered = xImageList.OrderByDescending(x => x.ID);
-
-                            var xLastRec = xOrdered.FirstOrDefault();
-
-                            if (xLastRec.ID != Model.ID)
-                            {
-                                <td width="15px">
-                                    <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-scroll-arrow-to-right" style="padding:0px;font-size:large;" onclick="document.getElementById('@nextactionid').click();"></span>
-                                </td>
-                            }
-
-
+                        if (xFirstRec.ID != Model.ID)
+                        {
+                            <td width="15px">
+                                <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-scroll-arrow-to-left" style="padding:0px;font-size:large;" onclick="document.getElementById('@previousactionid').click();"></span>
+                            </td>
                         }
 
-                        <td width="5px;"></td>
+                        <td></td>
 
-                    </tr>
-                </table>
-            }
-        
+                        xOrdered = xImageList.OrderByDescending(x => x.ID);
+
+                        var xLastRec = xOrdered.FirstOrDefault();
+
+                        if (xLastRec.ID != Model.ID)
+                        {
+                            <td width="15px">
+                                <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-scroll-arrow-to-right" style="padding:0px;font-size:large;" onclick="document.getElementById('@nextactionid').click();"></span>
+                            </td>
+                        }
+
+
+                    }
+
+                    <td width="5px;"></td>
+
+                </tr>
+            </table>
+
+            <!--IMAGE DELETE BUTTONS-->
+            <input type="hidden" name="@currentplantimage" id="@currentplantimage" value="@Model.ID">
+
+            <table style="position:absolute; right:0px; top:175px; z-index:1000; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+                <tr>
+                    <td width="1px">
+                        <div style="display:none">
+                            @Ajax.ActionLink("Ajax", "DeleteImage", new { xplantid = Model.PlantID, xplanthistoryid = Model.ID }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = divpic, InsertionMode = InsertionMode.Replace, LoadingElementId = divloadinganimation }, new { id = ajaxdeleteimage })
+                        </div>
+
+                        @{
+
+                            if (Model.PictureThumbnail != null)
+                            {
+                                <span class="w3-tiny w3-text-white" style="padding:0px;">
+
+                                    @Model.CreatedDateTime.ToShortDateString()
+                                </span>
+                            }
+                        }
+                    </td>
+
+                    <td width="1px;">
+                        @{
+
+                            if (Model.PictureThumbnail != null)
+                            {
+                                <span class="btn w3-hover-text-red w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-letter-x" style="padding:0px;font-size:8px;" onclick="showYesNoModal('@Model.PlantID', '@ajaxdeleteimage', '@currentplantimage', '@ajaxrefreshdata')"></span>
+                            }
+                        }
+                    </td>
+                    <td width="3px;"></td>
+
+                </tr>
+            </table>
+
+        }
+
 
     }
     else
     {
         <p>No Image</p>
     }
+
 }

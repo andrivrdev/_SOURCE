@@ -299,6 +299,7 @@
     <Content Include="Views\Login\Test2.cshtml" />
     <Content Include="Views\Shared\_PlantImage.cshtml" />
     <Content Include="Views\Shared\_PlantData.cshtml" />
+    <Content Include="Views\Shared\_PlantNoImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -340,7 +341,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51766</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/MJ2</IISUrl>
+          <IISUrl>http://localhost/Marshmallow</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

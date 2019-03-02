@@ -172,6 +172,51 @@ namespace MJ2.Controllers
             return PartialView("_PlantImage", xPreviousRec);
         }
 
+        [HttpPost]
+        public PartialViewResult DeleteImage(string xplantid, string xplanthistoryid)
+        {
+
+            ztblPlantHistory.DeleteRec(Convert.ToInt32(xplanthistoryid));
+
+            //Get recs for images for this plant
+            ztblPlantHistory.LoadData(Convert.ToInt32(xplantid));
+
+            var xImageList = ztblPlantHistory.iePlantHistory.Where(r => (r.EventID.ToString() == "15") && (r.PlantID.ToString() == xplantid));
+            var xOrdered = xImageList.OrderByDescending(x => x.ID);
+
+            //Find previous record
+            var xPreviousRec = new tblPlantHistory();
+            foreach (var ARec in xOrdered)
+            {
+                if (ARec.ID < Convert.ToInt32(xplanthistoryid))
+                {
+                    xPreviousRec = ARec;
+                    break;
+                }
+            }
+
+            if (xPreviousRec.Data == null)
+            {
+                xOrdered = xImageList.OrderBy(x => x.ID);
+                xPreviousRec = xOrdered.FirstOrDefault();
+            }
+
+            if (xPreviousRec == null)
+            {
+                ViewData["item.ID"] = xplantid;
+                ViewData["divpic"] = "divpic_" + xplantid;
+                ViewData["divloadinganimation"] = "divloadinganimation_" + xplantid;
+                ViewData["previousactionid"] = "previousactionid_" + xplantid;
+
+                return PartialView("_PlantNoImage");
+            }
+            else
+            {
+                return PartialView("_PlantImage", xPreviousRec);
+            }
+        }
+
+
         public PartialViewResult RefreshData(string xplantid, string xcount)
         {
 
