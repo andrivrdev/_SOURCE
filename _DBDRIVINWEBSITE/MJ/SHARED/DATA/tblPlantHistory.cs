@@ -36,7 +36,7 @@ namespace SHARED.DATA
                   dbo.tblPlantHistory.Data,
                   dbo.tblPlantHistory.CreatedDateTime
                 FROM
-                  dbo.tblPlantHistory                ";
+                  dbo.tblPlantHistory WHERE Deleted = '0'               ";
 
             List<tblPlantHistory> xPlantHistory = new List<tblPlantHistory>();
 
@@ -120,7 +120,7 @@ namespace SHARED.DATA
                   dbo.tblPlantHistory.Data,
                   dbo.tblPlantHistory.CreatedDateTime
                 FROM
-                  dbo.tblPlantHistory WHERE PlantID = '" + xPlantID.ToString() + "'";
+                  dbo.tblPlantHistory WHERE (PlantID = '" + xPlantID.ToString() + "') AND (Deleted = '0')";
 
             List<tblPlantHistory> xPlantHistory = new List<tblPlantHistory>();
 
@@ -306,5 +306,19 @@ namespace SHARED.DATA
                 var x = 1;
             }
         }
+
+        public void DeleteRec(int xID)
+        {
+            List<string> fFields = new List<string>();
+            List<string> vValues = new List<string>();
+
+            fFields.Add("Deleted");
+
+            vValues.Add("1");
+
+            clsSE xclsSE = new clsSE();
+            xclsSE.sqlUpdateRec("tblPlantHistory", fFields, vValues, "[ID] = '" + xID + "'");
+        }
+
     }
 }

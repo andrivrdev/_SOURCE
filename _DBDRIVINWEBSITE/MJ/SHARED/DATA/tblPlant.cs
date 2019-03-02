@@ -64,15 +64,15 @@ namespace SHARED.DATA
                     p.CreatedDateTime,
                     p.Deleted,
   
-                    (SELECT MIN(ph.CreatedDateTime) FROM tblPlantHistory ph WHERE ph.PlantID = p.ID
+                    (SELECT MIN(ph.CreatedDateTime) FROM tblPlantHistory ph WHERE (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     ) AS FirstEntryDateTime,
  
-                    (SELECT MIN(ph.CreatedDateTime) FROM tblPlantHistory ph WHERE ph.PlantID = p.ID
+                    (SELECT MIN(ph.CreatedDateTime) FROM tblPlantHistory ph WHERE (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     ) AS LastEntryDateTime,
   
                     (SELECT DATEDIFF(DAY, p.CreatedDateTime , GETDATE())) AS Age,
   
-                    (SELECT COUNT(*) FROM tblPlantHistory ph WHERE ph.PlantID = p.ID) AS EventCount,
+                    (SELECT COUNT(*) FROM tblPlantHistory ph WHERE (ph.PlantID = p.ID) AND (ph.Deleted = 0)) AS EventCount,
   
                     -- Current Phase
   
@@ -82,7 +82,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID IN  
                     (
@@ -102,7 +102,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID IN  
                     (
@@ -123,7 +123,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID IN  
                     (
@@ -142,7 +142,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID IN  
                     (
@@ -167,7 +167,7 @@ namespace SHARED.DATA
                     CAST(ph.CreatedDateTime AS DATE) = CAST(GETDATE() AS DATE)
                     AND
     
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID = 9
                     ) AS DailyInspected,
@@ -179,7 +179,7 @@ namespace SHARED.DATA
                     CAST(ph.CreatedDateTime AS DATE) = CAST(GETDATE() AS DATE)
                     AND
     
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID = 10
                     ) AS DailyWatered,
@@ -190,7 +190,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID = 11   
                     ORDER BY
@@ -201,7 +201,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID = 11   
                     ORDER BY
@@ -215,7 +215,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID = 12   
                     ORDER BY
@@ -226,7 +226,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID = 12   
                     ORDER BY
@@ -240,7 +240,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID IN  
                     (
@@ -260,7 +260,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID IN  
                     (
@@ -276,24 +276,24 @@ namespace SHARED.DATA
     
 	                --Last Picture
   
+  
                     (SELECT TOP 1
                     ph.[ID]
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID = 15   
                     ORDER BY
                     ph.CreatedDateTime DESC) AS LastPictureID,
 
-  
                     (SELECT TOP 1
                     ph.[Data]
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID = 15   
                     ORDER BY
@@ -304,7 +304,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID = 15   
                     ORDER BY
@@ -318,7 +318,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID IN  
                     (
@@ -339,7 +339,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID IN  
                     (
@@ -358,7 +358,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID IN
                     (
@@ -380,7 +380,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID IN  
                     (
@@ -395,7 +395,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID IN  
                     (
@@ -412,7 +412,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID = 25   
                     ORDER BY
@@ -423,7 +423,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID = 25   
                     ORDER BY
@@ -437,7 +437,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID = 26   
                     ORDER BY
@@ -448,7 +448,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID = 26   
                     ORDER BY
@@ -462,7 +462,7 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID = 27  
                     ORDER BY
@@ -473,14 +473,13 @@ namespace SHARED.DATA
                     FROM
                     dbo.tblPlantHistory ph
                     WHERE
-                    ph.PlantID = p.ID
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID = 27
                     ORDER BY
                     ph.CreatedDateTime DESC) AS LastNoteDateTime
                 FROM
                     dbo.tblPlant p";
-
 
 
         public void LoadData(bool xIncludeDeleted)

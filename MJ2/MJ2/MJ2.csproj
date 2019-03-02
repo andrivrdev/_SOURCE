@@ -299,6 +299,7 @@
     <Content Include="Views\Login\Test2.cshtml" />
     <Content Include="Views\Shared\_PlantImage.cshtml" />
     <Content Include="Views\Shared\_PlantData.cshtml" />
+    <Content Include="Views\Shared\_PlantNoImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

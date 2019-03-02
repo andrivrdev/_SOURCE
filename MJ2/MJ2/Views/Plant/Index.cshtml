@@ -7,6 +7,8 @@
 <!--VARS-->
 <div style="display:none`">
     <input type="hidden" id="zajaxedit">
+    <input type="hidden" id="zajaxdeleteimage">
+    <input type="hidden" id="zajaxrefreshdata">
     <input type="hidden" id="zcount">
     <input type="hidden" id="zaddedit">
 </div>
@@ -90,53 +92,91 @@
     </div>
 </div>
 
-<!--MODAL-->
+<!--MODALS-->
+<!--ADD/EDIT-->
 <div id="idmodal_0001" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:350px">
 
-        
-            <table style="width:100%" class="w3-xlarge w3-dark-gray">
-                <tr>
-                    <td width="16px"></td>
-                    <td width="5px;" style="white-space: nowrap;">
-                        <span id="idmodal_0001_title">Add a Plant</span>
-                    </td>
-                    <td></td>
-                    <td width="5px;">
-                        <span onclick="hideModal('idmodal_0001');" class="w3-button w3-hover-red " title="Close">&times;</span>
-                    </td>
-                </tr>
-            </table>
-        
 
-            <div class="w3-container w3-padding-16">
-                <form id="frm_0001" method="post">
-                    <input type="hidden" class="form-control" name="xcommand" id="idmodal_0001_frm_0001_xcommand" value="Add">
-                    <input type="hidden" class="form-control" name="xplantid" id="idmodal_0001_frm_0001_xplantid" value="0">
+        <table style="width:100%" class="w3-xlarge w3-dark-gray">
+            <tr>
+                <td width="16px"></td>
+                <td width="5px;" style="white-space: nowrap;">
+                    <span id="idmodal_0001_title">Add a Plant</span>
+                </td>
+                <td></td>
+                <td width="5px;">
+                    <span onclick="hideModal('idmodal_0001');" class="w3-button w3-hover-red " title="Close">&times;</span>
+                </td>
+            </tr>
+        </table>
 
-                    <label id="xcreateddatetimelabel" style="margin-bottom:0px;"><b>Created Date</b></label>
-                    <input type="date" class="form-control" name="xcreateddatetime" id="xcreateddatetime" placeholder="Choose a date" required style="width:100%">
-                    <label style="margin-bottom:0px;margin-top:5px;"><b>Name</b></label>
-                    <input type="text" class="form-control" name="xname" id="xname" placeholder="Name your plant" required>
-                </form>
-            </div>
+
+        <div class="w3-container w3-padding-16">
+            <form id="frm_0001" method="post">
+                <input type="hidden" class="form-control" name="xcommand" id="idmodal_0001_frm_0001_xcommand" value="Add">
+                <input type="hidden" class="form-control" name="xplantid" id="idmodal_0001_frm_0001_xplantid" value="0">
+
+                <label id="xcreateddatetimelabel" style="margin-bottom:0px;"><b>Created Date</b></label>
+                <input type="date" class="form-control" name="xcreateddatetime" id="xcreateddatetime" placeholder="Choose a date" required style="width:100%">
+                <label style="margin-bottom:0px;margin-top:5px;"><b>Name</b></label>
+                <input type="text" class="form-control" name="xname" id="xname" placeholder="Name your plant" required>
+            </form>
+        </div>
 
         <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
             <button onclick="document.getElementById('idmodal_0001').style.display='none'" type="button" class="btn btn-danger">Cancel</button>
 
             <div class="btn btn-success w3-right" onclick="saveModal('idmodal_0001');">Save</div>
-            
+
+        </div>
+
+    </div>
+</div>
+
+<!--YESNO-->
+<div id="modal_yesno" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:350px">
+
+
+        <table style="width:100%" class="w3-xlarge w3-dark-gray">
+            <tr>
+                <td width="16px"></td>
+                <td width="5px;" style="white-space: nowrap;">
+                    <span id="modal_yesno_title">Delete Image</span>
+                </td>
+                <td></td>
+                <td width="5px;">
+                    <span onclick="hideModal('modal_yesno');" class="w3-button w3-hover-red " title="Close">&times;</span>
+                </td>
+            </tr>
+        </table>
+
+
+        <div class="w3-container w3-padding-16">
+            <form id="modal_yesno_frm_0001" method="post">
+                <input type="hidden" class="form-control" name="xplantid" id="modal_yesno_frm_0001_xplantid" value="0">
+                <input type="hidden" class="form-control" name="xplanthistoryid" id="modal_yesno_frm_0001_xplanthistoryid" value="0">
+
+                <label id="modal_yesno_frm_0001_mes" style="margin-bottom:0px;"><b>Are you sure?</b></label>
+            </form>
+        </div>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('modal_yesno').style.display='none'" type="button" class="btn btn-danger">Cancel</button>
+
+            <div class="btn btn-success w3-right" onclick="deleteImage();">Yes</div>
+
         </div>
 
     </div>
 </div>
 
 
-
 <div class="">
     <div class="row" style="margin-left:5px; margin-right:5px;">
 
-        @{ 
+        @{
             int xCount = 0;
             string xsCount;
         }
@@ -206,8 +246,8 @@
 
                         <!--BACKGROUND IMAGE-->
                         <!--
-    <img class="img-fluid w3-opacity-max" src="~/Content/Pics/Stock/Originals/IMG_20190109_103139.jpg" />
-    -->
+                        <img class="img-fluid w3-opacity-max" src="~/Content/Pics/Stock/Originals/IMG_20190109_103139.jpg" />
+                        -->
                         <!--TOP IMAGE-->
 
                         @{
@@ -313,12 +353,12 @@
                         </table>
 
                         <!--
-    <table class="w3-opacity-min" style="background-image:linear-gradient(to bottom, black,  gray); position:absolute; left:0px; top:45px; width:100%; height:130px;">
-        <tr>
-            <td></td>
-        </tr>
-    </table>
-    -->
+                        <table class="w3-opacity-min" style="background-image:linear-gradient(to bottom, black,  gray); position:absolute; left:0px; top:45px; width:100%; height:130px;">
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </table>
+                        -->
 
                         <table class="w3-opacity-min" style="background-image:linear-gradient(to top, black,  transparent); position:absolute; left:0px; top:180px; width:100%; height:35px;">
                             <tr>
@@ -623,7 +663,7 @@
                         <div id="@divdata">
 
                             <!--BOTTOM BUTTONS-->
-                            <table style="position:absolute; left:3px; top:185px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+                            <table style="position:absolute; left:3px; top:185px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                                 <tr>
                                     <td width="1px">
                                         <div style="display:none">
@@ -835,7 +875,7 @@
 
 
                     </div>
-                            </div>
+                </div>
             </div>
         }
 
@@ -844,7 +884,7 @@
 
 
 @section scripts {
-<script>
+    <script>
         function hideModal(controlId) {
             document.getElementById(controlId).style.display = 'none';
         }
@@ -865,7 +905,7 @@
             a.click();
         }
 
-        
+
 
     }
 
@@ -874,7 +914,7 @@
 
             document.getElementById('zaddedit').value = addedit;
             if (addedit == 'Add') {
-               
+
                 //alert('Add');
 
                 @{
@@ -930,6 +970,29 @@
                 document.getElementById('xcreateddatetime').focus();
             };
         }
+
+        function showYesNoModal(xplantid, xajaxdeleteimage, xcurrentimagecontrolid, xajaxrefreshdata) {
+            document.getElementById('zajaxdeleteimage').value = xajaxdeleteimage;
+            document.getElementById('zajaxrefreshdata').value = xajaxrefreshdata;
+
+            document.getElementById('modal_yesno_frm_0001_xplantid').value = xplantid;
+            document.getElementById('modal_yesno_frm_0001_xplanthistoryid').value = document.getElementById(xcurrentimagecontrolid).value
+
+            document.getElementById('modal_yesno').style.display = 'block';
+        }
+
+        function deleteImage() {
+            //alert(document.getElementById('zajaxdeleteimage').value);
+            var a = document.getElementById(document.getElementById('zajaxdeleteimage').value); //or grab it by tagname etc
+            a.href = "/MJ2/Plant/DeleteImage?xplantid=" + document.getElementById('modal_yesno_frm_0001_xplantid').value +
+                "&xplanthistoryid=" + document.getElementById('modal_yesno_frm_0001_xplanthistoryid').value;
+
+            document.getElementById('modal_yesno').style.display = 'none';
+            a.click();
+            document.getElementById(document.getElementById('zajaxrefreshdata').value).click();
+        }
+
+
 
         window.uploadPhotos = function (xplantid, xupdatetargetid, xloadingelementid, xajaxreload, xajaxrefreshdata ) {
 
@@ -1113,15 +1176,15 @@
 
     //a
 
-        
+
         //Run these when the page loads
         LoadImages();
 
 
 
-</script>
+    </script>
 
-    @{ 
+    @{
         SHARED.CLASSES.clsSE xSE = new SHARED.CLASSES.clsSE();
         xSE.WriteLog("Loading plant view done");
     }

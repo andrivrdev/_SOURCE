@@ -1,0 +1,8 @@
+﻿
+<div style="display:none">
+
+
+    @Ajax.ActionLink("Ajax", "PreviousImage", new { xplantid = ViewData["item.ID"], xplanthistoryid = int.MaxValue.ToString() }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = ViewData["divpic"].ToString(), InsertionMode = InsertionMode.Replace, LoadingElementId = ViewData["divloadinganimation"].ToString() }, new { id = ViewData["previousactionid"] })
+
+</div>
+
