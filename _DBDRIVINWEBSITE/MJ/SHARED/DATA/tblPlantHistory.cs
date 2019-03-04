@@ -192,7 +192,7 @@ namespace SHARED.DATA
         }
 
 
-        public void AddRec(int xPlantID, string xEventID, string xData, DateTime? xCreatedDateTime)
+        public void AddRec(int xPlantID, string xEventID, string xData, DateTime? xCreatedDateTime, bool xisBinary)
         {
             string SQL = "";
 
@@ -237,10 +237,21 @@ namespace SHARED.DATA
 
                     if (xData != null)
                     {
-                        byte[] sqlData = Convert.FromBase64String(xData);
+                        
+                        if (xisBinary)
+                        {
+                            byte[] sqlData = Convert.FromBase64String(xData);
 
-                        SqlParameter sqlParam = MyCommand.Parameters.AddWithValue("@Data", sqlData);
-                        sqlParam.DbType = DbType.Binary;
+                            SqlParameter sqlParam = MyCommand.Parameters.AddWithValue("@Data", sqlData);
+                            sqlParam.DbType = DbType.Binary;
+                        }
+                        else
+                        {
+                            byte[] sqlData = Encoding.ASCII.GetBytes(xData);
+
+                            SqlParameter sqlParam = MyCommand.Parameters.AddWithValue("@Data", sqlData);
+                            sqlParam.DbType = DbType.Binary;
+                        }
                     }
 
                     con.Open();

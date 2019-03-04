@@ -142,7 +142,7 @@ namespace MJ2.Controllers
             {
                 string scompressedpic = xcompressedimage.Replace(@"data:image/png;base64,", "");
 
-                ztblPlantHistory.AddRec(Convert.ToInt32(xplantid), "15", scompressedpic, null);
+                ztblPlantHistory.AddRec(Convert.ToInt32(xplantid), "15", scompressedpic, null, true);
             }
 
 
@@ -229,7 +229,7 @@ namespace MJ2.Controllers
         public PartialViewResult AddInspected(string xplantid, string xcount)
         {
             
-            ztblPlantHistory.AddRec(Convert.ToInt32(xplantid), "9", null, null);
+            ztblPlantHistory.AddRec(Convert.ToInt32(xplantid), "9", null, null, false);
             ztblPlant.LoadData(Convert.ToInt32(xplantid), 0, false);
             ViewData["xCount"] = xcount;
             return PartialView("_PlantData", ztblPlant);
@@ -239,7 +239,17 @@ namespace MJ2.Controllers
         public PartialViewResult AddWatered(string xplantid, string xcount)
         {
 
-            ztblPlantHistory.AddRec(Convert.ToInt32(xplantid), "10", null, null);
+            ztblPlantHistory.AddRec(Convert.ToInt32(xplantid), "10", null, null, false);
+            ztblPlant.LoadData(Convert.ToInt32(xplantid), 0, false);
+            ViewData["xCount"] = xcount;
+            return PartialView("_PlantData", ztblPlant);
+        }
+
+        [HttpPost]
+        public PartialViewResult AddNote(string xplantid, string xnote, string xcount)
+        {
+
+            ztblPlantHistory.AddRec(Convert.ToInt32(xplantid), "27", xnote, null, false);
             ztblPlant.LoadData(Convert.ToInt32(xplantid), 0, false);
             ViewData["xCount"] = xcount;
             return PartialView("_PlantData", ztblPlant);
