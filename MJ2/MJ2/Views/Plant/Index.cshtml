@@ -9,8 +9,6 @@
     <input type="hidden" id="zajaxedit">
     <input type="hidden" id="zajaxdeleteimage">
     <input type="hidden" id="zajaxrefreshdata">
-    <input type="hidden" id="zajaxaddnote">
-
     <input type="hidden" id="zloadingelementid">
     <input type="hidden" id="zcount">
     <input type="hidden" id="zaddedit">
@@ -197,11 +195,12 @@
         <div class="w3-container w3-padding-16">
             <form id="modal_note_frm_0001" method="post">
                 <input type="hidden" class="form-control" name="xplantid" id="modal_note_frm_0001_xplantid" value="0">
+                <input type="hidden" class="form-control" name="xplanthistoryid" id="modal_note_frm_0001_xplanthistoryid" value="0">
 
                 <label id="modal_note_frm_0001_xcreateddatetimelabel" style="margin-bottom:0px;"><b>Created Date</b></label>
                 <input type="date" class="form-control" name="xcreateddatetime" id="modal_note_frm_0001_xcreateddatetime" placeholder="Choose a date" required style="width:100%">
                 <label style="margin-bottom:0px;margin-top:5px;"><b>Note</b></label>
-                <textarea rows="5" class="form-control" name="xnote" id="modal_note_frm_0001_xnote" placeholder="Add your note" required></textarea>
+                <textarea rows="5" class="form-control" name="xnote" id="modal_note_frm_0001_xnote" placeholder="Take your note" required></textarea>
             </form>
         </div>
 
@@ -254,7 +253,6 @@
             string ajaxrefreshdata = "ajaxrefreshdata_" + item.ID.ToString();
             string ajaxaddinspected = "ajaxaddinspected_" + item.ID.ToString();
             string ajaxaddwatered = "ajaxaddwatered_" + item.ID.ToString();
-            string ajaxaddnote = "ajaxaddnote_" + item.ID.ToString();
             string ajaxedit = "ajaxedit_" + item.ID.ToString();
 
             string editname = "editname_" + item.ID.ToString();
@@ -706,6 +704,48 @@
 
 
                         <div id="@divdata">
+                            @{
+                                if (item.LastNote != null)
+
+                                {
+                                    <table style="position:absolute; right:0px; top:180px; z-index:1; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+                                        <tr>
+                                            <td width="1px" style="max-width: 100px; overflow: hidden; text-overflow:clip; white-space: nowrap;">
+
+                                                @{
+                                                    if (item.LastNoteDateTime != null)
+                                                    {
+                                                        <span class="w3-tiny w3-text-white" style="padding:0px;">
+                                                            @item.LastNote
+                                                        </span>
+                                                    }
+                                                }
+
+                                            </td>
+
+
+                                            <td width="1px;">
+                                                @{
+
+                                                    if (item.LastNoteDateTime != null)
+                                                    {
+                                                        <span class="btn w3-hover-text-orange w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-edit" style="padding:0px;font-size:8px;" onclick="showEditNote('@item.ID', '@xsCount', '@divloadinganimation', '@ajaxrefreshdata', '@item.LastNoteDateTime.Date.ToString("yyyy-MM-dd")', '@item.LastNote.Replace("\n", "\\n")', '@item.LastNoteID')"></span>
+                                                    }
+                                                }
+                                            </td>
+
+
+                                            <td width="1px;"></td>
+
+                                        </tr>
+                                    </table>
+
+
+                                }
+                            }
+
+
+
 
                             <!--BOTTOM BUTTONS-->
                             <table style="position:absolute; left:3px; top:185px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
@@ -739,7 +779,7 @@
                                     </td>
 
                                     <td width="1px">
-                                        <span class="btn w3-hover-text-amber w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-grating" style="padding:0px;font-size:large;" onclick="showAddNote('@item.ID', '@ajaxaddnote', '@xsCount', '@divloadinganimation', '@ajaxrefreshdata' );"></span>
+                                        <span class="btn w3-hover-text-amber w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-grating" style="padding:0px;font-size:large;" onclick="showAddNote('@item.ID', '@xsCount', '@divloadinganimation', '@ajaxrefreshdata' );"></span>
                                     </td>
 
                                     <td></td>
@@ -867,40 +907,40 @@
                                                         break;
                                                     }
 
-                                            <tr>
-                                                <td>@itemPlantHistory.CreatedDateTime.ToString("yyyy/MM/dd")</td>
+                                                    <tr>
+                                                        <td>@itemPlantHistory.CreatedDateTime.ToString("yyyy/MM/dd")</td>
 
-                                                @{
-                                                    //Picture
-                                                    if (itemPlantHistory.EventID == 15)
-                                                    {
-                                                        <td><div class="w3-text-deep-purple glyphicon acf-et-glyph-icon acf-et-photo-camera" style="font-size:medium"></div></td>
-                                                        <td>Added a Picture</td>
-                                                    }
+                                                        @{
+                                                            //Picture
+                                                            if (itemPlantHistory.EventID == 15)
+                                                            {
+                                                                <td><div class="w3-text-deep-purple glyphicon acf-et-glyph-icon acf-et-photo-camera" style="font-size:medium"></div></td>
+                                                                <td>Added a Picture</td>
+                                                            }
 
-                                                    //Inspected
-                                                    if (itemPlantHistory.EventID == 9)
-                                                    {
-                                                        <td><div class="w3-text-green glyphicon acf-ec-glyph-icon acf-ec-view" style="font-size:medium"></div></td>
-                                                        <td>Inspected</td>
-                                                    }
+                                                            //Inspected
+                                                            if (itemPlantHistory.EventID == 9)
+                                                            {
+                                                                <td><div class="w3-text-green glyphicon acf-ec-glyph-icon acf-ec-view" style="font-size:medium"></div></td>
+                                                                <td>Inspected</td>
+                                                            }
 
-                                                    //Watered
-                                                    if (itemPlantHistory.EventID == 10)
-                                                    {
-                                                        <td><div class="w3-text-blue glyphicon acf-et-glyph-icon acf-et-droplet-of-water" style="font-size:medium"></div></td>
-                                                        <td>Watered</td>
-                                                    }
+                                                            //Watered
+                                                            if (itemPlantHistory.EventID == 10)
+                                                            {
+                                                                <td><div class="w3-text-blue glyphicon acf-et-glyph-icon acf-et-droplet-of-water" style="font-size:medium"></div></td>
+                                                                <td>Watered</td>
+                                                            }
 
-                                                    //Note
-                                                    if (itemPlantHistory.EventID == 27)
-                                                    {
-                                                        <td><div class="w3-text-amber glyphicon acf-et-glyph-icon acf-et-grating" style="font-size:medium"></div></td>
-                                                        <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">@System.Text.Encoding.Default.GetString(itemPlantHistory.Data)</td>
-                                                    }
+                                                            //Note
+                                                            if (itemPlantHistory.EventID == 27)
+                                                            {
+                                                                <td><div class="w3-text-amber glyphicon acf-et-glyph-icon acf-et-grating" style="font-size:medium"></div></td>
+                                                                <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">@System.Text.Encoding.Default.GetString(itemPlantHistory.Data)</td>
+                                                            }
 
-                                                }
-                                            </tr>
+                                                        }
+                                                    </tr>
                                                 }
 
                                             }
@@ -1049,8 +1089,8 @@
             document.getElementById(document.getElementById('zajaxrefreshdata').value).click();
         }
 
-        function showAddNote(xplantid, xajaxaddnote, xcount, xloadingelementid, xajaxrefreshdata) {
-            document.getElementById('zajaxaddnote').value = xajaxaddnote;
+        function showAddNote(xplantid, xcount, xloadingelementid, xajaxrefreshdata) {
+            document.getElementById('zaddedit').value = 'Add';
             document.getElementById('zcount').value = xcount;
 
             document.getElementById('zloadingelementid').value = xloadingelementid;
@@ -1062,39 +1102,99 @@
             document.getElementById('modal_note_frm_0001_xcreateddatetimelabel').style.display = 'none';
             document.getElementById('modal_note_frm_0001_xcreateddatetime').style.display = 'none';
 
+            document.getElementById('modal_note_title').innerText = 'Add a Note';
             document.getElementById('modal_note').style.display = 'block';
+            document.getElementById('modal_note_frm_0001_xnote').focus();
+        }
+
+        function showEditNote(xplantid, xcount, xloadingelementid, xajaxrefreshdata, xcreateddatetime, xnote, xplanthistoryid) {
+            //alert(xnote);
+            document.getElementById('zaddedit').value = 'Edit';
+            document.getElementById('zcount').value = xcount;
+
+            document.getElementById('zloadingelementid').value = xloadingelementid;
+            document.getElementById('zajaxrefreshdata').value = xajaxrefreshdata;
+
+            document.getElementById('modal_note_frm_0001_xplantid').value = xplantid;
+            document.getElementById('modal_note_frm_0001_xplanthistoryid').value = xplanthistoryid;
+            document.getElementById('modal_note_frm_0001_xcreateddatetime').value = xcreateddatetime;
+            document.getElementById('modal_note_frm_0001_xnote').value = xnote;
+
+            document.getElementById('modal_note_frm_0001_xcreateddatetimelabel').style.display = 'block';
+            document.getElementById('modal_note_frm_0001_xcreateddatetime').style.display = 'block';
+
+            document.getElementById('modal_note_title').innerText = 'Edit a Note';
+            document.getElementById('modal_note').style.display = 'block';
+            document.getElementById('modal_note_frm_0001_xcreateddatetime').focus();
         }
 
         function saveNote() {
             document.getElementById('modal_note').style.display = 'none';
 
-            var formData = {
-                'xplantid': document.getElementById('modal_note_frm_0001_xplantid').value,
-                'xnote': document.getElementById('modal_note_frm_0001_xnote').value,
-                'xcount': document.getElementById('zcount').value
-            };
+            if (document.getElementById('zaddedit').value == 'Add')
+            {
+                var formData = {
+                    'xplantid': document.getElementById('modal_note_frm_0001_xplantid').value,
+                    'xnote': document.getElementById('modal_note_frm_0001_xnote').value,
+                    'xcount': document.getElementById('zcount').value
+                };
 
-            $.ajax({
-                'type': 'POST',
-                url: "/MJ2/Plant/AddNote",
-                data: formData,
+                $.ajax({
+                    'type': 'POST',
+                    url: "/MJ2/Plant/AddNote",
+                    data: formData,
 
-                dataType: "text",
-                beforeSend: function () {
-                    // alert('before');
-                    document.getElementById(document.getElementById('zloadingelementid').value).style.display = 'block';
-                },
+                    dataType: "text",
+                    beforeSend: function () {
+                        // alert('before');
+                        document.getElementById(document.getElementById('zloadingelementid').value).style.display = 'block';
+                    },
 
-                success: function () {
-                    //  alert('after');
-                    document.getElementById(document.getElementById('zloadingelementid').value).style.display = 'none';
+                    success: function () {
+                        //  alert('after');
+                        document.getElementById(document.getElementById('zloadingelementid').value).style.display = 'none';
 
-                    //Load data
-                    document.getElementById(document.getElementById('zajaxrefreshdata').value).click();
-                },
-                error: function () {
-                }
-            });
+                        //Load data
+                        document.getElementById(document.getElementById('zajaxrefreshdata').value).click();
+                    },
+                    error: function () {
+                    }
+                });
+            }
+
+            if (document.getElementById('zaddedit').value == 'Edit') {
+                var formData = {
+                    'xplantid': document.getElementById('modal_note_frm_0001_xplantid').value,
+                    'xnote': document.getElementById('modal_note_frm_0001_xnote').value,
+                    'xcount': document.getElementById('zcount').value,
+                    'xplanthistoryid': document.getElementById('modal_note_frm_0001_xplanthistoryid').value,
+                    'xcreateddatetime': document.getElementById('modal_note_frm_0001_xcreateddatetime').value
+
+                    
+                };
+
+                $.ajax({
+                    'type': 'POST',
+                    url: "/MJ2/Plant/EditNote",
+                    data: formData,
+
+                    dataType: "text",
+                    beforeSend: function () {
+                        // alert('before');
+                        document.getElementById(document.getElementById('zloadingelementid').value).style.display = 'block';
+                    },
+
+                    success: function () {
+                        //  alert('after');
+                        document.getElementById(document.getElementById('zloadingelementid').value).style.display = 'none';
+
+                        //Load data
+                        document.getElementById(document.getElementById('zajaxrefreshdata').value).click();
+                    },
+                    error: function () {
+                    }
+                });
+            }
         }
 
 

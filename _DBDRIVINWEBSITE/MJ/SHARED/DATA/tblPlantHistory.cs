@@ -265,7 +265,7 @@ namespace SHARED.DATA
             }
         }
 
-        public void UpdateRec(int xID, int xPlantID, string xEventID, string xData, DateTime xEventDateTime, DateTime? xCreatedDateTime)
+        public void UpdateRec(int xID, int xPlantID, string xEventID, string xData, DateTime? xCreatedDateTime, bool xisBinary)
         {
             string SQL = "";
 
@@ -288,12 +288,12 @@ namespace SHARED.DATA
                 {
                     SQL =
                     @"UPDATE" +
-                     "  tblPlantHistory" +
+                     "  tblPlantHistory " +
                      "SET" +
                      "  [PlantID] = '" + xPlantID + "'," +
                      "  [EventID] = '" + xEventID + "'," +
                      "  [Data] = @Data," +
-                     "  [CreatedDateTime] = '" + xCreatedDateTime.ToString() + "'," +
+                     "  [CreatedDateTime] = '" + xCreatedDateTime.ToString() + "'" +
                      "WHERE" +
                      "  [ID] = '" + xID + "'";
                 }
@@ -302,10 +302,20 @@ namespace SHARED.DATA
                 {
                     SqlCommand MyCommand = new SqlCommand(SQL, con);
 
-                    byte[] sqlData = Convert.FromBase64String(xData);
+                    if (xisBinary)
+                    {
+                        byte[] sqlData = Convert.FromBase64String(xData);
 
-                    SqlParameter sqlParam = MyCommand.Parameters.AddWithValue("@Data", sqlData);
-                    sqlParam.DbType = DbType.Binary;
+                        SqlParameter sqlParam = MyCommand.Parameters.AddWithValue("@Data", sqlData);
+                        sqlParam.DbType = DbType.Binary;
+                    }
+                    else
+                    {
+                        byte[] sqlData = Encoding.ASCII.GetBytes(xData);
+
+                        SqlParameter sqlParam = MyCommand.Parameters.AddWithValue("@Data", sqlData);
+                        sqlParam.DbType = DbType.Binary;
+                    }
 
                     con.Open();
 

@@ -46,6 +46,7 @@ namespace SHARED.DATA
         public DateTime VarietyDateTime { get; set; }
         public string Location { get; set; }
         public DateTime LocationDateTime { get; set; }
+        public Int64 LastNoteID { get; set; }
         public string LastNote { get; set; }
         public DateTime LastNoteDateTime { get; set; }
         public IEnumerable<tblPlantHistory> iePlantHistory { get; set; }
@@ -456,7 +457,17 @@ namespace SHARED.DATA
     
                     --Last Note
   
-  
+                    (SELECT TOP 1
+                    ph.[ID]
+                  FROM
+                    dbo.tblPlantHistory ph
+                  WHERE
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
+                    AND
+                    ph.EventID = 27
+                  ORDER BY
+                    ph.CreatedDateTime DESC) AS LastNoteID,
+
                     (SELECT TOP 1
                     CAST(ph.[Data] AS VARCHAR(200))
                     FROM
@@ -692,6 +703,11 @@ namespace SHARED.DATA
                     if (dr["LocationDateTime"] != DBNull.Value)
                     {
                         xtblPlant.LocationDateTime = Convert.ToDateTime(dr["LocationDateTime"]);
+                    }
+
+                    if (dr["LastNoteID"] != DBNull.Value)
+                    {
+                        xtblPlant.LastNoteID = Convert.ToInt64(dr["LastNoteID"]);
                     }
 
                     if (dr["LastNote"] != DBNull.Value)
@@ -950,6 +966,11 @@ namespace SHARED.DATA
                     if (dr["LocationDateTime"] != DBNull.Value)
                     {
                         xtblPlant.LocationDateTime = Convert.ToDateTime(dr["LocationDateTime"]);
+                    }
+
+                    if (dr["LastNoteID"] != DBNull.Value)
+                    {
+                        xtblPlant.LastNoteID = Convert.ToInt64(dr["LastNoteID"]);
                     }
 
                     if (dr["LastNote"] != DBNull.Value)

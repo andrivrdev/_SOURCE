@@ -256,6 +256,16 @@ namespace MJ2.Controllers
         }
 
         [HttpPost]
+        public PartialViewResult EditNote(string xplantid, string xnote, string xcount, string xplanthistoryid, DateTime? xcreateddatetime)
+        {
+
+            ztblPlantHistory.UpdateRec(Convert.ToInt32(xplanthistoryid), Convert.ToInt32(xplantid), "27", xnote, xcreateddatetime, false);
+            ztblPlant.LoadData(Convert.ToInt32(xplantid), 0, false);
+            ViewData["xCount"] = xcount;
+            return PartialView("_PlantData", ztblPlant);
+        }
+
+        [HttpPost]
         public PartialViewResult Edit(string xplantid, string xcount, string xname, DateTime? xcreateddatetime)
         {
             ztblPlant.UpdateRec(Convert.ToInt32(xplantid), Convert.ToInt32(Session["GroupID"].ToString()), xname, xcreateddatetime);
