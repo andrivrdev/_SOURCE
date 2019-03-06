@@ -273,5 +273,18 @@ namespace MJ2.Controllers
             ViewData["xCount"] = xcount;
             return PartialView("_PlantData", ztblPlant);
         }
+
+        [HttpPost]
+        public void TakeCutting(string xplantid)
+        {
+            ztblPlant.TakeCutting(Convert.ToInt32(xplantid));
+
+
+
+            var x = 1;
+
+//            ztblPlantHistory.AddRec(Convert.ToInt32(xplantid), "27", xnote, null, false);
+        }
+
     }
 }

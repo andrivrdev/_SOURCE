@@ -41,6 +41,7 @@ namespace SHARED.DATA
         public string LastEnvironmentValue { get; set; }
         public DateTime LastEnvironmentDateTime { get; set; }
         public string OriginatedFrom { get; set; }
+        public string OriginatedFromPlantName { get; set; }
         public DateTime OriginatedFromDateTime { get; set; }
         public string Variety { get; set; }
         public DateTime VarietyDateTime { get; set; }
@@ -49,6 +50,7 @@ namespace SHARED.DATA
         public Int64 LastNoteID { get; set; }
         public string LastNote { get; set; }
         public DateTime LastNoteDateTime { get; set; }
+        public int CuttingCount { get; set; }
         public IEnumerable<tblPlantHistory> iePlantHistory { get; set; }
 
         public DataTable dtPlant { get; set; }
@@ -374,21 +376,34 @@ namespace SHARED.DATA
                     ph.CreatedDateTime DESC) AS LastEnvironmentDateTime,    
     
                     -- Originated From 
-  
-                    (SELECT e.[Name] FROM tblEvent e WHERE e.ID = 
-                    (SELECT TOP 1
-                    ph.EventID
-                    FROM
+                  (SELECT TOP 1
+                    CAST(ph.[Data] AS VARCHAR(200))
+                  FROM
                     dbo.tblPlantHistory ph
-                    WHERE
+                  WHERE
                     (ph.PlantID = p.ID) AND (ph.Deleted = 0)
                     AND
                     ph.EventID IN  
-                    (
-                    '22','24'
-                    )  
-                    ORDER BY
-                    ph.CreatedDateTime DESC)) AS OriginatedFrom,
+                  (
+                  '22','24'
+                  )  
+                  ORDER BY
+                    ph.CreatedDateTime DESC) AS OriginatedFrom,
+    
+                  (SELECT pp.Name FROM tblPlant pp WHERE CAST(pp.ID AS VARCHAR) = 
+                  (SELECT TOP 1
+                    CAST(ph.[Data] AS VARCHAR)
+                  FROM
+                    dbo.tblPlantHistory ph
+                  WHERE
+                    (ph.PlantID = p.ID) AND (ph.Deleted = 0)
+                    AND
+                    ph.EventID IN  
+                  (
+                  '22','24'
+                  )  
+                  ORDER BY
+                    ph.CreatedDateTime DESC)) AS OriginatedFromPlantName,
     
   
                     (SELECT TOP 1
@@ -488,7 +503,20 @@ namespace SHARED.DATA
                     AND
                     ph.EventID = 27
                     ORDER BY
-                    ph.CreatedDateTime DESC) AS LastNoteDateTime
+                    ph.CreatedDateTime DESC) AS LastNoteDateTime,
+
+                    --Cutting Count
+                    (SELECT 
+                      COUNT(*)
+    
+                    FROM
+                      dbo.tblPlantHistory ph
+                    WHERE
+                      (ph.PlantID = p.ID) AND (ph.Deleted = 0)
+                      AND
+                      ph.EventID = 30
+                    ) AS CuttingCount
+
                 FROM
                     dbo.tblPlant p";
 
@@ -680,6 +708,11 @@ namespace SHARED.DATA
                         xtblPlant.OriginatedFrom = dr["OriginatedFrom"].ToString();
                     }
 
+                    if (dr["OriginatedFromPlantName"] != DBNull.Value)
+                    {
+                        xtblPlant.OriginatedFromPlantName = dr["OriginatedFromPlantName"].ToString();
+                    }
+
                     if (dr["OriginatedFromDateTime"] != DBNull.Value)
                     {
                         xtblPlant.OriginatedFromDateTime = Convert.ToDateTime(dr["OriginatedFromDateTime"]);
@@ -719,6 +752,14 @@ namespace SHARED.DATA
                     {
                         xtblPlant.LastNoteDateTime = Convert.ToDateTime(dr["LastNoteDateTime"]);
                     }
+
+                    if (dr["CuttingCount"] != DBNull.Value)
+                    {
+                        xtblPlant.CuttingCount = Convert.ToInt32(dr["CuttingCount"]);
+                    }
+
+                    
+
 
                     tblPlantHistory xtblPlantHistory = new tblPlantHistory();
                     xtblPlantHistory.LoadData(Convert.ToInt32(xtblPlant.ID));
@@ -943,6 +984,11 @@ namespace SHARED.DATA
                         xtblPlant.OriginatedFrom = dr["OriginatedFrom"].ToString();
                     }
 
+                    if (dr["OriginatedFromPlantName"] != DBNull.Value)
+                    {
+                        xtblPlant.OriginatedFromPlantName = dr["OriginatedFromPlantName"].ToString();
+                    }
+
                     if (dr["OriginatedFromDateTime"] != DBNull.Value)
                     {
                         xtblPlant.OriginatedFromDateTime = Convert.ToDateTime(dr["OriginatedFromDateTime"]);
@@ -982,6 +1028,12 @@ namespace SHARED.DATA
                     {
                         xtblPlant.LastNoteDateTime = Convert.ToDateTime(dr["LastNoteDateTime"]);
                     }
+
+                    if (dr["CuttingCount"] != DBNull.Value)
+                    {
+                        xtblPlant.CuttingCount = Convert.ToInt32(dr["CuttingCount"]);
+                    }
+
 
                     tblPlantHistory xtblPlantHistory = new tblPlantHistory();
                     xtblPlantHistory.LoadData(Convert.ToInt32(xtblPlant.ID));
@@ -1062,5 +1114,75 @@ namespace SHARED.DATA
             xclsSE.sqlUpdateRec("tblPlant", fFields, vValues, "[ID] = '" + xID + "'");
         }
 
+        public void TakeCutting(int xID)
+        {
+            //Create garden if not exist
+            tblGroup xtblGroup = new tblGroup();
+            xtblGroup.LoadData();
+
+            tblPlant xtblPlant = new tblPlant();
+            xtblPlant.LoadData(xID, 0, false);
+
+
+
+            //Get Company ID
+            var xFiltered = xtblGroup.ieGroup.Where(r => r.ID == xtblPlant.iePlant.FirstOrDefault().GroupID);
+            var xCompanyID = xFiltered.FirstOrDefault().CompanyID;
+
+            //Look for garden
+            xFiltered = xtblGroup.ieGroup.Where(r => (r.Code.ToString() == "Cuttings") && (r.CompanyID == xCompanyID));
+
+            //Create garden
+            if (xFiltered.Count() == 0)
+            {
+                xtblGroup.AddRec(Convert.ToInt32(xCompanyID), "Cuttings", "New cuttings", null);
+                xtblGroup.LoadData();
+            }
+
+            //Get cuttings garden id
+            xFiltered = xtblGroup.ieGroup.Where(r => (r.Code.ToString() == "Cuttings") && (r.CompanyID == xCompanyID));
+            var xCuttingGardenID = xFiltered.FirstOrDefault().ID;
+
+            //Generate plant name
+            tblPlant xtblCuttingGardenPlant = new tblPlant();
+            xtblCuttingGardenPlant.LoadData(Convert.ToInt32(xCuttingGardenID), 1, false);
+
+            var xName = xtblPlant.iePlant.FirstOrDefault().Name;
+            var xC1 = 1;
+            var xMatchingName = xtblCuttingGardenPlant.iePlant.Where(r => r.Name == xName + " - " + xC1.ToString().PadLeft(2,'0'));
+
+            while (xMatchingName.Count() > 0)
+            {
+                xC1 = xC1 + 1;
+                xMatchingName = xtblCuttingGardenPlant.iePlant.Where(r => r.Name == xName + " - " + xC1.ToString().PadLeft(2, '0'));
+            }
+
+            //Create the plant
+            xtblPlant.AddRec(Convert.ToInt32(xCuttingGardenID), xName + " - " + xC1.ToString().PadLeft(2, '0'), null);
+
+            //Find created plant id
+            xtblCuttingGardenPlant.LoadData(Convert.ToInt32(xCuttingGardenID), 1, false);
+            xMatchingName = xtblCuttingGardenPlant.iePlant.Where(r => r.Name == xName + " - " + xC1.ToString().PadLeft(2, '0'));
+            var xCreatedPlantID = xMatchingName.FirstOrDefault().ID;
+
+            //Add event to source plant
+            tblPlantHistory xtblPlantHistory = new tblPlantHistory();
+            xtblPlantHistory.AddRec(xID, "30", xCreatedPlantID.ToString(), null, false);
+
+            //Clone properties to new cutting
+            //Phase
+            xtblPlantHistory.AddRec(Convert.ToInt32(xCreatedPlantID), "4", null, null, false);
+            //Variety
+            if (xtblPlant.iePlant.FirstOrDefault().Variety != null)
+            {
+                xtblPlantHistory.AddRec(Convert.ToInt32(xCreatedPlantID), "25", xtblPlant.iePlant.FirstOrDefault().Variety, null, false);
+            }
+            //Cutting of
+            xtblPlantHistory.AddRec(Convert.ToInt32(xCreatedPlantID), "24", xtblPlant.iePlant.FirstOrDefault().ID.ToString(), null, false);
+
+
+            var x = 1;
+
+        }
     }
 }

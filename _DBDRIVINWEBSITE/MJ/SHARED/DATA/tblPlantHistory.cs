@@ -18,7 +18,10 @@ namespace SHARED.DATA
         public byte[] Data { get; set; }
         public DateTime CreatedDateTime { get; set; }
         public byte[] PictureThumbnail { get; set; }
-        
+
+        public string EventName { get; set; }
+        public string PlantName { get; set; }
+
 
         public DataTable dtPlantHistory { get; set; }
         public IEnumerable<tblPlantHistory> iePlantHistory { get; set; }
@@ -34,7 +37,10 @@ namespace SHARED.DATA
                   dbo.tblPlantHistory.PlantID,
                   dbo.tblPlantHistory.EventID,
                   dbo.tblPlantHistory.Data,
-                  dbo.tblPlantHistory.CreatedDateTime
+                  dbo.tblPlantHistory.CreatedDateTime,
+                  (SELECT e.Name FROM tblEvent e WHERE e.ID = EventID) AS EventName,
+
+                  (SELECT pp.Name FROM tblPlant pp WHERE CAST(pp.ID AS VARCHAR) = CAST(dbo.tblPlantHistory.Data AS VARCHAR)) AS PlantName
                 FROM
                   dbo.tblPlantHistory WHERE Deleted = '0'               ";
 
@@ -64,7 +70,12 @@ namespace SHARED.DATA
                     }
 
                     xtblPlantHistory.CreatedDateTime = Convert.ToDateTime(dr["CreatedDateTime"]);
+                    xtblPlantHistory.EventName = dr["EventName"].ToString();
+                    if (dr["PlantName"] != DBNull.Value)
+                    {
+                        xtblPlantHistory.PlantName = dr["PlantName"].ToString();
 
+                    }
 
                     //THUMBNAIL
                     if (clsGlobal.gOnTheFlyImageResize)
@@ -118,7 +129,10 @@ namespace SHARED.DATA
                   dbo.tblPlantHistory.PlantID,
                   dbo.tblPlantHistory.EventID,
                   dbo.tblPlantHistory.Data,
-                  dbo.tblPlantHistory.CreatedDateTime
+                  dbo.tblPlantHistory.CreatedDateTime,
+                  (SELECT e.Name FROM tblEvent e WHERE e.ID = EventID) AS EventName,
+
+                  (SELECT pp.Name FROM tblPlant pp WHERE CAST(pp.ID AS VARCHAR) = CAST(dbo.tblPlantHistory.Data AS VARCHAR)) AS PlantName
                 FROM
                   dbo.tblPlantHistory WHERE (PlantID = '" + xPlantID.ToString() + "') AND (Deleted = '0')";
 
@@ -148,7 +162,13 @@ namespace SHARED.DATA
                     }
 
                     xtblPlantHistory.CreatedDateTime = Convert.ToDateTime(dr["CreatedDateTime"]);
+                    xtblPlantHistory.EventName = dr["EventName"].ToString();
 
+                    if (dr["PlantName"] != DBNull.Value)
+                    {
+                        xtblPlantHistory.PlantName = dr["PlantName"].ToString();
+
+                    }
 
                     //THUMBNAIL
                     if (clsGlobal.gOnTheFlyImageResize)

@@ -156,6 +156,7 @@
 
         <div class="w3-container w3-padding-16">
             <form id="modal_yesno_frm_0001" method="post">
+                <input type="hidden" class="form-control" name="xfor" id="modal_yesno_frm_0001_xfor" value="0">
                 <input type="hidden" class="form-control" name="xplantid" id="modal_yesno_frm_0001_xplantid" value="0">
                 <input type="hidden" class="form-control" name="xplanthistoryid" id="modal_yesno_frm_0001_xplanthistoryid" value="0">
 
@@ -166,7 +167,7 @@
         <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
             <button onclick="document.getElementById('modal_yesno').style.display='none'" type="button" class="btn btn-danger">Cancel</button>
 
-            <div class="btn btn-success w3-right" onclick="deleteImage();">Yes</div>
+            <div class="btn btn-success w3-right" onclick="doYes();">Yes</div>
 
         </div>
 
@@ -194,6 +195,10 @@
 
         <div class="w3-container w3-padding-16">
             <form id="modal_note_frm_0001" method="post">
+                <input type="hidden" class="form-control" name="ajaxdeletenote" id="modal_note_frm_0001_ajaxdeletenote" value="0">
+                <input type="hidden" class="form-control" name="ajaxrefreshdata" id="modal_note_frm_0001_ajaxrefreshdata" value="0">
+
+
                 <input type="hidden" class="form-control" name="xplantid" id="modal_note_frm_0001_xplantid" value="0">
                 <input type="hidden" class="form-control" name="xplanthistoryid" id="modal_note_frm_0001_xplanthistoryid" value="0">
 
@@ -207,6 +212,7 @@
         <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
             <button onclick="document.getElementById('modal_note').style.display='none'" type="button" class="btn btn-danger">Cancel</button>
 
+            <div id="modal_note_btndelete" class="btn btn-warning w3-center" onclick="showYesNoModal('DeleteNote', document.getElementById('modal_note_frm_0001_xplantid').value, document.getElementById('modal_note_frm_0001_ajaxdeletenote').value, document.getElementById('modal_note_frm_0001_xplanthistoryid').value, document.getElementById('modal_note_frm_0001_ajaxrefreshdata').value)">Delete</div>
             <div class="btn btn-success w3-right" onclick="saveNote();">Save</div>
 
         </div>
@@ -254,6 +260,9 @@
             string ajaxaddinspected = "ajaxaddinspected_" + item.ID.ToString();
             string ajaxaddwatered = "ajaxaddwatered_" + item.ID.ToString();
             string ajaxedit = "ajaxedit_" + item.ID.ToString();
+            string ajaxdeletenote = "ajaxdeletenote_" + item.ID.ToString();
+            string ajaxdeleteimage = "ajaxdeleteimage_" + item.ID.ToString();
+
 
             string editname = "editname_" + item.ID.ToString();
             string editcreateddatetime = "editcreateddatetime_" + item.ID.ToString();
@@ -270,6 +279,7 @@
             string menu_0007 = "menu_0007_" + item.ID.ToString();
             string menu_0008 = "menu_0008_" + item.ID.ToString();
             string menu_0009 = "menu_0009_" + item.ID.ToString();
+            string menu_0010 = "menu_0010_" + item.ID.ToString();
 
             string menu_edit = "menu_edit_" + item.ID.ToString();
             string menu_delete = "menu_delete_" + item.ID.ToString();
@@ -289,8 +299,8 @@
 
                         <!--BACKGROUND IMAGE-->
                         <!--
-                        <img class="img-fluid w3-opacity-max" src="~/Content/Pics/Stock/Originals/IMG_20190109_103139.jpg" />
-                        -->
+    <img class="img-fluid w3-opacity-max" src="~/Content/Pics/Stock/Originals/IMG_20190109_103139.jpg" />
+    -->
                         <!--TOP IMAGE-->
 
                         @{
@@ -371,7 +381,7 @@
 
                                         </tr>
                                     </table>
-                                }
+                                                }
                             }
 
                         </div>
@@ -396,12 +406,12 @@
                         </table>
 
                         <!--
-                        <table class="w3-opacity-min" style="background-image:linear-gradient(to bottom, black,  gray); position:absolute; left:0px; top:45px; width:100%; height:130px;">
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </table>
-                        -->
+    <table class="w3-opacity-min" style="background-image:linear-gradient(to bottom, black,  gray); position:absolute; left:0px; top:45px; width:100%; height:130px;">
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+    -->
 
                         <table class="w3-opacity-min" style="background-image:linear-gradient(to top, black,  transparent); position:absolute; left:0px; top:180px; width:100%; height:35px;">
                             <tr>
@@ -428,7 +438,7 @@
                                 <td></td>
 
                                 <td width="15px">
-                                    <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-two-dots-button" style="outline:none; padding:0px; font-size:large;" onclick="showhideSubMenu('@menu_0001','@menu_0002','@menu_0003','@menu_0004','@menu_0005','@menu_0006','@menu_0007','@menu_0008','@menu_0009','@menu_edit','@menu_delete', '@top_background');"></span>
+                                    <span class="btn w3-hover-text-lime w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-two-dots-button" style="outline:none; padding:0px; font-size:large;" onclick="showhideSubMenu('@menu_0001','@menu_0002','@menu_0003','@menu_0004','@menu_0005','@menu_0006','@menu_0007','@menu_0008','@menu_0009', '@menu_0010', '@menu_edit','@menu_delete', '@top_background');"></span>
                                 </td>
 
                                 <td width="5px;"></td>
@@ -609,7 +619,7 @@
                                     <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
                                         <tr>
                                             <td width="15px">
-                                                <span class="glyphicon acf-ec-glyph-icon acf-ec-placeholder-3" style="outline:none; padding:0px; font-size:large;"></span>
+                                                <span class="glyphicon acf-et-glyph-icon acf-et-interlocking-rings" style="outline:none; padding:0px; font-size:large;"></span>
                                             </td>
 
                                             <td width="5px;"></td>
@@ -624,8 +634,32 @@
                         </table>
 
                         <!--ROW5-->
-                        <!--VARIETY-->
+                        <!--TAKE CUTTING-->
                         <table id="@menu_0009" style="display:none; position:absolute; left:3px; top:120px; width:100%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+                            <tr>
+                                <td></td>
+
+                                <td width="5px;">
+                                    <table class="btn w3-hover-text-khaki w3-text-light-gray w3-tiny" style="outline:none; padding:0px;" onclick="showYesNoModal('TakeCutting', '@item.ID', '', '', '@ajaxrefreshdata')");">
+                                        <tr>
+                                            <td width="5px;" style="white-space: nowrap;">
+                                                <span>Take Cutting</span>
+                                            </td>
+
+                                            <td width="5px;"></td>
+
+                                            <td width="15px">
+                                                <span class="glyphicon acf-et-glyph-icon acf-et-high-voltage" style="outline:none; padding:0px; font-size:large;"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="5px;"></td>
+                            </tr>
+                        </table>
+
+                        <!--VARIETY-->
+                        <table id="@menu_0010" style="display:none; position:absolute; left:3px; top:120px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                             <tr>
                                 <td width="5px;">
                                     <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
@@ -729,7 +763,7 @@
 
                                                     if (item.LastNoteDateTime != null)
                                                     {
-                                                        <span class="btn w3-hover-text-orange w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-edit" style="padding:0px;font-size:8px;" onclick="showEditNote('@item.ID', '@xsCount', '@divloadinganimation', '@ajaxrefreshdata', '@item.LastNoteDateTime.Date.ToString("yyyy-MM-dd")', '@item.LastNote.Replace("\n", "\\n")', '@item.LastNoteID')"></span>
+                                                        <span class="btn w3-hover-text-orange w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-edit" style="padding:0px;font-size:8px;" onclick="showEditNote('@item.ID', '@xsCount', '@divloadinganimation', '@ajaxrefreshdata', '@item.LastNoteDateTime.Date.ToString("yyyy-MM-dd")', '@item.LastNote.Replace("\n", "\\n")', '@item.LastNoteID', '@ajaxdeleteimage')"></span>
                                                     }
                                                 }
                                             </td>
@@ -741,7 +775,7 @@
                                     </table>
 
 
-                                }
+                                                    }
                             }
 
 
@@ -798,7 +832,7 @@
                                 <tr class="bg-transparent text-dark">
                                     <td width="5px;"></td>
 
-                                    <td colspan="2" class="h6">
+                                    <td colspan="6" class="h6">
                                         <table>
                                             <tr>
                                                 <td>@xsCount</td>
@@ -810,7 +844,7 @@
 
                                 </tr>
 
-                                <tr style="height:2px; background-image:linear-gradient(to right, royalblue, crimson);"><td colspan="3"></td></tr>
+                                <tr style="height:2px; background-image:linear-gradient(to right, royalblue, crimson);"><td colspan="7"></td></tr>
 
 
                                 <tr class="bg-transparent text-dark">
@@ -822,6 +856,29 @@
                                     <td id="@editcreateddatetime">
                                         @item.CreatedDateTime.Date.ToString("yyyy-MM-dd")
                                     </td>
+                                    <td></td>
+
+                                    <td class="w3-right-align" style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                        @{
+                                            if (item.OriginatedFromPlantName == null)
+                                            {
+                                                <text>Other</text>
+                                            }
+                                            else
+                                            {
+                                                <text>@item.OriginatedFromPlantName</text>
+                                            }
+
+                                       }
+
+
+                                        
+                                    </td>
+                                    <td width="20px;">
+                                        <div width="20px;" class="w3-right-align w3-text-deep-purple glyphicon acf-et-glyph-icon acf-et-interlocking-rings"></div>
+                                    </td>
+                                    <td width="5px"></td>
+
 
                                 </tr>
 
@@ -861,14 +918,22 @@
                                             }
                                         }
                                     </td>
+                                    <td></td>
 
+                                    <td class="w3-right-align" style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                     @item.CuttingCount.ToString()
+                                    </td>
+                                    <td width="20px;">
+                                        <div width="20px;" class="w3-right-align w3-text-khaki glyphicon acf-et-glyph-icon acf-et-high-voltage"></div>
+                                    </td>
+                                    <td width="5px"></td>
                                 </tr>
 
 
                                 <tr class="bg-transparent text-dark">
                                     <td width="5px;"></td>
                                     <td width="20px;">
-                                        <div class="glyphicon acf-et-glyph-icon acf-et-up-arrow"></div>
+                                        <div class="w3-text-pink glyphicon acf-et-glyph-icon acf-et-up-arrow"></div>
                                     </td>
                                     <td>
                                         <!--PHASE-->
@@ -882,13 +947,22 @@
                                         }
                                     </td>
 
+                                    <td></td>
+
+                                    <td width="1px;"></td>
+                                    <td width="20px">
+                                        
+                                    </td>
+                                    <td width="5px"></td>
+
+
                                 </tr>
 
-                                <tr style="height:1px; background-image:linear-gradient(to right, crimson, purple);"><td colspan="3"></td></tr>
+                                <tr style="height:1px; background-image:linear-gradient(to right, crimson, purple);"><td colspan="7"></td></tr>
 
                                 <tr>
                                     <td width="5px;"></td>
-                                    <td colspan="2">
+                                    <td colspan="6">
                                         <table class="w3-tiny" style="width:100%">
                                             <tr>
                                                 <th>DATE</th>
@@ -907,40 +981,78 @@
                                                         break;
                                                     }
 
-                                                    <tr>
-                                                        <td>@itemPlantHistory.CreatedDateTime.ToString("yyyy/MM/dd")</td>
+                                            <tr>
+                                                <td>@itemPlantHistory.CreatedDateTime.ToString("yyyy/MM/dd")</td>
 
-                                                        @{
-                                                            //Picture
-                                                            if (itemPlantHistory.EventID == 15)
-                                                            {
-                                                                <td><div class="w3-text-deep-purple glyphicon acf-et-glyph-icon acf-et-photo-camera" style="font-size:medium"></div></td>
-                                                                <td>Added a Picture</td>
-                                                            }
+                                                @{
+                                                    //Picture
+                                                    if (itemPlantHistory.EventID == 15)
+                                                    {
+                                                        <td><div class="w3-text-deep-purple glyphicon acf-et-glyph-icon acf-et-photo-camera" style="font-size:medium"></div></td>
+                                                        <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Added an Image</td>
+                                                    }
 
-                                                            //Inspected
-                                                            if (itemPlantHistory.EventID == 9)
-                                                            {
-                                                                <td><div class="w3-text-green glyphicon acf-ec-glyph-icon acf-ec-view" style="font-size:medium"></div></td>
-                                                                <td>Inspected</td>
-                                                            }
+                                                    //Inspected
+                                                    if (itemPlantHistory.EventID == 9)
+                                                    {
+                                                        <td><div class="w3-text-green glyphicon acf-ec-glyph-icon acf-ec-view" style="font-size:medium"></div></td>
+                                                        <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Inspected</td>
+                                                    }
 
-                                                            //Watered
-                                                            if (itemPlantHistory.EventID == 10)
-                                                            {
-                                                                <td><div class="w3-text-blue glyphicon acf-et-glyph-icon acf-et-droplet-of-water" style="font-size:medium"></div></td>
-                                                                <td>Watered</td>
-                                                            }
+                                                    //Watered
+                                                    if (itemPlantHistory.EventID == 10)
+                                                    {
+                                                        <td><div class="w3-text-blue glyphicon acf-et-glyph-icon acf-et-droplet-of-water" style="font-size:medium"></div></td>
+                                                        <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Watered</td>
+                                                    }
 
-                                                            //Note
-                                                            if (itemPlantHistory.EventID == 27)
-                                                            {
-                                                                <td><div class="w3-text-amber glyphicon acf-et-glyph-icon acf-et-grating" style="font-size:medium"></div></td>
-                                                                <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">@System.Text.Encoding.Default.GetString(itemPlantHistory.Data)</td>
-                                                            }
+                                                    //Note
+                                                    if (itemPlantHistory.EventID == 27)
+                                                    {
+                                                        <td><div class="w3-text-amber glyphicon acf-et-glyph-icon acf-et-grating" style="font-size:medium"></div></td>
+                                                        <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">@System.Text.Encoding.Default.GetString(itemPlantHistory.Data)</td>
+                                                    }
+
+                                                    //Took a Cutting
+                                                    if (itemPlantHistory.EventID == 30)
+                                                    {
+                                                        <td><div class="w3-text-khaki glyphicon acf-et-glyph-icon acf-et-high-voltage" style="font-size:medium"></div></td>
+                                                        <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">@itemPlantHistory.PlantName</td>
+                                                    }
+
+                                                    //Phase change
+                                                    if (itemPlantHistory.EventID == 4)
+                                                    {
+                                                        <td><div class="w3-text-pink glyphicon acf-et-glyph-icon acf-et-up-arrow" style="font-size:medium"></div></td>
+                                                        <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">@itemPlantHistory.EventName</td>
+                                                    }
+
+                                                    //Variety
+                                                    if (itemPlantHistory.EventID == 25)
+                                                    {
+                                                        <td><div class="w3-text-brown glyphicon acf-et-glyph-icon acf-et-small-leaf" style="font-size:medium"></div></td>
+
+                                                        if ((itemPlantHistory.Data != null) && (itemPlantHistory.Data.Length > 0))
+                                                        {
+                                                            <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                                                @System.Text.Encoding.Default.GetString(itemPlantHistory.Data)
+
+                                                            </td>
 
                                                         }
-                                                    </tr>
+
+
+
+                                                    }
+
+                                                    //Origin
+                                                    if (itemPlantHistory.EventID == 24)
+                                                    {
+                                                        <td><div class="w3-text-deep-purple glyphicon acf-et-glyph-icon acf-et-interlocking-rings" style="font-size:medium"></div></td>
+                                                        <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">@itemPlantHistory.PlantName</td>
+                                                    }
+                                                }
+                                            </tr>
                                                 }
 
                                             }
@@ -1068,25 +1180,98 @@
             };
         }
 
-        function showYesNoModal(xplantid, xajaxdeleteimage, xcurrentimagecontrolid, xajaxrefreshdata) {
-            document.getElementById('zajaxdeleteimage').value = xajaxdeleteimage;
-            document.getElementById('zajaxrefreshdata').value = xajaxrefreshdata;
+        function showYesNoModal(xfor, xplantid, xajaxdeleteimage, xcurrentimagecontrolid, xajaxrefreshdata) {
 
-            document.getElementById('modal_yesno_frm_0001_xplantid').value = xplantid;
-            document.getElementById('modal_yesno_frm_0001_xplanthistoryid').value = document.getElementById(xcurrentimagecontrolid).value
+            document.getElementById('modal_yesno_frm_0001_xfor').value = xfor;
+            if (xfor == 'DeleteImage') {
+                document.getElementById('zajaxdeleteimage').value = xajaxdeleteimage;
+                document.getElementById('zajaxrefreshdata').value = xajaxrefreshdata;
 
-            document.getElementById('modal_yesno').style.display = 'block';
+                document.getElementById('modal_yesno_frm_0001_xplantid').value = xplantid;
+                document.getElementById('modal_yesno_frm_0001_xplanthistoryid').value = document.getElementById(xcurrentimagecontrolid).value
+
+                document.getElementById('modal_yesno_title').innerText = 'Delete Image';
+                document.getElementById('modal_yesno').style.display = 'block';
+            }
+            
+            if (xfor == 'DeleteNote') {
+                //alert(xplantid);
+                //alert(xajaxdeleteimage);
+                //alert(xcurrentimagecontrolid);
+                //alert(xajaxrefreshdata);
+
+                document.getElementById('zajaxdeleteimage').value = xajaxdeleteimage;
+                document.getElementById('zajaxrefreshdata').value = xajaxrefreshdata;
+
+                document.getElementById('modal_yesno_frm_0001_xplantid').value = xplantid;
+                document.getElementById('modal_yesno_frm_0001_xplanthistoryid').value = xcurrentimagecontrolid;
+
+                document.getElementById('modal_note').style.display = 'none';
+                document.getElementById('modal_yesno_title').innerText = 'Delete Note';
+                document.getElementById('modal_yesno').style.display = 'block';
+            }
+
+            if (xfor == 'TakeCutting') {
+                //alert(xplantid);
+                //alert(xajaxdeleteimage);
+                //alert(xcurrentimagecontrolid);
+                //alert(xajaxrefreshdata);
+
+                document.getElementById('zajaxrefreshdata').value = xajaxrefreshdata;
+
+                document.getElementById('modal_yesno_frm_0001_xplantid').value = xplantid;
+
+                document.getElementById('modal_note').style.display = 'none';
+                document.getElementById('modal_yesno_title').innerText = 'Take Cutting';
+                document.getElementById('modal_yesno').style.display = 'block';
+            }
         }
 
-        function deleteImage() {
-            //alert(document.getElementById('zajaxdeleteimage').value);
-            var a = document.getElementById(document.getElementById('zajaxdeleteimage').value); //or grab it by tagname etc
-            a.href = "/MJ2/Plant/DeleteImage?xplantid=" + document.getElementById('modal_yesno_frm_0001_xplantid').value +
-                "&xplanthistoryid=" + document.getElementById('modal_yesno_frm_0001_xplanthistoryid').value;
+        function doYes() {
+            if ((document.getElementById('modal_yesno_frm_0001_xfor').value == 'DeleteImage') || (document.getElementById('modal_yesno_frm_0001_xfor').value == 'DeleteNote')) {
 
-            document.getElementById('modal_yesno').style.display = 'none';
-            a.click();
-            document.getElementById(document.getElementById('zajaxrefreshdata').value).click();
+
+                //alert(document.getElementById('zajaxdeleteimage').value);
+                var a = document.getElementById(document.getElementById('zajaxdeleteimage').value); //or grab it by tagname etc
+                a.href = "/MJ2/Plant/DeleteImage?xplantid=" + document.getElementById('modal_yesno_frm_0001_xplantid').value +
+                    "&xplanthistoryid=" + document.getElementById('modal_yesno_frm_0001_xplanthistoryid').value;
+
+                document.getElementById('modal_yesno').style.display = 'none';
+                a.click();
+                document.getElementById(document.getElementById('zajaxrefreshdata').value).click();
+            }
+            if (document.getElementById('modal_yesno_frm_0001_xfor').value == 'TakeCutting') {
+                var formData = {
+                    'xplantid': document.getElementById('modal_yesno_frm_0001_xplantid').value
+                };
+
+                $.ajax({
+                    'type': 'POST',
+                    url: "/MJ2/Plant/TakeCutting",
+                    data: formData,
+
+                    dataType: "text",
+                    beforeSend: function () {
+                        // alert('before');
+                        //document.getElementById(document.getElementById('zloadingelementid').value).style.display = 'block';
+
+                        document.getElementById('modal_yesno').style.display = 'none';
+                    },
+
+                    success: function () {
+                        //  alert('after');
+                        //  document.getElementById(document.getElementById('zloadingelementid').value).style.display = 'none';
+
+                        //Load data
+                        document.getElementById(document.getElementById('zajaxrefreshdata').value).click();
+                        //alert('Cutting taken');
+                    },
+                    error: function () {
+                    }
+                });
+
+            }
+
         }
 
         function showAddNote(xplantid, xcount, xloadingelementid, xajaxrefreshdata) {
@@ -1102,12 +1287,13 @@
             document.getElementById('modal_note_frm_0001_xcreateddatetimelabel').style.display = 'none';
             document.getElementById('modal_note_frm_0001_xcreateddatetime').style.display = 'none';
 
+            document.getElementById('modal_note_btndelete').style.display = 'none';
             document.getElementById('modal_note_title').innerText = 'Add a Note';
             document.getElementById('modal_note').style.display = 'block';
             document.getElementById('modal_note_frm_0001_xnote').focus();
         }
 
-        function showEditNote(xplantid, xcount, xloadingelementid, xajaxrefreshdata, xcreateddatetime, xnote, xplanthistoryid) {
+        function showEditNote(xplantid, xcount, xloadingelementid, xajaxrefreshdata, xcreateddatetime, xnote, xplanthistoryid, xajaxdeletenote) {
             //alert(xnote);
             document.getElementById('zaddedit').value = 'Edit';
             document.getElementById('zcount').value = xcount;
@@ -1115,6 +1301,8 @@
             document.getElementById('zloadingelementid').value = xloadingelementid;
             document.getElementById('zajaxrefreshdata').value = xajaxrefreshdata;
 
+            document.getElementById('modal_note_frm_0001_ajaxdeletenote').value = xajaxdeletenote;
+            document.getElementById('modal_note_frm_0001_ajaxrefreshdata').value = xajaxrefreshdata;
             document.getElementById('modal_note_frm_0001_xplantid').value = xplantid;
             document.getElementById('modal_note_frm_0001_xplanthistoryid').value = xplanthistoryid;
             document.getElementById('modal_note_frm_0001_xcreateddatetime').value = xcreateddatetime;
@@ -1123,6 +1311,7 @@
             document.getElementById('modal_note_frm_0001_xcreateddatetimelabel').style.display = 'block';
             document.getElementById('modal_note_frm_0001_xcreateddatetime').style.display = 'block';
 
+            document.getElementById('modal_note_btndelete').style.display = 'inline-block';
             document.getElementById('modal_note_title').innerText = 'Edit a Note';
             document.getElementById('modal_note').style.display = 'block';
             document.getElementById('modal_note_frm_0001_xcreateddatetime').focus();
@@ -1196,6 +1385,23 @@
                 });
             }
         }
+
+        function deleteNote() {
+
+
+
+
+            //alert(document.getElementById('zajaxdeleteimage').value);
+            var a = document.getElementById(document.getElementById('zajaxdeleteimage').value); //or grab it by tagname etc
+            a.href = "/MJ2/Plant/DeleteImage?xplantid=" + document.getElementById('modal_yesno_frm_0001_xplantid').value +
+                "&xplanthistoryid=" + document.getElementById('modal_yesno_frm_0001_xplanthistoryid').value;
+
+            document.getElementById('modal_yesno').style.display = 'none';
+            a.click();
+            document.getElementById(document.getElementById('zajaxrefreshdata').value).click();
+        }
+
+        
 
 
         window.uploadPhotos = function (xplantid, xupdatetargetid, xloadingelementid, xajaxreload, xajaxrefreshdata ) {
@@ -1275,13 +1481,13 @@
         };
 
 
-    function showhideSubMenu(xmenu_0001, xmenu_0002, xmenu_0003, xmenu_0004, xmenu_0005, xmenu_0006, xmenu_0007, xmenu_0008, xmenu_0009, xmenu_edit, xmenu_delete, xtop_background) {
-        var x = document.getElementById(xtop_background);
-        if (x.style.height === "35px") {
-            x.style.height = "200px";
-        } else {
-            x.style.height = "35px";
-        }
+        function showhideSubMenu(xmenu_0001, xmenu_0002, xmenu_0003, xmenu_0004, xmenu_0005, xmenu_0006, xmenu_0007, xmenu_0008, xmenu_0009, xmenu_0010, xmenu_edit, xmenu_delete, xtop_background) {
+            var x = document.getElementById(xtop_background);
+            if (x.style.height === "35px") {
+                x.style.height = "200px";
+            } else {
+                x.style.height = "35px";
+            }
 
 
             var x = document.getElementById(xmenu_0001);
@@ -1341,6 +1547,13 @@
             }
 
             x = document.getElementById(xmenu_0009);
+            if (x.style.display === "none") {
+                x.style.display = "table";
+            } else {
+                x.style.display = "none";
+            }
+
+            x = document.getElementById(xmenu_0010);
             if (x.style.display === "none") {
                 x.style.display = "table";
             } else {
