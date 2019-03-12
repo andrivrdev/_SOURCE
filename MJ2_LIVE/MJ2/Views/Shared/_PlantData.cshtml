@@ -11,10 +11,56 @@
     string ajaxrefreshdata = "ajaxrefreshdata_" + Model.iePlant.FirstOrDefault().ID.ToString();
     string ajaxaddinspected = "ajaxaddinspected_" + Model.iePlant.FirstOrDefault().ID.ToString();
     string ajaxaddwatered = "ajaxaddwatered_" + Model.iePlant.FirstOrDefault().ID.ToString();
+    string ajaxaddnote = "ajaxaddnote_" + Model.iePlant.FirstOrDefault().ID.ToString();
+    string ajaxeditnote = "ajaxeditnote_" + Model.iePlant.FirstOrDefault().ID.ToString();
     string ajaxedit = "ajaxedit_" + Model.iePlant.FirstOrDefault().ID.ToString();
+    string ajaxdeleteimage = "ajaxdeleteimage_" + Model.iePlant.FirstOrDefault().ID.ToString();
 
 
 }
+
+@{
+    if (Model.iePlant.FirstOrDefault().LastNote != null)
+
+    {
+        <table style="position:absolute; right:0px; top:180px; z-index:1; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+            <tr>
+                <td width="1px" style="max-width: 100px; overflow: hidden; text-overflow:clip; white-space: nowrap;">
+
+                    @{
+                        if (Model.iePlant.FirstOrDefault().LastNoteDateTime != null)
+                        {
+                            <span class="w3-tiny w3-text-white" style="padding:0px;">
+                                @Model.iePlant.FirstOrDefault().LastNote
+                            </span>
+                        }
+                    }
+
+                </td>
+
+
+                <td width="1px;">
+                    @{
+
+                        if (Model.iePlant.FirstOrDefault().LastNoteDateTime != null)
+                        {
+                            <span class="btn w3-hover-text-orange w3-text-light-gray glyphicon acf-ec-glyph-icon acf-ec-edit" style="padding:0px;font-size:8px;" onclick="showEditNote('@Model.iePlant.FirstOrDefault().ID', '@ViewData["xCount"]', '@divloadinganimation', '@ajaxrefreshdata', '@Model.iePlant.FirstOrDefault().LastNoteDateTime.Date.ToString("yyyy-MM-dd")', '@Model.iePlant.FirstOrDefault().LastNote.Replace("\n", "\\n")', '@Model.iePlant.FirstOrDefault().LastNoteID', '@ajaxdeleteimage')"></span>
+                        }
+                    }
+                </td>
+
+
+                <td width="1px;"></td>
+
+            </tr>
+        </table>
+
+
+                        }
+}
+
+
+
 
 <!--BOTTOM BUTTONS-->
 <table style="position:absolute; left:3px; top:185px; width:50%; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
@@ -47,6 +93,10 @@
             }
         </td>
 
+        <td width="1px">
+            <span class="btn w3-hover-text-amber w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-grating" style="padding:0px;font-size:large;" onclick="showAddNote('@Model.iePlant.FirstOrDefault().ID', '@ViewData["xCount"]', '@divloadinganimation', '@ajaxrefreshdata' );"></span>
+        </td>
+
         <td></td>
 
         <td width="5px;"></td>
@@ -57,6 +107,7 @@
 
 
 
+<!--DATA-->
 <table class="w3-small  " style="position:absolute; left:0px; top:218px; width:100%;">
 
 
@@ -64,7 +115,7 @@
     <tr class="bg-transparent text-dark">
         <td width="5px;"></td>
 
-        <td colspan="2" class="h6">
+        <td colspan="6" class="h6">
             <table>
                 <tr>
                     <td>@ViewData["xCount"]</td>
@@ -76,7 +127,7 @@
 
     </tr>
 
-    <tr style="height:2px; background-image:linear-gradient(to right, royalblue, crimson);"><td colspan="3"></td></tr>
+    <tr style="height:2px; background-image:linear-gradient(to right, royalblue, crimson);"><td colspan="7"></td></tr>
 
 
     <tr class="bg-transparent text-dark">
@@ -88,6 +139,29 @@
         <td id="@editcreateddatetime">
             @Model.iePlant.FirstOrDefault().CreatedDateTime.Date.ToString("yyyy-MM-dd")
         </td>
+
+        <td></td>
+
+        <td class="w3-right-align" style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+            @{
+                if (Model.iePlant.FirstOrDefault().OriginatedFromPlantName == null)
+                {
+                    <text>Other</text>
+                }
+                else
+                {
+                    <text>@Model.iePlant.FirstOrDefault().OriginatedFromPlantName</text>
+                }
+            }
+
+
+
+        </td>
+        <td width="20px;">
+            <div width="20px;" class="w3-right-align w3-text-deep-purple glyphicon acf-et-glyph-icon acf-et-interlocking-rings"></div>
+        </td>
+        <td width="5px"></td>
+
 
     </tr>
 
@@ -127,6 +201,16 @@
                 }
             }
         </td>
+        <td></td>
+
+        <td class="w3-right-align" style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+            @Model.iePlant.FirstOrDefault().CuttingCount.ToString()
+        </td>
+        <td width="20px;">
+            <div width="20px;" class="w3-right-align w3-text-khaki glyphicon acf-et-glyph-icon acf-et-high-voltage"></div>
+        </td>
+        <td width="5px"></td>
+
 
     </tr>
 
@@ -134,7 +218,7 @@
     <tr class="bg-transparent text-dark">
         <td width="5px;"></td>
         <td width="20px;">
-            <div class="glyphicon acf-et-glyph-icon acf-et-up-arrow"></div>
+            <div class="w3-text-pink glyphicon acf-et-glyph-icon acf-et-up-arrow"></div>
         </td>
         <td>
             <!--PHASE-->
@@ -147,14 +231,22 @@
                 @Model.iePlant.FirstOrDefault().Phase
             }
         </td>
+        <td></td>
+
+        <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></td>
+        <td width="20px;">
+            
+        </td>
+        <td width="5px"></td>
+
 
     </tr>
 
-    <tr style="height:1px; background-image:linear-gradient(to right, crimson, purple);"><td colspan="3"></td></tr>
+    <tr style="height:1px; background-image:linear-gradient(to right, crimson, purple);"><td colspan="7"></td></tr>
 
     <tr>
         <td width="5px;"></td>
-        <td colspan="2">
+        <td colspan="6">
             <table class="w3-tiny" style="width:100%">
                 <tr>
                     <th>DATE</th>
@@ -181,22 +273,69 @@
                                 if (itemPlantHistory.EventID == 15)
                                 {
                                     <td><div class="w3-text-deep-purple glyphicon acf-et-glyph-icon acf-et-photo-camera" style="font-size:medium"></div></td>
-                                    <td>Added a Picture</td>
+                                    <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Added an Image</td>
                                 }
 
                                 //Inspected
                                 if (itemPlantHistory.EventID == 9)
                                 {
                                     <td><div class="w3-text-green glyphicon acf-ec-glyph-icon acf-ec-view" style="font-size:medium"></div></td>
-                                    <td>Inspected</td>
+                                    <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Inspected</td>
                                 }
 
                                 //Watered
                                 if (itemPlantHistory.EventID == 10)
                                 {
                                     <td><div class="w3-text-blue glyphicon acf-et-glyph-icon acf-et-droplet-of-water" style="font-size:medium"></div></td>
-                                    <td>Watered</td>
+                                    <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Watered</td>
                                 }
+
+                                //Note
+                                if (itemPlantHistory.EventID == 27)
+                                {
+                                    <td><div class="w3-text-amber glyphicon acf-et-glyph-icon acf-et-grating" style="font-size:medium"></div></td>
+                                    <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">@System.Text.Encoding.Default.GetString(itemPlantHistory.Data)</td>
+                                }
+
+                                //Took a Cutting
+                                if (itemPlantHistory.EventID == 30)
+                                {
+                                    <td><div class="w3-text-khaki glyphicon acf-et-glyph-icon acf-et-high-voltage" style="font-size:medium"></div></td>
+                                    <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">@itemPlantHistory.PlantName</td>
+                                }
+
+                                //Phase change
+                                if (itemPlantHistory.EventID == 4)
+                                {
+                                    <td><div class="w3-text-pink glyphicon acf-et-glyph-icon acf-et-up-arrow" style="font-size:medium"></div></td>
+                                    <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">@itemPlantHistory.EventName</td>
+                                }
+
+                                //Variety
+                                if (itemPlantHistory.EventID == 25)
+                                {
+                                    <td><div class="w3-text-brown glyphicon acf-et-glyph-icon acf-et-small-leaf" style="font-size:medium"></div></td>
+
+                                    if ((itemPlantHistory.Data != null) && (itemPlantHistory.Data.Length > 0))
+                                    {
+                                        <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            @System.Text.Encoding.Default.GetString(itemPlantHistory.Data)
+
+                                        </td>
+
+                                    }
+
+
+
+                                }
+
+                                //Origin
+                                if (itemPlantHistory.EventID == 24)
+                                {
+                                    <td><div class="w3-text-deep-purple glyphicon acf-et-glyph-icon acf-et-interlocking-rings" style="font-size:medium"></div></td>
+                                    <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">@itemPlantHistory.PlantName</td>
+                                }
+
                             }
                         </tr>
                     }

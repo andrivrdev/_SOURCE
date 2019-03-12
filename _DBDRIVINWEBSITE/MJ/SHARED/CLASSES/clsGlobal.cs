@@ -9,6 +9,7 @@ namespace SHARED.CLASSES
 {
     public static class clsGlobal
     {
+        public static string gAppName = ConfigurationManager.AppSettings["AppName"].ToString();
         public static string gConnectionString = ConfigurationManager.ConnectionStrings["MJ"].ConnectionString;
         public static Int64 gCompanyID = 0;
         public static string gImageSize = "2000";

@@ -82,7 +82,7 @@
             <!--IMAGE DELETE BUTTONS-->
             <input type="hidden" name="@currentplantimage" id="@currentplantimage" value="@Model.ID">
 
-            <table style="position:absolute; right:0px; top:175px; z-index:1000; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
+            <table style="position:absolute; right:0px; top:177px; z-index:1; opacity:@SHARED.CLASSES.clsGlobal.gOpacity;">
                 <tr>
                     <td width="1px">
                         <div style="display:none">
@@ -106,11 +106,11 @@
 
                             if (Model.PictureThumbnail != null)
                             {
-                                <span class="btn w3-hover-text-red w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-letter-x" style="padding:0px;font-size:8px;" onclick="showYesNoModal('@Model.PlantID', '@ajaxdeleteimage', '@currentplantimage', '@ajaxrefreshdata')"></span>
+                                <span class="btn w3-hover-text-red w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-letter-x" style="padding:0px;font-size:8px;" onclick="showYesNoModal('DeleteImage', '@Model.PlantID', '@ajaxdeleteimage', '@currentplantimage', '@ajaxrefreshdata')"></span>
                             }
                         }
                     </td>
-                    <td width="3px;"></td>
+                    <td width="1px;"></td>
 
                 </tr>
             </table>

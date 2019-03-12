@@ -1106,7 +1106,7 @@
         if (document.getElementById('zaddedit').value == 'Edit') {
             //console.log()
             var a = document.getElementById(document.getElementById('zajaxedit').value); //or grab it by tagname etc
-            a.href = "/MJ2/Plant/Edit?xplantid=" + document.getElementById('idmodal_0001_frm_0001_xplantid').value +
+            a.href = "/" + "@SHARED.CLASSES.clsGlobal.gAppName" + "/Plant/Edit?xplantid=" + document.getElementById('idmodal_0001_frm_0001_xplantid').value +
                 "&xcount=" + document.getElementById('zcount').value + "&xname=" + document.getElementById('xname').value +
                 "&xcreateddatetime=" + document.getElementById('xcreateddatetime').value;
 
@@ -1233,7 +1233,7 @@
 
                 //alert(document.getElementById('zajaxdeleteimage').value);
                 var a = document.getElementById(document.getElementById('zajaxdeleteimage').value); //or grab it by tagname etc
-                a.href = "/MJ2/Plant/DeleteImage?xplantid=" + document.getElementById('modal_yesno_frm_0001_xplantid').value +
+                a.href = "/" + "@SHARED.CLASSES.clsGlobal.gAppName" + "/Plant/DeleteImage?xplantid=" + document.getElementById('modal_yesno_frm_0001_xplantid').value +
                     "&xplanthistoryid=" + document.getElementById('modal_yesno_frm_0001_xplanthistoryid').value;
 
                 document.getElementById('modal_yesno').style.display = 'none';
@@ -1247,7 +1247,7 @@
 
                 $.ajax({
                     'type': 'POST',
-                    url: "/MJ2/Plant/TakeCutting",
+                    url: "/" + "@SHARED.CLASSES.clsGlobal.gAppName" + "/Plant/TakeCutting",
                     data: formData,
 
                     dataType: "text",
@@ -1330,7 +1330,7 @@
 
                 $.ajax({
                     'type': 'POST',
-                    url: "/MJ2/Plant/AddNote",
+                    url: "/" + "@SHARED.CLASSES.clsGlobal.gAppName" + "/Plant/AddNote",
                     data: formData,
 
                     dataType: "text",
@@ -1364,7 +1364,7 @@
 
                 $.ajax({
                     'type': 'POST',
-                    url: "/MJ2/Plant/EditNote",
+                    url: "/" + "@SHARED.CLASSES.clsGlobal.gAppName" + "/Plant/EditNote",
                     data: formData,
 
                     dataType: "text",
@@ -1393,7 +1393,7 @@
 
             //alert(document.getElementById('zajaxdeleteimage').value);
             var a = document.getElementById(document.getElementById('zajaxdeleteimage').value); //or grab it by tagname etc
-            a.href = "/MJ2/Plant/DeleteImage?xplantid=" + document.getElementById('modal_yesno_frm_0001_xplantid').value +
+            a.href = "/" + "@SHARED.CLASSES.clsGlobal.gAppName" + "/Plant/DeleteImage?xplantid=" + document.getElementById('modal_yesno_frm_0001_xplantid').value +
                 "&xplanthistoryid=" + document.getElementById('modal_yesno_frm_0001_xplanthistoryid').value;
 
             document.getElementById('modal_yesno').style.display = 'none';
@@ -1448,7 +1448,7 @@
 
                         $.ajax({
                             'type': 'POST',
-                            url: "/MJ2/Plant/AddImage",
+                            url: "/" + "@SHARED.CLASSES.clsGlobal.gAppName" + "/Plant/AddImage",
                             data: formData,
 
                             dataType: "text",
@@ -1463,7 +1463,7 @@
 
                                 //Load last image
                                 var a = document.getElementById(xajaxreload); //or grab it by tagname etc
-                                a.href = "/MJ2/Plant/PreviousImage?xplantid=" + xplantid + "&xplanthistoryid=2147483647"
+                                a.href = "/" + "@SHARED.CLASSES.clsGlobal.gAppName" + "/Plant/PreviousImage?xplantid=" + xplantid + "&xplanthistoryid=2147483647"
                                 document.getElementById(xajaxreload).click();
                                 document.getElementById(xajaxrefreshdata).click();
                             },

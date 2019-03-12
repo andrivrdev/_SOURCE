@@ -250,7 +250,7 @@ namespace SHARED.CLASSES
             {
                 xMessage = "[" + DateTime.Now.ToString() + "] [" + xMessage + "]";
 
-                File.AppendAllText(@"C:\Logs\MJ2Log.txt", xMessage + Environment.NewLine);
+                File.AppendAllText(@"C:\Logs\" + SHARED.CLASSES.clsGlobal.gAppName + "Log.txt", xMessage + Environment.NewLine);
             }
 
 
