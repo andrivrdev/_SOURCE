@@ -1,4 +1,5 @@
-﻿using SHARED.DATA;
+﻿using SHARED.CLASSES;
+using SHARED.DATA;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -48,6 +49,9 @@ namespace MJ2.Controllers
             {
                 string xUsername = Convert.ToString(u.Name).ToUpper().Trim();
                 string xPassword = Convert.ToString(u.Password);
+
+                clsSE xSE = new clsSE();
+                xSE.WriteLog("Login.. [" + xUsername + "] [" + xPassword + "]");
 
                 //Verify credentials against database
                 tblCompany xtblCompany = new tblCompany();
