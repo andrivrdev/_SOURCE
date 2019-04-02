@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "..\Server\Server.csproj", "{5B5E8A3E-984F-4B5B-84D5-96A3E7D031BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "..\Shared\Shared.csproj", "{BECB6E63-BE66-4644-97C7-323B7C3ED5D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsClient", "..\WinFormsClient\WinFormsClient.csproj", "{586EBE2B-8949-4654-8258-679A67F5F594}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B5E8A3E-984F-4B5B-84D5-96A3E7D031BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B5E8A3E-984F-4B5B-84D5-96A3E7D031BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B5E8A3E-984F-4B5B-84D5-96A3E7D031BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B5E8A3E-984F-4B5B-84D5-96A3E7D031BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BECB6E63-BE66-4644-97C7-323B7C3ED5D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BECB6E63-BE66-4644-97C7-323B7C3ED5D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BECB6E63-BE66-4644-97C7-323B7C3ED5D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BECB6E63-BE66-4644-97C7-323B7C3ED5D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{586EBE2B-8949-4654-8258-679A67F5F594}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{586EBE2B-8949-4654-8258-679A67F5F594}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{586EBE2B-8949-4654-8258-679A67F5F594}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{586EBE2B-8949-4654-8258-679A67F5F594}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0A0D0DB5-AEFB-41D7-9504-53BC79D02A30}
+	EndGlobalSection
+EndGlobal

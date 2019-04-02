@@ -1,0 +1,579 @@
+﻿
+@{
+    ViewBag.Title = "Test2";
+    //Layout = "";
+}
+
+
+
+
+<div class="">
+    <div class="row" style="margin-left:5px; margin-right:5px;">
+
+        <!--ITEM-->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-md-12">
+
+                <!--INNER WITH SHADOW AND BACKGROUND IMAGE-->
+                <div class="row" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height:385px; ">
+
+                    <!--BACKGROUND IMAGE-->
+                    <!--
+                    <img class="img-fluid w3-opacity-max" src="~/Content/Pics/Stock/Originals/IMG_20190109_103139.jpg" />
+                    -->
+                    <!--TOP IMAGE-->
+                    <img style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); position:absolute; left:0px; top:15px; width:100%;height:200px;" src="~/Content/Pics/Stock/Originals/IMG_20190109_103139.jpg" />
+
+
+                    <!--MENU BACKGROUND-->
+                    <table class="w3-opacity-min" style="background-image:linear-gradient(to bottom, black,  transparent); position:absolute; left:0px; top:15px; width:100%; height:35px;">
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </table>
+
+
+
+
+                    <!--BUTTONS-->
+                    <table style="position:absolute; left:3px; top:15px; width:100%; opacity:0.8;">
+                        <tr>
+                            <td width="15px">
+                                <form id="frm_takepic_0001" method="post">
+                                    <input id="takepic_0001" name="takepic_0001" type="file" accept="image/*;capture=camera" style="display:none" onsubmit="document.getElementById('frm_takepic_0001').submit();">
+                                    <button class="btn w3-hover-text-white w3-text-light-gray" style="padding:0px;" onclick="document.getElementById('takepic_0001').click()">
+                                        <span style="font-size:large;" class="glyphicon acf-et-glyph-icon acf-et-photo-camera"></span>
+                                    </button>
+
+                                </form>
+                            </td>
+                            <td width="15px">
+                                <form>
+
+                                    <button type="submit" class="btn w3-hover-text-white w3-text-light-gray" style="padding:0px;">
+                                        <span style="font-size:large;" class="glyphicon acf-ec-glyph-icon acf-ec-notebook-1"></span>
+                                    </button>
+
+                                </form>
+                            </td>
+
+                            <td width="15px"></td>
+
+                            <td width="15px">
+                                <form>
+
+                                    <button type="submit" class="btn w3-hover-text-white w3-text-light-gray" style="padding:0px;">
+                                        <span style="font-size:large;" class="glyphicon acf-ec-glyph-icon acf-ec-view"></span>
+                                    </button>
+
+                                </form>
+                            </td>
+
+                            <td width="15px">
+                                <form>
+
+                                    <button type="submit" class="btn w3-hover-text-white w3-text-light-gray" style="padding:0px;">
+                                        <span style="font-size:large;" class="glyphicon acf-et-glyph-icon acf-et-droplet-of-water"></span>
+                                    </button>
+
+                                </form>
+                            </td>
+
+                            <td width="15px"></td>
+
+                            <td width="15px">
+                                <form>
+
+                                    <button type="submit" class="btn w3-hover-text-white w3-text-light-gray" style="padding:0px;">
+                                        <span style="font-size:large;" class="glyphicon acf-ec-glyph-icon acf-ec-edit"></span>
+                                    </button>
+
+                                </form>
+                            </td>
+
+
+                            <td></td>
+
+                            <td width="15px">
+                                <span class="btn w3-hover-text-white w3-text-light-gray glyphicon acf-et-glyph-icon acf-et-two-dots-button" style="outline:none; padding:0px; font-size:large;" onclick="showhideSubMenu('menu_0001');"></span>
+                            </td>
+
+                            <td width="5px;"></td>
+
+                        </tr>
+                    </table>
+
+                    <!--SUBMENU-->
+                    <!--ROW1-->
+                    <!--NUTRIENT-->
+                    <table id="menu_0001" style="display:none; position:absolute; left:3px; top:40px; width:100%; opacity:0.8;">
+                        <tr>
+                            <td></td>
+
+                            <td width="5px;">
+                                <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
+                                    <tr>
+                                        <td width="5px;" style="white-space: nowrap;">
+                                            <span>Nutrients</span>
+                                        </td>
+
+                                        <td width="5px;"></td>
+
+                                        <td width="15px">
+                                            <span class="glyphicon acf-et-glyph-icon acf-et-drops-of-water" style="outline:none; padding:0px; font-size:large;"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="5px;"></td>
+                        </tr>
+                    </table>
+
+                    <!--CHEMICALS-->
+                    <table id="menu_0002" style="display:none; position:absolute; left:3px; top:40px; width:50%; opacity:0.8;">
+                        <tr>
+                            <td width="5px;">
+                                <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
+                                    <tr>
+                                        <td width="15px">
+                                            <span class="glyphicon acf-et-glyph-icon acf-et-four-squares" style="outline:none; padding:0px; font-size:large;"></span>
+                                        </td>
+
+                                        <td width="5px;"></td>
+
+                                        <td width="5px;" style="white-space: nowrap;">
+                                            <span>Chemicals</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!--ROW2-->
+                    <!--PHASE CHANGE-->
+                    <table id="menu_0003" style="display:none; position:absolute; left:3px; top:60px; width:100%; opacity:0.8;">
+                        <tr>
+                            <td></td>
+
+                            <td width="5px;">
+                                <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
+                                    <tr>
+                                        <td width="5px;" style="white-space: nowrap;">
+                                            <span>Phase Change</span>
+                                        </td>
+
+                                        <td width="5px;"></td>
+
+                                        <td width="15px">
+                                            <span class="glyphicon acf-et-glyph-icon acf-et-up-arrow" style="outline:none; padding:0px; font-size:large;"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="5px;"></td>
+                        </tr>
+                    </table>
+
+                    <!--MEDIUM CHANGE-->
+                    <table id="menu_0004" style="display:none; position:absolute; left:3px; top:60px; width:50%; opacity:0.8;">
+                        <tr>
+                            <td width="5px;">
+                                <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
+                                    <tr>
+                                        <td width="15px">
+                                            <span class="glyphicon acf-ec-glyph-icon acf-ec-layers" style="outline:none; padding:0px; font-size:large;"></span>
+                                        </td>
+
+                                        <td width="5px;"></td>
+
+                                        <td width="5px;" style="white-space: nowrap;">
+                                            <span>Medium Change</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!--ROW3-->
+                    <!--LOCATION CHANGE-->
+                    <table id="menu_0005" style="display:none; position:absolute; left:3px; top:80px; width:100%; opacity:0.8;">
+                        <tr>
+                            <td></td>
+
+                            <td width="5px;">
+                                <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
+                                    <tr>
+                                        <td width="5px;" style="white-space: nowrap;">
+                                            <span>Location Change</span>
+                                        </td>
+
+                                        <td width="5px;"></td>
+
+                                        <td width="15px">
+                                            <span class="glyphicon acf-et-glyph-icon acf-et-planet-earth" style="outline:none; padding:0px; font-size:large;"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="5px;"></td>
+                        </tr>
+                    </table>
+
+                    <!--PROBLEMS-->
+                    <table id="menu_0006" style="display:none; position:absolute; left:3px; top:80px; width:50%; opacity:0.8;">
+                        <tr>
+                            <td width="5px;">
+                                <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
+                                    <tr>
+                                        <td width="15px">
+                                            <span class="glyphicon acf-ec-glyph-icon acf-ec-warning" style="outline:none; padding:0px; font-size:large;"></span>
+                                        </td>
+
+                                        <td width="5px;"></td>
+
+                                        <td width="5px;" style="white-space: nowrap;">
+                                            <span>Problems</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!--ROW4-->
+                    <!--ENVIRONMENT-->
+                    <table id="menu_0007" style="display:none; position:absolute; left:3px; top:100px; width:100%; opacity:0.8;">
+                        <tr>
+                            <td></td>
+
+                            <td width="5px;">
+                                <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
+                                    <tr>
+                                        <td width="5px;" style="white-space: nowrap;">
+                                            <span>Environment</span>
+                                        </td>
+
+                                        <td width="5px;"></td>
+
+                                        <td width="15px">
+                                            <span class="glyphicon acf-et-glyph-icon acf-et-mercury-thermometer" style="outline:none; padding:0px; font-size:large;"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="5px;"></td>
+                        </tr>
+                    </table>
+
+                    <!--ORIGIN-->
+                    <table id="menu_0008" style="display:none; position:absolute; left:3px; top:100px; width:50%; opacity:0.8;">
+                        <tr>
+                            <td width="5px;">
+                                <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
+                                    <tr>
+                                        <td width="15px">
+                                            <span class="glyphicon acf-et-glyph-icon acf-et-interlocking-rings" style="outline:none; padding:0px; font-size:large;"></span>
+                                        </td>
+
+                                        <td width="5px;"></td>
+
+                                        <td width="5px;" style="white-space: nowrap;">
+                                            <span>Origin</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!--ROW5-->
+                    <!--VARIETY-->
+                    <table id="menu_0009" style="display:none; position:absolute; left:3px; top:120px; width:100%; opacity:0.8;">
+                        <tr>
+                            <td width="5px;">
+                                <table class="btn w3-hover-text-white w3-text-light-gray w3-tiny" style="outline:none; padding:0px;">
+                                    <tr>
+                                        <td width="15px">
+                                            <span class="glyphicon acf-et-glyph-icon acf-et-small-leaf" style="outline:none; padding:0px; font-size:large;"></span>
+                                        </td>
+
+                                        <td width="5px;"></td>
+
+                                        <td width="5px;" style="white-space: nowrap;">
+                                            <span>Variety</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!--DATA-->
+                    <table class="w3-small  " style="position:absolute; left:0px; top:218px; width:100%; opacity:1;">
+
+
+
+                        <tr class="bg-transparent text-dark">
+                            <td width="5px;"></td>
+
+                            <td colspan="2" class="h6">
+                                01 - Plant Name
+                            </td>
+
+                        </tr>
+
+                        <tr style="height:2px; background-image:linear-gradient(to right, royalblue, crimson);"><td colspan="3"></td></tr>
+
+
+                        <tr class="bg-transparent text-dark">
+                            <td width="5px;"></td>
+
+                            <td width="20px;">
+                                <div class="glyphicon acf-et-glyph-icon acf-et-calendar"></div>
+                            </td>
+                            <td>
+                                2019/07/15
+                            </td>
+
+                        </tr>
+
+
+                        <tr class="bg-transparent text-dark">
+                            <td width="5px;"></td>
+                            <td width="20px;">
+                                <div class="glyphicon acf-es-glyph-icon acf-es-time"></div>
+                            </td>
+                            <td>
+                                <!--AGE-->
+                                15 days
+                            </td>
+
+                        </tr>
+
+
+                        <tr class="bg-transparent text-dark">
+                            <td width="5px;"></td>
+                            <td width="20px;">
+                                <div class="glyphicon acf-et-glyph-icon acf-et-up-arrow"></div>
+                            </td>
+                            <td>
+                                <!--PHASE-->
+                                Vegetative
+                            </td>
+
+                        </tr>
+
+                        <tr style="height:1px; background-image:linear-gradient(to right, crimson, purple);"><td colspan="3"></td></tr>
+
+                        <tr>
+                            <td width="5px;"></td>
+                            <td colspan="2">
+                                <table class="w3-tiny" style="width:100%">
+                                    <tr>
+                                        <th>DATE</th>
+                                        <th>EVENT</th>
+                                        <th>DETAILS</th>
+                                    </tr>
+                                    <tr>
+                                        <td>2019/10/24</td>
+                                        <td><div class="glyphicon acf-ec-glyph-icon acf-ec-notebook-1" style="font-size:medium"></div></td>
+                                        <td>1234567890123456789</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2019/10/25</td>
+                                        <td><div class="glyphicon acf-et-glyph-icon acf-et-up-arrow" style="font-size:medium"></div></td>
+                                        <td>Vegetative</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2019/10/25</td>
+                                        <td><div class="glyphicon acf-ec-glyph-icon acf-ec-view" style="font-size:medium"></div></td>
+                                        <td>Inspected</td>
+                                    </tr>
+
+                                </table>
+
+
+
+
+                            </td>
+
+
+
+
+                        </tr>
+
+
+
+
+
+
+
+
+
+                    </table>
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!--ITEM-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-color:white;">
+            <!--INNER WITH SHADOW-->
+            <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height:300px; background-color:crimson">
+            </div>
+        </div>
+        <!--ITEM-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-color:white;">
+            <!--INNER WITH SHADOW-->
+            <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height:300px; background-color:crimson">
+            </div>
+        </div>
+        <!--ITEM-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-color:white;">
+            <!--INNER WITH SHADOW-->
+            <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height:300px; background-color:crimson">
+            </div>
+        </div>
+        <!--ITEM-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-color:white;">
+            <!--INNER WITH SHADOW-->
+            <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height:300px; background-color:crimson">
+            </div>
+        </div>
+        <!--ITEM-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-color:white;">
+            <!--INNER WITH SHADOW-->
+            <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height:300px; background-color:crimson">
+            </div>
+        </div>
+        <!--ITEM-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-color:white;">
+            <!--INNER WITH SHADOW-->
+            <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height:300px; background-color:crimson">
+            </div>
+        </div>
+        <!--ITEM-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-color:white;">
+            <!--INNER WITH SHADOW-->
+            <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height:300px; background-color:crimson">
+            </div>
+        </div>
+        <!--ITEM-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-color:white;">
+            <!--INNER WITH SHADOW-->
+            <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height:300px; background-color:crimson">
+            </div>
+        </div>
+        <!--ITEM-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-color:white;">
+            <!--INNER WITH SHADOW-->
+            <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height:300px; background-color:crimson">
+            </div>
+        </div>
+        <!--ITEM-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-color:white;">
+            <!--INNER WITH SHADOW-->
+            <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height:300px; background-color:crimson">
+            </div>
+        </div>
+        <!--ITEM-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-color:white;">
+            <!--INNER WITH SHADOW-->
+            <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height:300px; background-color:crimson">
+            </div>
+        </div>
+        <!--ITEM-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-color:white;">
+            <!--INNER WITH SHADOW-->
+            <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height:300px; background-color:crimson">
+            </div>
+        </div>
+        <!--ITEM-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="background-color:white;">
+            <!--INNER WITH SHADOW-->
+            <div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); height:300px; background-color:crimson">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        function showhideSubMenu(controlId) {
+            var x = document.getElementById('menu_0001');
+            if (x.style.display === "none") {
+                x.style.display = "table";
+            } else {
+                x.style.display = "none";
+            }
+
+            x = document.getElementById('menu_0002');
+            if (x.style.display === "none") {
+                x.style.display = "table";
+            } else {
+                x.style.display = "none";
+            }
+
+            x = document.getElementById('menu_0003');
+            if (x.style.display === "none") {
+                x.style.display = "table";
+            } else {
+                x.style.display = "none";
+            }
+
+            x = document.getElementById('menu_0004');
+            if (x.style.display === "none") {
+                x.style.display = "table";
+            } else {
+                x.style.display = "none";
+            }
+
+            x = document.getElementById('menu_0005');
+            if (x.style.display === "none") {
+                x.style.display = "table";
+            } else {
+                x.style.display = "none";
+            }
+
+            x = document.getElementById('menu_0006');
+            if (x.style.display === "none") {
+                x.style.display = "table";
+            } else {
+                x.style.display = "none";
+            }
+
+            x = document.getElementById('menu_0007');
+            if (x.style.display === "none") {
+                x.style.display = "table";
+            } else {
+                x.style.display = "none";
+            }
+
+            x = document.getElementById('menu_0008');
+            if (x.style.display === "none") {
+                x.style.display = "table";
+            } else {
+                x.style.display = "none";
+            }
+
+            x = document.getElementById('menu_0009');
+            if (x.style.display === "none") {
+                x.style.display = "table";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+
+    </script>
+}
