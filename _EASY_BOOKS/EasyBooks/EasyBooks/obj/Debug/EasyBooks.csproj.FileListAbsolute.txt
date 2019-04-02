@@ -120,3 +120,10 @@ C:\_SOURCE\_EASY_BOOKS\EasyBooks\EasyBooks\obj\Debug\EasyBooks.exe.licenses
 C:\_SOURCE\_EASY_BOOKS\EasyBooks\EasyBooks\obj\Debug\EasyBooks.csproj.CoreCompileInputs.cache
 C:\_SOURCE\_EASY_BOOKS\EasyBooks\EasyBooks\obj\Debug\EasyBooks.exe
 C:\_SOURCE\_EASY_BOOKS\EasyBooks\EasyBooks\obj\Debug\EasyBooks.pdb
+C:\_SOURCE\_EASY_BOOKS\EasyBooks\EasyBooks\bin\Debug\DevExpress.XtraWizard.v17.1.dll
+C:\_SOURCE\_EASY_BOOKS\EasyBooks\EasyBooks\bin\Debug\DevExpress.XtraWizard.v17.1.xml
+C:\_SOURCE\_EASY_BOOKS\EasyBooks\EasyBooks\bin\Debug\de\DevExpress.XtraWizard.v17.1.resources.dll
+C:\_SOURCE\_EASY_BOOKS\EasyBooks\EasyBooks\bin\Debug\es\DevExpress.XtraWizard.v17.1.resources.dll
+C:\_SOURCE\_EASY_BOOKS\EasyBooks\EasyBooks\bin\Debug\ja\DevExpress.XtraWizard.v17.1.resources.dll
+C:\_SOURCE\_EASY_BOOKS\EasyBooks\EasyBooks\bin\Debug\ru\DevExpress.XtraWizard.v17.1.resources.dll
+C:\_SOURCE\_EASY_BOOKS\EasyBooks\EasyBooks\obj\Debug\EasyBooks.csprojResolveAssemblyReference.cache

@@ -36,7 +36,8 @@ C:\_SOURCE\_MADE_FROM_VIDS\_VENKAT\_BOOTSTRAP_TUTORIAL\BootstrapTutorial\Bootstr
 C:\_SOURCE\_MADE_FROM_VIDS\_VENKAT\_BOOTSTRAP_TUTORIAL\BootstrapTutorial\BootstrapTutorial\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\_SOURCE\_MADE_FROM_VIDS\_VENKAT\_BOOTSTRAP_TUTORIAL\BootstrapTutorial\BootstrapTutorial\bin\Microsoft.AI.WindowsServer.xml
 C:\_SOURCE\_MADE_FROM_VIDS\_VENKAT\_BOOTSTRAP_TUTORIAL\BootstrapTutorial\BootstrapTutorial\bin\Microsoft.AI.Web.xml
-C:\_SOURCE\_MADE_FROM_VIDS\_VENKAT\_BOOTSTRAP_TUTORIAL\BootstrapTutorial\BootstrapTutorial\obj\Debug\BootstrapTutorial.csprojResolveAssemblyReference.cache
 C:\_SOURCE\_MADE_FROM_VIDS\_VENKAT\_BOOTSTRAP_TUTORIAL\BootstrapTutorial\BootstrapTutorial\obj\Debug\BootstrapTutorial.csproj.CoreCompileInputs.cache
 C:\_SOURCE\_MADE_FROM_VIDS\_VENKAT\_BOOTSTRAP_TUTORIAL\BootstrapTutorial\BootstrapTutorial\obj\Debug\BootstrapTutorial.dll
 C:\_SOURCE\_MADE_FROM_VIDS\_VENKAT\_BOOTSTRAP_TUTORIAL\BootstrapTutorial\BootstrapTutorial\obj\Debug\BootstrapTutorial.pdb
+C:\_SOURCE\_MADE_FROM_VIDS\_VENKAT\_BOOTSTRAP_TUTORIAL\BootstrapTutorial\BootstrapTutorial\obj\Debug\BootstrapTutorial.csprojAssemblyReference.cache
+C:\_SOURCE\_MADE_FROM_VIDS\_VENKAT\_BOOTSTRAP_TUTORIAL\BootstrapTutorial\BootstrapTutorial\obj\Debug\BootstrapTutorial.csproj.CopyComplete

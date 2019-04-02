@@ -1,13 +1,6 @@
 C:\_SOURCE\_MVC_FORMS_AUTH\MVCFormsAuth\MVCFormsAuth\bin\MVCFormsAuth.dll.config
 C:\_SOURCE\_MVC_FORMS_AUTH\MVCFormsAuth\MVCFormsAuth\bin\MVCFormsAuth.dll
 C:\_SOURCE\_MVC_FORMS_AUTH\MVCFormsAuth\MVCFormsAuth\bin\MVCFormsAuth.pdb
-C:\_SOURCE\_MVC_FORMS_AUTH\MVCFormsAuth\MVCFormsAuth\bin\DevExpress.Data.v17.1.dll
-C:\_SOURCE\_MVC_FORMS_AUTH\MVCFormsAuth\MVCFormsAuth\bin\DevExpress.Printing.v17.1.Core.dll
-C:\_SOURCE\_MVC_FORMS_AUTH\MVCFormsAuth\MVCFormsAuth\bin\DevExpress.RichEdit.v17.1.Core.dll
-C:\_SOURCE\_MVC_FORMS_AUTH\MVCFormsAuth\MVCFormsAuth\bin\DevExpress.Utils.v17.1.dll
-C:\_SOURCE\_MVC_FORMS_AUTH\MVCFormsAuth\MVCFormsAuth\bin\DevExpress.Web.ASPxThemes.v17.1.dll
-C:\_SOURCE\_MVC_FORMS_AUTH\MVCFormsAuth\MVCFormsAuth\bin\DevExpress.Web.Mvc5.v17.1.dll
-C:\_SOURCE\_MVC_FORMS_AUTH\MVCFormsAuth\MVCFormsAuth\bin\DevExpress.Web.v17.1.dll
 C:\_SOURCE\_MVC_FORMS_AUTH\MVCFormsAuth\MVCFormsAuth\bin\EntityFramework.dll
 C:\_SOURCE\_MVC_FORMS_AUTH\MVCFormsAuth\MVCFormsAuth\bin\EntityFramework.SqlServer.dll
 C:\_SOURCE\_MVC_FORMS_AUTH\MVCFormsAuth\MVCFormsAuth\bin\Microsoft.Web.Infrastructure.dll

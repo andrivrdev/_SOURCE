@@ -171,7 +171,7 @@ namespace WinFormsClient.FORMS
 
                 while (worker_threadMustRun)
                 {
-                    if (xCount == 10000)
+                    if (xCount >= 1000) //Every 1000
                     {
                         xCount = 0;
 
@@ -186,7 +186,7 @@ namespace WinFormsClient.FORMS
                     // clsSE.WriteLog(3, "Receiving command: " + result, "frmMain", "StartWorkerThread");
 
                     xCount = xCount + 1;
-                    Thread.Sleep(100);
+                    Thread.Sleep(100); //Fast
                 }
 
                 lock (thisLock)
