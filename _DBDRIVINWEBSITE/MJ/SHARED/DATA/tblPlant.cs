@@ -252,7 +252,7 @@ namespace SHARED.DATA
                     FROM
                         dbo.tblEvent e
                     WHERE
-                        e.EventCategoryID = 10002
+                        e.EventCategoryID = 6
                     )  
                     ORDER BY
                     ph.CreatedDateTime DESC)) AS LastProblem,
@@ -272,7 +272,7 @@ namespace SHARED.DATA
                     FROM
                         dbo.tblEvent e
                     WHERE
-                        e.EventCategoryID = 10002
+                        e.EventCategoryID = 6
                     )  
                     ORDER BY
                     ph.CreatedDateTime DESC) AS LastProblemDateTime,
