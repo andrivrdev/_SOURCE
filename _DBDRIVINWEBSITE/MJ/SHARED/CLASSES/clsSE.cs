@@ -283,7 +283,7 @@ namespace SHARED.CLASSES
 
 
                     INSERT INTO [dbo].[tblEvent] ([EventCategoryID], [Name])
-                    VALUES (13, N'X1 Placeholder');
+                    VALUES (1, N'Domes Off');
 
 
                     INSERT INTO [dbo].[tblEvent] ([EventCategoryID], [Name])
@@ -333,7 +333,8 @@ namespace SHARED.CLASSES
                     INSERT INTO [dbo].[tblEvent] ([EventCategoryID], [Name])
                     VALUES (12, N'Took a Cutting');
 
-
+                    ALTER TABLE [dbo].[tblCompany]
+                    ADD [AddCuttingsTo] bigint DEFAULT 0 NOT NULL;
 
 
 

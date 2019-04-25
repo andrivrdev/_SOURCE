@@ -15,6 +15,7 @@ namespace SHARED.DATA
         public string Name { get; set; }
         public string Password { get; set; }
         public DateTime CreatedDateTime { get; set; }
+        public Int64 AddCuttingsTo { get; set; }
         public DataTable dtCompany { get; set; }
         public IEnumerable<tblCompany> ieCompany { get; set; }
 
@@ -28,7 +29,8 @@ namespace SHARED.DATA
                   dbo.tblCompany.ID,
                   dbo.tblCompany.Name,
                   dbo.tblCompany.Password,
-                  dbo.tblCompany.CreatedDateTime
+                  dbo.tblCompany.CreatedDateTime,
+                  dbo.tblCompany.AddCuttingsTo
                 FROM
                   dbo.tblCompany
                 ";
@@ -52,6 +54,7 @@ namespace SHARED.DATA
                     xtblCompany.Name = dr["Name"].ToString();
                     xtblCompany.Password = dr["Password"].ToString();
                     xtblCompany.CreatedDateTime = Convert.ToDateTime(dr["CreatedDateTime"]);
+                    xtblCompany.AddCuttingsTo = Convert.ToInt64(dr["AddCuttingsTo"]);
 
                     xCompanies.Add(xtblCompany);
                 }
@@ -59,5 +62,18 @@ namespace SHARED.DATA
                 ieCompany = xCompanies;
             }
         }
+
+        public void UpdateCuttingGroup(int xID, int xGroupID)
+        {
+            List<string> fFields = new List<string>();
+            List<string> vValues = new List<string>();
+
+            fFields.Add("AddCuttingsTo");
+            vValues.Add(xGroupID.ToString());
+
+            clsSE xclsSE = new clsSE();
+            xclsSE.sqlUpdateRec("tblCompany", fFields, vValues, "[ID] = '" + xID + "'");
+        }
+
     }
 }

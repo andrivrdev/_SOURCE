@@ -166,5 +166,16 @@ namespace MJ2.Controllers
 
             return View(xOrdered);
         }
+
+        [HttpPost]
+        public PartialViewResult SelectAsCuttingGroup(string xitemid)
+        {
+            SHARED.DATA.tblCompany xtblCompany = new tblCompany();
+            xtblCompany.UpdateCuttingGroup(Convert.ToInt32(Session["gtblCompany_ID"]), Convert.ToInt32(xitemid));
+
+            Session["gtblCompany_AddCuttingsTo"] = Convert.ToInt32(xitemid);
+            return null;
+        }
+
     }
 }

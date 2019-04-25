@@ -63,6 +63,7 @@ namespace MJ2.Controllers
                     {
                         Session["gtblCompany_ID"] = dr["ID"];
                         Session["gtblCompany_Name"] = dr["Name"];
+                        Session["gtblCompany_AddCuttingsTo"] = dr["AddCuttingsTo"];
 
                         FormsAuthentication.SetAuthCookie(u.Name.ToUpper(), false);
                         if (!string.IsNullOrEmpty(returnUrl))

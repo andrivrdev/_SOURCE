@@ -195,7 +195,7 @@
 
                         <div class="card-footer bg-transparent">
                             <table style="opacity:0.85;">
-                                <tr style="padding: 0 !important;">
+                                <tr style="max-height:10px; padding: 0 !important;">
                                     <td style="padding: 0 !important;font-size:smaller">
                                         <form id="your-form2" method="post">
                                             <input type="hidden" class="form-control" name="validation_Command" id="validation_Command" value="GotoPlants">
@@ -206,6 +206,23 @@
                                     <td style="padding: 0 !important;font-size:smaller">
                                         <button type="button" class="btn btn-outline-warning btn-sm glyphicon acf-ec-glyph-icon acf-ec-edit" data-toggle="modal" data-target="#exampleModalCenter" data-addedit="edit" data-xid="@item.ID" data-code="@item.Code" data-description="@item.Description" data-createddatetime="@item.CreatedDateTime">&nbsp; Edit</button>
                                     </td>
+
+                                    <td width="100%"></td>
+                                    <td >
+                                        @{ 
+                                            string selectascuttinggroup = "selectascuttinggroup_" + item.ID.ToString();
+                                            if (item.ID.ToString() == Session["gtblCompany_AddCuttingsTo"].ToString())
+                                            {
+                                                <span id="@selectascuttinggroup" onclick="selectascuttinggroup('@item.ID')" style="font-size:30px;" width="20px;" class="w3-right-align w3-text-light-green glyphicon acf-ec-glyph-icon acf-ec-switch-7"></span>
+                                            }
+                                            else
+                                            {
+                                                <span id="@selectascuttinggroup" onclick="selectascuttinggroup('@item.ID')" style="font-size:30px;" width="20px;" class="w3-right-align w3-text-light-grey glyphicon acf-ec-glyph-icon acf-ec-switch-6"></span>
+
+                                            }
+                                        }
+                                    </td>
+
                                 </tr>
 
                             </table>
@@ -369,6 +386,55 @@
                 }
             }
         }
+
+        function selectascuttinggroup(xitemid) {
+            //document.getElementById('modal_note').style.display = 'none';
+
+            var formData = {
+                'xitemid': xitemid
+            };
+
+            $.ajax({
+                'type': 'POST',
+                url: "/" + "@SHARED.CLASSES.clsGlobal.gAppName" + "/Group/SelectAsCuttingGroup",
+                data: formData,
+
+                dataType: "text",
+                beforeSend: function () {
+                },
+
+                success: function () {
+                    var elements = document.querySelectorAll('[id^="selectascuttinggroup_"]');
+                    for (i = 0; i < elements.length; i++) {
+                        elements[i].classList.remove("acf-ec-switch-6");
+                        elements[i].classList.remove("w3-text-light-grey");
+                        elements[i].classList.remove("acf-ec-switch-7");
+                        elements[i].classList.remove("w3-text-light-green");
+
+                        if (elements[i].id.indexOf(xitemid) == -1) {
+
+                            elements[i].classList.add("acf-ec-switch-6");
+                            elements[i].classList.add("w3-text-light-grey");
+                        }
+                        else {
+                            elements[i].classList.add("acf-ec-switch-7");
+                            elements[i].classList.add("w3-text-light-green");
+                        }
+
+                    }
+
+
+
+
+                },
+                error: function () {
+                    alert('error');
+
+                }
+            });
+        }
+        
+
     </script>
 
 }

@@ -1116,69 +1116,70 @@ namespace SHARED.DATA
 
         public void TakeCutting(int xID)
         {
-            //Create garden if not exist
+            //Find cutting garden
+            tblCompany xtblCompany = new tblCompany();
+            xtblCompany.LoadData();
+
             tblGroup xtblGroup = new tblGroup();
             xtblGroup.LoadData();
 
             tblPlant xtblPlant = new tblPlant();
             xtblPlant.LoadData(xID, 0, false);
 
-
-
             //Get Company ID
             var xFiltered = xtblGroup.ieGroup.Where(r => r.ID == xtblPlant.iePlant.FirstOrDefault().GroupID);
             var xCompanyID = xFiltered.FirstOrDefault().CompanyID;
 
+            //Get Company Cutting Garden
+            var xThisCompany = xtblCompany.ieCompany.Where(r => r.ID == xCompanyID);
+            var xCuttingGardenID = xThisCompany.FirstOrDefault().AddCuttingsTo;
+
             //Look for garden
-            xFiltered = xtblGroup.ieGroup.Where(r => (r.Code.ToString() == "Cuttings") && (r.CompanyID == xCompanyID));
+            xFiltered = xtblGroup.ieGroup.Where(r => (r.ID.ToString() == xCuttingGardenID.ToString()));
 
-            //Create garden
-            if (xFiltered.Count() == 0)
+            //If Exists
+            if (xFiltered.Count() > 0)
             {
-                xtblGroup.AddRec(Convert.ToInt32(xCompanyID), "Cuttings", "New cuttings", null);
-                xtblGroup.LoadData();
+                string xPrefix = xFiltered.FirstOrDefault().Code;
+
+                //Generate plant name
+                tblPlant xtblCuttingGardenPlant = new tblPlant();
+                xtblCuttingGardenPlant.LoadData(Convert.ToInt32(xCuttingGardenID), 1, false);
+
+                var xC1 = 1;
+                var xMatchingName = xtblCuttingGardenPlant.iePlant.Where(r => r.Name == xPrefix + xC1.ToString().PadLeft(3, '0'));
+
+                while (xMatchingName.Count() > 0)
+                {
+                    xC1 = xC1 + 1;
+                    xMatchingName = xtblCuttingGardenPlant.iePlant.Where(r => r.Name == xPrefix + xC1.ToString().PadLeft(3, '0'));
+                }
+
+                //Create the plant
+                xtblPlant.AddRec(Convert.ToInt32(xCuttingGardenID), xPrefix + xC1.ToString().PadLeft(3, '0'), null);
+
+                //Find created plant id
+                xtblCuttingGardenPlant.LoadData(Convert.ToInt32(xCuttingGardenID), 1, false);
+                xMatchingName = xtblCuttingGardenPlant.iePlant.Where(r => r.Name == xPrefix + xC1.ToString().PadLeft(3, '0'));
+                var xCreatedPlantID = xMatchingName.FirstOrDefault().ID;
+
+                //Add event to source plant
+                tblPlantHistory xtblPlantHistory = new tblPlantHistory();
+                xtblPlantHistory.AddRec(xID, "30", xCreatedPlantID.ToString(), null, false);
+
+                //Clone properties to new cutting
+                //Phase
+                xtblPlantHistory.AddRec(Convert.ToInt32(xCreatedPlantID), "4", null, null, false);
+                //Variety
+                if (xtblPlant.iePlant.FirstOrDefault().Variety != null)
+                {
+                    xtblPlantHistory.AddRec(Convert.ToInt32(xCreatedPlantID), "25", xtblPlant.iePlant.FirstOrDefault().Variety, null, false);
+                }
+                //Cutting of
+                xtblPlantHistory.AddRec(Convert.ToInt32(xCreatedPlantID), "24", xtblPlant.iePlant.FirstOrDefault().ID.ToString(), null, false);
             }
 
-            //Get cuttings garden id
-            xFiltered = xtblGroup.ieGroup.Where(r => (r.Code.ToString() == "Cuttings") && (r.CompanyID == xCompanyID));
-            var xCuttingGardenID = xFiltered.FirstOrDefault().ID;
 
-            //Generate plant name
-            tblPlant xtblCuttingGardenPlant = new tblPlant();
-            xtblCuttingGardenPlant.LoadData(Convert.ToInt32(xCuttingGardenID), 1, false);
-
-            var xName = xtblPlant.iePlant.FirstOrDefault().Name;
-            var xC1 = 1;
-            var xMatchingName = xtblCuttingGardenPlant.iePlant.Where(r => r.Name == xName + " - " + xC1.ToString().PadLeft(2,'0'));
-
-            while (xMatchingName.Count() > 0)
-            {
-                xC1 = xC1 + 1;
-                xMatchingName = xtblCuttingGardenPlant.iePlant.Where(r => r.Name == xName + " - " + xC1.ToString().PadLeft(2, '0'));
-            }
-
-            //Create the plant
-            xtblPlant.AddRec(Convert.ToInt32(xCuttingGardenID), xName + " - " + xC1.ToString().PadLeft(2, '0'), null);
-
-            //Find created plant id
-            xtblCuttingGardenPlant.LoadData(Convert.ToInt32(xCuttingGardenID), 1, false);
-            xMatchingName = xtblCuttingGardenPlant.iePlant.Where(r => r.Name == xName + " - " + xC1.ToString().PadLeft(2, '0'));
-            var xCreatedPlantID = xMatchingName.FirstOrDefault().ID;
-
-            //Add event to source plant
-            tblPlantHistory xtblPlantHistory = new tblPlantHistory();
-            xtblPlantHistory.AddRec(xID, "30", xCreatedPlantID.ToString(), null, false);
-
-            //Clone properties to new cutting
-            //Phase
-            xtblPlantHistory.AddRec(Convert.ToInt32(xCreatedPlantID), "4", null, null, false);
-            //Variety
-            if (xtblPlant.iePlant.FirstOrDefault().Variety != null)
-            {
-                xtblPlantHistory.AddRec(Convert.ToInt32(xCreatedPlantID), "25", xtblPlant.iePlant.FirstOrDefault().Variety, null, false);
-            }
-            //Cutting of
-            xtblPlantHistory.AddRec(Convert.ToInt32(xCreatedPlantID), "24", xtblPlant.iePlant.FirstOrDefault().ID.ToString(), null, false);
 
 
             var x = 1;
