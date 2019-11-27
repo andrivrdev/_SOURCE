@@ -31,13 +31,13 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.btnAccept = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.edtName = new DevExpress.XtraEditors.TextEdit();
+            this.edtEmail = new DevExpress.XtraEditors.TextEdit();
             this.label1 = new System.Windows.Forms.Label();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.edtPassword = new DevExpress.XtraEditors.TextEdit();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnRegister = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.edtName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edtEmail.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edtPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,6 +58,7 @@
             this.btnAccept.Size = new System.Drawing.Size(75, 23);
             this.btnAccept.TabIndex = 2;
             this.btnAccept.Text = "Accept";
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // btnCancel
             // 
@@ -67,14 +68,15 @@
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // edtName
+            // edtEmail
             // 
-            this.edtName.Location = new System.Drawing.Point(71, 191);
-            this.edtName.Name = "edtName";
-            this.edtName.Properties.MaxLength = 50;
-            this.edtName.Size = new System.Drawing.Size(201, 20);
-            this.edtName.TabIndex = 0;
+            this.edtEmail.Location = new System.Drawing.Point(71, 191);
+            this.edtEmail.Name = "edtEmail";
+            this.edtEmail.Properties.MaxLength = 50;
+            this.edtEmail.Size = new System.Drawing.Size(201, 20);
+            this.edtEmail.TabIndex = 0;
             // 
             // label1
             // 
@@ -85,13 +87,13 @@
             this.label1.TabIndex = 21;
             this.label1.Text = "Password";
             // 
-            // textEdit1
+            // edtPassword
             // 
-            this.textEdit1.Location = new System.Drawing.Point(71, 217);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.MaxLength = 50;
-            this.textEdit1.Size = new System.Drawing.Size(201, 20);
-            this.textEdit1.TabIndex = 1;
+            this.edtPassword.Location = new System.Drawing.Point(71, 217);
+            this.edtPassword.Name = "edtPassword";
+            this.edtPassword.Properties.MaxLength = 50;
+            this.edtPassword.Size = new System.Drawing.Size(201, 20);
+            this.edtPassword.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -123,19 +125,19 @@
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textEdit1);
+            this.Controls.Add(this.edtPassword);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.edtName);
+            this.Controls.Add(this.edtEmail);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Please sign in";
-            ((System.ComponentModel.ISupportInitialize)(this.edtName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edtEmail.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edtPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -147,9 +149,9 @@
         private System.Windows.Forms.Label lblUser;
         private DevExpress.XtraEditors.SimpleButton btnAccept;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
-        public DevExpress.XtraEditors.TextEdit edtName;
+        public DevExpress.XtraEditors.TextEdit edtEmail;
         private System.Windows.Forms.Label label1;
-        public DevExpress.XtraEditors.TextEdit textEdit1;
+        public DevExpress.XtraEditors.TextEdit edtPassword;
         private System.Windows.Forms.PictureBox pictureBox1;
         private DevExpress.XtraEditors.SimpleButton btnRegister;
     }

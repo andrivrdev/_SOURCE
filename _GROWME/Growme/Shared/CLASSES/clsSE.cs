@@ -13,7 +13,66 @@ namespace Shared.CLASSES
 {
     public class clsSE
     {
-        public string SerializeCommand(string xCommand, Object xDT)
+        public string EncodeMessage(string xCommand, Object xObject)
+        {
+            try
+            {
+                //Serialize
+                var xData = SerializeData(xCommand, xObject);
+
+                //Encrypt
+                xData = Encrypt(xData);
+
+                //Compress if large
+                if (xData.Length >= 1000000)
+                {
+                    xData = "1" + CompressString(xData);
+                }
+                else
+                {
+                    xData = "0" + CompressString(xData);
+                }
+
+                return xData;
+            }
+            catch (Exception Ex)
+            {
+                return "";
+            }
+        }
+
+        public string Send(string xCommand, Object xObject)
+        {
+            try
+            {
+                var xData = EncodeMessage(xCommand, xObject);
+                
+                //Send
+                var remoteAddress = new System.ServiceModel.EndpointAddress(clsGlobal.gEndpointAddress);
+
+                using (var xwsServerSoapClient = new wsGrowmeAPI.GrowmeWSSoapClient(new System.ServiceModel.BasicHttpBinding(), remoteAddress))
+                {
+                    //set timeout
+                    xwsServerSoapClient.Endpoint.Binding.SendTimeout = new TimeSpan(0, 0, 0, 1000);
+
+                    //call web service method
+                    var xResponse = xwsServerSoapClient.DoWork(xData);
+
+                    return xResponse;
+                }
+
+
+                
+                //return DecodeMessage(xResponse);
+
+            }
+            catch (Exception Ex)
+            {
+                return "";
+            }
+        }
+
+        public string SerializeData(string xCommand, Object xDT)
         {
             try
             {
@@ -22,7 +81,7 @@ namespace Shared.CLASSES
 
                 JSONresult = xCommand + "||||/|" + JSONresult;
 
-                return Encrypt(JSONresult);
+                return JSONresult;
             }
             catch (Exception Ex)
             {
