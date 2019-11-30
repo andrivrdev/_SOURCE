@@ -108,12 +108,12 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnRegister.Location = new System.Drawing.Point(15, 285);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(257, 23);
             this.btnRegister.TabIndex = 4;
-            this.btnRegister.Text = "Register a New Account (Free)";
+            this.btnRegister.Text = "Register a New Account";
+            this.btnRegister.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // frmLogin
             // 

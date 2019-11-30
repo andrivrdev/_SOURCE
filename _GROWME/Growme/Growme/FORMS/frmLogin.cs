@@ -28,6 +28,7 @@ namespace Growme.FORMS
 
             clsSE xclsSE = new clsSE();
             var xresult = xclsSE.Send("Test", xData);
+            xresult = xclsSE.DecodeMessage(xresult);
 
             MessageBox.Show(xresult);
 

@@ -24,16 +24,41 @@ namespace Shared.CLASSES
                 xData = Encrypt(xData);
 
                 //Compress if large
-                if (xData.Length >= 1000000)
+                if (xData.Length >= 100000)
                 {
                     xData = "1" + CompressString(xData);
                 }
                 else
                 {
-                    xData = "0" + CompressString(xData);
+                    xData = "0" + xData;
                 }
 
                 return xData;
+            }
+            catch (Exception Ex)
+            {
+                return "";
+            }
+        }
+
+        public string DecodeMessage(string xData)
+        {
+            try
+            {
+                var toDecode = xData;
+                toDecode = toDecode.Remove(0, 1);
+
+                //Check if compressed
+                if (xData[0] == '1')
+                {
+                    //Decompress
+                    toDecode = DecompressString(toDecode);
+                }
+
+                //Decrypt
+                toDecode = Decrypt(toDecode);
+
+                return toDecode;
             }
             catch (Exception Ex)
             {
@@ -53,7 +78,7 @@ namespace Shared.CLASSES
                 using (var xwsServerSoapClient = new wsGrowmeAPI.GrowmeWSSoapClient(new System.ServiceModel.BasicHttpBinding(), remoteAddress))
                 {
                     //set timeout
-                    xwsServerSoapClient.Endpoint.Binding.SendTimeout = new TimeSpan(0, 0, 0, 1000);
+                    xwsServerSoapClient.Endpoint.Binding.SendTimeout = new TimeSpan(0, 0, 0, clsGlobal.gSoapCallTimeout);
 
                     //call web service method
                     var xResponse = xwsServerSoapClient.DoWork(xData);
@@ -79,7 +104,7 @@ namespace Shared.CLASSES
                 string JSONresult;
                 JSONresult = JsonConvert.SerializeObject(xDT);
 
-                JSONresult = xCommand + "||||/|" + JSONresult;
+                JSONresult = xCommand + clsGlobal.gMessageCommandSeperator + JSONresult;
 
                 return JSONresult;
             }

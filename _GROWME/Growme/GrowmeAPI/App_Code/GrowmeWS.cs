@@ -25,7 +25,18 @@ public class GrowmeWS : System.Web.Services.WebService
     [WebMethod]
     public string DoWork(string xData)
     {
-        return "Hello World";
+        //var xMessage = xData.Remove(0, 1);
+        var xMessage = xData;
+
+        clsSE xclsSE = new clsSE();
+        xMessage = xclsSE.DecodeMessage(xMessage);
+
+        if (xMessage.Contains("Test" + clsGlobal.gMessageCommandSeperator))
+        {
+            return xclsSE.EncodeMessage("", "Test received");
+        }
+
+        return "";
     }
 
 }

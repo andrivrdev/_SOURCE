@@ -19,5 +19,8 @@ namespace Shared.CLASSES
         public static string gEndpointAddress = "http://localhost:49752/GrowmeWS.asmx";
 
         public const string gWebServiceNamespace = "http://localhost/GrowmeAPI/api";
+        public static int gSoapCallTimeout = 1000;
+
+        public const string gMessageCommandSeperator = "||||/|";
     }
 }
