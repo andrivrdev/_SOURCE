@@ -24,7 +24,7 @@ namespace Shared.CLASSES
                 xData = Encrypt(xData);
 
                 //Compress if large
-                if (xData.Length >= 100000)
+                if (xData.Length >= clsGlobal.gCompressIfStringLonger)
                 {
                     xData = "1" + CompressString(xData);
                 }
@@ -78,18 +78,13 @@ namespace Shared.CLASSES
                 using (var xwsServerSoapClient = new wsGrowmeAPI.GrowmeWSSoapClient(new System.ServiceModel.BasicHttpBinding(), remoteAddress))
                 {
                     //set timeout
-                    xwsServerSoapClient.Endpoint.Binding.SendTimeout = new TimeSpan(0, 0, 0, clsGlobal.gSoapCallTimeout);
+                    xwsServerSoapClient.Endpoint.Binding.SendTimeout = new TimeSpan(0, 0, 0, 0, clsGlobal.gSoapCallTimeout);
 
                     //call web service method
                     var xResponse = xwsServerSoapClient.DoWork(xData);
 
                     return xResponse;
                 }
-
-
-                
-                //return DecodeMessage(xResponse);
-
             }
             catch (Exception Ex)
             {

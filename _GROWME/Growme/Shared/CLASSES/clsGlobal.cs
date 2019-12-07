@@ -13,14 +13,18 @@ namespace Shared.CLASSES
         public static string gVIKey = "@AzzeM81YydevLQJ";
 
         //live
-        //public static string gEndpointAddress = "http://andrivrddns.dlinkddns.com:8081//GrowmeAPI/GrowmeWS.asmx";
+        public static string gEndpointAddress = "http://andrivrddns.dlinkddns.com:8081//GrowmeAPI/GrowmeWS.asmx";
 
         //dev
-        public static string gEndpointAddress = "http://localhost:49752/GrowmeWS.asmx";
+        //public static string gEndpointAddress = "http://localhost:49752/GrowmeWS.asmx";
 
         public const string gWebServiceNamespace = "http://localhost/GrowmeAPI/api";
-        public static int gSoapCallTimeout = 1000;
+        public static int gSoapCallTimeout = 5000;
 
         public const string gMessageCommandSeperator = "||||/|";
+
+        public const int gCompressIfStringLonger = 100000;
+
+        
     }
 }

@@ -33,10 +33,10 @@ public class GrowmeWS : System.Web.Services.WebService
 
         if (xMessage.Contains("Test" + clsGlobal.gMessageCommandSeperator))
         {
-            return xclsSE.EncodeMessage("", "Test received");
+            return xclsSE.EncodeMessage("Response", "Test received");
         }
 
-        return "";
+        return "Error";
     }
 
 }
