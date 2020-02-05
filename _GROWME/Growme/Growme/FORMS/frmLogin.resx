@@ -117,4 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="DevExpress.Data.v18.2" name="DevExpress.Data.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="pictureEdit1.EditValue" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE4LjIsIFZlcnNpb249MTguMi42
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAGICAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBlbmFibGUt
+        YmFja2dyb3VuZD0ibmV3IDAgMCAzMiAzMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgaWQ9IkxheWVyXzEi
+        Pg0KICA8ZyBpZD0iU2VjdXJpdHlfeDVGX1Blcm1pc3Npb24iPg0KICAgIDxwYXRoIGQ9Ik0yNywxMGgt
+        M1Y4YzAtNC40LTMuNi04LTgtOFM4LDMuNiw4LDh2Mkg1Yy0wLjYsMC0xLDAuNS0xLDF2MThjMCwwLjUs
+        MC40LDEsMSwxaDIyYzAuNiwwLDEtMC41LDEtMVYxMSAgIEMyOCwxMC41LDI3LjYsMTAsMjcsMTB6IE0x
+        OCwyNGgtNGwxLjQtNC4xYy0wLjgtMC4zLTEuNC0xLTEuNC0xLjljMC0xLjEsMC45LTIsMi0yczIsMC45
+        LDIsMmMwLDAuOS0wLjYsMS42LTEuNCwxLjlMMTgsMjR6IE0xMiwxMCAgIFY4YzAtMi4yLDEuOC00LDQt
+        NHM0LDEuOCw0LDR2MkgxMnoiIGZpbGw9IiNGRkIxMTUiIGNsYXNzPSJZZWxsb3ciIC8+DQogIDwvZz4N
+        Cjwvc3ZnPgs=
+</value>
+  </data>
 </root>

@@ -12,83 +12,15 @@ namespace Shared.wsGrowmeAPI {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://localhost/GrowmeAPI/api", ConfigurationName="wsGrowmeAPI.GrowmeWSSoap")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://andrivrddns.dlinkddns.com:8081//GrowmeAPI", ConfigurationName="wsGrowmeAPI.GrowmeWSSoap")]
     public interface GrowmeWSSoap {
         
-        // CODEGEN: Generating message contract since element name xData from namespace http://localhost/GrowmeAPI/api is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/GrowmeAPI/api/DoWork", ReplyAction="*")]
-        Shared.wsGrowmeAPI.DoWorkResponse DoWork(Shared.wsGrowmeAPI.DoWorkRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://andrivrddns.dlinkddns.com:8081//GrowmeAPI/DoWork", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string DoWork(string xData);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/GrowmeAPI/api/DoWork", ReplyAction="*")]
-        System.Threading.Tasks.Task<Shared.wsGrowmeAPI.DoWorkResponse> DoWorkAsync(Shared.wsGrowmeAPI.DoWorkRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class DoWorkRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="DoWork", Namespace="http://localhost/GrowmeAPI/api", Order=0)]
-        public Shared.wsGrowmeAPI.DoWorkRequestBody Body;
-        
-        public DoWorkRequest() {
-        }
-        
-        public DoWorkRequest(Shared.wsGrowmeAPI.DoWorkRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://localhost/GrowmeAPI/api")]
-    public partial class DoWorkRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string xData;
-        
-        public DoWorkRequestBody() {
-        }
-        
-        public DoWorkRequestBody(string xData) {
-            this.xData = xData;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class DoWorkResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="DoWorkResponse", Namespace="http://localhost/GrowmeAPI/api", Order=0)]
-        public Shared.wsGrowmeAPI.DoWorkResponseBody Body;
-        
-        public DoWorkResponse() {
-        }
-        
-        public DoWorkResponse(Shared.wsGrowmeAPI.DoWorkResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://localhost/GrowmeAPI/api")]
-    public partial class DoWorkResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string DoWorkResult;
-        
-        public DoWorkResponseBody() {
-        }
-        
-        public DoWorkResponseBody(string DoWorkResult) {
-            this.DoWorkResult = DoWorkResult;
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="http://andrivrddns.dlinkddns.com:8081//GrowmeAPI/DoWork", ReplyAction="*")]
+        System.Threading.Tasks.Task<string> DoWorkAsync(string xData);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -118,29 +50,12 @@ namespace Shared.wsGrowmeAPI {
                 base(binding, remoteAddress) {
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Shared.wsGrowmeAPI.DoWorkResponse Shared.wsGrowmeAPI.GrowmeWSSoap.DoWork(Shared.wsGrowmeAPI.DoWorkRequest request) {
-            return base.Channel.DoWork(request);
-        }
-        
         public string DoWork(string xData) {
-            Shared.wsGrowmeAPI.DoWorkRequest inValue = new Shared.wsGrowmeAPI.DoWorkRequest();
-            inValue.Body = new Shared.wsGrowmeAPI.DoWorkRequestBody();
-            inValue.Body.xData = xData;
-            Shared.wsGrowmeAPI.DoWorkResponse retVal = ((Shared.wsGrowmeAPI.GrowmeWSSoap)(this)).DoWork(inValue);
-            return retVal.Body.DoWorkResult;
+            return base.Channel.DoWork(xData);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Shared.wsGrowmeAPI.DoWorkResponse> Shared.wsGrowmeAPI.GrowmeWSSoap.DoWorkAsync(Shared.wsGrowmeAPI.DoWorkRequest request) {
-            return base.Channel.DoWorkAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Shared.wsGrowmeAPI.DoWorkResponse> DoWorkAsync(string xData) {
-            Shared.wsGrowmeAPI.DoWorkRequest inValue = new Shared.wsGrowmeAPI.DoWorkRequest();
-            inValue.Body = new Shared.wsGrowmeAPI.DoWorkRequestBody();
-            inValue.Body.xData = xData;
-            return ((Shared.wsGrowmeAPI.GrowmeWSSoap)(this)).DoWorkAsync(inValue);
+        public System.Threading.Tasks.Task<string> DoWorkAsync(string xData) {
+            return base.Channel.DoWorkAsync(xData);
         }
     }
 }

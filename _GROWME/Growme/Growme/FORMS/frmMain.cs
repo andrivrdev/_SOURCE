@@ -31,15 +31,16 @@ namespace Growme.FORMS
         {
             timer1.Stop();
 
-            frmLogin xForm = new frmLogin();
-
-            if (xForm.ShowDialog() == DialogResult.OK)
+            using (var xForm = new frmLogin())
             {
-                this.Enabled = true;
-            }
-            else
-            {
-                Close();
+                if (xForm.ShowDialog() == DialogResult.OK)
+                {
+                    this.Enabled = true;
+                }
+                else
+                {
+                    Close();
+                }
             }
         }
     }

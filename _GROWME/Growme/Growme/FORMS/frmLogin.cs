@@ -27,7 +27,8 @@ namespace Growme.FORMS
             xData.Add(edtPassword.Text);
 
             clsSE xclsSE = new clsSE();
-            var xresult = xclsSE.Send("Test", xData);
+            //var xresult = xclsSE.Send("Test", xData);
+            var xresult = xclsSE.Send(edtEmail.Text, xData);
             xresult = xclsSE.DecodeMessage(xresult);
 
             MessageBox.Show(xresult);
@@ -38,6 +39,26 @@ namespace Growme.FORMS
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            using (var xForm = new frmRegister())
+            {
+                xForm.ShowDialog();
+            }
+
+            edtEmail.Focus();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            using (var xForm = new frmForgotPassword())
+            {
+                xForm.ShowDialog();
+            }
+
+            edtEmail.Focus();
         }
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://localhost/GrowmeAPI/api" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://localhost/GrowmeAPI/api" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://andrivrddns.dlinkddns.com:8081//GrowmeAPI" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://andrivrddns.dlinkddns.com:8081//GrowmeAPI" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
-    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/GrowmeAPI/api">
+    <s:schema elementFormDefault="qualified" targetNamespace="http://andrivrddns.dlinkddns.com:8081//GrowmeAPI">
       <s:element name="DoWork">
         <s:complexType>
           <s:sequence>
@@ -16,6 +16,7 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
   <wsdl:message name="DoWorkSoapIn">
@@ -24,16 +25,28 @@
   <wsdl:message name="DoWorkSoapOut">
     <wsdl:part name="parameters" element="tns:DoWorkResponse" />
   </wsdl:message>
+  <wsdl:message name="DoWorkHttpGetIn">
+    <wsdl:part name="xData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DoWorkHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="GrowmeWSSoap">
     <wsdl:operation name="DoWork">
       <wsdl:input message="tns:DoWorkSoapIn" />
       <wsdl:output message="tns:DoWorkSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:portType name="GrowmeWSHttpGet">
+    <wsdl:operation name="DoWork">
+      <wsdl:input message="tns:DoWorkHttpGetIn" />
+      <wsdl:output message="tns:DoWorkHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:binding name="GrowmeWSSoap" type="tns:GrowmeWSSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="DoWork">
-      <soap:operation soapAction="http://localhost/GrowmeAPI/api/DoWork" style="document" />
+      <soap:operation soapAction="http://andrivrddns.dlinkddns.com:8081//GrowmeAPI/DoWork" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -45,7 +58,7 @@
   <wsdl:binding name="GrowmeWSSoap12" type="tns:GrowmeWSSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="DoWork">
-      <soap12:operation soapAction="http://localhost/GrowmeAPI/api/DoWork" style="document" />
+      <soap12:operation soapAction="http://andrivrddns.dlinkddns.com:8081//GrowmeAPI/DoWork" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -54,12 +67,27 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="GrowmeWSHttpGet" type="tns:GrowmeWSHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="DoWork">
+      <http:operation location="/DoWork" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="GrowmeWS">
     <wsdl:port name="GrowmeWSSoap" binding="tns:GrowmeWSSoap">
-      <soap:address location="http://localhost:49752/GrowmeWS.asmx" />
+      <soap:address location="http://localhost/growmeapi/GrowmeWS.asmx" />
     </wsdl:port>
     <wsdl:port name="GrowmeWSSoap12" binding="tns:GrowmeWSSoap12">
-      <soap12:address location="http://localhost:49752/GrowmeWS.asmx" />
+      <soap12:address location="http://localhost/growmeapi/GrowmeWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GrowmeWSHttpGet" binding="tns:GrowmeWSHttpGet">
+      <http:address location="http://localhost/growmeapi/GrowmeWS.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
