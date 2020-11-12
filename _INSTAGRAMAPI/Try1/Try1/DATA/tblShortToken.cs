@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Try1.DATA
 {
-    public class tblToken
+    public class tblShortToken
     {
         public string access_token { get; set; }
         public string user_id { get; set; }
 
-        public tblToken GetTokenAndUserIdFromCode(string URI_access_token, string client_id, string client_secret, string redirect_uri, string code)
+        public tblShortToken GetTokenAndUserIdFromCode(string URI_access_token, string client_id, string client_secret, string redirect_uri, string code)
         {
             var client = new RestClient(URI_access_token);
             client.Timeout = -1;
@@ -26,8 +26,8 @@ namespace Try1.DATA
             request.AddParameter("code", code);
             IRestResponse response = client.Execute(request);
 
-            tblToken xtblToken = new tblToken();
-            xtblToken = JsonConvert.DeserializeObject<tblToken>(response.Content);
+            tblShortToken xtblToken = new tblShortToken();
+            xtblToken = JsonConvert.DeserializeObject<tblShortToken>(response.Content);
 
             return xtblToken;
         }

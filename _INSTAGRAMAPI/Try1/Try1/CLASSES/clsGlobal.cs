@@ -9,9 +9,16 @@ namespace Try1.CLASSES
 {
     public static class clsGlobal
     {
-        public static string g_URI_access_token = "https://api.instagram.com/oauth/access_token";
+
+        public static string gDBSubFolderName = "Database";
+        public static string gDBName = "DB.dat";
+
         public static string g_client_id = "1101018996984145";
         public static string g_client_secret = "a3eac22d8a35bb4400e1de27b46a415b";
+
+        public static string g_URI_access_token = "https://api.instagram.com/oauth/access_token";
+
+        public static string g_URI_long_access_token = "https://graph.instagram.com/access_token?grant_type=ig_exchange_token&&";
         //public static string grant_type { get; set; }
         public static string g_redirect_uri = "https://avrdev001.azurewebsites.net/";
         public static string g_code { get; set; }

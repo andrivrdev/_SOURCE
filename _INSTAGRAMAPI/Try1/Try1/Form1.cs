@@ -87,7 +87,7 @@ namespace Try1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            tblToken xtblToken = new tblToken();
+            tblShortToken xtblToken = new tblShortToken();
 
             xtblToken = xtblToken.GetTokenAndUserIdFromCode(clsGlobal.g_URI_access_token, clsGlobal.g_client_id, clsGlobal.g_client_secret, clsGlobal.g_redirect_uri, edtCode.Text);
             textBox2.Text = xtblToken.access_token;
@@ -103,15 +103,23 @@ namespace Try1
 
                     if (!(xCode is null))
                     {
-                        tblToken xtblToken = new tblToken();
+                        tblShortToken xtblToken = new tblShortToken();
 
                         xtblToken = xtblToken.GetTokenAndUserIdFromCode(clsGlobal.g_URI_access_token, clsGlobal.g_client_id, clsGlobal.g_client_secret, clsGlobal.g_redirect_uri, xCode);
                         edtToken.Text = xtblToken.access_token;
 
-                        using (StreamWriter file = File.CreateText(@"c:\GetTokenAndUserIdFromCode.json"))
+                        if (File.Exists(@"c:\GetTokenAndUserIdFromCode.json"))
                         {
-                            JsonSerializer serializer = new JsonSerializer();
-                            serializer.Serialize(file, xtblToken);
+
+                            File.AppendAllText(@"c:\GetTokenAndUserIdFromCode.json", JsonConvert.SerializeObject(xtblToken));
+                        }
+                        else
+                        {
+                            using (StreamWriter file = File.CreateText(@"c:\GetTokenAndUserIdFromCode.json"))
+                            {
+                                JsonSerializer serializer = new JsonSerializer();
+                                serializer.Serialize(file, xtblToken);
+                            }
                         }
                     }
                 }
@@ -119,6 +127,42 @@ namespace Try1
 
 
 
+        }
+
+        private void btnLongToken_Click(object sender, EventArgs e)
+        {
+            if (edtToken.Text != "")
+            {
+                tblLongToken xtblToken = new tblLongToken();
+
+                xtblToken = xtblToken.GetLongToken(clsGlobal.g_URI_long_access_token, clsGlobal.g_client_secret, edtToken.Text);
+                edtLongToken.Text = xtblToken.access_token;
+
+                if (File.Exists(@"c:\GetLongToken.json"))
+                {
+
+                    File.AppendAllText(@"c:\GetLongToken.json", JsonConvert.SerializeObject(xtblToken));
+                }
+                else
+                {
+                    using (StreamWriter file = File.CreateText(@"c:\GetLongToken.json"))
+                    {
+                        JsonSerializer serializer = new JsonSerializer();
+                        serializer.Serialize(file, xtblToken);
+                    }
+                }
+
+
+
+                
+            }
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            frmMain xFrm = new frmMain();
+            xFrm.ShowDialog();
         }
     }
 }
