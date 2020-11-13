@@ -76,6 +76,7 @@
     <Compile Include="DATA\tblLongToken.cs" />
     <Compile Include="DATA\tblTemp.cs" />
     <Compile Include="DATA\tblShortToken.cs" />
+    <Compile Include="DATA\tblUser.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

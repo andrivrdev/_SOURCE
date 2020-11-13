@@ -72,53 +72,30 @@ namespace Try1.CLASSES
                 MyCommand.ExecuteNonQuery();
 
                 SQL =
-                "CREATE TABLE [tblAccount] (" + Environment.NewLine +
+                "CREATE TABLE [tblUser] (" + Environment.NewLine +
                 "  [ID] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + Environment.NewLine +
-                "  [Name] varchar(50) NOT NULL," + Environment.NewLine +
-                "  [IO] varchar(1) NOT NULL," + Environment.NewLine +
-                "  CONSTRAINT [tblAccount_uq] UNIQUE ([Name], [IO])" + Environment.NewLine +
+                "  [01_BasicDisplayAPI] varchar(2000) NULL," + Environment.NewLine +
+                "  [01_Client_id] varchar(2000) NULL," + Environment.NewLine +
+                "  [01_Redirect_uri] varchar(2000) NULL," + Environment.NewLine +
+                "  [01_URI_GetCode] varchar(2000) NULL," + Environment.NewLine +
+                "  [01_URI_ResponseAfterGetCode] varchar(2000) NULL," + Environment.NewLine +
+
+                "  [02_URI_access_token] varchar(2000) NULL," + Environment.NewLine +
+                "  [02_Client_secret] varchar(2000) NULL," + Environment.NewLine +
+                "  [02_Code] varchar(2000) NULL," + Environment.NewLine +
+                "  [02_S_access_token] varchar(2000) NULL," + Environment.NewLine +
+                "  [02_S_user_id] varchar(2000) NULL," + Environment.NewLine +
+
+                "  [03_URI_long_access_token] varchar(2000) NULL," + Environment.NewLine +
+                "  [03_L_access_token] varchar(2000) NULL," + Environment.NewLine +
+                "  [03_L_token_type] varchar(2000) NULL," + Environment.NewLine +
+                "  [03_L_expires_in] varchar(2000) NULL" + Environment.NewLine +
                 ");";
+
                 MyCommand = new SQLiteCommand(SQL, zConn);
                 MyCommand.ExecuteNonQuery();
 
 
-                SQL =
-                "CREATE TABLE [tblItem] (" + Environment.NewLine +
-                "  [ID] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + Environment.NewLine +
-                "  [Item] varchar(200) NOT NULL," + Environment.NewLine +
-                "  CONSTRAINT [tblItem_uq] UNIQUE ([Item])" + Environment.NewLine +
-                ");";
-                MyCommand = new SQLiteCommand(SQL, zConn);
-                MyCommand.ExecuteNonQuery();
-
-                SQL =
-                "CREATE TABLE [tblItemAccount] (" + Environment.NewLine +
-                "  [ID] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + Environment.NewLine +
-                "  [tblItemID] INTEGER NOT NULL REFERENCES tblItem(ID) ON DELETE RESTRICT ON UPDATE RESTRICT," + Environment.NewLine +
-                "  [tblAccountID] INTEGER NOT NULL REFERENCES tblAccount(ID) ON DELETE RESTRICT ON UPDATE RESTRICT" + Environment.NewLine +
-                ");";
-                MyCommand = new SQLiteCommand(SQL, zConn);
-                MyCommand.ExecuteNonQuery();
-
-                SQL =
-                "CREATE UNIQUE INDEX [tblItemAccount_uq] ON [tblItemAccount]" + Environment.NewLine +
-                "  ([tblItemID], [tblAccountID]);";
-                MyCommand = new SQLiteCommand(SQL, zConn);
-                MyCommand.ExecuteNonQuery();
-
-                SQL =
-                "CREATE TABLE [tblItemAccountTransaction] (" + Environment.NewLine +
-                "  [ID] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + Environment.NewLine +
-                "  [tblItemAccountID] INTEGER NOT NULL REFERENCES tblItemAccount(ID) ON DELETE RESTRICT ON UPDATE RESTRICT," + Environment.NewLine +
-                "  [DT] DATE NOT NULL," + Environment.NewLine +
-                "  [Reference] varchar(10) NULL," + Environment.NewLine +
-                "  [Description] varchar(200) NOT NULL," + Environment.NewLine +
-                "  [Amount] money NOT NULL" + Environment.NewLine +
-                ");";
-                MyCommand = new SQLiteCommand(SQL, zConn);
-                MyCommand.ExecuteNonQuery();
-                
-                                                                 
                 return true;
             }
             catch 
