@@ -91,7 +91,42 @@ namespace Try1
                     tblLongToken xtblLongToken = new tblLongToken();
                     xtblLongToken = GetLongToken(xtblShortToken.access_token);
 
+                    //Save to Database
+                    List<string> fFields = new List<string>();
+                    List<string> vValues = new List<string>();
 
+                    fFields.Add("01_BasicDisplayAPI");
+                    fFields.Add("01_Client_id");
+                    fFields.Add("01_Redirect_uri");
+                    fFields.Add("01_URI_GetCode");
+                    fFields.Add("01_URI_ResponseAfterGetCode");
+                    fFields.Add("02_URI_access_token");
+                    fFields.Add("02_Client_secret");
+                    fFields.Add("02_Code");
+                    fFields.Add("02_S_access_token");
+                    fFields.Add("02_S_user_id");
+                    fFields.Add("03_URI_long_access_token");
+                    fFields.Add("03_L_access_token");
+                    fFields.Add("03_L_token_type");
+                    fFields.Add("03_L_expires_in");
+
+                    vValues.Add(edtBasicDisplayAPI.Text);
+                    vValues.Add(edtclient_id.Text);
+                    vValues.Add(edtredirect_uri.Text);
+                    vValues.Add(edtResultURI.Text);
+                    vValues.Add(webBrowser1.Url.ToString());
+                    vValues.Add(edtURI_access_token.Text);
+                    vValues.Add(edtclient_secret.Text);
+                    vValues.Add(xCode);
+                    vValues.Add(xtblShortToken.access_token);
+                    vValues.Add(xtblShortToken.user_id);
+                    vValues.Add(edtURI_long_access_token.Text);
+                    vValues.Add(xtblLongToken.access_token);
+                    vValues.Add(xtblLongToken.token_type);
+                    vValues.Add(xtblLongToken.expires_in.ToString());
+
+                    //Add the record
+                    clsSQLiteDB.InsertRec("tblUser", fFields, vValues);
                 }
             }
         }
@@ -101,6 +136,7 @@ namespace Try1
             if (!(webBrowser1.Url is null))
             {
                 edtBrowserURI.Text = webBrowser1.Url.ToString();
+                LookForCode();
             }
         }
 
