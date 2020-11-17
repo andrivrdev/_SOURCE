@@ -241,7 +241,15 @@ namespace Try1
                 {
                     zCurrenttblUserID = dataRow["ID"].ToString();
                     tblMediaID xtblMediaID = new tblMediaID();
-                    xtblMediaID.GetMediaID(clsGlobal.g_URI_Me_MediaID, dataRow["03_L_access_token"].ToString(), zCurrenttblUserID);
+
+                    DataTable xResult = new DataTable();
+                    xResult = xtblMediaID.GetMediaID(clsGlobal.g_URI_Me_MediaID, dataRow["03_L_access_token"].ToString(), zCurrenttblUserID);
+
+                    lbUserMediaID.Items.Clear();
+                    foreach (DataRow xRow in xResult.Rows)
+                    {
+                        lbUserMediaID.Items.Add(xRow["MediaID"].ToString());
+                    }
                     //clsSQLiteDB.UpdateRec("tblUser", fFields, vValues, "02_S_user_id = " + xtblShortToken.user_id);
                 }
             }

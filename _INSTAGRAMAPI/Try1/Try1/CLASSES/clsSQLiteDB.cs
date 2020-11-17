@@ -73,29 +73,47 @@ namespace Try1.CLASSES
                 MyCommand.ExecuteNonQuery();
 
                 SQL =
-                "CREATE TABLE [tblUser] (" + Environment.NewLine +
-                "  [ID] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," + Environment.NewLine +
-                "  [01_BasicDisplayAPI] varchar(2000) NULL," + Environment.NewLine +
-                "  [01_Client_id] varchar(2000) NULL," + Environment.NewLine +
-                "  [01_Redirect_uri] varchar(2000) NULL," + Environment.NewLine +
-                "  [01_URI_GetCode] varchar(2000) NULL," + Environment.NewLine +
-                "  [01_URI_ResponseAfterGetCode] varchar(2000) NULL," + Environment.NewLine +
-
-                "  [02_URI_access_token] varchar(2000) NULL," + Environment.NewLine +
-                "  [02_Client_secret] varchar(2000) NULL," + Environment.NewLine +
-                "  [02_Code] varchar(2000) NULL," + Environment.NewLine +
-                "  [02_S_access_token] varchar(2000) NULL," + Environment.NewLine +
-                "  [02_S_user_id] varchar(2000) NULL," + Environment.NewLine +
-
-                "  [03_URI_long_access_token] varchar(2000) NULL," + Environment.NewLine +
-                "  [03_L_access_token] varchar(2000) NULL," + Environment.NewLine +
-                "  [03_L_token_type] varchar(2000) NULL," + Environment.NewLine +
-                "  [03_L_expires_in] varchar(2000) NULL" + Environment.NewLine +
-                ");";
-
+                @"
+                CREATE TABLE tblUser (
+                ID INTEGER        PRIMARY KEY AUTOINCREMENT
+                                  NOT NULL,
+                [01_BasicDisplayAPI]          VARCHAR(2000),
+                [01_Client_id]                VARCHAR(2000),
+                [01_Redirect_uri]             VARCHAR(2000),
+                [01_URI_GetCode]              VARCHAR(2000),
+                [01_URI_ResponseAfterGetCode] VARCHAR(2000),
+                [02_URI_access_token]         VARCHAR(2000),
+                [02_Client_secret]            VARCHAR(2000),
+                [02_Code]                     VARCHAR(2000),
+                [02_S_access_token]           VARCHAR(2000),
+                [02_S_user_id]                VARCHAR(2000),
+                [03_URI_long_access_token]    VARCHAR(2000),
+                [03_L_access_token]           VARCHAR(2000),
+                [03_L_token_type]             VARCHAR(2000),
+                [03_L_expires_in]             VARCHAR(2000),
+                [04_username]                 VARCHAR(2000),
+                [04_media_count]              INTEGER,
+                CreatedDT TIMESTAMP      DEFAULT CURRENT_TIMESTAMP
+                                                             NOT NULL
+                );";
+                
                 MyCommand = new SQLiteCommand(SQL, zConn);
                 MyCommand.ExecuteNonQuery();
 
+                SQL =
+                @"
+                CREATE TABLE tblUserMediaID (
+                    ID        INTEGER   PRIMARY KEY AUTOINCREMENT
+                                        NOT NULL,
+                    tblUserID INTEGER   REFERENCES tblUser (ID) ON DELETE CASCADE
+                                                                ON UPDATE RESTRICT,
+                    MediaID   INTEGER,
+                    CreatedDT TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                                        NOT NULL
+                );";
+
+                MyCommand = new SQLiteCommand(SQL, zConn);
+                MyCommand.ExecuteNonQuery();
 
                 return true;
             }

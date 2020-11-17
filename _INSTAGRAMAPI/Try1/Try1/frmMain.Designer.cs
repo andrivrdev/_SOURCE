@@ -58,9 +58,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel6 = new System.Windows.Forms.Panel();
             this.lbUser = new System.Windows.Forms.ListBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lbUserMediaID = new System.Windows.Forms.ListBox();
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -332,7 +333,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(575, 391);
+            this.tabPage4.Size = new System.Drawing.Size(733, 391);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Source";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -359,6 +360,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lbUserMediaID);
             this.tabPage2.Controls.Add(this.panel6);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -367,10 +369,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // panel6
             // 
@@ -391,6 +389,19 @@
             this.lbUser.TabIndex = 0;
             this.lbUser.Click += new System.EventHandler(this.lbUser_Click);
             this.lbUser.SelectedIndexChanged += new System.EventHandler(this.lbUser_SelectedIndexChanged);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lbUserMediaID
+            // 
+            this.lbUserMediaID.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbUserMediaID.FormattingEnabled = true;
+            this.lbUserMediaID.Location = new System.Drawing.Point(175, 3);
+            this.lbUserMediaID.Name = "lbUserMediaID";
+            this.lbUserMediaID.Size = new System.Drawing.Size(172, 476);
+            this.lbUserMediaID.TabIndex = 1;
             // 
             // frmMain
             // 
@@ -453,5 +464,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.ListBox lbUser;
+        private System.Windows.Forms.ListBox lbUserMediaID;
     }
 }
