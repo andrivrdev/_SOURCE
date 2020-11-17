@@ -15,6 +15,7 @@ namespace Try1
 {
     public partial class frmMain : Form
     {
+        string zCurrenttblUserID = "";
         public frmMain()
         {
             InitializeComponent();
@@ -91,6 +92,10 @@ namespace Try1
                     tblLongToken xtblLongToken = new tblLongToken();
                     xtblLongToken = GetLongToken(xtblShortToken.access_token);
 
+                    tblUsernameAndMediaCount xtblUsernameAndMediaCount = new tblUsernameAndMediaCount();
+                    xtblUsernameAndMediaCount = xtblUsernameAndMediaCount.GetUsernameAndMediaCount(clsGlobal.g_URI_Me_UsernameAndMediaCount, xtblLongToken.access_token);
+
+
                     //Save to Database
                     List<string> fFields = new List<string>();
                     List<string> vValues = new List<string>();
@@ -109,6 +114,8 @@ namespace Try1
                     fFields.Add("03_L_access_token");
                     fFields.Add("03_L_token_type");
                     fFields.Add("03_L_expires_in");
+                    fFields.Add("04_username");
+                    fFields.Add("04_media_count");
 
                     vValues.Add(edtBasicDisplayAPI.Text);
                     vValues.Add(edtclient_id.Text);
@@ -124,9 +131,32 @@ namespace Try1
                     vValues.Add(xtblLongToken.access_token);
                     vValues.Add(xtblLongToken.token_type);
                     vValues.Add(xtblLongToken.expires_in.ToString());
+                    vValues.Add(xtblUsernameAndMediaCount.username);
+                    vValues.Add(xtblUsernameAndMediaCount.media_count);
 
-                    //Add the record
-                    clsSQLiteDB.InsertRec("tblUser", fFields, vValues);
+                    //Add or Update the record
+                    tblInstagramUser xtblInstagramUser = new tblInstagramUser();
+                    DataRow dataRow = xtblInstagramUser.dtInstagramUser.AsEnumerable().FirstOrDefault(r => r["02_S_user_id"].ToString() == xtblShortToken.user_id);
+                    if (dataRow != null)
+                    {
+                        clsSQLiteDB.UpdateRec("tblUser", fFields, vValues, "02_S_user_id = " + xtblShortToken.user_id);
+                    }
+                    else
+                    {
+                        clsSQLiteDB.InsertRec("tblUser", fFields, vValues);
+
+                    }
+
+                    /*
+                    DataRow[] rows = xtblInstagramUser.dtInstagramUser.Select("02_S_user_id = " + xtblShortToken.user_id);
+
+                    if (rows.Count() > 0)
+                    {
+
+                        clsSQLiteDB.UpdateRec("tblUser", fFields, vValues, "02_S_user_id = " + xtblShortToken.user_id);
+                    }
+                    else
+                    */
                 }
             }
         }
@@ -169,6 +199,53 @@ namespace Try1
             LoadDefaults();
 
             //this.Enabled = true;
+        }
+
+        private void tcMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateUsers();
+        }
+
+        private void UpdateUsers()
+        {
+            lbUser.Items.Clear();
+            tblInstagramUser xTbl = new tblInstagramUser();
+
+            foreach (DataRow xRow in xTbl.dtInstagramUser.Rows)
+            {
+                lbUser.Items.Add(xRow["04_username"].ToString());
+
+            }
+
+        }
+
+        private void lbUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetMediaID();
+
+        }
+
+        private void lbUser_Click(object sender, EventArgs e)
+        {
+            GetMediaID();
+
+        }
+
+        private void GetMediaID()
+        {
+            if (!(lbUser.SelectedItem is null))
+            {
+                tblInstagramUser xtblInstagramUser = new tblInstagramUser();
+                DataRow dataRow = xtblInstagramUser.dtInstagramUser.AsEnumerable().FirstOrDefault(r => r["04_username"].ToString() == lbUser.SelectedItem.ToString());
+                if (dataRow != null)
+                {
+                    zCurrenttblUserID = dataRow["ID"].ToString();
+                    tblMediaID xtblMediaID = new tblMediaID();
+                    xtblMediaID.GetMediaID(clsGlobal.g_URI_Me_MediaID, dataRow["03_L_access_token"].ToString(), zCurrenttblUserID);
+                    //clsSQLiteDB.UpdateRec("tblUser", fFields, vValues, "02_S_user_id = " + xtblShortToken.user_id);
+                }
+            }
+
         }
     }
 }

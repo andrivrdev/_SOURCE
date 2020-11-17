@@ -151,18 +151,16 @@ namespace Try1
                         serializer.Serialize(file, xtblToken);
                     }
                 }
-
-
-
-                
             }
-
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            frmInstagramUser xfrmInstagramUser = new frmInstagramUser();
+            xfrmInstagramUser.Show();
+
             frmMain xFrm = new frmMain();
-            xFrm.ShowDialog();
+            xFrm.Show();
         }
     }
 }

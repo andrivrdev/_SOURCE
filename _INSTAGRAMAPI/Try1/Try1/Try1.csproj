@@ -73,15 +73,24 @@
   <ItemGroup>
     <Compile Include="CLASSES\clsGlobal.cs" />
     <Compile Include="CLASSES\clsSQLiteDB.cs" />
+    <Compile Include="DATA\tblInstagramUser.cs" />
     <Compile Include="DATA\tblLongToken.cs" />
+    <Compile Include="DATA\tblMediaID.cs" />
     <Compile Include="DATA\tblTemp.cs" />
     <Compile Include="DATA\tblShortToken.cs" />
-    <Compile Include="DATA\tblUser.cs" />
+    <Compile Include="DATA\tblUserMediaID.cs" />
+    <Compile Include="DATA\tblUsernameAndMediaCount.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInstagramUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInstagramUser.Designer.cs">
+      <DependentUpon>frmInstagramUser.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -93,6 +102,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInstagramUser.resx">
+      <DependentUpon>frmInstagramUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

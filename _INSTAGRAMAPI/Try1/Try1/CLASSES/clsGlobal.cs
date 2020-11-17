@@ -21,6 +21,11 @@ namespace Try1.CLASSES
         //Get Long Lived Token from Short Lived Token
         public static string g_URI_long_access_token = "https://graph.instagram.com/access_token?grant_type=ig_exchange_token&&";
 
+        //User name and Media Count
+        public static string g_URI_Me_UsernameAndMediaCount = "https://graph.instagram.com/me?fields=id,username,media_count&access_token=";
+
+        //MediaID
+        public static string g_URI_Me_MediaID = "https://graph.instagram.com/me?fields=media&access_token=";
 
 
 
