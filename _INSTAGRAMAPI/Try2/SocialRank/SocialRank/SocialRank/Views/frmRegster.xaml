@@ -6,7 +6,7 @@
         <StackLayout>
             <Entry x:Name="edtUsername" Placeholder="Email" />
             <Entry x:Name="edtPassword" Placeholder="Password" />
-            <Button x:Name="btnRegister" VerticalOptions="Center" Text="Register"/>
+            <Button x:Name="btnRegister" VerticalOptions="Center" Text="Register" Clicked="btnRegister_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

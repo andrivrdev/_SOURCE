@@ -45,6 +45,8 @@
                         Command="{Binding OpenWebCommand}"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" />
+                <Button x:Name="btnLogin" VerticalOptions="Center" Text="Sign In or Register" Clicked="btnLogin_Clicked"/>
+
             </StackLayout>
         </ScrollView>
     </Grid>
