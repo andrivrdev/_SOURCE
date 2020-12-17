@@ -10,7 +10,7 @@ namespace SocialRankMobile
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginPage());
+            MainPage = new NavigationPage(new Views.Forms.LoginPage());
         }
 
         protected override void OnStart()
