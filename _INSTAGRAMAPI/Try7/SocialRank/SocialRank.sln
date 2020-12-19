@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SocialRankAPI", "SocialRankAPI\", "{97F7AC31-C547-4625-8BF2-AB593CC19259}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		ProjectReferences = ""
+		Debug.AspNetCompiler.VirtualPath = "/localhost_57939"
+		Debug.AspNetCompiler.PhysicalPath = "SocialRankAPI\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57939\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_57939"
+		Release.AspNetCompiler.PhysicalPath = "SocialRankAPI\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57939\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "57939"
+		SlnRelativePath = "SocialRankAPI\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialRankMobile", "SocialRankMobile\SocialRankMobile\SocialRankMobile.csproj", "{1226DF0D-C41E-4A20-B7DF-49AE86F8B56A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialRankMobile.Android", "SocialRankMobile\SocialRankMobile.Android\SocialRankMobile.Android.csproj", "{F186D227-1B8A-43B7-B79E-E77FA635BE28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APITester", "APITester\APITester.csproj", "{186DB42C-89BB-489C-8D80-56419C63D805}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97F7AC31-C547-4625-8BF2-AB593CC19259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97F7AC31-C547-4625-8BF2-AB593CC19259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97F7AC31-C547-4625-8BF2-AB593CC19259}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{97F7AC31-C547-4625-8BF2-AB593CC19259}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{1226DF0D-C41E-4A20-B7DF-49AE86F8B56A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1226DF0D-C41E-4A20-B7DF-49AE86F8B56A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1226DF0D-C41E-4A20-B7DF-49AE86F8B56A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1226DF0D-C41E-4A20-B7DF-49AE86F8B56A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F186D227-1B8A-43B7-B79E-E77FA635BE28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F186D227-1B8A-43B7-B79E-E77FA635BE28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F186D227-1B8A-43B7-B79E-E77FA635BE28}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F186D227-1B8A-43B7-B79E-E77FA635BE28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F186D227-1B8A-43B7-B79E-E77FA635BE28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F186D227-1B8A-43B7-B79E-E77FA635BE28}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{186DB42C-89BB-489C-8D80-56419C63D805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{186DB42C-89BB-489C-8D80-56419C63D805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{186DB42C-89BB-489C-8D80-56419C63D805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{186DB42C-89BB-489C-8D80-56419C63D805}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {178502B6-2FD2-4BEC-87AB-FCC21328BB5D}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SocialRankAPI", "SocialRankAPI\", "{DB5DDE22-6441-4DEB-8FDD-A42954CE84EA}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_54995"
+		Debug.AspNetCompiler.PhysicalPath = "SocialRankAPI\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54995\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_54995"
+		Release.AspNetCompiler.PhysicalPath = "SocialRankAPI\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54995\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "54995"
+		SlnRelativePath = "SocialRankAPI\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB5DDE22-6441-4DEB-8FDD-A42954CE84EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB5DDE22-6441-4DEB-8FDD-A42954CE84EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D1E1B80-E778-4341-B42A-390DB4EED6D0}
+	EndGlobalSection
+EndGlobal

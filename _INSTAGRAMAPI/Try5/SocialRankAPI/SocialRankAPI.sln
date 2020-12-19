@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialRankAPI", "SocialRankAPI\SocialRankAPI.csproj", "{E20B4400-7ADB-4B35-836B-29E54CBD3C9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialRankAPI", "SocialRankAPI\SocialRankAPI.csproj", "{E20B4400-7ADB-4B35-836B-29E54CBD3C9C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialRankMobile", "SocialRankMobile\SocialRankMobile\SocialRankMobile.csproj", "{EB961DAA-C264-49BB-8345-38C19879A7AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialRankMobile.Android", "SocialRankMobile\SocialRankMobile.Android\SocialRankMobile.Android.csproj", "{F186D227-1B8A-43B7-B79E-E77FA635BE28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,16 @@ Global
 		{E20B4400-7ADB-4B35-836B-29E54CBD3C9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E20B4400-7ADB-4B35-836B-29E54CBD3C9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E20B4400-7ADB-4B35-836B-29E54CBD3C9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB961DAA-C264-49BB-8345-38C19879A7AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB961DAA-C264-49BB-8345-38C19879A7AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB961DAA-C264-49BB-8345-38C19879A7AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB961DAA-C264-49BB-8345-38C19879A7AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F186D227-1B8A-43B7-B79E-E77FA635BE28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F186D227-1B8A-43B7-B79E-E77FA635BE28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F186D227-1B8A-43B7-B79E-E77FA635BE28}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F186D227-1B8A-43B7-B79E-E77FA635BE28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F186D227-1B8A-43B7-B79E-E77FA635BE28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F186D227-1B8A-43B7-B79E-E77FA635BE28}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

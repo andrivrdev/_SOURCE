@@ -20,6 +20,9 @@ namespace SocialRankAPI
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseEnvironment("Development");
+                    webBuilder.UseKestrel();
+                    webBuilder.UseUrls("http://192.168.1.15:6000;http://andrivr.hopto.org:6000");
                     webBuilder.UseStartup<Startup>();
                 });
     }

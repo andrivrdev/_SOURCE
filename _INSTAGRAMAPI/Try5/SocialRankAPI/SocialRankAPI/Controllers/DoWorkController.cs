@@ -18,64 +18,74 @@ namespace SocialRankAPI.Controllers
         {
             try
             {
-                var xMessage = xData;
-
-                //Test
-                if (xMessage.Contains("Test"))
+                if (!(xData is null))
                 {
-                    return "Test received";
-                }
 
 
-                //Create DB
-                var xResultDB = clsSQLiteDBAPI.CreateDB();
-                if (xResultDB == "Success")
-                {
-                    clsSEAPI xclsSEAPI = new clsSEAPI();
-                    xMessage = xclsSEAPI.DecodeMessage(xMessage);
+                    var xMessage = xData;
 
-
-                    //Register a new user
-                    if (xMessage.Contains("frmRegister_RegisterUser" + clsGlobalAPI.gMessageCommandSeperator))
+                    //Test
+                    if (xMessage.Contains("Test"))
                     {
-                        xMessage = xMessage.Replace("frmRegister_RegisterUser" + clsGlobalAPI.gMessageCommandSeperator, "");
-                        var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
-                        var xResult = xclsSEAPI.frmRegister_RegisterUser(dData);
-                        return xResult;
+                        return "Test received";
                     }
 
-                    /*
-                    //Validate an email address
-                    if (xMessage.Contains("ValidateUserEmail" + clsGlobalAPI.gMessageCommandSeperator))
+
+                    //Create DB
+                    var xResultDB = clsSQLiteDBAPI.CreateDB();
+                    if (xResultDB == "Success")
                     {
-                        xMessage = xMessage.Replace("ValidateUserEmail" + clsGlobalAPI.gMessageCommandSeperator, "");
-                        var dData = JsonConvert.DeserializeObject<string>(xMessage);
-                        var xResult = xclsSEAPI.ValidateUserEmail(dData);
-                        return xResult;
-                    }
+                        clsSEAPI xclsSEAPI = new clsSEAPI();
+                        xMessage = xclsSEAPI.DecodeMessage(xMessage);
 
-                    //Send reset password link
-                    if (xMessage.Contains("frmForgotPassword_ResetPassword" + clsGlobalAPI.gMessageCommandSeperator))
+
+                        //Register a new user
+                        if (xMessage.Contains("frmRegister_RegisterUser" + clsGlobalAPI.gMessageCommandSeperator))
+                        {
+                            xMessage = xMessage.Replace("frmRegister_RegisterUser" + clsGlobalAPI.gMessageCommandSeperator, "");
+                            var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
+                            var xResult = xclsSEAPI.frmRegister_RegisterUser(dData);
+                            return xResult;
+                        }
+
+                        /*
+                        //Validate an email address
+                        if (xMessage.Contains("ValidateUserEmail" + clsGlobalAPI.gMessageCommandSeperator))
+                        {
+                            xMessage = xMessage.Replace("ValidateUserEmail" + clsGlobalAPI.gMessageCommandSeperator, "");
+                            var dData = JsonConvert.DeserializeObject<string>(xMessage);
+                            var xResult = xclsSEAPI.ValidateUserEmail(dData);
+                            return xResult;
+                        }
+
+                        //Send reset password link
+                        if (xMessage.Contains("frmForgotPassword_ResetPassword" + clsGlobalAPI.gMessageCommandSeperator))
+                        {
+                            xMessage = xMessage.Replace("frmForgotPassword_ResetPassword" + clsGlobalAPI.gMessageCommandSeperator, "");
+                            var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
+                            var xResult = xclsSEAPI.frmForgotPassword_ResetPassword(dData);
+                            return xResult;
+                        }
+                        */
+
+
+
+
+
+
+
+                        //Invalid
+                        return "Invalid command";
+                    }
+                    else
                     {
-                        xMessage = xMessage.Replace("frmForgotPassword_ResetPassword" + clsGlobalAPI.gMessageCommandSeperator, "");
-                        var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
-                        var xResult = xclsSEAPI.frmForgotPassword_ResetPassword(dData);
-                        return xResult;
+                        return "Error with database:" + xResultDB;
                     }
-                    */
-
-
-
-
-
-
-
-                    //Invalid
-                    return "Invalid command";
                 }
                 else
                 {
-                    return "Error with database:" + xResultDB;
+                    //No Data passed
+                    return "Data was null";
                 }
 
             }
