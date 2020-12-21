@@ -30,7 +30,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TESTING_Android.Android", "TESTING_Android\TESTING_Android.Android\TESTING_Android.Android.csproj", "{B994E654-B861-4CD5-966F-126115C65A8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TESTING_Android", "TESTING_Android\TESTING_Android\TESTING_Android.csproj", "{7899B4ED-E40B-4EFC-9BC1-6A1414041281}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TESTING_Android", "TESTING_Android\TESTING_Android\TESTING_Android.csproj", "{7899B4ED-E40B-4EFC-9BC1-6A1414041281}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TESTING_WinForms", "TESTING_WinForms\TESTING_WinForms.csproj", "{705A9BFF-6F97-4841-9679-B06C69DAE29C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +58,10 @@ Global
 		{7899B4ED-E40B-4EFC-9BC1-6A1414041281}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7899B4ED-E40B-4EFC-9BC1-6A1414041281}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7899B4ED-E40B-4EFC-9BC1-6A1414041281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{705A9BFF-6F97-4841-9679-B06C69DAE29C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{705A9BFF-6F97-4841-9679-B06C69DAE29C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{705A9BFF-6F97-4841-9679-B06C69DAE29C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{705A9BFF-6F97-4841-9679-B06C69DAE29C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

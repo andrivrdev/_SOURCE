@@ -13,9 +13,9 @@ namespace Shared.CLASSES
         public static string gVIKey = "@AzzeM81YydevLQJ";
 
         //live
-        public const string gEndpointAddress = "http://andrivr.hopto.org:8000//SocialRankAPI/wsSocialRankAPI.asmx";
+        public const string gEndpointAddress = "http://andrivr.hopto.org:8000/SocialRankAPI/wsSocialRankAPI.asmx";
         
-        public const string gWebServiceNamespace = "http://andrivr.hopto.org:8000//SocialRankAPI";
+        public const string gWebServiceNamespace = "http://andrivr.hopto.org:8000/SocialRankAPI";
         public static int gSoapCallTimeout = 30000;
 
         public const string gMessageCommandSeperator = "||||/|";
