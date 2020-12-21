@@ -1,0 +1,28 @@
+﻿{
+  "ProviderId": "Microsoft.VisualStudio.ConnectedService.Wcf",
+  "Version": "15.0.40203.910",
+  "GettingStartedDocument": {
+    "Uri": "https://go.microsoft.com/fwlink/?linkid=858517"
+  },
+  "ExtendedData": {
+    "inputs": [
+      "http://andrivr.hopto.org:8000/SocialRankApi/wsSocialrankapi.asmx"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, wsSocialRankAPI"
+    ],
+    "references": [
+      "System.Numerics.Vectors, {System.Numerics.Vectors, 4.5.0}",
+      "Xamarin.Essentials, {Xamarin.Essentials, 1.5.3.2}",
+      "Xamarin.Forms.Core, {Xamarin.Forms, 4.8.0.1451}",
+      "Xamarin.Forms.Platform, {Xamarin.Forms, 4.8.0.1451}",
+      "Xamarin.Forms.Xaml, {Xamarin.Forms, 4.8.0.1451}"
+    ],
+    "targetFramework": "netstandard2.0",
+    "typeReuseMode": "All"
+  }
+}
