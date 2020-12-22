@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/growmeapi/GrowmeWS.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8000/SocialRankAPI/wsSocialRankAPI.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="GrowmeWS.wsdl" MetadataType="Wsdl" ID="69f35907-eba4-470a-88db-20693fbf36cd" SourceId="1" SourceUrl="http://localhost/growmeapi/GrowmeWS.asmx?wsdl" />
-    <MetadataFile FileName="GrowmeWS.disco" MetadataType="Disco" ID="50661293-ac77-41a0-857b-08068359e244" SourceId="1" SourceUrl="http://localhost/growmeapi/GrowmeWS.asmx?disco" />
+    <MetadataFile FileName="wsSocialRankAPI.wsdl" MetadataType="Wsdl" ID="a3804fc1-945c-4f6e-864f-77119202e245" SourceId="1" SourceUrl="http://localhost:8000/SocialRankAPI/wsSocialRankAPI.asmx?wsdl" />
+    <MetadataFile FileName="wsSocialRankAPI.disco" MetadataType="Disco" ID="1ec1f540-9e1c-44db-a02b-8dd41fbe3e0b" SourceId="1" SourceUrl="http://localhost:8000/SocialRankAPI/wsSocialRankAPI.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

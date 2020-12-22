@@ -33,6 +33,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TESTING_Android", "TESTING_Android\TESTING_Android\TESTING_Android.csproj", "{7899B4ED-E40B-4EFC-9BC1-6A1414041281}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TESTING_WinForms", "TESTING_WinForms\TESTING_WinForms.csproj", "{705A9BFF-6F97-4841-9679-B06C69DAE29C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E7E8F43A-D5BD-4E22-B0C3-E6D17FF3377F} = {E7E8F43A-D5BD-4E22-B0C3-E6D17FF3377F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

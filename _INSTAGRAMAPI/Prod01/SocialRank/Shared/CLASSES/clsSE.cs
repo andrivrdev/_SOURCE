@@ -393,7 +393,7 @@ namespace Shared.CLASSES
                 //Send
                 var remoteAddress = new System.ServiceModel.EndpointAddress(clsGlobal.gEndpointAddress);
 
-                using (var xwsServerSoapClient = new wsGrowmeAPI.GrowmeWSSoapClient(new System.ServiceModel.BasicHttpBinding(), remoteAddress))
+                using (var xwsServerSoapClient = new wsSocialRankAPI.wsSocialRankAPISoapClient (new System.ServiceModel.BasicHttpBinding(), remoteAddress))
                 {
                     //set timeout
                     xwsServerSoapClient.Endpoint.Binding.SendTimeout = new TimeSpan(0, 0, 0, 0, clsGlobal.gSoapCallTimeout);

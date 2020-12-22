@@ -12,11 +12,15 @@ namespace wsSocialRankAPI
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://andrivr.hopto.org:8000/SocialRankAPI/wsSocialRankAPI.asmx", ConfigurationName="wsSocialRankAPI.wsSocialRankAPISoap")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://andrivr.hopto.org:8000/SocialRankAPI", ConfigurationName="wsSocialRankAPI.wsSocialRankAPISoap")]
     public interface wsSocialRankAPISoap
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://andrivr.hopto.org:8000/SocialRankAPI/wsSocialRankAPI.asmx/DoWork", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name xData from namespace http://andrivr.hopto.org:8000/SocialRankAPI is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://andrivr.hopto.org:8000/SocialRankAPI/DoWork", ReplyAction="*")]
+        wsSocialRankAPI.DoWorkResponse DoWork(wsSocialRankAPI.DoWorkRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://andrivr.hopto.org:8000/SocialRankAPI/DoWork", ReplyAction="*")]
         System.Threading.Tasks.Task<wsSocialRankAPI.DoWorkResponse> DoWorkAsync(wsSocialRankAPI.DoWorkRequest request);
     }
     
@@ -27,7 +31,7 @@ namespace wsSocialRankAPI
     public partial class DoWorkRequest
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="DoWork", Namespace="http://andrivr.hopto.org:8000/SocialRankAPI/wsSocialRankAPI.asmx", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DoWork", Namespace="http://andrivr.hopto.org:8000/SocialRankAPI", Order=0)]
         public wsSocialRankAPI.DoWorkRequestBody Body;
         
         public DoWorkRequest()
@@ -43,7 +47,7 @@ namespace wsSocialRankAPI
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://andrivr.hopto.org:8000/SocialRankAPI/wsSocialRankAPI.asmx")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://andrivr.hopto.org:8000/SocialRankAPI")]
     public partial class DoWorkRequestBody
     {
         
@@ -67,7 +71,7 @@ namespace wsSocialRankAPI
     public partial class DoWorkResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="DoWorkResponse", Namespace="http://andrivr.hopto.org:8000/SocialRankAPI/wsSocialRankAPI.asmx", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DoWorkResponse", Namespace="http://andrivr.hopto.org:8000/SocialRankAPI", Order=0)]
         public wsSocialRankAPI.DoWorkResponseBody Body;
         
         public DoWorkResponse()
@@ -83,7 +87,7 @@ namespace wsSocialRankAPI
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://andrivr.hopto.org:8000/SocialRankAPI/wsSocialRankAPI.asmx")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://andrivr.hopto.org:8000/SocialRankAPI")]
     public partial class DoWorkResponseBody
     {
         
@@ -144,6 +148,21 @@ namespace wsSocialRankAPI
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        wsSocialRankAPI.DoWorkResponse wsSocialRankAPI.wsSocialRankAPISoap.DoWork(wsSocialRankAPI.DoWorkRequest request)
+        {
+            return base.Channel.DoWork(request);
+        }
+        
+        public string DoWork(string xData)
+        {
+            wsSocialRankAPI.DoWorkRequest inValue = new wsSocialRankAPI.DoWorkRequest();
+            inValue.Body = new wsSocialRankAPI.DoWorkRequestBody();
+            inValue.Body.xData = xData;
+            wsSocialRankAPI.DoWorkResponse retVal = ((wsSocialRankAPI.wsSocialRankAPISoap)(this)).DoWork(inValue);
+            return retVal.Body.DoWorkResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         System.Threading.Tasks.Task<wsSocialRankAPI.DoWorkResponse> wsSocialRankAPI.wsSocialRankAPISoap.DoWorkAsync(wsSocialRankAPI.DoWorkRequest request)
         {
             return base.Channel.DoWorkAsync(request);
@@ -198,11 +217,11 @@ namespace wsSocialRankAPI
         {
             if ((endpointConfiguration == EndpointConfiguration.wsSocialRankAPISoap))
             {
-                return new System.ServiceModel.EndpointAddress("http://andrivr.hopto.org:8000/SocialRankAPI/wsSocialRankAPI.asmx");
+                return new System.ServiceModel.EndpointAddress("http://localhost:8000/SocialRankAPI/wsSocialRankAPI.asmx");
             }
             if ((endpointConfiguration == EndpointConfiguration.wsSocialRankAPISoap12))
             {
-                return new System.ServiceModel.EndpointAddress("http://andrivr.hopto.org:8000/SocialRankAPI/wsSocialRankAPI.asmx");
+                return new System.ServiceModel.EndpointAddress("http://localhost:8000/SocialRankAPI/wsSocialRankAPI.asmx");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }

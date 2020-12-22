@@ -15,20 +15,22 @@ namespace TESTING_Android
             InitializeComponent();
         }
 
-        private async void btnRunAPIRequest_Clicked(object sender, EventArgs e)
+        private void btnRunAPIRequest_Clicked(object sender, EventArgs e)
         {
             try
             {
+                
+
                 wsSocialRankAPI.wsSocialRankAPISoapClient xSoapClient = new wsSocialRankAPI.wsSocialRankAPISoapClient
                     (wsSocialRankAPI.wsSocialRankAPISoapClient.EndpointConfiguration.wsSocialRankAPISoap12);
 
-                var xresult = await xSoapClient.DoWorkAsync("Test");
+                var xresult = xSoapClient.DoWork("Test");
 
-                edtOutput.Text = xresult.Body.DoWorkResult;
+                edtOutput.Text = xresult;
             }
             catch (Exception Ex)
             {
-               
+                edtOutput.Text = Ex.Message;
 
             }
         }

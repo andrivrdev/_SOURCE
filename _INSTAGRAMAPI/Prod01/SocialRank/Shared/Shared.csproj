@@ -52,12 +52,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\wsSocialRankAPI\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="DATA\tblUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\wsGrowmeAPI\GrowmeWS.wsdl" />
+    <None Include="Connected Services\wsGrowmeAPI\Shared.wsGrowmeAPI.DoWorkResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGrowmeAPI\wsSocialRankAPI.wsdl" />
+    <None Include="Connected Services\wsSocialRankAPI\Shared.wsSocialRankAPI.DoWorkResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsSocialRankAPI\wsSocialRankAPI.wsdl" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -65,9 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\wsGrowmeAPI\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\wsGrowmeAPI\GrowmeWS.disco" />
+    <WCFMetadataStorage Include="Connected Services\wsSocialRankAPI\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\wsGrowmeAPI\configuration91.svcinfo" />
@@ -77,6 +87,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\wsGrowmeAPI\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsGrowmeAPI\wsSocialRankAPI.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsSocialRankAPI\wsSocialRankAPI.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsSocialRankAPI\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsSocialRankAPI\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsSocialRankAPI\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

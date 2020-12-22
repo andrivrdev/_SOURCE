@@ -12,50 +12,135 @@ namespace Shared.wsGrowmeAPI {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://andrivrddns.dlinkddns.com:8081//GrowmeAPI", ConfigurationName="wsGrowmeAPI.GrowmeWSSoap")]
-    public interface GrowmeWSSoap {
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://andrivr.hopto.org:8000/SocialRankAPI", ConfigurationName="wsGrowmeAPI.wsSocialRankAPISoap")]
+    public interface wsSocialRankAPISoap {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://andrivrddns.dlinkddns.com:8081//GrowmeAPI/DoWork", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string DoWork(string xData);
+        // CODEGEN: Generating message contract since element name xData from namespace http://andrivr.hopto.org:8000/SocialRankAPI is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://andrivr.hopto.org:8000/SocialRankAPI/DoWork", ReplyAction="*")]
+        Shared.wsGrowmeAPI.DoWorkResponse DoWork(Shared.wsGrowmeAPI.DoWorkRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://andrivrddns.dlinkddns.com:8081//GrowmeAPI/DoWork", ReplyAction="*")]
-        System.Threading.Tasks.Task<string> DoWorkAsync(string xData);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface GrowmeWSSoapChannel : Shared.wsGrowmeAPI.GrowmeWSSoap, System.ServiceModel.IClientChannel {
+        [System.ServiceModel.OperationContractAttribute(Action="http://andrivr.hopto.org:8000/SocialRankAPI/DoWork", ReplyAction="*")]
+        System.Threading.Tasks.Task<Shared.wsGrowmeAPI.DoWorkResponse> DoWorkAsync(Shared.wsGrowmeAPI.DoWorkRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GrowmeWSSoapClient : System.ServiceModel.ClientBase<Shared.wsGrowmeAPI.GrowmeWSSoap>, Shared.wsGrowmeAPI.GrowmeWSSoap {
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class DoWorkRequest {
         
-        public GrowmeWSSoapClient() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DoWork", Namespace="http://andrivr.hopto.org:8000/SocialRankAPI", Order=0)]
+        public Shared.wsGrowmeAPI.DoWorkRequestBody Body;
+        
+        public DoWorkRequest() {
         }
         
-        public GrowmeWSSoapClient(string endpointConfigurationName) : 
+        public DoWorkRequest(Shared.wsGrowmeAPI.DoWorkRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://andrivr.hopto.org:8000/SocialRankAPI")]
+    public partial class DoWorkRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string xData;
+        
+        public DoWorkRequestBody() {
+        }
+        
+        public DoWorkRequestBody(string xData) {
+            this.xData = xData;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class DoWorkResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DoWorkResponse", Namespace="http://andrivr.hopto.org:8000/SocialRankAPI", Order=0)]
+        public Shared.wsGrowmeAPI.DoWorkResponseBody Body;
+        
+        public DoWorkResponse() {
+        }
+        
+        public DoWorkResponse(Shared.wsGrowmeAPI.DoWorkResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://andrivr.hopto.org:8000/SocialRankAPI")]
+    public partial class DoWorkResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string DoWorkResult;
+        
+        public DoWorkResponseBody() {
+        }
+        
+        public DoWorkResponseBody(string DoWorkResult) {
+            this.DoWorkResult = DoWorkResult;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface wsSocialRankAPISoapChannel : Shared.wsGrowmeAPI.wsSocialRankAPISoap, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class wsSocialRankAPISoapClient : System.ServiceModel.ClientBase<Shared.wsGrowmeAPI.wsSocialRankAPISoap>, Shared.wsGrowmeAPI.wsSocialRankAPISoap {
+        
+        public wsSocialRankAPISoapClient() {
+        }
+        
+        public wsSocialRankAPISoapClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public GrowmeWSSoapClient(string endpointConfigurationName, string remoteAddress) : 
+        public wsSocialRankAPISoapClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public GrowmeWSSoapClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public wsSocialRankAPISoapClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public GrowmeWSSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public wsSocialRankAPISoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public string DoWork(string xData) {
-            return base.Channel.DoWork(xData);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Shared.wsGrowmeAPI.DoWorkResponse Shared.wsGrowmeAPI.wsSocialRankAPISoap.DoWork(Shared.wsGrowmeAPI.DoWorkRequest request) {
+            return base.Channel.DoWork(request);
         }
         
-        public System.Threading.Tasks.Task<string> DoWorkAsync(string xData) {
-            return base.Channel.DoWorkAsync(xData);
+        public string DoWork(string xData) {
+            Shared.wsGrowmeAPI.DoWorkRequest inValue = new Shared.wsGrowmeAPI.DoWorkRequest();
+            inValue.Body = new Shared.wsGrowmeAPI.DoWorkRequestBody();
+            inValue.Body.xData = xData;
+            Shared.wsGrowmeAPI.DoWorkResponse retVal = ((Shared.wsGrowmeAPI.wsSocialRankAPISoap)(this)).DoWork(inValue);
+            return retVal.Body.DoWorkResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Shared.wsGrowmeAPI.DoWorkResponse> Shared.wsGrowmeAPI.wsSocialRankAPISoap.DoWorkAsync(Shared.wsGrowmeAPI.DoWorkRequest request) {
+            return base.Channel.DoWorkAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Shared.wsGrowmeAPI.DoWorkResponse> DoWorkAsync(string xData) {
+            Shared.wsGrowmeAPI.DoWorkRequest inValue = new Shared.wsGrowmeAPI.DoWorkRequest();
+            inValue.Body = new Shared.wsGrowmeAPI.DoWorkRequestBody();
+            inValue.Body.xData = xData;
+            return ((Shared.wsGrowmeAPI.wsSocialRankAPISoap)(this)).DoWorkAsync(inValue);
         }
     }
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://andrivr.hopto.org:8000/SocialRankAPI" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://andrivr.hopto.org:8000/SocialRankAPI" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://andrivr.hopto.org:8000/SocialRankAPI">
+      <s:element name="DoWork">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoWorkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoWorkResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DoWorkSoapIn">
+    <wsdl:part name="parameters" element="tns:DoWork" />
+  </wsdl:message>
+  <wsdl:message name="DoWorkSoapOut">
+    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  </wsdl:message>
+  <wsdl:portType name="wsSocialRankAPISoap">
+    <wsdl:operation name="DoWork">
+      <wsdl:input message="tns:DoWorkSoapIn" />
+      <wsdl:output message="tns:DoWorkSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsSocialRankAPISoap" type="tns:wsSocialRankAPISoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DoWork">
+      <soap:operation soapAction="http://andrivr.hopto.org:8000/SocialRankAPI/DoWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsSocialRankAPISoap12" type="tns:wsSocialRankAPISoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DoWork">
+      <soap12:operation soapAction="http://andrivr.hopto.org:8000/SocialRankAPI/DoWork" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsSocialRankAPI">
+    <wsdl:port name="wsSocialRankAPISoap" binding="tns:wsSocialRankAPISoap">
+      <soap:address location="http://localhost:8000/SocialRankAPI/wsSocialRankAPI.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsSocialRankAPISoap12" binding="tns:wsSocialRankAPISoap12">
+      <soap12:address location="http://localhost:8000/SocialRankAPI/wsSocialRankAPI.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
