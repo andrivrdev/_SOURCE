@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SocialRankAPI", "SocialRankAPI\", "{CFE57C41-519E-4A72-886E-7715C092E8D2}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_2833"
+		Debug.AspNetCompiler.PhysicalPath = "SocialRankAPI\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_2833\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_2833"
+		Release.AspNetCompiler.PhysicalPath = "SocialRankAPI\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_2833\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "2833"
+		SlnRelativePath = "SocialRankAPI\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{CF68562A-E2AF-4DBB-9967-61D38BC0931D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFE57C41-519E-4A72-886E-7715C092E8D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFE57C41-519E-4A72-886E-7715C092E8D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFE57C41-519E-4A72-886E-7715C092E8D2}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFE57C41-519E-4A72-886E-7715C092E8D2}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{CF68562A-E2AF-4DBB-9967-61D38BC0931D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF68562A-E2AF-4DBB-9967-61D38BC0931D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF68562A-E2AF-4DBB-9967-61D38BC0931D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF68562A-E2AF-4DBB-9967-61D38BC0931D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02B4345E-BC74-468F-8BC1-AA65BC1628B6}
+	EndGlobalSection
+EndGlobal
