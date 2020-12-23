@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocialRankAndroid.RegisterPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primary">#ff3467</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="10" >
+                <Label HeightRequest="110"  
+                          HorizontalOptions="FillAndExpand" 
+                          Text="UiApp" 
+                          BackgroundColor="{StaticResource primary}"
+                          TextColor="White" 
+                          FontSize="40" 
+                          HorizontalTextAlignment="Center"
+                          VerticalTextAlignment="Center"/>
+
+
+                <Entry x:Name="edtAlias" Margin="20,20,20,0" 
+                         HeightRequest="50" 
+                         Placeholder="Alias">
+                </Entry>
+
+                <Entry x:Name="edtEmail" Margin="20,0,20,0" 
+                         HeightRequest="50" 
+                         Placeholder="Email">
+                </Entry>
+
+                <Entry x:Name="edtPassword1" Margin="20,0,20,0" 
+                        HeightRequest="50" IsPassword="true"
+                        Placeholder="Password">
+                </Entry>
+
+                <Entry x:Name="edtPassword2" Margin="20,0,20,0" 
+                        HeightRequest="50" IsPassword="true"
+                        Placeholder="Confirm Password">
+                </Entry>
+
+                <Button x:Name="btnRegister" Clicked="btnRegister_Clicked" Margin="20,0,20,0" 
+                         HeightRequest="50" 
+                         TextColor="White" 
+                         Text="Register"  
+                         BackgroundColor="Gray"
+                         HorizontalOptions="FillAndExpand"/>
+                <Label x:Name="lblResult"></Label>
+
+                <Label  x:Name="lblBackToLogin" Margin="0,0,0,20" Text="I have an account" VerticalOptions="EndAndExpand"
+                        HorizontalOptions="Center" 
+                        TextColor="{StaticResource primary}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
