@@ -48,7 +48,7 @@ namespace Shared.CLASSES
             }
         }
 
-        public void sqlCreateDatabase(string xServer, string xDatabase, string xUserID, string xPassword)
+        public void sqlCreateDatabase(string xServer, string xDatabase, string xUserID, string xPassword, string xScript)
         {
             try
             {
@@ -65,80 +65,27 @@ namespace Shared.CLASSES
                 }
 
                 //Create Tables
-
-                SQL =
-                    @"
-                    CREATE TABLE [dbo].[tblUser] (
-                      [Id] int IDENTITY(1, 1) NOT NULL,
-                      [Email] varchar(500) COLLATE Latin1_General_CI_AS NULL,
-                      [Alias] varchar(50) COLLATE Latin1_General_CI_AS NULL,
-                      [Password] varchar(50) COLLATE Latin1_General_CI_AS NULL,
-                      [EmailVerified] int CONSTRAINT [DF__tblUser__EmailVe__37A5467C] DEFAULT 0 NULL,
-                      [CreatedDT] datetime CONSTRAINT [DF__tblUser__Created__38996AB5] DEFAULT getdate() NOT NULL,
-                      CONSTRAINT [PK__tblUser__3214EC077B5EAF05] PRIMARY KEY CLUSTERED ([Id])
-                    )
-                    ON [PRIMARY];
-
-                    CREATE TABLE [dbo].[tblInstagramUser] (
-                      [Id] int IDENTITY(1, 1) NOT NULL,
-                      [tblUserId] int NOT NULL,
-                      [01_BasicDisplayAPI] varchar(2000) COLLATE Latin1_General_CI_AS NULL,
-                      [01_Client_id] varchar(2000) COLLATE Latin1_General_CI_AS NULL,
-                      [01_Redirect_uri] varchar(2000) COLLATE Latin1_General_CI_AS NULL,
-                      [01_URI_GetCode] varchar(2000) COLLATE Latin1_General_CI_AS NULL,
-                      [01_URI_ResponseAfterGetCode] varchar(2000) COLLATE Latin1_General_CI_AS NULL,
-                      [02_URI_access_token] varchar(2000) COLLATE Latin1_General_CI_AS NULL,
-                      [02_Client_secret] varchar(2000) COLLATE Latin1_General_CI_AS NULL,
-                      [02_Code] varchar(2000) COLLATE Latin1_General_CI_AS NULL,
-                      [02_S_access_token] varchar(2000) COLLATE Latin1_General_CI_AS NULL,
-                      [02_S_user_id] varchar(2000) COLLATE Latin1_General_CI_AS NULL,
-                      [03_URI_long_access_token] varchar(2000) COLLATE Latin1_General_CI_AS NULL,
-                      [03_L_access_token] varchar(2000) COLLATE Latin1_General_CI_AS NULL,
-                      [03_L_token_type] varchar(2000) COLLATE Latin1_General_CI_AS NULL,
-                      [03_L_expires_in] varchar(2000) COLLATE Latin1_General_CI_AS NULL,
-                      [04_username] varchar(2000) COLLATE Latin1_General_CI_AS NULL,
-                      [04_media_count] int NULL,
-                      [CreatedDT] datetime CONSTRAINT [DF__tblInstag__Creat__3F466844] DEFAULT getdate() NOT NULL,
-                      CONSTRAINT [PK__tblInsta__3214EC074BC58D9B] PRIMARY KEY CLUSTERED ([Id]),
-                      CONSTRAINT [tblInstagramUser_fk] FOREIGN KEY ([tblUserId]) 
-                      REFERENCES [dbo].[tblUser] ([Id]) 
-                      ON UPDATE CASCADE
-                      ON DELETE CASCADE
-                    )
-                    ON [PRIMARY];
-
-                    CREATE TABLE [dbo].[tblInstagramUserMediaID] (
-                      [Id] int IDENTITY(1, 1) NOT NULL,
-                      [tblInstagramUserId] int NOT NULL,
-                      [MediaID] int NULL,
-                      [CreatedDT] datetime CONSTRAINT [DF__tblInstag__Creat__4316F928] DEFAULT getdate() NOT NULL,
-                      CONSTRAINT [PK__tblInsta__3214EC07D2380E3E] PRIMARY KEY CLUSTERED ([Id]),
-                      CONSTRAINT [tblInstagramUserMediaID_fk] FOREIGN KEY ([tblInstagramUserId]) 
-                      REFERENCES [dbo].[tblInstagramUser] ([Id]) 
-                      ON UPDATE CASCADE
-                      ON DELETE CASCADE
-                    )
-                    ON [PRIMARY];
-
-                    
-
-
-
-
-
-
-
-
-
-                    ";
-
-                using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionString))
+                if (xDatabase.Contains("Errors"))
                 {
-                    SqlCommand MyCommand = new SqlCommand(SQL, con);
+                    using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionStringErrors))
+                    {
+                        SqlCommand MyCommand = new SqlCommand(xScript, con);
 
-                    con.Open();
+                        con.Open();
 
-                    MyCommand.ExecuteNonQuery();
+                        MyCommand.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionString))
+                    {
+                        SqlCommand MyCommand = new SqlCommand(xScript, con);
+
+                        con.Open();
+
+                        MyCommand.ExecuteNonQuery();
+                    }
                 }
             }
             catch (Exception Ex)
@@ -214,15 +161,31 @@ namespace Shared.CLASSES
 
                 SQL += ")";
 
-                using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionString))
+                if (xTableName == "tblError")
                 {
-                    SqlCommand MyCommand = new SqlCommand(SQL, con);
+                    using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionStringErrors))
+                    {
+                        SqlCommand MyCommand = new SqlCommand(SQL, con);
 
-                    con.Open();
+                        con.Open();
 
-                    MyCommand.ExecuteNonQuery();
+                        MyCommand.ExecuteNonQuery();
 
-                    return true;
+                        return true;
+                    }
+                }
+                else
+                {
+                    using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionString))
+                    {
+                        SqlCommand MyCommand = new SqlCommand(SQL, con);
+
+                        con.Open();
+
+                        MyCommand.ExecuteNonQuery();
+
+                        return true;
+                    }
                 }
             }
             catch (Exception Ex)
@@ -542,6 +505,21 @@ namespace Shared.CLASSES
         {
             try
             {
+                if (!(sqlCheckIfDBExist(clsGlobal.gDBServer, clsGlobal.gDBDatabase + "Errors", clsGlobal.gDBUser, clsGlobal.gDBPassword)))
+                {
+                    sqlCreateDatabase(clsGlobal.gDBServer, clsGlobal.gDBDatabase + "Errors", clsGlobal.gDBUser, clsGlobal.gDBPassword, clsGlobal.gErrorSQL);
+                }
+                else
+                {
+                    List<string> fFields = new List<string>();
+                    List<string> vValues = new List<string>();
+
+                    fFields.Add("Error");
+                    vValues.Add(xEx.Message);
+
+                    sqlInsertRec("tblError", fFields, vValues);
+                }
+
                 return EncodeMessage("Error", xEx.Message);
             }
             catch (Exception Ex)
@@ -607,7 +585,7 @@ namespace Shared.CLASSES
                     if (xtblUser.AddRec(xData[1], xData[0], xData[2]))
                     {
                         //Send verification email
-                        if (SendEmail(xData[1], "Growme Account Verification", clsGlobal.gEmailVerificationAddress + EncodeMessage("ValidateUserEmail", xData[1])))
+                        if (SendEmail(xData[1], "SocialRank Account Verification", clsGlobal.gEmailVerificationAddress + EncodeMessage("ValidateUserEmail", xData[1])))
                         {
                             List<string> xMessage = new List<string>();
                             xMessage.Add("Account created successfully.");

@@ -21,6 +21,18 @@ public class wsSocialRankAPI : System.Web.Services.WebService
 
         //Uncomment the following line if using designed components 
         //InitializeComponent(); 
+        try
+        {
+            clsSE xclsSE = new clsSE();
+            if (!(xclsSE.sqlCheckIfDBExist(clsGlobal.gDBServer, clsGlobal.gDBDatabase, clsGlobal.gDBUser, clsGlobal.gDBPassword)))
+            {
+                xclsSE.sqlCreateDatabase(clsGlobal.gDBServer, clsGlobal.gDBDatabase, clsGlobal.gDBUser, clsGlobal.gDBPassword);
+            }
+        }
+        catch
+        {
+
+        }
     }
 
     [WebMethod]

@@ -1,1 +1,1 @@
-﻿<%@ WebService Language="C#" CodeBehind="~/App_Code/wsSocialRankAPI.cs" Class="wsSocialRankAPI" %>
+﻿<%@ WebService Language="C#" CodeBehind="wsSocialRankAPI.asmx.cs" Class="SocialRankAPI.wsSocialRankAPI" %>
