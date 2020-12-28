@@ -1,4 +1,5 @@
-﻿using Shared.CLASSES;
+﻿using CPShared;
+using Shared.CLASSES;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,16 +21,27 @@ namespace SocialRankAPI
 
             try
             {
+                clsLogger xclsLogger = new clsLogger();
+                //xclsCPShared.DoError(Ex);
+
                 clsSE xclsSE = new clsSE();
                 if (!(xclsSE.sqlCheckIfDBExist(clsGlobal.gDBServer, clsGlobal.gDBDatabase, clsGlobal.gDBUser, clsGlobal.gDBPassword)))
                 {
                     xclsSE.sqlCreateDatabase(clsGlobal.gDBServer, clsGlobal.gDBDatabase, clsGlobal.gDBUser, clsGlobal.gDBPassword, clsGlobal.gAppSQL);
                 }
+                if (!(xclsSE.sqlCheckIfDBExist(clsGlobal.gDBServer, clsGlobal.gDBDatabase + "Errors", clsGlobal.gDBUser, clsGlobal.gDBPassword)))
+                {
+                    xclsSE.sqlCreateDatabase(clsGlobal.gDBServer, clsGlobal.gDBDatabase + "Errors", clsGlobal.gDBUser, clsGlobal.gDBPassword, clsGlobal.gErrorSQL);
+                }
             }
-            catch
+            catch (Exception Ex)
             {
+                clsCPShared xclsCPShared = new clsCPShared();
+                xclsCPShared.DoError(Ex);
+
 
             }
+
         }
     }
 }

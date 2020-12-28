@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SocialRankAndroid.LoginPage">
+             x:Class="SocialRankAndroid.ResendActivationEmailPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="primary">#ff3467</Color>
@@ -20,39 +20,26 @@
                           HorizontalTextAlignment="Center"
                           VerticalTextAlignment="Center"/>
 
-                <Entry  Margin="20,40,20,0" 
+                <Entry x:Name="edtEmail" Margin="20,40,20,0" 
                          HeightRequest="50" 
                          Placeholder="Email">
                 </Entry>
 
-                <Entry Margin="20,0,20,0" 
-                        HeightRequest="50" IsPassword="true"
-                        Placeholder="Password">
+                
 
-                </Entry>
-
-                <Button Margin="20,0,20,0" 
+                <Button x:Name="btnResendActivationLink" Clicked="btnResendActivationLink_Clicked" Margin="20,0,20,0" 
                          HeightRequest="50" 
                          TextColor="White" 
-                         Text="Login"  
+                         Text="Send a New Link"  
                          BackgroundColor="{StaticResource primary}"
                          HorizontalOptions="FillAndExpand"/>
 
-                <Button Margin="20,0,20,0" 
-                         HeightRequest="50" 
-                         TextColor="White" 
-                         Text="Register" x:Name="btnRegister" Clicked="btnRegister_Clicked"
-                         BackgroundColor="Gray"
-                         HorizontalOptions="FillAndExpand"/>
 
-                <Label x:Name="lblForgotPassword" Text="I Forgot My Password" 
+                <Label  x:Name="lblBackToLogin" Margin="0,0,0,20" Text="Back to Login" VerticalOptions="EndAndExpand"
                         HorizontalOptions="Center" 
                         TextColor="{StaticResource primary}"/>
-                <Label x:Name="lblResend" Text="Resend Activation Email" 
-                        HorizontalOptions="Center" 
-                        TextColor="{StaticResource primary}"/>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
-

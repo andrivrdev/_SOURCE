@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CPShared;
+using Newtonsoft.Json;
 using Shared.DATA;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace Shared.CLASSES
                 using (SqlConnection con = new SqlConnection(xConnStr))
                 {
                     SqlCommand MyCommand = new SqlCommand(SQL, con);
+                    MyCommand.CommandTimeout = 5;
 
                     con.Open();
                     SqlDataReader MyReader = MyCommand.ExecuteReader();
@@ -43,7 +45,7 @@ namespace Shared.CLASSES
             }
             catch (Exception Ex)
             {
-                //WriteLog(1, Ex.Message, "clsSE", "sqliteInsertRec");
+                DoError(Ex);
                 return false;
             }
         }
@@ -90,8 +92,7 @@ namespace Shared.CLASSES
             }
             catch (Exception Ex)
             {
-                var x = 1;
-                //WriteLog(1, Ex.Message, "clsSE", "sqliteInsertRec");
+                DoError(Ex);
             }
         }
 
@@ -190,7 +191,8 @@ namespace Shared.CLASSES
             }
             catch (Exception Ex)
             {
-                //WriteLog(1, Ex.Message, "clsSE", "sqliteInsertRec");
+                DoError(Ex);
+
                 return false;
             }
         }
@@ -254,7 +256,7 @@ namespace Shared.CLASSES
             }
             catch (Exception Ex)
             {
-                //WriteLog(1, Ex.Message, "clsSE", "sqliteUpdateRec");
+                DoError(Ex);
                 return false;
             }
         }
@@ -287,7 +289,8 @@ namespace Shared.CLASSES
             }
             catch (Exception Ex)
             {
-                //WriteLog(1, Ex.Message, "clsSE", "sqliteDeleteRec");
+                DoError(Ex);
+
 
                 return false;
             }
@@ -505,12 +508,14 @@ namespace Shared.CLASSES
         {
             try
             {
+                clsCPShared xclsCPShared = new clsCPShared();
+                xclsCPShared.DoError(xEx);
+
                 if (!(sqlCheckIfDBExist(clsGlobal.gDBServer, clsGlobal.gDBDatabase + "Errors", clsGlobal.gDBUser, clsGlobal.gDBPassword)))
                 {
                     sqlCreateDatabase(clsGlobal.gDBServer, clsGlobal.gDBDatabase + "Errors", clsGlobal.gDBUser, clsGlobal.gDBPassword, clsGlobal.gErrorSQL);
                 }
-                else
-                {
+
                     List<string> fFields = new List<string>();
                     List<string> vValues = new List<string>();
 
@@ -518,7 +523,6 @@ namespace Shared.CLASSES
                     vValues.Add(xEx.Message);
 
                     sqlInsertRec("tblError", fFields, vValues);
-                }
 
                 return EncodeMessage("Error", xEx.Message);
             }
@@ -681,7 +685,8 @@ namespace Shared.CLASSES
             }
         }
 
-        public string frmForgotPassword_ResetPassword(List<string> xData)
+
+        public string frmResendActivationEmail_Resend(List<string> xData)
         {
             try
             {
@@ -690,17 +695,68 @@ namespace Shared.CLASSES
                 //Check if exist
                 if (xtblUser.CheckIfEmailExist(xData[0]))
                 {
-                    //Check if email is verified
-                    if (xtblUser.CheckIfEmailVerified(xData[0]))
+                    //Send reset password verification email
+                    if (SendEmail(xData[0], "SocialRank Account Verification", clsGlobal.gEmailVerificationAddress + EncodeMessage("ValidateUserEmail", xData[0])))
                     {
-                        //Send reset password verification email
-                        if (SendEmail(xData[0], "Growme Password Reset Verification", clsGlobal.gEmailVerificationAddress + EncodeMessage("ValidateResetPassword", xData[0])))
+                        List<string> xMessage = new List<string>();
+                        xMessage.Add("Activation Link Sent.");
+                        xMessage.Add("");
+                        xMessage.Add("Please activate your account by clicking on the link");
+                        xMessage.Add("we have sent to your email address.");
+
+                        return EncodeMessage("Success", xMessage);
+                    }
+                    else
+                    {
+                        return EncodeMessage("Error", "");
+                    }
+                }
+                else
+                {
+                    List<string> xMessage = new List<string>();
+                    xMessage.Add("The email address is not registered.");
+                    xMessage.Add("");
+                    xMessage.Add("You are welcome to create a new account");
+                    xMessage.Add("by clicking on the 'Register a New Account'");
+                    xMessage.Add("button on the Logon screen.");
+
+                    return EncodeMessage("ErrorExist", xMessage);
+                }
+            }
+            catch (Exception Ex)
+            {
+                return DoError(Ex);
+            }
+        }
+
+        public string GenerateRandomNo()
+        {
+            int _min = 10000;
+            int _max = 99999;
+            Random _rdm = new Random();
+            return _rdm.Next(_min, _max).ToString();
+        }
+
+        public string frmForgotPassword_GetCode(List<string> xData)
+        {
+            try
+            {
+                tblUser xtblUser = new tblUser();
+
+                //Check if exist
+                if (xtblUser.CheckIfEmailExist(xData[0]))
+                {
+                    //Generate and store
+                    var xNewCode = GenerateRandomNo();
+                    if (xtblUser.UpdatePasswordResetCode(xData[0], xNewCode))
+                    {
+                        if (SendEmail(xData[0], "SocialRank Password Reset Code", xNewCode))
                         {
                             List<string> xMessage = new List<string>();
-                            xMessage.Add("Verification email sent.");
+                            xMessage.Add("Code Sent.");
                             xMessage.Add("");
-                            xMessage.Add("You can now reset your password by clicking");
-                            xMessage.Add("on the link we have sent to your email address.");
+                            xMessage.Add("Please check your email and");
+                            xMessage.Add("click the 'I Have a Code'button to continue.");
 
                             return EncodeMessage("Success", xMessage);
                         }
@@ -711,18 +767,48 @@ namespace Shared.CLASSES
                     }
                     else
                     {
-                        List<string> xMessage = new List<string>();
-                        xMessage.Add("The email address is not verified.");
-                        xMessage.Add("");
-                        xMessage.Add("Please activate your account by clicking on the link");
-                        xMessage.Add("we have sent to your email address when you created");
-                        xMessage.Add("your account.");
-                        xMessage.Add("");
-                        xMessage.Add("If you have not received an email containing the link,");
-                        xMessage.Add("please click on the 'Resend Activation Email' button");
-                        xMessage.Add("on the logon screen.");
+                        return EncodeMessage("Error", "");
+                    }
+                }
+                else
+                {
+                    List<string> xMessage = new List<string>();
+                    xMessage.Add("The email address is not registered.");
+                    xMessage.Add("");
+                    xMessage.Add("You are welcome to create a new account");
+                    xMessage.Add("by clicking on the 'Register a New Account'");
+                    xMessage.Add("button on the Logon screen.");
 
-                        return EncodeMessage("ErrorNotVerified", xMessage);
+                    return EncodeMessage("ErrorExist", xMessage);
+                }
+            }
+            catch (Exception Ex)
+            {
+                return DoError(Ex);
+            }
+        }
+        public string frmForgotPassword_ResetPassword(List<string> xData)
+        {
+            try
+            {
+                tblUser xtblUser = new tblUser();
+
+                //Check if exist
+                if (xtblUser.CheckIfEmailAndCodeExist(xData[1], xData[0]))
+                {
+
+                    if (xtblUser.ResetPassword(xData[0], "00000"))
+                    {
+                        List<string> xMessage = new List<string>();
+                        xMessage.Add("Password Reset.");
+                        xMessage.Add("");
+                        xMessage.Add("Please log in using the new credetials.");
+
+                        return EncodeMessage("Success", xMessage);
+                    }
+                    else
+                    {
+                        return EncodeMessage("Error", "");
                     }
                 }
                 else

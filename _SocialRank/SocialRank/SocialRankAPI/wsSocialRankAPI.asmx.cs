@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CPShared;
+using Newtonsoft.Json;
 using Shared.CLASSES;
 using System;
 using System.Collections.Generic;
@@ -73,6 +74,25 @@ namespace SocialRankAPI
                             return xResult;
                         }
 
+                        //Resend activation link
+                        if (xMessage.Contains("frmResendActivationEmail_Resend" + clsGlobal.gMessageCommandSeperator))
+                        {
+                            xMessage = xMessage.Replace("frmResendActivationEmail_Resend" + clsGlobal.gMessageCommandSeperator, "");
+                            var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
+                            var xResult = xclsSE.frmResendActivationEmail_Resend(dData);
+                            return xResult;
+                        }
+
+                        //Get Password Reset Code
+                        if (xMessage.Contains("frmForgotPassword_GetCode" + clsGlobal.gMessageCommandSeperator))
+                        {
+                            xMessage = xMessage.Replace("frmForgotPassword_GetCode" + clsGlobal.gMessageCommandSeperator, "");
+                            var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
+                            var xResult = xclsSE.frmForgotPassword_GetCode(dData);
+                            return xResult;
+                        }
+
+                        //frmResendActivationEmail_Resend
                         //Invalid
                         return "Invalid command";
                     }

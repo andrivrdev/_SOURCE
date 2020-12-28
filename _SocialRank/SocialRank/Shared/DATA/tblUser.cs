@@ -1,4 +1,5 @@
-﻿using Shared.CLASSES;
+﻿using CPShared;
+using Shared.CLASSES;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -106,6 +107,57 @@ namespace Shared.DATA
 
         }
 
+        public bool CheckIfEmailAndCodeExist(string xEmail, string xCode)
+        {
+            try
+            {
+                if (xCode is null)
+                {
+                    return false;
+                }
+                else
+                {
+                    if (Convert.ToInt32(xCode) < 10000)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        string SQL = "";
+
+                        SQL =
+                            @"
+                            SELECT TOP 1
+                              dbo.tblUser.Id
+                            FROM
+                              dbo.tblUser
+                            WHERE
+                              (dbo.tblUser.Email = '" + xCode + @"')
+                              AND
+                              (dbo.tblUser.Email = '" + xEmail + "'";
+
+                        using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionString))
+                        {
+                            SqlCommand MyCommand = new SqlCommand(SQL, con);
+
+                            con.Open();
+                            SqlDataReader MyReader = MyCommand.ExecuteReader();
+
+                            return MyReader.HasRows;
+                        }
+
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                clsSE xclsSE = new clsSE();
+                xclsSE.DoError(Ex);
+                throw new Exception(Ex.Message);
+            }
+
+        }
+
         public bool CheckIfEmailVerified(string xEmail)
         {
             try
@@ -201,6 +253,68 @@ namespace Shared.DATA
                 fFields.Add("EmailVerified");
 
                 vValues.Add("1");
+
+                clsSE xclsSE = new clsSE();
+
+                if (xclsSE.sqlUpdateRec("tblUser", fFields, vValues, "[Email] = '" + xEmail + "'"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception Ex)
+            {
+                clsSE xclsSE = new clsSE();
+                xclsSE.DoError(Ex);
+                return false;
+            }
+        }
+
+        public bool UpdatePasswordResetCode(string xEmail, string xCode)
+        {
+            try
+            {
+                List<string> fFields = new List<string>();
+                List<string> vValues = new List<string>();
+
+                fFields.Add("ResetPasswordCode");
+
+                vValues.Add(xCode);
+
+                clsSE xclsSE = new clsSE();
+
+                if (xclsSE.sqlUpdateRec("tblUser", fFields, vValues, "[Email] = '" + xEmail + "'"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception Ex)
+            {
+                clsSE xclsSE = new clsSE();
+                xclsSE.DoError(Ex);
+                return false;
+            }
+        }
+
+        public bool ResetPassword(string xEmail, string xPassword)
+        {
+            try
+            {
+                List<string> fFields = new List<string>();
+                List<string> vValues = new List<string>();
+
+                fFields.Add("Password");
+                fFields.Add("ResetPasswordCode");
+
+                vValues.Add(xPassword);
+                vValues.Add("00000");
 
                 clsSE xclsSE = new clsSE();
 

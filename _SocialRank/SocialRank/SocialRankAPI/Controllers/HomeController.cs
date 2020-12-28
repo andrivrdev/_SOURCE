@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CPShared;
+using Newtonsoft.Json;
 using Shared.CLASSES;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,10 @@ namespace SocialRankAPI.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "About page.";
+
+            //cls
+            clsCPShared xclsCPShared = new clsCPShared();
+            xclsCPShared.DoError(new Exception());
 
             return View();
         }
@@ -72,6 +77,9 @@ namespace SocialRankAPI.Controllers
             }
             catch (Exception Ex)
             {
+                clsSE xSE = new clsSE();
+                xSE.DoError(Ex);
+
                 ViewBag.Message = "Failed";
                 return View();
             }

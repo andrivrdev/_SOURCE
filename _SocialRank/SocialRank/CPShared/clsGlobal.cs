@@ -1,13 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Shared.CLASSES
+namespace CPShared
 {
     public static class clsGlobal
     {
+        public static string gAppName = "SocialRank";
+        public static string gAppPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+        public static string gLogRootFolder = @"C:\";
+        public static string gLogSubfolder = "Logger";
+        public static string gLogFileName = gAppName + "_Log.txt";
+
         public static string gPasswordHash = "AnDr1devITV";
         public static string gSaltKey = "s@lT1Zk3ydevMGZ";
         public static string gVIKey = "@AzzeM81YydevLQJ";
@@ -55,6 +62,7 @@ namespace Shared.CLASSES
             [Alias] varchar(50) COLLATE Latin1_General_CI_AS NULL,
             [Password] varchar(50) COLLATE Latin1_General_CI_AS NULL,
             [EmailVerified] int CONSTRAINT [DF__tblUser__EmailVe__37A5467C] DEFAULT 0 NULL,
+            [ResetPasswordCode] varchar(5) NULL,
             [CreatedDT] datetime CONSTRAINT [DF__tblUser__Created__38996AB5] DEFAULT getdate() NOT NULL,
             CONSTRAINT [PK__tblUser__3214EC077B5EAF05] PRIMARY KEY CLUSTERED ([Id])
         )

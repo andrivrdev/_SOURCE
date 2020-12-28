@@ -13,16 +13,15 @@ using Xamarin.Forms.Xaml;
 namespace SocialRankAndroid
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RegisterPage : ContentPage
+    public partial class ForgotPasswordEnterCodePage : ContentPage
     {
-        public RegisterPage()
+        public ForgotPasswordEnterCodePage()
         {
             InitializeComponent();
 
             lblBackToLogin.GestureRecognizers.Add(new TapGestureRecognizer((view) => OnlblBackToLogin()));
-        }
 
-        
+        }
 
         async void OnlblBackToLogin()
         {
@@ -31,7 +30,7 @@ namespace SocialRankAndroid
 
         private bool ValidateEntries()
         {
-            if (!((edtAlias.Text is null) ||
+            if (!((edtCode.Text is null) ||
                 (edtEmail.Text is null) ||
                 (edtPassword1.Text is null) ||
                 (edtPassword2.Text is null)))
@@ -39,7 +38,7 @@ namespace SocialRankAndroid
 
                 clsSE xclsSE = new clsSE();
 
-                if ((edtAlias.Text.Trim().Length > 0) &&
+                if ((edtCode.Text.Trim().Length > 0) &&
                     (edtEmail.Text.Trim().Length > 0) &&
                     (edtPassword1.Text.Trim().Length > 0) &&
                     (edtPassword2.Text.Trim().Length > 0))
@@ -75,21 +74,20 @@ namespace SocialRankAndroid
 
             }
         }
-        
 
-        async void btnRegister_Clicked(object sender, EventArgs e)
+        async void btnResetPassword_Clicked(object sender, EventArgs e)
         {
             if (ValidateEntries())
             {
                 var xData = new List<string>();
 
-                xData.Add(edtAlias.Text);
+                xData.Add(edtCode.Text);
                 xData.Add(edtEmail.Text);
                 xData.Add(edtPassword1.Text);
-                
+
                 clsSE xclsSE = new clsSE();
 
-                var xresult = xclsSE.Send("frmRegister_RegisterUser", xData);
+                var xresult = xclsSE.Send("frmForgotPassword_ResetPassword", xData);
                 xresult = xclsSE.DecodeMessage(xresult);
                 //lblResult.Text = xResult;
 
@@ -104,25 +102,10 @@ namespace SocialRankAndroid
                         xLines += xLine + Environment.NewLine;
                     }
 
-                    DisplayAlert("Account Created", xLines, "OK");
+                    DisplayAlert("Password was Reset", xLines, "OK");
                     await Navigation.PushModalAsync(new LoginPage());
 
 
-                }
-
-                if (xresult.Contains("ErrorNotVerified" + clsGlobal.gMessageCommandSeperator))
-                {
-                    var xMessage = xresult.Replace("ErrorNotVerified" + clsGlobal.gMessageCommandSeperator, "");
-                    var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
-
-                    string xLines = "";
-                    foreach (var xLine in dData)
-                    {
-                        xLines += xLine + Environment.NewLine;
-                    }
-
-                    DisplayAlert("Account Already Exists", xLines, "OK");
-                    edtAlias.Focus();
                 }
 
                 if (xresult.Contains("ErrorExist" + clsGlobal.gMessageCommandSeperator))
@@ -136,22 +119,21 @@ namespace SocialRankAndroid
                         xLines += xLine + Environment.NewLine;
                     }
 
-                    DisplayAlert("Account Already Exists", xLines, "OK");
-                    edtAlias.Focus();
+                    DisplayAlert("Account Does Not Exist", xLines, "OK");
+                    edtCode.Focus();
                 }
 
                 if (xresult.Contains("Error" + clsGlobal.gMessageCommandSeperator))
                 {
                     DisplayAlert("Error", "An unknown error has occured.", "OK");
-                    edtAlias.Focus();
+                    edtCode.Focus();
                 }
 
-                
+
             }
-           
+
+
 
         }
-
-
     }
 }

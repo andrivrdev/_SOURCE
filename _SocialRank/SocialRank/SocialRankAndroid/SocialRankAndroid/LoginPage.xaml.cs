@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SocialRankAndroid.SHARED.CLASSES;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,20 @@ namespace SocialRankAndroid
         public LoginPage()
         {
             InitializeComponent();
+
+            lblResend.GestureRecognizers.Add(new TapGestureRecognizer((view) => OnlblResendClick()));
+            lblForgotPassword.GestureRecognizers.Add(new TapGestureRecognizer((view) => OnlblForgotPasswordClick()));
+
+        }
+
+        async void OnlblResendClick()
+        {
+            await Navigation.PushModalAsync(new ResendActivationEmailPage());
+        }
+
+        async void OnlblForgotPasswordClick()
+        {
+            await Navigation.PushModalAsync(new ForgotPasswordPage());
         }
 
         async void btnRegister_Clicked(object sender, EventArgs e)
