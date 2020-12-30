@@ -99,21 +99,11 @@ namespace SocialRankAndroid
                 if (xresult.Contains("Success" + clsGlobal.gMessageCommandSeperator))
                 {
                     var xMessage = xresult.Replace("Success" + clsGlobal.gMessageCommandSeperator, "");
-                    /*
-                    var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
+                    xMessage = xMessage.Substring(1, xMessage.Length - 2);
+                    clsCurrentUser.Id = Convert.ToInt32(xMessage);
+                    clsCurrentUser.Email = edtEmail.Text;
 
-                    string xLines = "";
-                    foreach (var xLine in dData)
-                    {
-                        xLines += xLine + Environment.NewLine;
-                    }
-                    */
-
-                    //int xAlert = Convert.ToInt32(gMessages.AccountCreated);
-                    //DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
                     await Navigation.PushModalAsync(new UserMainPage());
-
-
                 }
 
                 if (xresult.Contains("ErrorNotVerified" + clsGlobal.gMessageCommandSeperator))

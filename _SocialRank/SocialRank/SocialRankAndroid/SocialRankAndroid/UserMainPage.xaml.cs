@@ -16,5 +16,11 @@ namespace SocialRankAndroid
         {
             InitializeComponent();
         }
+
+        async void btnLinkInstagram_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new LinkInstagramPage());
+
+        }
     }
 }

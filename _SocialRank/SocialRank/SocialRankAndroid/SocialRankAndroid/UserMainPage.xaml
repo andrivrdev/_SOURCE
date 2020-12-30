@@ -3,7 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SocialRankAndroid.UserMainPage">
   <!--Pages can be added as references or inline-->
-  <ContentPage Title="Tab 1" />
-  <ContentPage Title="Tab 2" />
+    <TabbedPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primary">#ff3467</Color>
+        </ResourceDictionary>
+    </TabbedPage.Resources>
+
+    <ContentPage Title="Tab 1" >
+
+        <ScrollView>
+            <StackLayout Spacing="10" >
+                <Label HeightRequest="110"  
+                          HorizontalOptions="FillAndExpand" 
+                          Text="Social Rank" 
+                          BackgroundColor="{StaticResource primary}"
+                          TextColor="White" 
+                          FontSize="40" 
+                          HorizontalTextAlignment="Center"
+                          VerticalTextAlignment="Center"/>
+
+
+
+                <Button x:Name="btnLinkInstagram" Clicked="btnLinkInstagram_Clicked"  Margin="20,0,20,0" 
+                         HeightRequest="50" 
+                         TextColor="White" 
+                         Text="Link Instagram"  
+                         BackgroundColor="Gray"
+                         HorizontalOptions="FillAndExpand"/>
+
+            </StackLayout>
+        </ScrollView>
+
+
+    </ContentPage>
+    <ContentPage Title="Tab 2" />
   <ContentPage Title="Tab 3" />
 </TabbedPage>

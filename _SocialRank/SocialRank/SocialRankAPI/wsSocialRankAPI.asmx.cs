@@ -107,6 +107,15 @@ namespace SocialRankAPI
                             return xResult;
                         }
 
+                        //Link Instagram
+                        if (xMessage.Contains("LinkInstagramPage_LinkInstagram" + clsGlobal.gMessageCommandSeperator))
+                        {
+                            xMessage = xMessage.Replace("LinkInstagramPage_LinkInstagram" + clsGlobal.gMessageCommandSeperator, "");
+                            var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
+                            var xResult = xclsSE.LinkInstagramPage_LinkInstagram(dData);
+                            return xResult;
+                        }
+
                         //frmResendActivationEmail_Resend
                         //Invalid
                         return "Invalid command";

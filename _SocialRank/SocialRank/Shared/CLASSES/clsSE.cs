@@ -856,7 +856,8 @@ namespace Shared.CLASSES
                         //Check if password is correct
                         if (xtblUser.CheckPassword(xData[0], xData[1]))
                         {
-                            return EncodeMessage("Success", "");
+                            
+                            return EncodeMessage("Success", xtblUser.GetId(xData[0]).ToString());
                         }
                         else
                         {
@@ -883,5 +884,77 @@ namespace Shared.CLASSES
             }
         }
 
+        public string LinkInstagramPage_LinkInstagram(List<string> xData)
+        {
+            try
+            {
+                tblShortToken xtblShortToken = new tblShortToken();
+                xtblShortToken = xtblShortToken.GetShortToken(xData[0]);
+
+                tblLongToken xtblLongToken = new tblLongToken();
+                xtblLongToken =xtblLongToken.GetLongToken(xtblShortToken.access_token);
+
+                tblUsernameAndMediaCount xtblUsernameAndMediaCount = new tblUsernameAndMediaCount();
+                xtblUsernameAndMediaCount = xtblUsernameAndMediaCount.GetUsernameAndMediaCount(clsGlobal.g_URI_Me_UsernameAndMediaCount, xtblLongToken.access_token);
+
+                //Save to Database
+                List<string> fFields = new List<string>();
+                List<string> vValues = new List<string>();
+
+                fFields.Add("tblUserId");
+                fFields.Add("01_BasicDisplayAPI");
+                fFields.Add("01_Client_id");
+                fFields.Add("01_Redirect_uri");
+                fFields.Add("01_URI_GetCode");
+                fFields.Add("01_URI_ResponseAfterGetCode");
+                fFields.Add("02_URI_access_token");
+                fFields.Add("02_Client_secret");
+                fFields.Add("02_Code");
+                fFields.Add("02_S_access_token");
+                fFields.Add("02_S_user_id");
+                fFields.Add("03_URI_long_access_token");
+                fFields.Add("03_L_access_token");
+                fFields.Add("03_L_token_type");
+                fFields.Add("03_L_expires_in");
+                fFields.Add("04_username");
+                fFields.Add("04_media_count");
+
+                vValues.Add(xData[1]);
+                vValues.Add(clsGlobal.g_BasicDisplayAPI);
+                vValues.Add(clsGlobal.g_client_id);
+                vValues.Add(clsGlobal.g_redirect_uri);
+                vValues.Add("");
+                vValues.Add("");
+                vValues.Add(clsGlobal.g_URI_access_token);
+                vValues.Add(clsGlobal.g_client_secret);
+                vValues.Add(xData[0]);
+                vValues.Add(xtblShortToken.access_token);
+                vValues.Add(xtblShortToken.user_id);
+                vValues.Add(clsGlobal.g_URI_long_access_token);
+                vValues.Add(xtblLongToken.access_token);
+                vValues.Add(xtblLongToken.token_type);
+                vValues.Add(xtblLongToken.expires_in.ToString());
+                vValues.Add(xtblUsernameAndMediaCount.username);
+                vValues.Add(xtblUsernameAndMediaCount.media_count);
+
+                clsSE xclsSE = new clsSE();
+
+                if (xclsSE.sqlInsertRec("tblInstagramUser", fFields, vValues))
+                {
+                    return EncodeMessage("Success", "");
+                }
+                else
+                {
+                    return EncodeMessage("Failed", "");
+                }
+
+
+
+            }
+            catch (Exception Ex)
+            {
+                return DoError(Ex);
+            }
+        }
     }
 }

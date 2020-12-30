@@ -107,6 +107,48 @@ namespace Shared.DATA
 
         }
 
+        public int GetId(string xEmail)
+        {
+            try
+            {
+                string SQL = "";
+
+                SQL =
+                    @"
+                SELECT TOP 1
+                  dbo.tblUser.Id
+                FROM
+                  dbo.tblUser
+                WHERE
+                  dbo.tblUser.Email = '" + xEmail + "'";
+
+                using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionString))
+                {
+                    SqlCommand MyCommand = new SqlCommand(SQL, con);
+
+                    con.Open();
+                    SqlDataReader MyReader = MyCommand.ExecuteReader();
+
+                    dtUser = new DataTable();
+                    dtUser.Load(MyReader);
+
+                    foreach (DataRow dr in dtUser.Rows)
+                    {
+                        return Convert.ToInt32(dr["Id"]);
+                    }
+
+                    return -1;
+                }
+            }
+            catch (Exception Ex)
+            {
+                clsSE xclsSE = new clsSE();
+                xclsSE.DoError(Ex);
+                throw new Exception(Ex.Message);
+            }
+
+        }
+
         public bool CheckIfEmailAndCodeExist(string xEmail, string xCode)
         {
             try
