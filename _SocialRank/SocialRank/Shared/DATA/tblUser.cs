@@ -132,9 +132,9 @@ namespace Shared.DATA
                             FROM
                               dbo.tblUser
                             WHERE
-                              (dbo.tblUser.Email = '" + xCode + @"')
+                              (dbo.tblUser.ResetPasswordCode = '" + xCode + @"')
                               AND
-                              (dbo.tblUser.Email = '" + xEmail + "'";
+                              (dbo.tblUser.Email = '" + xEmail + "')";
 
                         using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionString))
                         {

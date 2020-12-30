@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using static CPShared.clsGlobal;
 
 namespace CPShared
 {
@@ -37,6 +38,9 @@ namespace CPShared
             {
                 WriteLine(System.DateTime.Now.ToString(datetimeFormat) + " " + logHeader, false);
             }
+
+            WriteLine(System.DateTime.Now.ToString(datetimeFormat) + " App started.", true);
+
         }
 
         /// <summary>
@@ -45,7 +49,7 @@ namespace CPShared
         /// <param name="text">Message</param>
         public void Debug(string text)
         {
-            WriteFormattedLog(LogLevel.DEBUG, text);
+            WriteFormattedLog(gLogLevel.DEBUG, text);
         }
 
         /// <summary>
@@ -54,7 +58,7 @@ namespace CPShared
         /// <param name="text">Message</param>
         public void Error(string text)
         {
-            WriteFormattedLog(LogLevel.ERROR, text);
+            WriteFormattedLog(gLogLevel.ERROR, text);
         }
 
         /// <summary>
@@ -63,7 +67,7 @@ namespace CPShared
         /// <param name="text">Message</param>
         public void Fatal(string text)
         {
-            WriteFormattedLog(LogLevel.FATAL, text);
+            WriteFormattedLog(gLogLevel.FATAL, text);
         }
 
         /// <summary>
@@ -72,7 +76,7 @@ namespace CPShared
         /// <param name="text">Message</param>
         public void Info(string text)
         {
-            WriteFormattedLog(LogLevel.INFO, text);
+            WriteFormattedLog(gLogLevel.INFO, text);
         }
 
         /// <summary>
@@ -81,7 +85,7 @@ namespace CPShared
         /// <param name="text">Message</param>
         public void Trace(string text)
         {
-            WriteFormattedLog(LogLevel.TRACE, text);
+            WriteFormattedLog(gLogLevel.TRACE, text);
         }
 
         /// <summary>
@@ -90,7 +94,7 @@ namespace CPShared
         /// <param name="text">Message</param>
         public void Warning(string text)
         {
-            WriteFormattedLog(LogLevel.WARNING, text);
+            WriteFormattedLog(gLogLevel.WARNING, text);
         }
 
         private void WriteLine(string text, bool append = true)
@@ -112,27 +116,27 @@ namespace CPShared
             }
         }
 
-        private void WriteFormattedLog(LogLevel level, string text)
+        public void WriteFormattedLog(gLogLevel level, string text)
         {
             string pretext;
             switch (level)
             {
-                case LogLevel.TRACE:
+                case gLogLevel.TRACE:
                     pretext = System.DateTime.Now.ToString(datetimeFormat) + " [TRACE]   ";
                     break;
-                case LogLevel.INFO:
+                case gLogLevel.INFO:
                     pretext = System.DateTime.Now.ToString(datetimeFormat) + " [INFO]    ";
                     break;
-                case LogLevel.DEBUG:
+                case gLogLevel.DEBUG:
                     pretext = System.DateTime.Now.ToString(datetimeFormat) + " [DEBUG]   ";
                     break;
-                case LogLevel.WARNING:
+                case gLogLevel.WARNING:
                     pretext = System.DateTime.Now.ToString(datetimeFormat) + " [WARNING] ";
                     break;
-                case LogLevel.ERROR:
+                case gLogLevel.ERROR:
                     pretext = System.DateTime.Now.ToString(datetimeFormat) + " [ERROR]   ";
                     break;
-                case LogLevel.FATAL:
+                case gLogLevel.FATAL:
                     pretext = System.DateTime.Now.ToString(datetimeFormat) + " [FATAL]   ";
                     break;
                 default:
@@ -143,17 +147,6 @@ namespace CPShared
             WriteLine(pretext + text);
         }
 
-        [System.Flags]
-        private enum LogLevel
-        {
-            TRACE,
-            INFO,
-            DEBUG,
-            WARNING,
-            ERROR,
-            FATAL
-
-        }
     }
 
 }

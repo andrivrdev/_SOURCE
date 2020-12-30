@@ -46,6 +46,57 @@ namespace CPShared
 
         public static string gEmailVerificationAddress = gWebServiceNamespace + "/Home/VerifyEmail?xData=";
 
+        public class clsMessages
+        {
+            public string Title { get; set; }
+            public string Message { get; set; }
+            public string Button { get; set; }
+        }
+
+        public static clsMessages[] gclsMessages =
+        {
+            
+            new clsMessages{ Title="Info", Message="Please use a valid email address.", Button="OK"},
+            new clsMessages{ Title="Info", Message="Your passwords do not match.", Button="OK"},
+            new clsMessages{ Title="Info", Message="Please complete all the fields.", Button="OK"},
+            new clsMessages{ Title="Password Was Reset", Message="Please log in using the new credetials.", Button="OK"},
+            new clsMessages{ Title="Invalid Code", Message="The code in invalid.", Button="OK"},
+            new clsMessages{ Title="Error", Message="An unknown error has occured.", Button="OK"},
+            new clsMessages{ Title="Code Sent", Message="Please check your email and click the 'I Have a Code' button to continue.", Button="OK"},
+            new clsMessages{ Title="Account Does Not Exist", Message="The account is not registered.", Button="OK"},
+            new clsMessages{ Title="Account Not Verified", Message="The account is not verified. Please activate your account by clicking on the link we have sent to your email address.", Button="OK"},
+            new clsMessages{ Title="Account Created", Message="Account created successfully. Please activate your account by clicking on the link we have sent to your email address.", Button="OK"},
+            new clsMessages{ Title="Account Already Exist", Message="The email address is already in use.", Button="OK"},
+            new clsMessages{ Title="Activation Link Sent", Message="Please activate your account by clicking on the link we have sent to your email address.", Button="OK"}
+        };
+
+        public enum gMessages
+        {
+            EmailInvalid,
+            PasswordsDoNotMatch,
+            CompleteAllFields,
+            PasswordWasReset,
+            InvalidCode,
+            Error,
+            CodeSent,
+            AccountDoesNotExist,
+            AccountNotVerified,
+            AccountCreated,
+            AccountAlreadyExist,
+            ActivationLinkSent
+        }
+
+        public enum gLogLevel
+        {
+            TRACE,
+            INFO,
+            DEBUG,
+            WARNING,
+            ERROR,
+            FATAL
+        }
+
+
         public static string gErrorSQL =
         @"
         CREATE TABLE [dbo].[tblError] (

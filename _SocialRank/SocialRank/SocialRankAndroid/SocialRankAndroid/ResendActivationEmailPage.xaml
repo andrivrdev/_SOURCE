@@ -13,7 +13,7 @@
 
                 <Label HeightRequest="110"  
                           HorizontalOptions="FillAndExpand" 
-                          Text="UiApp" 
+                          Text="Social Rank" 
                           BackgroundColor="{StaticResource primary}"
                           TextColor="White" 
                           FontSize="40" 

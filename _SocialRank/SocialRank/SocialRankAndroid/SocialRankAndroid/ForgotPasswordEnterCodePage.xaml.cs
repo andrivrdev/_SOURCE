@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static CPShared.clsGlobal;
 
 namespace SocialRankAndroid
 {
@@ -51,25 +51,29 @@ namespace SocialRankAndroid
                         }
                         else
                         {
-                            DisplayAlert("Info", "Please use a valid email address.", "OK");
+                            int xAlert = Convert.ToInt32(gMessages.EmailInvalid);
+                            DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
                             return false;
                         }
                     }
                     else
                     {
-                        DisplayAlert("Info", "Your passwords do not match.", "OK");
+                        int xAlert = Convert.ToInt32(gMessages.PasswordsDoNotMatch);
+                        DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
                         return false;
                     }
                 }
                 else
                 {
-                    DisplayAlert("Info", "Please complete all the fields.", "OK");
+                    int xAlert = Convert.ToInt32(gMessages.CompleteAllFields);
+                    DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
                     return false;
                 }
             }
             else
             {
-                DisplayAlert("Info", "Please complete all the fields.", "OK");
+                int xAlert = Convert.ToInt32(gMessages.CompleteAllFields);
+                DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
                 return false;
 
             }
@@ -102,7 +106,8 @@ namespace SocialRankAndroid
                         xLines += xLine + Environment.NewLine;
                     }
 
-                    DisplayAlert("Password was Reset", xLines, "OK");
+                    int xAlert = Convert.ToInt32(gMessages.PasswordWasReset);
+                    DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
                     await Navigation.PushModalAsync(new LoginPage());
 
 
@@ -119,21 +124,18 @@ namespace SocialRankAndroid
                         xLines += xLine + Environment.NewLine;
                     }
 
-                    DisplayAlert("Account Does Not Exist", xLines, "OK");
+                    int xAlert = Convert.ToInt32(gMessages.InvalidCode);
+                    DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
                     edtCode.Focus();
                 }
 
                 if (xresult.Contains("Error" + clsGlobal.gMessageCommandSeperator))
                 {
-                    DisplayAlert("Error", "An unknown error has occured.", "OK");
+                    int xAlert = Convert.ToInt32(gMessages.Error);
+                    DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
                     edtCode.Focus();
                 }
-
-
             }
-
-
-
         }
     }
 }

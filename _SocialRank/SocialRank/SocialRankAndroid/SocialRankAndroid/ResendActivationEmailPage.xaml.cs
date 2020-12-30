@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static CPShared.clsGlobal;
 
 namespace SocialRankAndroid
 {
@@ -47,19 +48,22 @@ namespace SocialRankAndroid
                     }
                     else
                     {
-                        DisplayAlert("Info", "Please use a valid email address.", "OK");
+                        int xAlert = Convert.ToInt32(gMessages.EmailInvalid);
+                        DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
                         return false;
                     }
                 }
                 else
                 {
-                    DisplayAlert("Info", "Please complete all the fields.", "OK");
+                    int xAlert = Convert.ToInt32(gMessages.CompleteAllFields);
+                    DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
                     return false;
                 }
             }
             else
             {
-                DisplayAlert("Info", "Please complete all the fields.", "OK");
+                int xAlert = Convert.ToInt32(gMessages.CompleteAllFields);
+                DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
                 return false;
 
             }
@@ -90,7 +94,8 @@ namespace SocialRankAndroid
                         xLines += xLine + Environment.NewLine;
                     }
 
-                    DisplayAlert("Sent", xLines, "OK");
+                    int xAlert = Convert.ToInt32(gMessages.ActivationLinkSent);
+                    DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
                     await Navigation.PushModalAsync(new LoginPage());
 
 
@@ -109,13 +114,15 @@ namespace SocialRankAndroid
                             xLines += xLine + Environment.NewLine;
                         }
 
-                        DisplayAlert("Account Does not Exist", xLines, "OK");
+                        int xAlert = Convert.ToInt32(gMessages.AccountDoesNotExist);
+                        DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
                         edtEmail.Focus();
                     }
 
                     if (xresult.Contains("Error" + clsGlobal.gMessageCommandSeperator))
                     {
-                        DisplayAlert("Error", "An unknown error has occured.", "OK");
+                        int xAlert = Convert.ToInt32(gMessages.Error);
+                        DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
                         edtEmail.Focus();
                     }
                 }

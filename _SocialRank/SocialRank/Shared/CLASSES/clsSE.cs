@@ -746,19 +746,27 @@ namespace Shared.CLASSES
                 //Check if exist
                 if (xtblUser.CheckIfEmailExist(xData[0]))
                 {
-                    //Generate and store
-                    var xNewCode = GenerateRandomNo();
-                    if (xtblUser.UpdatePasswordResetCode(xData[0], xNewCode))
+                    //Check if email is verified
+                    if (xtblUser.CheckIfEmailVerified(xData[0]))
                     {
-                        if (SendEmail(xData[0], "SocialRank Password Reset Code", xNewCode))
+                        //Generate and store
+                        var xNewCode = GenerateRandomNo();
+                        if (xtblUser.UpdatePasswordResetCode(xData[0], xNewCode))
                         {
-                            List<string> xMessage = new List<string>();
-                            xMessage.Add("Code Sent.");
-                            xMessage.Add("");
-                            xMessage.Add("Please check your email and");
-                            xMessage.Add("click the 'I Have a Code'button to continue.");
+                            if (SendEmail(xData[0], "SocialRank Password Reset Code", xNewCode))
+                            {
+                                List<string> xMessage = new List<string>();
+                                xMessage.Add("Code Sent.");
+                                xMessage.Add("");
+                                xMessage.Add("Please check your email and");
+                                xMessage.Add("click the 'I Have a Code'button to continue.");
 
-                            return EncodeMessage("Success", xMessage);
+                                return EncodeMessage("Success", xMessage);
+                            }
+                            else
+                            {
+                                return EncodeMessage("Error", "");
+                            }
                         }
                         else
                         {
@@ -767,8 +775,20 @@ namespace Shared.CLASSES
                     }
                     else
                     {
-                        return EncodeMessage("Error", "");
+                        List<string> xMessage = new List<string>();
+                        xMessage.Add("The email address is not verified.");
+                        xMessage.Add("");
+                        xMessage.Add("Please activate your account by clicking on the link");
+                        xMessage.Add("we have sent to your email address when you created");
+                        xMessage.Add("your account.");
+                        xMessage.Add("");
+                        xMessage.Add("If you have not received an email containing the link,");
+                        xMessage.Add("please click on the 'Resend Activation Email' button");
+                        xMessage.Add("on the logon screen.");
+
+                        return EncodeMessage("ErrorNotVerified", xMessage);
                     }
+
                 }
                 else
                 {
@@ -797,12 +817,9 @@ namespace Shared.CLASSES
                 if (xtblUser.CheckIfEmailAndCodeExist(xData[1], xData[0]))
                 {
 
-                    if (xtblUser.ResetPassword(xData[0], "00000"))
+                    if (xtblUser.ResetPassword(xData[1], xData[2]))
                     {
                         List<string> xMessage = new List<string>();
-                        xMessage.Add("Password Reset.");
-                        xMessage.Add("");
-                        xMessage.Add("Please log in using the new credetials.");
 
                         return EncodeMessage("Success", xMessage);
                     }
@@ -814,11 +831,6 @@ namespace Shared.CLASSES
                 else
                 {
                     List<string> xMessage = new List<string>();
-                    xMessage.Add("The email address is not registered.");
-                    xMessage.Add("");
-                    xMessage.Add("You are welcome to create a new account");
-                    xMessage.Add("by clicking on the 'Register a New Account'");
-                    xMessage.Add("button on the Logon screen.");
 
                     return EncodeMessage("ErrorExist", xMessage);
                 }

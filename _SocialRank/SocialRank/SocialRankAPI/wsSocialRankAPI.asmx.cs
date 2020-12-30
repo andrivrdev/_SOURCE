@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using static CPShared.clsGlobal;
 
 namespace SocialRankAPI
 {
@@ -29,6 +30,9 @@ namespace SocialRankAPI
         [WebMethod]
         public string DoWork(string xData)
         {
+            clsCPShared xclsCPShared = new clsCPShared();
+            xclsCPShared.DoLog(gLogLevel.INFO, "API Dowork: xData RAW=" + xData);
+
             try
             {
                 if (!(xData is null))
@@ -46,6 +50,8 @@ namespace SocialRankAPI
 
                         clsSE xclsSE = new clsSE();
                         xMessage = xclsSE.DecodeMessage(xMessage);
+
+                        xclsCPShared.DoLog(gLogLevel.INFO, "API Dowork: xData Decoded=" + xMessage);
 
                         //Register a new user
                         if (xMessage.Contains("frmRegister_RegisterUser" + clsGlobal.gMessageCommandSeperator))
