@@ -840,5 +840,48 @@ namespace Shared.CLASSES
                 return DoError(Ex);
             }
         }
+
+        public string frmLogin_Login(List<string> xData)
+        {
+            try
+            {
+                tblUser xtblUser = new tblUser();
+
+                //Check if exist
+                if (xtblUser.CheckIfEmailExist(xData[0]))
+                {
+                    //Check if email is verified
+                    if (xtblUser.CheckIfEmailVerified(xData[0]))
+                    {
+                        //Check if password is correct
+                        if (xtblUser.CheckPassword(xData[0], xData[1]))
+                        {
+                            return EncodeMessage("Success", "");
+                        }
+                        else
+                        {
+                            return EncodeMessage("InvalidPassword", "");
+                        }
+
+                    }
+                    else
+                    {
+                        return EncodeMessage("ErrorNotVerified", "");
+
+                    }
+                }
+                else
+                {
+                    return EncodeMessage("ErrorExist", "");
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+                return DoError(Ex);
+            }
+        }
+
     }
 }

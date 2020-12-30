@@ -101,6 +101,7 @@ namespace SocialRankAndroid
                 if (xresult.Contains("Success" + clsGlobal.gMessageCommandSeperator))
                 {
                     var xMessage = xresult.Replace("Success" + clsGlobal.gMessageCommandSeperator, "");
+                    /*
                     var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
 
                     string xLines = "";
@@ -108,6 +109,7 @@ namespace SocialRankAndroid
                     {
                         xLines += xLine + Environment.NewLine;
                     }
+                    */
 
                     int xAlert = Convert.ToInt32(gMessages.AccountCreated);
                     DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
@@ -119,6 +121,7 @@ namespace SocialRankAndroid
                 if (xresult.Contains("ErrorNotVerified" + clsGlobal.gMessageCommandSeperator))
                 {
                     var xMessage = xresult.Replace("ErrorNotVerified" + clsGlobal.gMessageCommandSeperator, "");
+                    /*
                     var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
 
                     string xLines = "";
@@ -126,6 +129,7 @@ namespace SocialRankAndroid
                     {
                         xLines += xLine + Environment.NewLine;
                     }
+                    */
 
                     int xAlert = Convert.ToInt32(gMessages.AccountNotVerified);
                     DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
@@ -135,6 +139,7 @@ namespace SocialRankAndroid
                 if (xresult.Contains("ErrorExist" + clsGlobal.gMessageCommandSeperator))
                 {
                     var xMessage = xresult.Replace("ErrorExist" + clsGlobal.gMessageCommandSeperator, "");
+                    /*
                     var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
 
                     string xLines = "";
@@ -142,6 +147,7 @@ namespace SocialRankAndroid
                     {
                         xLines += xLine + Environment.NewLine;
                     }
+                    */
 
                     int xAlert = Convert.ToInt32(gMessages.AccountAlreadyExist);
                     DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);

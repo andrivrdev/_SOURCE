@@ -20,12 +20,12 @@
                           HorizontalTextAlignment="Center"
                           VerticalTextAlignment="Center"/>
 
-                <Entry  Margin="20,40,20,0" 
+                <Entry x:Name="edtEmail" Margin="20,40,20,0" 
                          HeightRequest="50" 
                          Placeholder="Email">
                 </Entry>
 
-                <Entry Margin="20,0,20,0" 
+                <Entry x:Name="edtPassword1" Margin="20,0,20,0" 
                         HeightRequest="50" IsPassword="true"
                         Placeholder="Password">
 
@@ -34,7 +34,7 @@
                 <Button Margin="20,0,20,0" 
                          HeightRequest="50" 
                          TextColor="White" 
-                         Text="Login"  
+                         Text="Login"  x:Name="btnLogin" Clicked="btnLogin_Clicked"
                          BackgroundColor="{StaticResource primary}"
                          HorizontalOptions="FillAndExpand"/>
 

@@ -98,6 +98,15 @@ namespace SocialRankAPI
                             return xResult;
                         }
 
+                        //Log In
+                        if (xMessage.Contains("frmLogin_Login" + clsGlobal.gMessageCommandSeperator))
+                        {
+                            xMessage = xMessage.Replace("frmLogin_Login" + clsGlobal.gMessageCommandSeperator, "");
+                            var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
+                            var xResult = xclsSE.frmLogin_Login(dData);
+                            return xResult;
+                        }
+
                         //frmResendActivationEmail_Resend
                         //Invalid
                         return "Invalid command";

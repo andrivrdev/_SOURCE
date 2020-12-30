@@ -209,6 +209,41 @@ namespace Shared.DATA
             }
         }
 
+        public bool CheckPassword(string xEmail, string xPassword)
+        {
+            try
+            {
+                string SQL = "";
+
+                SQL =
+                    @"
+                    SELECT TOP 1
+                        dbo.tblUser.Id
+                    FROM
+                        dbo.tblUser
+                    WHERE
+                        (dbo.tblUser.Password = '" + xPassword + @"')
+                        AND
+                        (dbo.tblUser.Email = '" + xEmail + "')";
+
+                using (SqlConnection con = new SqlConnection(clsGlobal.gConnectionString))
+                {
+                    SqlCommand MyCommand = new SqlCommand(SQL, con);
+
+                    con.Open();
+                    SqlDataReader MyReader = MyCommand.ExecuteReader();
+
+                    return MyReader.HasRows;
+                }
+            }
+            catch (Exception Ex)
+            {
+                clsSE xclsSE = new clsSE();
+                xclsSE.DoError(Ex);
+                return false;
+            }
+        }
+
         public bool AddRec(string xEmail, string xAlias, string xPassword)
         {
             try

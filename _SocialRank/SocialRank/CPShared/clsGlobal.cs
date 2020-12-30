@@ -67,7 +67,12 @@ namespace CPShared
             new clsMessages{ Title="Account Not Verified", Message="The account is not verified. Please activate your account by clicking on the link we have sent to your email address.", Button="OK"},
             new clsMessages{ Title="Account Created", Message="Account created successfully. Please activate your account by clicking on the link we have sent to your email address.", Button="OK"},
             new clsMessages{ Title="Account Already Exist", Message="The email address is already in use.", Button="OK"},
-            new clsMessages{ Title="Activation Link Sent", Message="Please activate your account by clicking on the link we have sent to your email address.", Button="OK"}
+            new clsMessages{ Title="Activation Link Sent", Message="Please activate your account by clicking on the link we have sent to your email address.", Button="OK"},
+            new clsMessages{ Title="Login Failed", Message="Your password was incorrect.", Button="OK"}
+
+
+
+
         };
 
         public enum gMessages
@@ -83,7 +88,8 @@ namespace CPShared
             AccountNotVerified,
             AccountCreated,
             AccountAlreadyExist,
-            ActivationLinkSent
+            ActivationLinkSent,
+            InvalidPassword
         }
 
         public enum gLogLevel
