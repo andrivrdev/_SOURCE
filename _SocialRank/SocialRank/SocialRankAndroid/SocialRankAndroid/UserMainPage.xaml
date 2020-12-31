@@ -31,6 +31,9 @@
                          BackgroundColor="Gray"
                          HorizontalOptions="FillAndExpand"/>
 
+                <Label Text="0" FontSize="35" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" TextColor="DarkGray" HeightRequest="110" HorizontalOptions="FillAndExpand"
+                       x:Name="lblRank"/>
+
             </StackLayout>
         </ScrollView>
 

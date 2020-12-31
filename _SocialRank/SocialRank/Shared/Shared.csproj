@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CLASSES\clsSE.cs" />
+    <Compile Include="DATA\tblInstagramUser.cs" />
     <Compile Include="DATA\tblLongToken.cs" />
     <Compile Include="DATA\tblShortToken.cs" />
     <Compile Include="DATA\tblUser.cs" />

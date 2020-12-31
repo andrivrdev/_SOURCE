@@ -116,6 +116,14 @@ namespace SocialRankAPI
                             return xResult;
                         }
 
+                        //Update Instagram Media Counts
+                        if (xMessage.Contains("UpdateInstagramMediaCounts" + clsGlobal.gMessageCommandSeperator))
+                        {
+                            xMessage = xMessage.Replace("UpdateInstagramMediaCounts" + clsGlobal.gMessageCommandSeperator, "");
+                            var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
+                            var xResult = xclsSE.UpdateInstagramMediaCounts(dData);
+                            return xResult;
+                        }
                         //frmResendActivationEmail_Resend
                         //Invalid
                         return "Invalid command";

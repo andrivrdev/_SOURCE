@@ -939,22 +939,74 @@ namespace Shared.CLASSES
 
                 clsSE xclsSE = new clsSE();
 
-                if (xclsSE.sqlInsertRec("tblInstagramUser", fFields, vValues))
+                tblInstagramUser xtblInstagramUser = new tblInstagramUser();
+                if (!(xtblInstagramUser.CheckBeforeNewRec(Convert.ToInt32(xData[1]), xtblShortToken.user_id)))
                 {
-                    return EncodeMessage("Success", "");
+
+                    if (xclsSE.sqlInsertRec("tblInstagramUser", fFields, vValues))
+                    {
+                        return EncodeMessage("Success", "");
+                    }
+                    else
+                    {
+                        return EncodeMessage("Failed", "");
+                    }
                 }
                 else
                 {
-                    return EncodeMessage("Failed", "");
+                    if (xclsSE.sqlUpdateRec("tblInstagramUser", fFields, vValues, "([tblUserId] = '" + xData[1] + "') AND ([02_S_user_id] = '" + xtblShortToken.user_id + "')"))
+                    {
+                        return EncodeMessage("Success", "");
+                    }
+                    else
+                    {
+                        return EncodeMessage("Failed", "");
+                    }
                 }
-
-
-
             }
             catch (Exception Ex)
             {
                 return DoError(Ex);
             }
         }
+
+        public string UpdateInstagramMediaCounts(List<string> xData)
+        {
+            try
+            {
+                tblInstagramUser xtblInstagramUser = new tblInstagramUser();
+                List<string> xIds = new List<string>();
+                xIds = xtblInstagramUser.GetInstagramUserRescs(Convert.ToInt32(xData[0]));
+
+                int xTotal = 0;
+                foreach (var ARec in xIds)
+                {
+                    tblUsernameAndMediaCount xtblUsernameAndMediaCount = new tblUsernameAndMediaCount();
+                    xtblUsernameAndMediaCount = xtblUsernameAndMediaCount.GetUsernameAndMediaCount(clsGlobal.g_URI_Me_UsernameAndMediaCount, xtblInstagramUser.GetLongAccessTokenFromRecId(ARec));
+
+
+
+                    //Save to Database
+                    List<string> fFields = new List<string>();
+                    List<string> vValues = new List<string>();
+
+                    fFields.Add("04_media_count");
+
+                    vValues.Add(xtblUsernameAndMediaCount.media_count);
+
+                    clsSE xclsSE = new clsSE();
+                    xclsSE.sqlUpdateRec("tblInstagramUser", fFields, vValues, "([Id] = '" + ARec + "')");
+
+                    xTotal = xTotal + Convert.ToInt32(xtblUsernameAndMediaCount.media_count);
+                }
+
+                return EncodeMessage("Success", xTotal.ToString());
+            }
+            catch (Exception Ex)
+            {
+                return DoError(Ex);
+            }
+        }
+
     }
 }
