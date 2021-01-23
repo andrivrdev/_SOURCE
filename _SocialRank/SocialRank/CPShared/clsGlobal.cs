@@ -8,6 +8,16 @@ namespace CPShared
 {
     public static class clsGlobal
     {
+        //Debugging Flag
+        public static bool g_DebugMode = false;
+
+
+        //When the server changes
+        public const string gBaseURI = "http://52.186.136.188";         //http://andrivr.hopto.org
+        public const string gBasePort = "80";                         //8000
+        public static string g_redirect_uri = "http://52.186.136.188/"; //https://avrdev001.azurewebsites.net/
+        //--------------------------------------------------------------------------------------------------------------
+
         public static string gAppName = "SocialRank";
         public static string gAppPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
@@ -20,9 +30,9 @@ namespace CPShared
         public static string gVIKey = "@AzzeM81YydevLQJ";
 
         //live
-        public const string gEndpointAddress = "http://andrivr.hopto.org:8000/SocialRankAPI/wsSocialRankAPI.asmx";
+        public const string gEndpointAddress = gBaseURI + ":" + gBasePort + "/SocialRankAPI/wsSocialRankAPI.asmx";
 
-        public const string gWebServiceNamespace = "http://andrivr.hopto.org:8000/SocialRankAPI";
+        public const string gWebServiceNamespace = gBaseURI + ":" + gBasePort + "/SocialRankAPI";
         public static int gSoapCallTimeout = 30000;
 
         public const string gMessageCommandSeperator = "||||/|";
@@ -50,7 +60,6 @@ namespace CPShared
         public static string g_URI_access_token = "https://api.instagram.com/oauth/access_token";
         public static string g_client_id = "1101018996984145";
         public static string g_client_secret = "a3eac22d8a35bb4400e1de27b46a415b";
-        public static string g_redirect_uri = "https://avrdev001.azurewebsites.net/";
 
         //Get Long Lived Token from Short Lived Token
         public static string g_URI_long_access_token = "https://graph.instagram.com/access_token?grant_type=ig_exchange_token&&";
@@ -58,9 +67,9 @@ namespace CPShared
         //User name and Media Count
         public static string g_URI_Me_UsernameAndMediaCount = "https://graph.instagram.com/me?fields=id,username,media_count&access_token=";
 
-        //Unused
+        //Link Instagram
         public static string g_BasicDisplayAPI = "https://api.instagram.com/oauth/authorize";
-
+        public static string ssss = g_BasicDisplayAPI + "?client_id=" + g_client_id + "&redirect_uri=" + g_redirect_uri + "&scope = user_profile, user_media&response_type=code";
 
 
         public class clsMessages

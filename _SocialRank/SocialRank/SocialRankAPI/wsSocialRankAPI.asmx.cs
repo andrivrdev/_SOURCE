@@ -53,6 +53,15 @@ namespace SocialRankAPI
 
                         xclsCPShared.DoLog(gLogLevel.INFO, "API Dowork: xData Decoded=" + xMessage);
 
+                        //Write to log from remote
+                        if (xMessage.Contains("DoRemoteLog" + clsGlobal.gMessageCommandSeperator))
+                        {
+                            xMessage = xMessage.Replace("DoRemoteLog" + clsGlobal.gMessageCommandSeperator, "");
+                            var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
+                            xclsSE.DoRemoteLog(dData);
+                            return "";
+                        }
+
                         //Register a new user
                         if (xMessage.Contains("frmRegister_RegisterUser" + clsGlobal.gMessageCommandSeperator))
                         {

@@ -12,6 +12,7 @@ using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using static CPShared.clsGlobal;
 
 namespace Shared.CLASSES
 {
@@ -573,6 +574,20 @@ namespace Shared.CLASSES
             {
                 DoError(Ex);
                 return false;
+            }
+        }
+
+        public void DoRemoteLog(List<string> xData)
+        {
+            try
+            {
+                clsCPShared xclsCPShared = new clsCPShared();
+                xclsCPShared.DoLog(gLogLevel.DEBUG, xData[1]);
+
+            }
+            catch (Exception Ex)
+            {
+                DoError(Ex);
             }
         }
 

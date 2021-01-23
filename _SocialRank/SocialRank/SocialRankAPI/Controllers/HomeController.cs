@@ -11,6 +11,19 @@ namespace SocialRankAPI.Controllers
 {
     public class HomeController : Controller
     {
+        public FileResult Download(string file)
+        {
+            clsLogger xclsLogger = new clsLogger();
+            xclsLogger.Debug("DL1");
+            byte[] fileBytes = System.IO.File.ReadAllBytes(@"C:\inetpub\wwwroot\app.apk");
+            xclsLogger.Debug("DL2");
+            var response = new FileContentResult(fileBytes, "application/octet-stream");
+            xclsLogger.Debug("DL3");
+            response.FileDownloadName = "app.apk";
+            xclsLogger.Debug("DL4");
+            return response;
+        }
+
         public ActionResult Index()
         {
             return View();

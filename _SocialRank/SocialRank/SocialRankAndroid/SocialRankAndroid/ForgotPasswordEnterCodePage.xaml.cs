@@ -137,6 +137,22 @@ namespace SocialRankAndroid
                 if (xresult.Contains("Error" + clsGlobal.gMessageCommandSeperator))
                 {
                     int xAlert = Convert.ToInt32(gMessages.Error);
+
+                    if (g_DebugMode)
+                    {
+                        var xMessage = xresult.Replace("Error" + clsGlobal.gMessageCommandSeperator, "");
+
+                        var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
+
+                        string xLines = "";
+                        foreach (var xLine in dData)
+                        {
+                            xLines += xLine + Environment.NewLine;
+                        }
+
+                        DisplayAlert("DEBUGMODE", xLines, "OK");
+                    }
+
                     DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
                     edtCode.Focus();
                 }

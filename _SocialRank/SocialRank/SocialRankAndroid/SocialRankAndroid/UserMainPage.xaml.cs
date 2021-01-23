@@ -18,7 +18,7 @@ namespace SocialRankAndroid
         {
             InitializeComponent();
 
-            Device.StartTimer(TimeSpan.FromMilliseconds(5000), TimerElapsed);
+            Device.StartTimer(TimeSpan.FromMilliseconds(30000), TimerElapsed);
         }
 
         async void btnLinkInstagram_Clicked(object sender, EventArgs e)
@@ -29,6 +29,8 @@ namespace SocialRankAndroid
 
         private bool TimerElapsed()
         {
+            var xReturnResult = true;
+
             Device.BeginInvokeOnMainThread(() =>
             {
                 var xData = new List<string>();
@@ -48,9 +50,24 @@ namespace SocialRankAndroid
                     lblRank.Text = xMessage;
                 }
 
+                
+                //Page currentPage = Navigation.NavigationStack.LastOrDefault();
+
+                xData = new List<string>();
+
+                xData.Add(clsGlobal.gLogLevel.DEBUG.ToString());
+                xData.Add("Current page is: " + "TODO");
+
+
+                xclsSE.Send("DoRemoteLog", xData);
+
+                //xReturnResult = (currentPage == this);
+
                 //put here your code which updates the view
             });
-            return true;
+
+            return xReturnResult;
+            
         }
     }
 }

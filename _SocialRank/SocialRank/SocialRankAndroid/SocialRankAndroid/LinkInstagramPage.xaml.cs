@@ -1,4 +1,5 @@
 ﻿using CPShared;
+using Newtonsoft.Json;
 using SocialRankAndroid.SHARED.CLASSES;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace SocialRankAndroid
         {
             InitializeComponent();
 
-            webView.Source = @"https://api.instagram.com/oauth/authorize?client_id=1101018996984145&redirect_uri=https://avrdev001.azurewebsites.net/&scope=user_profile,user_media&response_type=code";
+            webView.Source = g_BasicDisplayAPI + "?client_id=" + g_client_id + "&redirect_uri=" + g_redirect_uri + "&scope = user_profile, user_media&response_type=code";
         }
 
         private void webView_Navigated(object sender, WebNavigatedEventArgs e)
@@ -30,9 +31,9 @@ namespace SocialRankAndroid
                 {
 
                     string xCode = e.Url;
-                    if (xCode.StartsWith(@"https://avrdev001.azurewebsites.net/?code="))
+                    if (xCode.StartsWith(g_redirect_uri + "?code="))
                     {
-                        xCode = xCode.Replace(@"https://avrdev001.azurewebsites.net/?code=", "");
+                        xCode = xCode.Replace(g_redirect_uri + "?code=", "");
                         xCode = xCode.Replace("#_", "");
                         LinkInstagram(xCode);
                     }
@@ -67,6 +68,22 @@ namespace SocialRankAndroid
                 else
                 {
                     int xAlert = Convert.ToInt32(gMessages.Error);
+
+                    if (g_DebugMode)
+                    {
+                        var xMessage = xresult.Replace("Error" + clsGlobal.gMessageCommandSeperator, "");
+
+                        var dData = JsonConvert.DeserializeObject<List<string>>(xMessage);
+
+                        string xLines = "";
+                        foreach (var xLine in dData)
+                        {
+                            xLines += xLine + Environment.NewLine;
+                        }
+
+                        DisplayAlert("DEBUGMODE", xLines, "OK");
+                    }
+
                     DisplayAlert(gclsMessages[xAlert].Title, gclsMessages[xAlert].Message, gclsMessages[xAlert].Button);
 
                 }

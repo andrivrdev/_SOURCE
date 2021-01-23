@@ -19,7 +19,7 @@ namespace XamarinASMX
         {
             try
             {
-                XamarinASMX.Droid.wrAPI.
+                wrAPI
             }
             catch (Exception Ex)
             {
