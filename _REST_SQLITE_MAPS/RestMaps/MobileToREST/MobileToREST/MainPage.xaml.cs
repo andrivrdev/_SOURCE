@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,8 @@ namespace MobileToREST
         public MainPage()
         {
             InitializeComponent();
+
+            edtAPI.Text = clsGlobal.gRESTApiUri;
 
             Device.StartTimer(TimeSpan.FromMilliseconds(100), NextUpdateIn);
 
@@ -98,13 +101,14 @@ namespace MobileToREST
             try
             {
                 List<string> cmdData = new List<string>();
-                cmdData.Add(zLocation.Latitude.ToString());
-                cmdData.Add(zLocation.Longitude.ToString());
-                cmdData.Add(zLocation.Altitude.ToString());
 
                 cmdData.Add(DeviceInfo.Idiom.ToString());
                 cmdData.Add(DeviceInfo.Model.ToString());
                 cmdData.Add(DeviceInfo.Name.ToString());
+
+                cmdData.Add(zLocation.Latitude.ToString());
+                cmdData.Add(zLocation.Longitude.ToString());
+                cmdData.Add(zLocation.Altitude.ToString());
 
                 string JSONresult;
                 JSONresult = JsonConvert.SerializeObject(cmdData);
@@ -122,7 +126,7 @@ namespace MobileToREST
                     };
 
                 var content = new FormUrlEncodedContent(values);
-                var response = await client.PostAsync("http://192.168.1.15:5000/api/api?=&xData=" + JSONresult, content);
+                var response = await client.PostAsync(edtAPI.Text + JSONresult, content);
 
                 var responseString = await response.Content.ReadAsStringAsync();
 

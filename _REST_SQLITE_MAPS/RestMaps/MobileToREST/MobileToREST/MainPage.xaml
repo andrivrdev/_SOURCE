@@ -4,6 +4,7 @@
              x:Class="MobileToREST.MainPage">
 
     <StackLayout>
+        <Entry x:Name="edtAPI"></Entry>
         <Label Text="LOCATION"></Label>
         <Label Text="Update Seconds"></Label>
         <Entry x:Name="edtSeconds" Text="10"></Entry>
@@ -15,7 +16,7 @@
         <Label Text="REST API"></Label>
         <Label Text=""></Label>
         <Button x:Name="btnPost" Clicked="btnPost_Clicked" Text="Post"></Button>
-        <Entry x:Name="edtResult" WidthRequest="300" HeightRequest="500" FontSize="14" />
+        <Entry x:Name="edtResult" HeightRequest="500" FontSize="14" VerticalTextAlignment="Start" />
     </StackLayout>
 
 </ContentPage>

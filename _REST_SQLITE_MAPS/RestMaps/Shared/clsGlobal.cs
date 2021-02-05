@@ -8,5 +8,7 @@ namespace Shared
     {
         public static string gDBSubFolderName = "Database";
         public static string gDBName = "Database.dat";
+
+        public static string gRESTApiUri = "http://192.168.1.15:5000/api/api?=&xData=";
     }
 }

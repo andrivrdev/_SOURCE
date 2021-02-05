@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -13,6 +14,11 @@ namespace Shared
         public static string zDBName = clsGlobal.gDBName;
         public static string zDBPathAndFileName = Path.Combine(zDBPath, zDBName);
         public static SqliteConnection zConn = null;
+
+        public static void CustomConn(string xDBPathAndFileName)
+        {
+            zDBPathAndFileName = xDBPathAndFileName;
+        }
 
         private static bool ReConnect()
         {
@@ -141,6 +147,138 @@ namespace Shared
             catch (Exception Ex)
             {
                 return false;
+            }
+        }
+
+        public static List<string> sqlGetTableCols(string xTableName)
+        {
+            try
+            {
+                string SQL = "";
+
+                //Build SQL
+                SQL =
+                "PRAGMA table_info(" + xTableName + ")";
+
+                SqliteCommand MyCommand = new SqliteCommand(SQL, zConn);
+
+                SqliteDataReader MyReader = MyCommand.ExecuteReader();
+
+                List<string> xCols = new List<string>();
+
+                while (MyReader.Read())
+                {
+                    xCols.Add(MyReader["name"].ToString());
+                }
+
+                return xCols;
+            }
+            catch (Exception Ex)
+            {
+                return new List<string>();
+            }
+        }
+        public static DataTable sqlGetTableRecs(string xTableName, string xWhere)
+        {
+            try
+            {
+                string SQL = "";
+
+                //Build SQL
+                SQL =
+                "SELECT * FROM [" + xTableName + "]" + Environment.NewLine;
+
+                if (xWhere.Length > 0)
+                {
+                    SQL += "WHERE" + Environment.NewLine + xWhere;
+                }
+
+                SqliteCommand MyCommand = new SqliteCommand(SQL, zConn);
+
+                SqliteDataReader MyReader = MyCommand.ExecuteReader();
+
+                //Get Column Details
+                List<string> xCols = new List<string>();
+                xCols = sqlGetTableCols(xTableName);
+
+                var xDT = new DataTable();
+                foreach (string ARec in xCols)
+                {
+                    xDT.Columns.Add(ARec);
+                }
+
+                int ii = 0;
+                while (MyReader.Read())
+                {
+                    xDT.Rows.Add();
+
+                    for (int i = 0; i < MyReader.FieldCount; i++)
+                    {
+                        xDT.Rows[ii][i] = MyReader[i].ToString();
+                    }
+
+                    ii++;
+
+                }
+
+                return xDT;
+            }
+            catch (Exception Ex)
+            {
+                return new DataTable();
+            }
+        }
+
+        public static DataTable sqlGetTableLastRec(string xTableName, string xWhere)
+        {
+            try
+            {
+                string SQL = "";
+
+                //Build SQL
+                SQL =
+                "SELECT * FROM [" + xTableName + "] ORDER BY [ID] DESC" + Environment.NewLine;
+
+                if (xWhere.Length > 0)
+                {
+                    SQL += "WHERE" + Environment.NewLine + xWhere + Environment.NewLine;
+                }
+
+                SQL += "LIMIT 1";
+
+                SqliteCommand MyCommand = new SqliteCommand(SQL, zConn);
+
+                SqliteDataReader MyReader = MyCommand.ExecuteReader();
+
+                //Get Column Details
+                List<string> xCols = new List<string>();
+                xCols = sqlGetTableCols(xTableName);
+
+                var xDT = new DataTable();
+                foreach (string ARec in xCols)
+                {
+                    xDT.Columns.Add(ARec);
+                }
+
+                int ii = 0;
+                while (MyReader.Read())
+                {
+                    xDT.Rows.Add();
+
+                    for (int i = 0; i < MyReader.FieldCount; i++)
+                    {
+                        xDT.Rows[ii][i] = MyReader[i].ToString();
+                    }
+
+                    ii++;
+
+                }
+
+                return xDT;
+            }
+            catch (Exception Ex)
+            {
+                return new DataTable();
             }
         }
 
