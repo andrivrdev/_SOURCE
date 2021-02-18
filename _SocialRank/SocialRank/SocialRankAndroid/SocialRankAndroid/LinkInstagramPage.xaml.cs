@@ -20,7 +20,7 @@ namespace SocialRankAndroid
         {
             InitializeComponent();
 
-            webView.Source = g_BasicDisplayAPI + "?client_id=" + g_client_id + "&redirect_uri=" + g_redirect_uri + "&scope = user_profile, user_media&response_type=code";
+            webView.Source = g_BasicDisplayAPI + "?client_id=" + g_client_id + "&redirect_uri=" + g_redirect_uri + "&scope=user_profile,user_media&response_type=code";
         }
 
         private void webView_Navigated(object sender, WebNavigatedEventArgs e)

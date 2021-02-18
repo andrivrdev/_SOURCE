@@ -15,7 +15,7 @@ namespace CPShared
         //When the server changes
         public const string gBaseURI = "http://52.186.136.188";         //http://andrivr.hopto.org
         public const string gBasePort = "80";                         //8000
-        public static string g_redirect_uri = "http://52.186.136.188/"; //https://avrdev001.azurewebsites.net/
+        public static string g_redirect_uri = "https://52.186.136.188/"; //https://avrdev001.azurewebsites.net/
         //--------------------------------------------------------------------------------------------------------------
 
         public static string gAppName = "SocialRank";
