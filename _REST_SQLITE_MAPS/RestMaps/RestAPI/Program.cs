@@ -27,7 +27,7 @@ namespace RestAPI
 
             var host = new WebHostBuilder()
                 .UseKestrel()
-                .UseUrls(hostUrl)   // <!-- this 
+                .UseUrls(hostUrl)   
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
@@ -39,8 +39,8 @@ namespace RestAPI
 
         public static void Main(string[] args)
         {
-            ExternalNetwork(args);
-            //CreateHostBuilder(args).Build().Run();
+            //ExternalNetwork(args);
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

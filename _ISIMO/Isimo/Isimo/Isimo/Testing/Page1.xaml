@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Isimo"
+             x:Class="Isimo.Testing.Page1"
+             BackgroundImageSource="Login.png">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primary">#ff3467</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout Spacing="10" >
+
+                <Label HeightRequest="120"  
+                          HorizontalOptions="FillAndExpand" 
+                          Text="" 
+                          TextColor="White" 
+                          FontSize="40" 
+                          HorizontalTextAlignment="Center"
+                          VerticalTextAlignment="Center"/>
+              
+                <Label HeightRequest="50"  
+                          HorizontalOptions="FillAndExpand" 
+                          Text="Please Sign In" 
+                          TextColor="White" 
+                          FontSize="28" 
+                          HorizontalTextAlignment="Center"
+                          VerticalTextAlignment="Center" />
+
+                <local:RoundedEditor x:Name="edtEmail" Margin="20,20,20,0"
+                         HeightRequest="50" 
+                         Placeholder="Email"
+                         TextColor="Black" 
+                         FontSize="23"
+                         Opacity="0.4">
+                </local:RoundedEditor>
+
+                <local:RoundedEditor x:Name="edtPassword1" Margin="20,0,20,0"
+                         HeightRequest="50" 
+                         Placeholder="Password"
+                         TextColor="Black" 
+                         FontSize="23"
+                         Opacity="0.4">
+                </local:RoundedEditor>
+
+                <Label x:Name="lblForgotPassword" Text="I Forgot My Password" 
+                        HorizontalOptions="End" 
+                        TextColor="{StaticResource primary}"
+                       Margin="20,0,20,0"
+                       />
+
+                <Button Margin="20,20,20,0" 
+                         HeightRequest="50" 
+                         TextColor="White" 
+                         Text="Login"  x:Name="btnLogin" 
+                         BackgroundColor="#4cc9f0"
+                        CornerRadius="50"
+                         HorizontalOptions="FillAndExpand"/>
+
+                <Button Margin="20,0,20,0" 
+                         HeightRequest="50" 
+                         TextColor="White" 
+                         Text="Register" x:Name="btnRegister"
+                         BackgroundColor="Gray"
+                         HorizontalOptions="FillAndExpand"/>
+
+                <Label x:Name="lblResend" Text="Resend Activation Email" 
+                        HorizontalOptions="Center" 
+                        TextColor="{StaticResource primary}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>
+
+  
