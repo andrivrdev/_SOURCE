@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Growme", "Growme\Growme.csproj", "{36345548-A99A-4D29-97F5-6B0FD4B2EB3A}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csp
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "GrowmeAPI", "GrowmeAPI\", "{F46F2D2A-3E17-4B9B-8F21-77ECE8B66345}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
 		ProjectReferences = "{61f163c8-a591-4961-9181-dd3a711a9580}|Shared.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_49752"
 		Debug.AspNetCompiler.PhysicalPath = "GrowmeAPI\"
