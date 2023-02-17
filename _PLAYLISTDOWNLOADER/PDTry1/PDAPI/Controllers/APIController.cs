@@ -78,9 +78,7 @@ namespace PDAPI.Controllers
                         foreach (var f in r.Files)
                         {
 
-                            xResult += r.QueueLength + "**||**" + r.UploadSpeed + "**||**" + f.BitRate + "**||**" + f.Size + "**||**" + f.Length + "**||**" + f.Extension + "**||**" + f.Filename.ToString() + Environment.NewLine;
-                            xResult = xResult.Replace(",", "");
-                            xResult = xResult.Replace("**||**", ",");
+                            xResult += r.QueueLength.ToString() + "**||**" + r.UploadSpeed.ToString() + "**||**" + f.BitRate.ToString() + "**||**" + f.Size.ToString() + "**||**" + f.Length.ToString() + "**||**" + f.Extension + "**||**" + f.Filename.ToString() + Environment.NewLine;
 
                             xCount = xCount + 1;
                             if (xCount2 > 10)

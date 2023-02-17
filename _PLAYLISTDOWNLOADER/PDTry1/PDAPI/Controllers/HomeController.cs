@@ -86,7 +86,7 @@ namespace PDAPI.Controllers
 
                                     if (xFound != "")
                                     {
-                                        xres += xres + xFound;
+                                        xres += xres + xFound + Environment.NewLine;
                                     }
                                 }
                             }
@@ -99,7 +99,7 @@ namespace PDAPI.Controllers
 
                     using StreamWriter file = new(@"C:\" + random.Next(200).ToString() + " - WriteLines.csv");
                     {
-                        file.Write(xres);
+                        file.WriteLineAsync(xres);
                         file.Close();
                     }
 
