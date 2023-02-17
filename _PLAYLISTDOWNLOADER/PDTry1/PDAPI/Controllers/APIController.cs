@@ -2,8 +2,8 @@
 using Newtonsoft.Json;
 using Shared;
 using Soulseek;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using static System.Net.Mime.MediaTypeNames;
+using System.Text.RegularExpressions;
 
 namespace PDAPI.Controllers
 {
@@ -16,29 +16,69 @@ namespace PDAPI.Controllers
         {
             try
             {
+                var toDecode = xData;
+                toDecode = toDecode.Remove(0, 1);
+
+                clsSE xSE = new clsSE();
+
+                //Check if compressed
+                if (xData[0] == '1')
+                {
+                    //Decompress
+                    toDecode = xSE.DecompressString(toDecode);
+                }
+
+                //Decrypt
+                toDecode = xSE.Decrypt(toDecode);
+
                 //clsSQLiteDB.Connect();
-                var dData = JsonConvert.DeserializeObject<clsAPIData>(xData);
+                var dData = JsonConvert.DeserializeObject<clsAPIData>(toDecode);
 
                 if (dData.Command == "SearchSong")
                 {
-                    //await client.ConnectAsync("andrivr@gmail.com", "passNEWm.3");
-
                     var xSearch = JsonConvert.DeserializeObject<List<string>>(dData.Data);
                     string aSearch = xSearch[0];
 
                     string xResult = "";
 
 
-
                     var responses = await clsSSClient.zSSClient.SearchAsync(SearchQuery.FromText(aSearch));
 
+                    if (responses.Responses.Count == 0)
+                    {
+                        string output = Regex.Replace(aSearch, @"\d{2,}", "");
+                        output = Regex.Replace(output, @"\d", "");
+
+                        List<string> or = output.Split(' ').ToList();
+                        List<string> nor = new List<string>();
+
+                        foreach (string s in or)
+                        {
+
+                            if (s.Length != 1)
+                            {
+                                nor.Add(s);
+                            }
+
+                        }
+
+                        var rs = String.Join(" ", nor.ToArray());
+
+                        aSearch = rs;
+
+                        responses = await clsSSClient.zSSClient.SearchAsync(SearchQuery.FromText(aSearch));
+                    }
+
                     int xCount = 0;
+
+
                     foreach (var r in responses.Responses)
                     {
                         int xCount2 = 0;
                         foreach (var f in r.Files)
                         {
-                            xResult += f.Filename.ToString() + Environment.NewLine;
+
+                            xResult += r.QueueLength + r.UploadSpeed + f.BitRate + f.Size + f.Length + f.Extension + f.Filename.ToString() + Environment.NewLine;
 
                             xCount = xCount + 1;
                             if (xCount2 > 10)
@@ -55,28 +95,6 @@ namespace PDAPI.Controllers
                         }
                     }
 
-
-                    /*
-
-                                        List<string> fFields = new List<string>();
-                                        List<string> vValues = new List<string>();
-
-                                        fFields.Add("DeviceIdiom");
-                                        fFields.Add("DeviceModel");
-                                        fFields.Add("DeviceName");
-                                        fFields.Add("Latitude");
-                                        fFields.Add("Longitude");
-                                        fFields.Add("Altitude");
-
-                                        vValues.Add(xLocation[0]);
-                                        vValues.Add(xLocation[1]);
-                                        vValues.Add(xLocation[2]);
-                                        vValues.Add(xLocation[3]);
-                                        vValues.Add(xLocation[4]);
-                                        vValues.Add(xLocation[5]);
-
-                                        clsSQLiteDB.sqlInsertRec("tblLocation", fFields, vValues);
-                                        */
                     return xResult;
                 }
 
@@ -88,8 +106,5 @@ namespace PDAPI.Controllers
                 return Ex.Message;
             }
         }
-
-
-        // GET: api/<APIController>
     }
 }

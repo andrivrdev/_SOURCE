@@ -31,16 +31,16 @@ namespace PDAPI.Controllers
         [HttpPost]
         public async Task<string> UploadFile(List<IFormFile> postedFiles)
         {
+            string xres = "";
+
             List<string> uploadedFiles = new List<string>();
             foreach (IFormFile postedFile in postedFiles)
             {
                 string fileName = Path.GetFileName(postedFile.FileName);
 
-
                 long fileLen = postedFile.Length;
 
                 // Create a byte array to hold the contents of the file.
-
                 var s = new MemoryStream();
                 postedFile.CopyTo(s);
                 var buffer = s.ToArray();
@@ -49,34 +49,6 @@ namespace PDAPI.Controllers
                 // Convert byte array into characters.
                 ASCIIEncoding enc = new ASCIIEncoding();
                 string str = enc.GetString(buffer);
-                /*
-                            System.IO.Stream myStream;
-                            Int32 fileLen;
-                            StringBuilder displayString = new StringBuilder();
-
-                            // Get the length of the file.
-                            fileLen = FileUpload1.PostedFile.ContentLength;
-
-                            // Display the length of the file in a label.
-                            //LengthLabel.Text = "The length of the file is " +
-                            //                   fileLen.ToString() + " bytes.";
-
-                            // Create a byte array to hold the contents of the file.
-                            Byte[] Input = new Byte[fileLen];
-
-                            // Initialize the stream to read the uploaded file.
-                            myStream = FileUpload1.FileContent;
-
-                            // Read the file into the byte array.
-                            myStream.Read(Input, 0, fileLen);
-
-                            // Copy the byte array to a string.
-                            for (int loop1 = 0; loop1 < fileLen; loop1++)
-                            {
-                                displayString.Append(Input[loop1].ToString());
-                            }
-
-                            */
                 clsSE SE = new clsSE();
 
                 List<string> list = new List<string>(Regex.Split(str, Environment.NewLine));
@@ -110,11 +82,15 @@ namespace PDAPI.Controllers
                                 var xFound = await SE.DoPost("SearchSong", xKeywords);
 
                                 int xxx = 1;
+                                xres += xres + xFound;
                             }
 
                         }
 
                     }
+
+                    return xres;
+
 
                 }
 
