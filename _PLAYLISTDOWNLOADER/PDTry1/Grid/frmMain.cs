@@ -48,7 +48,7 @@ namespace Grid
                 DataTable dt = new DataTable();
 
                 // get the column header means first line
-                string[] temp = str[0].Split(',');
+                string[] temp = str[0].Split("**||**");
 
                 // creates columns of gridview as per the header name
                 foreach (string t in temp)
@@ -59,7 +59,7 @@ namespace Grid
                 // now retrive the record from second line and add it to datatable
                 for (int i = 1; i < str.Length; i++)
                 {
-                    string[] t = str[i].Split(',');
+                    string[] t = str[i].Split("**||**");
                     dt.Rows.Add(t);
 
                 }
