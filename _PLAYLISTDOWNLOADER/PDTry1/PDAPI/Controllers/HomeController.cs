@@ -81,12 +81,26 @@ namespace PDAPI.Controllers
 
                                 var xFound = await SE.DoPost("SearchSong", xKeywords);
 
-                                int xxx = 1;
-                                xres += xres + xFound;
+                                if (xFound != null)
+                                {
+
+                                    if (xFound != "")
+                                    {
+                                        xres += xres + xFound;
+                                    }
+                                }
                             }
 
                         }
 
+                    }
+
+                    Random random = new Random();
+
+                    using StreamWriter file = new(@"C:\" + random.Next(200).ToString() + " - WriteLines.csv");
+                    {
+                        file.Write(xres);
+                        file.Close();
                     }
 
                     return xres;
