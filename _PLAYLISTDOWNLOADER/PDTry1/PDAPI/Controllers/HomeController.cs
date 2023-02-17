@@ -99,9 +99,15 @@ namespace PDAPI.Controllers
 
                     using StreamWriter file = new(@"C:\" + random.Next(200).ToString() + " - WriteLines.csv");
                     {
-                        file.WriteLineAsync(xres);
-                        file.Close();
+                        List<string> xxlist = new List<string>(Regex.Split(xres, Environment.NewLine));
+
+                        foreach (string aaa in xxlist)
+                        {
+                            file.WriteLineAsync(aaa);
+                        }
                     }
+
+                    file.Close();
 
                     return xres;
 
