@@ -264,6 +264,7 @@ namespace Shared
                 }
 
                 HttpClient client = new HttpClient();
+                client.Timeout = TimeSpan.FromSeconds(480);
                 var values = new Dictionary<string, string>
                     {
                         { JSONresult, JSONresult }

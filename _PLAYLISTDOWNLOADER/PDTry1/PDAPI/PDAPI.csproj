@@ -10,6 +10,7 @@
     <PackageReference Include="Soulseek" Version="6.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+    <PackageReference Include="z440.atl.core" Version="4.19.0" />
   </ItemGroup>
 
   <ItemGroup>
