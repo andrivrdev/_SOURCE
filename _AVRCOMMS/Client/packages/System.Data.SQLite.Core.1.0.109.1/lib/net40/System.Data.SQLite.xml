@@ -20334,4 +20334,367 @@
         </member>
         <member name="M:System.Data.SQLite.SQLiteChangeSetEnumerator.ResetIterator(System.Data.SQLite.SQLiteChangeSetIterator)">
             <summary>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+            Disposes of the existing managed iterator instance and then sets it
+            to a new value.
+            </summary>
+            <param name="iterator">
+            The new managed iterator instance to use.
+            </param>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetEnumerator.MoveNext">
+            <summary>
+            Attempts to advance to the next item in the set of changes.
+            </summary>
+            <returns>
+            Non-zero if more items are available; otherwise, zero.
+            </returns>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetEnumerator.Reset">
+            <summary>
+            Throws <see cref="T:System.NotImplementedException"/> because not all the
+            derived classes are able to support reset functionality.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetEnumerator.Dispose">
+            <summary>
+            Disposes of this object instance.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteChangeSetEnumerator.disposed">
+            <summary>
+            Non-zero if this object instance has been disposed.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetEnumerator.CheckDisposed">
+            <summary>
+            Throws an exception if this object instance has been disposed.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetEnumerator.Dispose(System.Boolean)">
+            <summary>
+            Disposes or finalizes this object instance.
+            </summary>
+            <param name="disposing">
+            Non-zero if this object is being disposed; otherwise, this object
+            is being finalized.
+            </param>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetEnumerator.Finalize">
+            <summary>
+            Finalizes this object instance.
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteChangeSetEnumerator.Current">
+            <summary>
+            Returns the current change within the set of changes, represented
+            by a <see cref="T:System.Data.SQLite.ISQLiteChangeSetMetadataItem"/> instance.
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteChangeSetEnumerator.System#Collections#IEnumerator#Current">
+            <summary>
+            Returns the current change within the set of changes, represented
+            by a <see cref="T:System.Data.SQLite.ISQLiteChangeSetMetadataItem"/> instance.
+            </summary>
+        </member>
+        <member name="T:System.Data.SQLite.SQLiteMemoryChangeSetEnumerator">
+            <summary>
+            This class represents an <see cref="T:System.Collections.IEnumerator"/> that is capable of
+            enumerating over a set of changes contained entirely in memory.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteMemoryChangeSetEnumerator.rawData">
+            <summary>
+            The raw byte data for this set of changes.  Since this data must
+            be marshalled to a native memory buffer before being used, there
+            must be enough memory available to store at least two times the
+            amount of data contained within it.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteMemoryChangeSetEnumerator.#ctor(System.Byte[])">
+            <summary>
+            Constructs an instance of this class using the specified raw byte
+            data.
+            </summary>
+            <param name="rawData">
+            The raw byte data containing the set of changes for this
+            enumerator.
+            </param>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteMemoryChangeSetEnumerator.Reset">
+            <summary>
+            Resets the enumerator to its initial position.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteMemoryChangeSetEnumerator.disposed">
+            <summary>
+            Non-zero if this object instance has been disposed.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteMemoryChangeSetEnumerator.CheckDisposed">
+            <summary>
+            Throws an exception if this object instance has been disposed.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteMemoryChangeSetEnumerator.Dispose(System.Boolean)">
+            <summary>
+            Disposes or finalizes this object instance.
+            </summary>
+            <param name="disposing">
+            Non-zero if this object is being disposed; otherwise, this object
+            is being finalized.
+            </param>
+        </member>
+        <member name="T:System.Data.SQLite.SQLiteStreamChangeSetEnumerator">
+            <summary>
+            This class represents an <see cref="T:System.Collections.IEnumerator"/> that is capable of
+            enumerating over a set of changes backed by a <see cref="T:System.IO.Stream"/>
+            instance.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteStreamChangeSetEnumerator.#ctor(System.IO.Stream,System.Data.SQLite.SQLiteConnectionFlags)">
+            <summary>
+            Constructs an instance of this class using the specified stream.
+            </summary>
+            <param name="stream">
+            The <see cref="T:System.IO.Stream"/> where the raw byte data for the set of
+            changes may be read.
+            </param>
+            <param name="flags">
+            The flags associated with the parent connection.
+            </param>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteStreamChangeSetEnumerator.disposed">
+            <summary>
+            Non-zero if this object instance has been disposed.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteStreamChangeSetEnumerator.CheckDisposed">
+            <summary>
+            Throws an exception if this object instance has been disposed.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteStreamChangeSetEnumerator.Dispose(System.Boolean)">
+            <summary>
+            Disposes or finalizes this object instance.
+            </summary>
+            <param name="disposing">
+            Non-zero if this object is being disposed; otherwise, this object
+            is being finalized.
+            </param>
+        </member>
+        <member name="T:System.Data.SQLite.SQLiteChangeSetMetadataItem">
+            <summary>
+            This interface implements properties and methods used to fetch metadata
+            about one change within a set of changes for a database.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteChangeSetMetadataItem.iterator">
+            <summary>
+            The <see cref="T:System.Data.SQLite.SQLiteChangeSetIterator"/> instance to use.  This
+            will NOT be owned by this class and will not be disposed upon this
+            class being disposed or finalized.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetMetadataItem.#ctor(System.Data.SQLite.SQLiteChangeSetIterator)">
+            <summary>
+            Constructs an instance of this class using the specified iterator
+            instance.
+            </summary>
+            <param name="iterator">
+            The managed iterator instance to use.
+            </param>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetMetadataItem.CheckIterator">
+            <summary>
+            Throws an exception if the managed iterator instance is invalid.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetMetadataItem.PopulateOperationMetadata">
+            <summary>
+            Populates the underlying data for the <see cref="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.TableName"/>,
+            <see cref="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.NumberOfColumns"/>, <see cref="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.OperationCode"/>, and
+            <see cref="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.Indirect"/> properties, using the appropriate native
+            API.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetMetadataItem.PopulatePrimaryKeyColumns">
+            <summary>
+            Populates the underlying data for the
+            <see cref="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.PrimaryKeyColumns"/> property using the appropriate
+            native API.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetMetadataItem.PopulateNumberOfForeignKeyConflicts">
+            <summary>
+            Populates the underlying data for the
+            <see cref="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.NumberOfForeignKeyConflicts"/> property using the
+            appropriate native API.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteChangeSetMetadataItem.tableName">
+            <summary>
+            Backing field for the <see cref="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.TableName"/> property. This value
+            will be null if this field has not yet been populated via the
+            underlying native API.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteChangeSetMetadataItem.numberOfColumns">
+            <summary>
+            Backing field for the <see cref="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.NumberOfColumns"/> property. This
+            value will be null if this field has not yet been populated via the
+            underlying native API.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteChangeSetMetadataItem.operationCode">
+            <summary>
+            Backing field for the <see cref="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.OperationCode"/> property.  This
+            value will be null if this field has not yet been populated via the
+            underlying native API.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteChangeSetMetadataItem.indirect">
+            <summary>
+            Backing field for the <see cref="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.Indirect"/> property.  This value
+            will be null if this field has not yet been populated via the
+            underlying native API.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteChangeSetMetadataItem.primaryKeyColumns">
+            <summary>
+            Backing field for the <see cref="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.PrimaryKeyColumns"/> property.
+            This value will be null if this field has not yet been populated
+            via the underlying native API.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteChangeSetMetadataItem.numberOfForeignKeyConflicts">
+            <summary>
+            Backing field for the <see cref="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.NumberOfForeignKeyConflicts"/>
+            property.  This value will be null if this field has not yet been
+            populated via the underlying native API.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetMetadataItem.GetOldValue(System.Int32)">
+            <summary>
+            Queries and returns the original value of a given column for this
+            change.  This method may only be called when the
+            <see cref="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.OperationCode"/> has a value of
+            <see cref="F:System.Data.SQLite.SQLiteAuthorizerActionCode.Update"/> or
+            <see cref="F:System.Data.SQLite.SQLiteAuthorizerActionCode.Delete"/>.
+            </summary>
+            <param name="columnIndex">
+            The index for the column.  This value must be between zero and one
+            less than the total number of columns for this table.
+            </param>
+            <returns>
+            The original value of a given column for this change.
+            </returns>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetMetadataItem.GetNewValue(System.Int32)">
+            <summary>
+            Queries and returns the updated value of a given column for this
+            change.  This method may only be called when the
+            <see cref="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.OperationCode"/> has a value of
+            <see cref="F:System.Data.SQLite.SQLiteAuthorizerActionCode.Insert"/> or
+            <see cref="F:System.Data.SQLite.SQLiteAuthorizerActionCode.Update"/>.
+            </summary>
+            <param name="columnIndex">
+            The index for the column.  This value must be between zero and one
+            less than the total number of columns for this table.
+            </param>
+            <returns>
+            The updated value of a given column for this change.
+            </returns>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetMetadataItem.GetConflictValue(System.Int32)">
+            <summary>
+            Queries and returns the conflicting value of a given column for
+            this change.  This method may only be called from within a
+            <see cref="T:System.Data.SQLite.SessionConflictCallback"/> delegate when the conflict
+            type is <see cref="F:System.Data.SQLite.SQLiteChangeSetConflictType.Data"/> or
+            <see cref="F:System.Data.SQLite.SQLiteChangeSetConflictType.Conflict"/>.
+            </summary>
+            <param name="columnIndex">
+            The index for the column.  This value must be between zero and one
+            less than the total number of columns for this table.
+            </param>
+            <returns>
+            The conflicting value of a given column for this change.
+            </returns>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetMetadataItem.Dispose">
+            <summary>
+            Disposes of this object instance.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteChangeSetMetadataItem.disposed">
+            <summary>
+            Non-zero if this object instance has been disposed.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetMetadataItem.CheckDisposed">
+            <summary>
+            Throws an exception if this object instance has been disposed.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetMetadataItem.Dispose(System.Boolean)">
+            <summary>
+            Disposes or finalizes this object instance.
+            </summary>
+            <param name="disposing">
+            Non-zero if this object is being disposed; otherwise, this object
+            is being finalized.
+            </param>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteChangeSetMetadataItem.Finalize">
+            <summary>
+            Finalizes this object instance.
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.TableName">
+            <summary>
+            The name of the table the change was made to.
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.NumberOfColumns">
+            <summary>
+            The number of columns impacted by this change.  This value can be
+            used to determine the highest valid column index that may be used
+            with the <see cref="M:System.Data.SQLite.SQLiteChangeSetMetadataItem.GetOldValue(System.Int32)"/>, <see cref="M:System.Data.SQLite.SQLiteChangeSetMetadataItem.GetNewValue(System.Int32)"/>,
+            and <see cref="M:System.Data.SQLite.SQLiteChangeSetMetadataItem.GetConflictValue(System.Int32)"/> methods of this interface.  It
+            will be this value minus one.
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.OperationCode">
+            <summary>
+            This will contain the value
+            <see cref="F:System.Data.SQLite.SQLiteAuthorizerActionCode.Insert"/>,
+            <see cref="F:System.Data.SQLite.SQLiteAuthorizerActionCode.Update"/>, or
+            <see cref="F:System.Data.SQLite.SQLiteAuthorizerActionCode.Delete"/>, corresponding to
+            the overall type of change this item represents.
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.Indirect">
+            <summary>
+            Non-zero if this change is considered to be indirect (i.e. as
+            though they were made via a trigger or foreign key action).
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.PrimaryKeyColumns">
+            <summary>
+            This array contains a <see cref="T:System.Boolean"/> for each column in
+            the table associated with this change.  The element will be zero
+            if the column is not part of the primary key; otherwise, it will
+            be non-zero.
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteChangeSetMetadataItem.NumberOfForeignKeyConflicts">
+            <summary>
+            This method may only be called from within a
+            <see cref="T:System.Data.SQLite.SessionConflictCallback"/> delegate when the conflict
+            type is <see cref="F:System.Data.SQLite.SQLiteChangeSetConflictType.ForeignKey"/>.  It
+            returns the total number of known foreign key violations in the
+            destination database.
+            </summary>
+        </member>
+    </members>
+</doc>
