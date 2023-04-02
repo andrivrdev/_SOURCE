@@ -15,6 +15,7 @@
                 HeightRequest="200"
                 HorizontalOptions="Center" />
             <Label
+                x:Name="lblUN"
                 Text="Username"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="20"
@@ -60,7 +61,11 @@
                 HorizontalOptions="Center" />
 
             <ProgressBar 
-                x:Name="pb"
+                x:Name="pb1"
+                SemanticProperties.HeadingLevel="Level1"
+                HorizontalOptions="Fill" />
+            <ProgressBar 
+                x:Name="pb2"
                 SemanticProperties.HeadingLevel="Level1"
                 HorizontalOptions="Fill" />
 
@@ -97,10 +102,54 @@
                 FontSize="10"
                 HorizontalOptions="Fill" />
 
+            <Button
+                x:Name="btnDownload"
+                Text="Download"
+                Clicked="OnDownloadClick"
+                HorizontalOptions="Center" />
+            <Label
+                x:Name="lblDownload"
+                Text=""  
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="10"
+                HorizontalOptions="Fill" />
+            <ProgressBar 
+                x:Name="pbDownload"
+                SemanticProperties.HeadingLevel="Level1"
+                HorizontalOptions="Fill" />
+            <Label
+                x:Name="lbldl"
+                Text="XXXXXXXXXXXXXXX"  
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="10"
+                HorizontalOptions="Fill" />
+            <ProgressBar 
+                x:Name="pbdl"
+                SemanticProperties.HeadingLevel="Level1"
+                HorizontalOptions="Fill" />
 
 
-
-
+            <TableView Intent="Settings">
+    <TableRoot>
+        <TableSection Title="Silent">
+            <ViewCell>
+                <Grid x:Name="dgGridLines"
+                      RowDefinitions="Auto"
+                      ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                    <Label Text="Vibrate"/>
+                                <Label Text="Vibrate"/>
+                                <Label Text="Vibrate"/>
+                                <Label Text="Vibrate"/>
+                                <Label Text="Vibrate"/>
+                                <Label Text="Vibrate"/>
+                                <Label Text="Vibrate"/>
+                                <Label Text="Vibrate"/>
+                                <Label Text="Vibrate"/>
+                            </Grid>
+            </ViewCell>
+        </TableSection>
+    </TableRoot>
+</TableView>
 
 
 

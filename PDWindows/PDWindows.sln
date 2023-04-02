@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33502.453
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDWindows", "PDWindows\PDWindows.csproj", "{AB5869BD-0AEB-4154-A011-E6382048E31F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{7EB2D120-AACC-4DED-ABB7-BA163ADBD451}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB5869BD-0AEB-4154-A011-E6382048E31F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB5869BD-0AEB-4154-A011-E6382048E31F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB5869BD-0AEB-4154-A011-E6382048E31F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB5869BD-0AEB-4154-A011-E6382048E31F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EB2D120-AACC-4DED-ABB7-BA163ADBD451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EB2D120-AACC-4DED-ABB7-BA163ADBD451}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EB2D120-AACC-4DED-ABB7-BA163ADBD451}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EB2D120-AACC-4DED-ABB7-BA163ADBD451}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCDC44A0-A317-403D-A22C-30910062D8EE}
+	EndGlobalSection
+EndGlobal

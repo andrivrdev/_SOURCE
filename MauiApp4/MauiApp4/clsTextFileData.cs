@@ -17,7 +17,8 @@ namespace MauiApp4
         long Size,
         int Length,
         string Extention,
-        string Filename
+        string Filename,
+        string Username
         )
         {
 
@@ -33,6 +34,8 @@ namespace MauiApp4
         public int? colLength { get; set; }
         public string colExtention { get; set; }
         public string colFilename { get; set; }
+        public string colUsername { get; set; }
+
 
     }
 }
