@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:dxc="clr-namespace:DevExpress.XamarinForms.Charts;assembly=DevExpress.XamarinForms.Charts"
+        xmlns:dxcv="clr-namespace:DevExpress.XamarinForms.CollectionView;assembly=DevExpress.XamarinForms.CollectionView"
+        xmlns:dxsch="clr-namespace:DevExpress.XamarinForms.Scheduler;assembly=DevExpress.XamarinForms.Scheduler"
+        xmlns:dxg="clr-namespace:DevExpress.XamarinForms.DataGrid;assembly=DevExpress.XamarinForms.Grid"
+        xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.Editors"        
+        xmlns:dxdf="clr-namespace:DevExpress.XamarinForms.DataForm;assembly=DevExpress.XamarinForms.Editors"
+        xmlns:dxp="clr-namespace:DevExpress.XamarinForms.Popup;assembly=DevExpress.XamarinForms.Editors"
+        xmlns:dxn="clr-namespace:DevExpress.XamarinForms.Navigation;assembly=DevExpress.XamarinForms.Navigation"
+        xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+        ios:Page.UseSafeArea="true"
+        x:Class="DXApp3.MainPage">
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Xamarin.Forms Controls from DevExpress" HorizontalTextAlignment="Center" TextColor="White" FontSize="30"/>
+        </Frame>
+        <Label Text="Get the most out of your mobile hardware and OS" FontSize="Title" Padding="15,10,15,10"/>
+        <Label Text="All Xamarin UI controls are written in Objective-C for iOS and Java/Kotlin for Android and are seamlessly integrated with the Xamarin Forms platform. DevExpress UI controls abstract the complexities of native mobile development and deliver unmatched performance, usability, and functionality." 
+               FontSize="18" Padding="15,0,15,0"/>
+        <Label FontSize="16" Padding="15,24,15,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Learn more at "/>
+                        <Span Text="https://www.devexpress.com/xamarin/" FontAttributes="Bold"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </StackLayout>
+</ContentPage>

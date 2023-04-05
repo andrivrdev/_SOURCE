@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SQLite;
-using System.Linq;
-using System.Web;
 
 /// <summary>
 /// Summary description for tblRegisterAPI
@@ -37,9 +35,9 @@ public class tblRegisterAPI
                 ";
 
             List<tblRegisterAPI> xRegisterAPIs = new List<tblRegisterAPI>();
-            SQLiteCommand MyCommand = new SQLiteCommand(SQL, clsSQLiteDBAPI.zConn);
+            SqliteCommand MyCommand = new SqliteCommand(SQL, clsSQLiteDBAPI.zConn);
 
-            SQLiteDataReader MyReader = MyCommand.ExecuteReader();
+            var MyReader = MyCommand.ExecuteReader();
 
             dtRegisterAPI = new DataTable();
             dtRegisterAPI.Load(MyReader);
@@ -83,7 +81,7 @@ public class tblRegisterAPI
                   dbo.tblRegisterAPI.Email = '" + xEmail + "'";
 
 
-            SQLiteCommand MyCommand = new SQLiteCommand(SQL, clsSQLiteDBAPI.zConn);
+            SqliteCommand MyCommand = new SqliteCommand(SQL, clsSQLiteDBAPI.zConn);
 
             SQLiteDataReader MyReader = MyCommand.ExecuteReader();
 

@@ -56,7 +56,7 @@ namespace MJ2.Controllers
                 //Verify credentials against database
                 tblCompany xtblCompany = new tblCompany();
                 xtblCompany.LoadData();
-                DataRow dr = xtblCompany.dtCompany.AsEnumerable().SingleOrDefault(r => r.Field<string>("Name").ToUpper().Trim() == xUsername);
+                DataRow dr = (xtblCompany.dtCompany.Rows[0] as DataRow);
                 if (dr != null)
                 {
                     if (xPassword == dr["Password"].ToString())
