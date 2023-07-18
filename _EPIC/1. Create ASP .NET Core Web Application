@@ -1,0 +1,117 @@
+1. Create ASP .NET Core Web Application
+2. Create A Folder under Pages called Account
+3. Create Empty Razor Page under Account called Login
+4. Create Models Folder at Application root
+5. Create Credential Model under Models folder
+6. Create a variable called Credential of type Credential on LoginModel above OnGet
+7. Decorate the fields in Credential class with [Required] and [Required] + [DataType(DataType.Password)]
+8. Decorate the Credential variable with [BindProperty]
+9. Edit the Login page design
+
+<div class="container border" style="padding:20px">
+	<form method="post">
+
+		<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+		<div class="form-group row">
+			<div class="col-2">
+				<label asp-for="zCredential.Username"></label>
+			</div>
+			<div class="col-5">
+				<input type="text" asp-for="zCredential.Username" class="form-control"/>
+			</div>
+
+			<span class="text-danger" asp-validation-for="zCredential.Username"></span>
+
+
+		</div>
+		<div class="form-group row">
+			<div class="col-2">
+				<label asp-for="zCredential.Password"></label>
+			</div>
+			<div class="col-5">
+				<input type="password" asp-for="zCredential.Password" class="form-control"/>
+			</div>
+
+			<span class="text-danger" asp-validation-for="zCredential.Password"></span>
+
+		</div>
+		<div class="form-group row">
+			<div class="col-2">
+				<input type="submit" class="btn btn-primary" value="Login" />
+
+			</div>
+			<div class="col-5">
+
+			</div>
+		</div>
+	</form>
+</div>
+
+
+10. Create OnPost method in Login
+11. Add Cookie Auth under ConfigureServices in Program
+11. Add app.UseAuthentication(); above UseAuthorization in Program
+12. Decorate IndexModel with [Authorize] (and all pages that requires you to be logged in)
+
+13. Make a AccessDenied Page under Account
+
+14 Add Logout Page under Account and make a Logout button on the header. Modify the Layout page
+15. Make a Partial View Under Shared, by copying and Pasting _ValidationScriptsPartial.cshtml
+16. Rename the copy to _LoginStatusPartial.cshtml and delete all the code. Replace with
+
+@if (User.Identity.IsAuthenticated)
+{
+	<form method="post" asp-page="/Account/Logout">
+		Welcome @User.Identity.Name
+		
+		<button type="submit" class="ml-2 btn btn-link">Logout</button>
+
+		
+	
+	</form>
+
+
+}
+else
+{
+
+ <a class="btn btn-link" asp-page="/Account/Login">Login</a>
+}
+
+    then edit Layout
+17. Add Timespan for cookie timeout option.ExpireTimeSpan
+
+
+
+
+1. Create ASP .NET Core Web Application
+2. Add nuget EntityFrameworkcore.SqlServer and
+             EntityFrameworkcore.Tools
+
+3. Modify  	appsettings.json
+   {
+  "DetailedErrors": true,
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft.AspNetCore": "Warning"
+        }
+    },
+    "AllowedHosts": "*",
+    "ConnectionStrings": {
+        "AuthConnectionString": "Server=(localdb)\\mssqllocaldb;Database=Identity;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+
+
+
+}
+4. Add Models Folder to Website Root
+5. Create class inside Models  and inherrit 
+6. Add line underneath AddRazorPages
+
+7. Add line under UseRouting
+
+8. Add line underneath line in (6)
+9. Run Add-Migration AddAuthentication
+10. Run Update-Database

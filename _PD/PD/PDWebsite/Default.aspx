@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.master" CodeBehind="Default.aspx.cs" Inherits="PDWebsite._Default" %>
+<Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.master" CodeBehind="Default.aspx.cs" Inherits="PDWebsite._Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <div class="jumbotron">
