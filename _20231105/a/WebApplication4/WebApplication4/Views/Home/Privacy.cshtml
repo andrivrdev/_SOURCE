@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using WebApplication4.Areas.Identity.Data
+
+@inject UserManager<WebApplication4User> UserManager
+
+@{
+    foreach (var ARec in User.Identities)
+    {
+        <div>@ARec.Name</div>
+        
+    }
+
+    
+    }

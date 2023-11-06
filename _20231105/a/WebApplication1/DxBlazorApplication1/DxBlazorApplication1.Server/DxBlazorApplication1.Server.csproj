@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.0" />
+    <PackageReference Include="DevExpress.Blazor.RichEdit" Version="22.2.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DxBlazorApplication1.Client\DxBlazorApplication1.Client.csproj" />
+    <ProjectReference Include="..\DxBlazorApplication1.Shared\DxBlazorApplication1.Shared.csproj" />
+  </ItemGroup>
+</Project>
