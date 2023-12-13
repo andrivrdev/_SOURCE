@@ -1,0 +1,109 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.RazorPages
+@using Microsoft.EntityFrameworkCore
+
+@page "/poll"
+@attribute [StreamRendering]
+@attribute [Authorize]
+
+<PageTitle>Polls</PageTitle>
+
+<h1>Polls</h1>
+
+<p>Manage Polls</p>
+
+@if (IndexModel.Polls == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in forecasts)
+            {
+                <tr>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Poll[0].Question)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Poll[0].AddOtherAnswerOption)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Poll[0].AddNoneOfTheAboveAnswerOption)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Poll)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Question)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddOtherAnswerOption)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddNoneOfTheAboveAnswerOption)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+
+<h3>Index</h3>
+
+@code {
+    public class IndexModel : PageModel
+    {
+        private readonly PollsAppAssessment.Data.ApplicationDbContext _context;
+
+        public IndexModel(PollsAppAssessment.Data.ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public IList<Poll> Polls { get; set; } = default!;
+
+        public async Task OnGetAsync()
+        {
+            Polls = await _context.Poll.ToListAsync();
+        }
+    }
+    
+
+}
